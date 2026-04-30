@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Testimonials - LAPHIC Modern Homes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:wght@300;400;500;600&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --midnight: #0f1419;
+            --teal: #9c6c24;
+            --coral: #ff6b6b;
+            --cream: #f8f6f0;
+            --charcoal: #3a3a3a;
+            --gold: #c9a050;
+            --primary: #0a0a0a;
+        }
+
+        body {
+            font-family: 'Crimson Pro', serif;
+            background: var(--cream);
+            color: var(--charcoal);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 2rem;
+            color: var(--gold);
+            letter-spacing: 3px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--cream);
+            text-decoration: none;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 70vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('images/interior.jfif') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 80px;
+        }
+
+        .hero-content h1 {
+            font-family: 'Merriweather', serif;
+            font-size: 5rem;
+            margin-bottom: 1rem;
+            color: var(--gold);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            color: var(--cream);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: var(--midnight);
+            padding: 4rem 5%;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stat-item {
+            text-align: center;
+            color: var(--cream);
+        }
+
+        .stat-number {
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.9;
+        }
+
+        /* Filter Section */
+        .filter-section {
+            padding: 3rem 5%;
+            text-align: center;
+            background: var(--cream);
+        }
+
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.75rem 2rem;
+            background: transparent;
+            border: 2px solid var(--charcoal);
+            color: var(--charcoal);
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: var(--midnight);
+        }
+
+        /* Featured Testimonial */
+        .featured-testimonial {
+            padding: 6rem 5%;
+            background: var(--midnight);
+            color: var(--cream);
+        }
+
+        .featured-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .featured-image {
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+
+        .featured-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .featured-quote {
+            font-size: 1.5rem;
+            line-height: 1.8;
+            font-style: italic;
+            margin-bottom: 2rem;
+            color: var(--cream);
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .featured-quote::before {
+            content: '"';
+            position: absolute;
+            left: 0;
+            top: -20px;
+            font-size: 6rem;
+            color: var(--gold);
+            font-family: 'Merriweather', serif;
+            line-height: 1;
+        }
+
+        .featured-author {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .author-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--midnight);
+        }
+
+        .author-info h3 {
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .author-details {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+
+        .project-type {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: var(--gold);
+            color: var(--midnight);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 1rem;
+            border-radius: 30px;
+        }
+
+        /* Testimonials Grid */
+        .testimonials-section {
+            padding: 6rem 5%;
+            background: var(--cream);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Merriweather', serif;
+            font-size: 3.5rem;
+            color: var(--midnight);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            color: var(--charcoal);
+            opacity: 0.8;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 3rem;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+            position: relative;
+            transition: all 0.4s ease;
+        }
+
+        .testimonial-card::before {
+            content: '★★★★★';
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            color: var(--gold);
+            font-size: 1.2rem;
+            letter-spacing: 3px;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .testimonial-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--charcoal);
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .testimonial-footer {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 2px solid var(--cream);
+        }
+
+        .client-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .client-info h4 {
+            font-size: 1.2rem;
+            color: var(--midnight);
+            margin-bottom: 0.3rem;
+        }
+
+        .client-details {
+            font-size: 0.9rem;
+            color: var(--charcoal);
+            opacity: 0.7;
+        }
+
+        .service-tag {
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            background: var(--cream);
+            color: var(--teal);
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 0.5rem;
+            border-radius: 15px;
+        }
+
+        /* Video Testimonials */
+        .video-section {
+            padding: 6rem 5%;
+            background: var(--midnight);
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 3rem auto 0;
+        }
+
+        .video-card {
+            position: relative;
+            background: rgba(255,255,255,0.05);
+            padding: 2rem;
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+
+        .video-card:hover {
+            background: rgba(255,255,255,0.08);
+            transform: translateY(-5px);
+        }
+
+        .video-thumbnail {
+            position: relative;
+            height: 250px;
+            background: var(--charcoal);
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+        }
+
+        .video-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70px;
+            height: 70px;
+            background: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--midnight);
+        }
+
+        .video-info {
+            color: var(--cream);
+        }
+
+        .video-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--gold);
+        }
+
+        .video-info p {
+            font-size: 0.95rem;
+            opacity: 0.8;
+        }
+
+        /* Trust Badges */
+        .trust-section {
+            padding: 5rem 5%;
+            background: var(--cream);
+            text-align: center;
+        }
+
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 3rem auto 0;
+        }
+
+        .trust-badge {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .badge-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--midnight);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+        }
+
+        .badge-text {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--midnight);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 6rem 5%;
+            background: var(--midnight);
+            text-align: center;
+            color: var(--cream);
+        }
+
+        .cta-content h2 {
+            font-family: 'Merriweather', serif;
+            font-size: 3.5rem;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-content p {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            padding: 1.2rem 3rem;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border: 2px solid;
+        }
+
+        .cta-btn-primary {
+            background: var(--gold);
+            color: var(--midnight);
+            border-color: var(--gold);
+        }
+
+        .cta-btn-primary:hover {
+            background: transparent;
+            color: var(--gold);
+        }
+
+        .cta-btn-secondary {
+            background: transparent;
+            color: var(--cream);
+            border-color: var(--cream);
+        }
+
+        .cta-btn-secondary:hover {
+            background: var(--cream);
+            color: var(--midnight);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: var(--cream);
+            padding: 3rem 5%;
+            text-align: center;
+        }
+
+        footer p {
+            opacity: 0.9;
+        }
+
+        /* Hidden class for filtering */
+        .hidden {
+            display: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-content h1 {
+                font-size: 3.5rem;
+            }
+
+            .featured-content {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+                font-size: 0.85rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .filter-buttons {
+                gap: 1rem;
+            }
+
+            .filter-btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.8rem;
+            }
+
+            .featured-quote {
+                font-size: 1.2rem;
+                padding-left: 2rem;
+            }
+
+            .section-header h2 {
+                font-size: 2.5rem;
+            }
+
+            .cta-content h2 {
+                font-size: 2.5rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">LAPHIC <span>MODERN</span></div>
+        <ul class="nav-links">
+            <li><a href="laphic-website.html">HOME</a></li>
+            <li><a href="who-we-are.html">WHO WE ARE</a></li>
+            <li><a href="services.html">SERVICES</a></li>
+            <li><a href="portfolio.html">PORTFOLIO</a></li>
+            <li><a href="testimonials.html">TESTIMONIALS</a></li>
+            <li><a href="contact.html">CONTACT</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Client Testimonials</h1>
+            <p>Real stories from real people who trusted us with their dreams</p>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number">200+</div>
+                <div class="stat-label">Happy Clients</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">98%</div>
+                <div class="stat-label">Satisfaction Rate</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">150+</div>
+                <div class="stat-label">5-Star Reviews</div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+   <section class="filter-section">
+        <div class="filter-buttons">
+            <a href="projects.html" class="filter-btn">Projects</a>
+            <a href="interior-design.html" class="filter-btn">Interior Design</a>
+            <a href="3d-experience.html" class="filter-btn">3d-experience</a>
+            <a href="landscape-design.html" class="filter-btn">Landscape Design</a>
+       </div>
+    </section>
+
+    <!-- <section class="filter-section">
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">projects </button>
+            <button class="filter-btn" data-filter="interior">Interior Design</button>
+            <button class="filter-btn" data-filter="exterior">Exterior Design</button>
+            <button class="filter-btn" data-filter="landscape">Landscape Design</button>
+        </div>
+    </section> -->
+
+    <!-- Featured Testimonial -->
+    <section class="featured-testimonial">
+        <div class="featured-content">
+            <div class="featured-image">
+                <img src="images/interior.jfif" alt="Featured Project">
+            </div>
+            <div class="featured-text">
+                <p class="featured-quote">
+                    Working with LAPHIC Modern Homes was an absolute dream. They took our vision and transformed it into a reality that exceeded all our expectations. The attention to detail, professionalism, and creative expertise made the entire process seamless and enjoyable. Our home is now a masterpiece!
+                </p>
+                <div class="featured-author">
+                    <div class="author-avatar">SN</div>
+                    <div class="author-info">
+                        <h3>Sarah Namubiru</h3>
+                        <p class="author-details">Homeowner - Kololo, Kampala</p>
+                        <span class="project-type">Complete Interior Renovation</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Grid -->
+    <section class="testimonials-section">
+        <div class="section-header">
+            <h2>What Our Clients Say</h2>
+            <p>Hundreds of satisfied clients across Uganda</p>
+        </div>
+
+        <div class="testimonials-grid">
+            <!-- Testimonial 1 -->
+            <div class="testimonial-card" data-category="interior">
+                <p class="testimonial-text">
+                    "The gypsum ceiling work in our living room is absolutely stunning! LAPHIC's team was professional, timely, and the craftsmanship is top-notch. We've received countless compliments from our guests."
+                </p>
+                <div class="testimonial-footer">
+                    <div class="client-avatar">DM</div>
+                    <div class="client-info">
+                        <h4>David Mukasa</h4>
+                        <p class="client-details">Muyenga, Kampala</p>
+                        <span class="service-tag">Gypsum Work</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonial 2 -->
+            <div class="testimonial-card" data-category="exterior">
+                <p class="testimonial-text">
+                    "Our home's exterior transformation is remarkable. The modern facade design and quality paint job have completely changed the look of our property. LAPHIC delivered excellence from start to finish."
+                </p>
+                <div class="testimonial-footer">
+                    <div class="client-avatar">JK</div>
+                    <div class="client-info">
+                        <h4>James Kisakye</h4>
+                        <p class="client-details">Bugolobi, Kampala</p>
+                        <span class="service-tag">Exterior Design</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonial 3 -->
+            <div class="testimonial-card" data-category="landscape">
+                <p class="testimonial-text">
+                    "The landscape design for our garden is beyond beautiful! They created a tropical paradise right in our backyard. The irrigation system works perfectly, and the plant selection was spot-on for our climate."
+                </p>
+                <div class="testimonial-footer">
+                    <div class="client-avatar">GN</div>
+                    <div class="client-info">
+                        <h4>Grace Nakato</h4>
+                        <p class="client-details">Lubowa, Kampala</p>
+                        <span class="service-tag">Landscape Design</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonial 4 -->
+            <div class="testimonial-card" data-category="interior">
+                <p class="testimonial-text">
+                    "We hired LAPHIC for custom furniture and curtains. The quality is exceptional! Everything was made to measure and installed perfectly. Their design team has impeccable taste."
+                </p>
+                <div class="testimonial-footer">
+                    <div class="client-avatar">RM</div>
+                    <div class="client-info">
+                        <h4>Rebecca Mugisha</h4>
+                        <p class="client-details">Naguru, Kampala</p>
+                        <span class="service-tag">Furniture & Curtains</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonial 5 -->
+            <div class="testimonial-card" data-category="exterior">
+                <p class="testimonial-text">
+                    "The roofing work was completed ahead of schedule and within budget. No leaks, beautiful finish, and excellent warranty. I highly recommend LAPHIC for any exterior project."
+                </p>
+                <div class="testimonial-footer">
+                    <div class="client-avatar">PN</div>
+                    <div class="client-info">
+                        <h4>Patrick Nsamba</h4>
+                        <p class="client-details">Entebbe Road</p>
+                        <span class="service-tag">Roofing</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonial 6 -->
+            <div class="testimonial-card" data-category="landscape">
+                <p class="testimonial-text">
+                    "Our outdoor entertainment area is now the favorite spot in the house! The hardscaping, lighting, and plant selection are perfect. LAPHIC really knows how to create functional outdoor spaces."
+                </p>
+                <div class="testimonial-footer">
+                    <div class="client-avatar">MO</div>
+                    <div class="client-info">
+                        <h4>Michael Okello</h4>
+                        <p class="client-details">Ntinda, Kampala</p>
+                        <span class="service-tag">Outdoor Living</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonial 7 -->
+            <div class="testimonial-card" data-category="interior">
+                <p class="testimonial-text">
+                    "The interior painting service was flawless. They helped us choose the perfect color palette and the finish is smooth and professional. Our home feels completely refreshed!"
+                </p>
+                <div class="testimonial-footer">
+                    <div class="client-avatar">AN</div>
+                    <div class="client-info">
+                        <h4>Alice Namwanje</h4>
+                        <p class="client-details">Kansanga, Kampala</p>
+                        <span class="service-tag">Interior Painting</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonial 8 -->
+            <div class="testimonial-card" data-category="exterior">
+                <p class="testimonial-text">
+                    "The outdoor lighting design has transformed our property's security and aesthetics. LAPHIC's expertise in both functional and decorative lighting is evident in every detail."
+                </p>
+                <div class="testimonial-footer">
+                    <div class="client-avatar">SK</div>
+                    <div class="client-info">
+                        <h4>Stephen Kato</h4>
+                        <p class="client-details">Nakasero, Kampala</p>
+                        <span class="service-tag">Outdoor Lighting</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonial 9 -->
+            <div class="testimonial-card" data-category="landscape">
+                <p class="testimonial-text">
+                    "The water feature they installed is the centerpiece of our garden. It's beautifully designed, well-built, and the sound of flowing water creates such a peaceful atmosphere."
+                </p>
+                <div class="testimonial-footer">
+                    <div class="client-avatar">LN</div>
+                    <div class="client-info">
+                        <h4>Linda Nalwadda</h4>
+                        <p class="client-details">Buziga, Kampala</p>
+                        <span class="service-tag">Water Features</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonial 10 -->
+            <div class="testimonial-card" data-category="interior">
+                <p class="testimonial-text">
+                    "Our custom aquarium is a work of art! LAPHIC designed and built it perfectly, and they even provide maintenance services. It's become the talking point of our home."
+                </p>
+                <div class="testimonial-footer">
+                    <div class="client-avatar">FK</div>
+                    <div class="client-info">
+                        <h4>Francis Kayongo</h4>
+                        <p class="client-details">Muyenga, Kampala</p>
+                        <span class="service-tag">Custom Aquarium</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonial 11 -->
+            <div class="testimonial-card" data-category="exterior">
+                <p class="testimonial-text">
+                    "The pergola they built for our backyard is stunning and sturdy. Perfect craftsmanship and great design consultation. We now have the perfect outdoor dining area!"
+                </p>
+                <div class="testimonial-footer">
+                    <div class="client-avatar">TM</div>
+                    <div class="client-info">
+                        <h4>Thomas Mutumba</h4>
+                        <p class="client-details">Kololo, Kampala</p>
+                        <span class="service-tag">Outdoor Structures</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonial 12 -->
+            <div class="testimonial-card" data-category="landscape">
+                <p class="testimonial-text">
+                    "Professional lawn installation with excellent follow-up care. Our grass is lush and green year-round. LAPHIC's knowledge of local conditions really shows in the results."
+                </p>
+                <div class="testimonial-footer">
+                    <div class="client-avatar">CN</div>
+                    <div class="client-info">
+                        <h4>Catherine Nabirye</h4>
+                        <p class="client-details">Munyonyo, Kampala</p>
+                        <span class="service-tag">Lawn Installation</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Testimonials -->
+    <section class="video-section">
+        <div class="section-header">
+            <h2 style="color: var(--gold);">Video Testimonials</h2>
+            <p style="color: var(--cream); opacity: 0.9;">Hear directly from our satisfied clients</p>
+        </div>
+
+        <div class="video-grid">
+            <div class="video-card">
+                <div class="video-thumbnail">
+                    <img src="images/interior.jfif" alt="Video Testimonial">
+                    <div class="play-button">▶</div>
+                </div>
+                <div class="video-info">
+                    <h3>Complete Home Renovation</h3>
+                    <p>Watch how we transformed this family home from top to bottom</p>
+                </div>
+            </div>
+
+            <div class="video-card">
+                <div class="video-thumbnail">
+                    <img src="images/exterior.jfif" alt="Video Testimonial">
+                    <div class="play-button">▶</div>
+                </div>
+                <div class="video-info">
+                    <h3>Modern Facade Makeover</h3>
+                    <p>See the dramatic before and after of this exterior transformation</p>
+                </div>
+            </div>
+
+            <div class="video-card">
+                <div class="video-thumbnail">
+                    <img src="images/landscape.jfif" alt="Video Testimonial">
+                    <div class="play-button">▶</div>
+                </div>
+                <div class="video-info">
+                    <h3>Garden Paradise Creation</h3>
+                    <p>From empty lot to tropical oasis in 6 weeks</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Badges -->
+    <section class="trust-section">
+        <div class="section-header">
+            <h2>Why Clients Choose Us</h2>
+            <p>Our commitment to excellence</p>
+        </div>
+
+        <div class="trust-grid">
+            <div class="trust-badge">
+                <div class="badge-icon">✓</div>
+                <div class="badge-text">Licensed & Insured</div>
+            </div>
+            <div class="trust-badge">
+                <div class="badge-icon">🏆</div>
+                <div class="badge-text">Award Winning</div>
+            </div>
+            <div class="trust-badge">
+                <div class="badge-icon">⭐</div>
+                <div class="badge-text">5-Star Rated</div>
+            </div>
+            <div class="trust-badge">
+                <div class="badge-icon">🤝</div>
+                <div class="badge-text">Satisfaction Guaranteed</div>
+            </div>
+            <div class="trust-badge">
+                <div class="badge-icon">💼</div>
+                <div class="badge-text">15+ Years Experience</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Ready to Join Our Happy Clients?</h2>
+            <p>Let's start your transformation journey today</p>
+            <div class="cta-buttons">
+                <a href="contact.html" class="cta-btn cta-btn-primary">Get Free Consultation</a>
+                <a href="projects.html" class="cta-btn cta-btn-secondary">View Our Portfolio</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 LAPHIC Modern Homes. All Rights Reserved. | Think It, We Create It.</p>
+    </footer>
+
+    <script>
+        // Filter functionality
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const testimonialCards = document.querySelectorAll('.testimonial-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterBtns.forEach(b => b.classList.remove('active'));
+                // Add active class to clicked button
+                btn.classList.add('active');
+
+                const filterValue = btn.getAttribute('data-filter');
+
+                testimonialCards.forEach(card => {
+                    const category = card.getAttribute('data-category');
+                    
+                    if (filterValue === 'all') {
+                        card.classList.remove('hidden');
+                    } else if (category === filterValue) {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe testimonial cards
+        testimonialCards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'all 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>

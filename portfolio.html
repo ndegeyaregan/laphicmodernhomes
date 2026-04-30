@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - LAPHIC Modern Homes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:wght@300;400;500;600&family=Raleway:wght@300;400;500;600;700;800&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0a0a0a;
+            --gold: #c9a050;
+            --cream: #f8f6f0;
+            --charcoal: #2c2c2c;
+            --rust: #c85a3e;
+            --obsidian: #0e1111;
+            --graphite: #2a2a2a;
+            --amber: #ffbf00;
+            --pearl: #ffffff;
+            --silver: #b5b5b5;
+            --crimson: #8b0000;
+        }
+
+        body {
+            font-family: 'Crimson Pro', serif;
+            background: var(--cream);
+            color: var(--primary);
+            overflow-x: hidden;
+        }
+
+       nav {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 2rem;
+            color: var(--gold);
+            letter-spacing: 3px;
+        }
+        .logo span {
+           color: var(--cream);
+           margin-left: 5px;
+       }
+
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--cream);
+            text-decoration: none;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        /* Hero */
+        .hero {
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--obsidian) 0%, var(--graphite) 100%);
+            margin-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(255, 191, 0, 0.03) 2px,
+                rgba(255, 191, 0, 0.03) 4px
+            );
+            animation: heroSlide 20s linear infinite;
+        }
+
+        @keyframes heroSlide {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(50px, 50px) rotate(360deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: var(--pearl);
+        }
+
+        .hero h1 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 7rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            animation: fadeInScale 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            letter-spacing: 3px;
+            font-weight: 300;
+            animation: fadeInScale 1s ease-out 0.3s both;
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Filter Section */
+        .filter-section {
+            padding: 4rem 5%;
+            background: white;
+            text-align: center;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 1rem 2.5rem;
+            border: 2px solid var(--graphite);
+            background: transparent;
+            color: var(--graphite);
+            font-family: 'Raleway', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--obsidian);
+            color: var(--amber);
+            border-color: var(--obsidian);
+        }
+
+        /* Portfolio Grid */
+        .portfolio-section {
+            padding: 6rem 5%;
+            max-width: 1800px;
+            margin: 0 auto;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 2rem;
+        }
+
+        .portfolio-item {
+            position: relative;
+            aspect-ratio: 4 / 3;
+            overflow: hidden;
+            cursor: pointer;
+            background: var(--graphite);
+            
+        }
+
+        .portfolio-item.featured {
+            grid-column: span 2;
+            aspect-ratio: 16 / 9;
+        }
+
+        .portfolio-image {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            object-fit: cover;
+            image-rendering: -webkit-optimize-contrast;
+
+
+        }
+        .portfolio-item video {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+       }
+
+        .portfolio-item:hover .portfolio-image {
+            transform: scale(1.15);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                135deg,
+                rgba(14, 17, 17, 0.95) 0%,
+                rgba(255, 191, 0, 0.85) 100%
+            );
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .overlay-content {
+            text-align: center;
+            color: white;
+            transform: translateY(30px);
+            transition: transform 0.5s ease;
+        }
+
+        .portfolio-item:hover .overlay-content {
+            transform: translateY(0);
+        }
+
+        .overlay-content h3 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .overlay-content p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.95;
+        }
+
+        .overlay-content .tags {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            padding: 0.5rem 1.5rem;
+            background: rgba(255, 255, 255, 0.2);
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            padding: 6rem 5%;
+            background: var(--obsidian); 
+            background: var(--cream);
+            color: rgb(10, 9, 9);
+        }
+
+        .stats-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 4rem;
+            text-align: center; 
+       } 
+
+        .stat-box {
+            padding: 2rem;
+            border: 2px solid var(--amber);
+            position: relative;
+        } 
+       
+        .stat-box::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 2px solid rgba(255, 191, 0, 0.3);
+            transition: all 0.4s ease;
+        }
+          
+        .stat-box:hover::before {
+            top: -15px;
+            left: -15px;
+            right: -15px;
+            bottom: -15px;
+        } 
+        
+      .stat-number {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 4.5rem;
+            color: var(--amber);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        } 
+        
+      .stat-label {
+            font-size: 1rem;
+            letter-spacing: 2px;
+            font-weight: 500;
+        } 
+
+
+
+        /* BACKGROUND IMAGES */
+        /* .stat-box.projects {
+           background: url("images/exterior.jfif") center/cover no-repeat;
+        }
+
+        .stat-box.clients {
+           background: url("images/clients.jpg") center/cover no-repeat;
+        }
+
+       .stat-box.experience {
+          background: url("images/experience.jpg") center/cover no-repeat;
+        }
+
+        .stat-box.awards {
+            background: url("images/awards.jpg") center/cover no-repeat;
+        } */
+
+        
+        /* Testimonial Section */
+        .testimonial-section {
+            padding: 8rem 5%;
+            background: white;
+        }
+
+        .testimonial-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .testimonial-container h2 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 4rem;
+            margin-bottom: 4rem;
+            color: var(--obsidian);
+        }
+
+        .testimonial {
+            padding: 4rem 3rem;
+            background: var(--pearl);
+            border-left: 5px solid var(--amber);
+        }
+
+        .testimonial-text {
+            font-size: 1.5rem;
+            line-height: 2;
+            font-style: italic;
+            margin-bottom: 2rem;
+            color: var(--graphite);
+        }
+
+        .testimonial-author {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.3rem;
+            color: var(--obsidian);
+            font-weight: 700;
+        }
+
+        .testimonial-role {
+            font-size: 1rem;
+            color: var(--silver);
+            margin-top: 0.5rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 8rem 5%;
+            /* background: linear-gradient(135deg, var(--crimson) 0%, var(--obsidian) 0%); */
+            background: var(--charcoal);
+            text-align: center;
+            color: rgb(250, 249, 249);
+        }
+
+        .cta-section h2 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 4.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .cta-section p {
+            font-size: 1.4rem;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 1.5rem 4rem;
+            background: var(--amber);
+            color: var(--obsidian);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            transition: all 0.4s ease;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(255, 191, 0, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: var(--cream);
+            padding: 3rem 5%;
+            text-align: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 5rem;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .portfolio-item.featured {
+                grid-column: span 1;
+            }
+
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">LAPHIC<span>MODERN</span></div>
+        <ul class="nav-links">
+            <li><a href="laphic-website.html">HOME</a></li>
+            <li><a href="who-we-are.html">WHO WE ARE</a></li>
+            <li><a href="services.html">SERVICES</a></li>
+            <li><a href="portfolio.html">PORTFOLIO</a></li>
+            <li><a href="testimonials.html">TESTIMONIALS</a></li>
+            <li><a href="contact.html">CONTACT US</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>PORTFOLIO</h1>
+            <p>OUR FINEST WORK</p>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="filter-section">
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">ALL PROJECTS</button>
+            <button class="filter-btn" data-filter="interior">INTERIOR DESIGN</button>
+            <button class="filter-btn" data-filter="exterior">EXTERIOR DESIGN</button>
+            <button class="filter-btn" data-filter="landscape">LANDSCAPE</button>
+            
+        </div>
+    </section>
+
+    <!-- Portfolio Grid -->
+    <section class="portfolio-section">
+        <div class="portfolio-grid">
+            <div class="portfolio-item featured" data-category="interior">
+                <img src="images/fresh state.jfif" alt="Exterior Design">
+                <div class="portfolio-overlay">
+                    <div class="overlay-content">
+                        <h3>Luxury Villa Interior</h3>
+                        <p>Contemporary elegance meets timeless sophistication</p>
+                        <div class="tags">
+                            <span class="tag">INTERIOR</span>
+                            <span class="tag">RESIDENTIAL</span>
+                            <span class="tag">2024</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-item" data-category="exterior">
+                <img src="images/compound3.jfif" alt="Exterior Design">
+                <div class="portfolio-overlay">
+                    <div class="overlay-content">
+                        <h3>Modern Residence</h3>
+                        <p>Bold architectural statement</p>
+                        <div class="tags">
+                            <span class="tag">EXTERIOR</span>
+                            <span class="tag">KAMPALA</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-item" data-category="landscape">
+                <img src="images/outer paint2.jfif" alt="Exterior Design">
+                <div class="portfolio-overlay">
+                    <div class="overlay-content">
+                        <h3>Garden Paradise</h3>
+                        <p>Nature-inspired tranquility</p>
+                        <div class="tags">
+                            <span class="tag">LANDSCAPE</span>
+                            <span class="tag">PRIVATE ESTATE</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-item featured" data-category="interior">
+                <img src="images/outer space.jfif" alt="Exterior Design">
+                <div class="portfolio-overlay">
+                    <div class="overlay-content">
+                        <h3>Luxury Villa Interior</h3>
+                        <p>Contemporary elegance meets timeless sophistication</p>
+                        <div class="tags">
+                            <span class="tag">INTERIOR</span>
+                            <span class="tag">RESIDENTIAL</span>
+                            <span class="tag">2024</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-item" data-category="interior">
+               <img src="images/office design.jfif" alt="Exterior Design">
+                <div class="portfolio-overlay">
+                    <div class="overlay-content">
+                        <h3>Penthouse Living</h3>
+                        <p>Sophisticated urban design</p>
+                        <div class="tags">
+                            <span class="tag">INTERIOR</span>
+                            <span class="tag">LUXURY</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-item" data-category="interior">
+                <img src="images/outer paint1.jfif" alt="Interior Design">
+                <div class="portfolio-overlay">
+                    <div class="overlay-content">
+                        <h3>Boutique Hotel</h3>
+                        <p>Luxury hospitality interiors</p>
+                        <div class="tags">
+                            <span class="tag">INTERIOR</span>
+                            <span class="tag">HOSPITALITY</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-item" data-category="landscape">
+                <img src="images/aquarium.jfif" alt="Exterior Design">
+                <div class="portfolio-overlay">
+                    <div class="overlay-content">
+                        <h3>Garden Paradise</h3>
+                        <p>Nature-inspired tranquility</p>
+                        <div class="tags">
+                            <span class="tag">LANDSCAPE</span>
+                            <span class="tag">PRIVATE ESTATE</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-item" data-category="commercial">
+                <img src="images/al2.jfif" alt="Exterior Design">
+                <div class="portfolio-overlay">
+                    <div class="overlay-content">
+                        <h3>Corporate Office</h3>
+                        <p>Professional workspace reimagined</p>
+                        <div class="tags">
+                            <span class="tag">COMMERCIAL</span>
+                            <span class="tag">OFFICE</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-item featured" data-category="exterior">
+                <img src="images/aq2.jfif" alt="Exterior Design">
+                <div class="portfolio-overlay">
+                    <div class="overlay-content">
+                        <h3>Contemporary Estate</h3>
+                        <p>Architectural masterpiece in the heart of Uganda</p>
+                        <div class="tags">
+                            <span class="tag">EXTERIOR</span>
+                            <span class="tag">CONSTRUCTION</span>
+                            <span class="tag">FEATURED</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-item" data-category="landscape">
+                <img src="images/garden.jfif" alt="Exterior Design">
+                <div class="portfolio-overlay">
+                    <div class="overlay-content">
+                        <h3>Resort Landscaping</h3>
+                        <p>Tropical oasis design</p>
+                        <div class="tags">
+                            <span class="tag">LANDSCAPE</span>
+                            <span class="tag">COMMERCIAL</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="portfolio-item featured" data-category="interior">
+                <img src="images/gypsum.jfif" alt="Exterior Design">
+                <div class="portfolio-overlay">
+                    <div class="overlay-content">
+                        <h3>Luxury Villa Interior</h3>
+                        <p>Contemporary elegance meets timeless sophistication</p>
+                        <div class="tags">
+                            <span class="tag">INTERIOR</span>
+                            <span class="tag">RESIDENTIAL</span>
+                            <span class="tag">2024</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-item" data-category="exterior">
+                <img src="images/lighting.jfif" alt="Exterior Design">
+                <div class="portfolio-overlay">
+                    <div class="overlay-content">
+                        <h3>Modern Residence</h3>
+                        <p>Bold architectural statement</p>
+                        <div class="tags">
+                            <span class="tag">EXTERIOR</span>
+                            <span class="tag">KAMPALA</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-item" data-category="landscape">
+                <img src="images/download (7).jfif" alt="Exterior Design">
+                <div class="portfolio-overlay">
+                    <div class="overlay-content">
+                        <h3>Garden Paradise</h3>
+                        <p>Nature-inspired tranquility</p>
+                        <div class="tags">
+                            <span class="tag">LANDSCAPE</span>
+                            <span class="tag">PRIVATE ESTATE</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-item featured" data-category="interior">
+                <img src="images/wall design.jfif" alt="Exterior Design">
+                <div class="portfolio-overlay">
+                    <div class="overlay-content">
+                        <h3>Luxury Villa Interior</h3>
+                        <p>Contemporary elegance meets timeless sophistication</p>
+                        <div class="tags">
+                            <span class="tag">INTERIOR</span>
+                            <span class="tag">RESIDENTIAL</span>
+                            <span class="tag">2024</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-item" data-category="interior">
+               <img src="images/furniture.jfif" alt="Exterior Design">
+                <div class="portfolio-overlay">
+                    <div class="overlay-content">
+                        <h3>Penthouse Living</h3>
+                        <p>Sophisticated urban design</p>
+                        <div class="tags">
+                            <span class="tag">INTERIOR</span>
+                            <span class="tag">LUXURY</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="portfolio-item" data-category="interior">
+                <img src="images/exterior2.jfif" alt="Interior Design">
+                <div class="portfolio-overlay">
+                    <div class="overlay-content">
+                        <h3>Boutique Hotel</h3>
+                        <p>Luxury hospitality interiors</p>
+                        <div class="tags">
+                            <span class="tag">INTERIOR</span>
+                            <span class="tag">HOSPITALITY</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-item" data-category="landscape">
+                <img src="images/gazebo.jfif" alt="Exterior Design">
+                <div class="portfolio-overlay">
+                    <div class="overlay-content">
+                        <h3>Garden Paradise</h3>
+                        <p>Nature-inspired tranquility</p>
+                        <div class="tags">
+                            <span class="tag">LANDSCAPE</span>
+                            <span class="tag">PRIVATE ESTATE</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+             <div class="portfolio-item" data-category="commercial">
+                <img src="images/Terrazzo tiles.jfif" alt="Exterior Design">
+                <div class="portfolio-overlay">
+                    <div class="overlay-content">
+                        <h3>Corporate Office</h3>
+                        <p>Professional workspace reimagined</p>
+                        <div class="tags">
+                            <span class="tag">COMMERCIAL</span>
+                            <span class="tag">OFFICE</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="portfolio-item" data-category="interior">
+                <img src="images/tv unit.jfif" alt="Interior Design">
+                <div class="portfolio-overlay">
+                    <div class="overlay-content">
+                        <h3>Boutique Hotel</h3>
+                        <p>Luxury hospitality interiors</p>
+                        <div class="tags">
+                            <span class="tag">INTERIOR</span>
+                            <span class="tag">HOSPITALITY</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="portfolio-item" data-category="landscape">
+                <img src="images/kittech.jfif" alt="Exterior Design">
+                <div class="portfolio-overlay">
+                    <div class="overlay-content">
+                        <h3>Garden Paradise</h3>
+                        <p>Nature-inspired tranquility</p>
+                        <div class="tags">
+                            <span class="tag">LANDSCAPE</span>
+                            <span class="tag">PRIVATE ESTATE</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="portfolio-item featured" data-category="interior">
+                <img src="images/gazebo.jfif" alt="Exterior Design">
+                <div class="portfolio-overlay">
+                    <div class="overlay-content">
+                        <h3>Luxury Villa Interior</h3>
+                        <p>Contemporary elegance meets timeless sophistication</p>
+                        <div class="tags">
+                            <span class="tag">INTERIOR</span>
+                            <span class="tag">RESIDENTIAL</span>
+                            <span class="tag">2024</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-item" data-category="exterior">
+                <img src="images/curtains.jfif" alt="Exterior Design">
+                <div class="portfolio-overlay">
+                    <div class="overlay-content">
+                        <h3>Modern Residence</h3>
+                        <p>Bold architectural statement</p>
+                        <div class="tags">
+                            <span class="tag">EXTERIOR</span>
+                            <span class="tag">KAMPALA</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-item" data-category="landscape">
+                <img src="images/bedroom.jfif" alt="Exterior Design">
+                <div class="portfolio-overlay">
+                    <div class="overlay-content">
+                        <h3>Garden Paradise</h3>
+                        <p>Nature-inspired tranquility</p>
+                        <div class="tags">
+                            <span class="tag">LANDSCAPE</span>
+                            <span class="tag">PRIVATE ESTATE</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-item featured" data-category="interior">
+                <img src="images/aquarium.jfif" alt="Exterior Design">
+                <div class="portfolio-overlay">
+                    <div class="overlay-content">
+                        <h3>Luxury Villa Interior</h3>
+                        <p>Contemporary elegance meets timeless sophistication</p>
+                        <div class="tags">
+                            <span class="tag">INTERIOR</span>
+                            <span class="tag">RESIDENTIAL</span>
+                            <span class="tag">2024</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-item" data-category="interior">
+               <img src="images/bathroom.jfif" alt="Exterior Design">
+                <div class="portfolio-overlay">
+                    <div class="overlay-content">
+                        <h3>Penthouse Living</h3>
+                        <p>Sophisticated urban design</p>
+                        <div class="tags">
+                            <span class="tag">INTERIOR</span>
+                            <span class="tag">LUXURY</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="portfolio-item" data-category="interior">
+                <img src="images/dinning.jfif" alt="Interior Design">
+                <div class="portfolio-overlay">
+                    <div class="overlay-content">
+                        <h3>Boutique Hotel</h3>
+                        <p>Luxury hospitality interiors</p>
+                        <div class="tags">
+                            <span class="tag">INTERIOR</span>
+                            <span class="tag">HOSPITALITY</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="portfolio-item" data-category="landscape">
+                <img src="images/office design.jfif" alt="Exterior Design">
+                <div class="portfolio-overlay">
+                    <div class="overlay-content">
+                        <h3>Garden Paradise</h3>
+                        <p>Nature-inspired tranquility</p>
+                        <div class="tags">
+                            <span class="tag">LANDSCAPE</span>
+                            <span class="tag">PRIVATE ESTATE</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+           <div class="portfolio-item" data-category="landscape">
+              <video autoplay loop muted playsinline>
+                  <source src="images/beautiful-garden.mp4" type="video/mp4">
+               </video>
+
+               <div class="portfolio-overlay">
+                   <div class="overlay-content">
+                      <h3>Garden Paradise</h3>
+                      <p>Nature-inspired tranquility</p>
+                      <div class="tags">
+                         <span class="tag">LANDSCAPE</span>
+                         <span class="tag">PRIVATE ESTATE</span>
+                     </div>
+                 </div>
+              </div>
+           </div>
+
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="stats-container">
+        
+         <div class="stat-box">
+             <div class="stat-number">500+</div>
+             <div class="stat-label">COMPLETED PROJECTS</div>
+         </div>
+         <div class="stat-box">
+             <div class="stat-number">450+</div>
+             <div class="stat-label">HAPPY CLIENTS</div>
+         </div>
+         <div class="stat-box">
+             <div class="stat-number">15</div>
+             <div class="stat-label">YEARS EXPERIENCE</div>
+         </div>
+         <div class="stat-box">
+             <div class="stat-number">25+</div>
+             <div class="stat-label">AWARDS WON</div>
+         </div>
+        </div>
+    </section>
+
+    <!-- Testimonial Section -->
+    <section class="testimonial-section">
+        <div class="testimonial-container">
+            <h2>Client Testimonials</h2>
+            <div class="testimonial">
+                <p class="testimonial-text">"LAPHIC Modern Homes transformed our vision into reality beyond our wildest dreams. Their attention to detail, professionalism, and creative expertise made the entire process seamless and enjoyable."</p>
+                <div class="testimonial-author">James Mukasa</div>
+                <div class="testimonial-role">Villa Owner, Kampala</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2>Let's Create Together</h2>
+        <p>Ready to bring your vision to life? Join our portfolio of exceptional projects.</p>
+        <a href="contact.html" class="cta-btn">START YOUR PROJECT</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 LAPHIC Modern Homes. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Filter functionality
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterBtns.forEach(b => b.classList.remove('active'));
+                // Add active class to clicked button
+                btn.classList.add('active');
+
+                const filter = btn.getAttribute('data-filter');
+
+                portfolioItems.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Scroll reveal
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        portfolioItems.forEach((item, index) => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(30px)';
+            item.style.transition = `all 0.6s ease-out ${index * 0.1}s`;
+            observer.observe(item);
+        });
+    </script>
+</body>
+</html>

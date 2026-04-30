@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - LAPHIC Modern Homes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0a0a0a;
+            --gold: #c9a050;
+            --cream: #f8f6f0;
+            --charcoal: #2c2c2c;
+            --rust: #c85a3e;
+        }
+
+        body {
+            font-family: 'Crimson Pro', serif;
+            background: var(--cream);
+            color: var(--primary);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 2rem;
+            color: var(--gold);
+            letter-spacing: 3px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--cream);
+            text-decoration: none;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary), var(--charcoal));
+            position: relative;
+
+            position: relative;
+            overflow: hidden;
+            margin-top: 80px;
+        }
+        /* MULTI-IMAGE HERO BACKGROUND */
+       .hero::after {
+          content: "";
+          position: absolute;
+         inset: 0;
+           background-size: cover;
+            background-position: center;
+            animation: heroSlideshow 20s infinite ease-in-out;
+           z-index: 0;
+           opacity: 0.35; /* keeps text readable */
+        }
+
+        /* Dark overlay stays ON TOP of images */
+        .hero::before {
+            content: '';
+            position: absolute;
+            z-index: 1;
+        }
+
+         /* Hero content stays above everything */
+       .hero-content {
+          position: relative;
+          z-index: 2;
+        }
+
+        /* Slideshow animation */
+        @keyframes heroSlideshow {
+         0% {
+             background-image: url("images/interior.jfif");
+           }
+          33% {
+             background-image: url("images/exterior2.jfif");
+            }
+          66% {
+            background-image: url("images/landscape.jfif");
+           }
+           100% {
+             background-image: url("images/aq1.jfif");
+            }
+       } 
+
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            background: 
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 50px,
+                    rgba(212, 175, 55, 0.03) 50px,
+                    rgba(212, 175, 55, 0.03) 100px
+                );
+            animation: slidePattern 40s linear infinite;
+        }
+
+        @keyframes slidePattern {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(100px, 100px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: var(--cream);
+        }
+
+        .hero h1 {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 8rem;
+            letter-spacing: 8px;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Services Grid */
+        .services-section {
+            padding: 8rem 5%;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .services-intro {
+            max-width: 800px;
+            margin: 0 auto 6rem;
+            text-align: center;
+        }
+
+        .services-intro h2 {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: 3px;
+        }
+
+        .services-intro p {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            color: #666;
+        }
+
+        .services-grid {
+            display: grid;
+            gap: 0;
+        }
+
+        .service-block {
+            position: relative;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background: var(--primary);
+        }
+
+        .service-block:nth-child(odd) {
+            flex-direction: row;
+        }
+
+        .service-block:nth-child(even) {
+            flex-direction: row-reverse;
+            background: var(--cream);
+        }
+
+        .service-visual {
+            flex: 1;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-visual::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.3), rgba(200, 90, 62, 0.3));
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .service-block:hover .service-visual::before {
+            opacity: 1;
+        }
+
+        .service-visual svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .service-content {
+            flex: 1;
+            padding: 5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .service-block:nth-child(odd) .service-content {
+            color: var(--cream);
+        }
+
+        .service-block:nth-child(even) .service-content {
+            color: var(--primary);
+        }
+
+        .service-number {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 8rem;
+            opacity: 0.1;
+            line-height: 1;
+            margin-bottom: -2rem;
+        }
+
+        .service-content h3 {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: 2px;
+        }
+
+        .service-block:nth-child(odd) h3 {
+            color: var(--gold);
+        }
+
+        .service-content p {
+            font-size: 1.2rem;
+            line-height: 1.9;
+            margin-bottom: 2rem;
+            opacity: 0.8;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-bottom: 2.5rem;
+        }
+
+        .service-features li {
+            font-size: 1.1rem;
+            padding: 0.8rem 0;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .service-features li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            font-weight: 700;
+        }
+
+        .service-block:nth-child(odd) .service-features li::before {
+            color: var(--gold);
+        }
+
+        .service-block:nth-child(even) .service-features li::before {
+            color: var(--rust);
+        }
+
+        .service-btn {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            font-family: 'Bebas Neue', cursive;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            text-decoration: none;
+            border: 2px solid;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-block:nth-child(odd) .service-btn {
+            color: var(--gold);
+            border-color: var(--gold);
+        }
+
+        .service-block:nth-child(even) .service-btn {
+            color: var(--rust);
+            border-color: var(--rust);
+        }
+
+        .service-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            transition: left 0.4s ease;
+            z-index: -1;
+        }
+
+        .service-block:nth-child(odd) .service-btn::before {
+            background: var(--gold);
+        }
+
+        .service-block:nth-child(even) .service-btn::before {
+            background: var(--rust);
+        }
+
+        .service-btn:hover::before {
+            left: 0;
+        }
+
+        .service-block:nth-child(odd) .service-btn:hover {
+            color: var(--primary);
+        }
+
+        .service-block:nth-child(even) .service-btn:hover {
+            color: var(--cream);
+        }
+        .service-visual svg image {
+         transition: transform 1s ease;
+        }
+
+        .service-block:hover .service-visual svg image {
+            transform: scale(1.05);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--charcoal);
+            padding: 8rem 5%;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="60" height="60" xmlns="http://www.w3.org/2000/svg"><circle cx="30" cy="30" r="2" fill="rgba(212,175,55,0.1)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+            color: var(--cream);
+        }
+
+        .cta-content h2 {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: 4px;
+        }
+
+        .cta-content p {
+            font-size: 1.4rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        .cta-btn {
+            padding: 1.5rem 4rem;
+            font-family: 'Bebas Neue', cursive;
+            font-size: 1.3rem;
+            letter-spacing: 2px;
+            text-decoration: none;
+            transition: all 0.4s ease;
+        }
+
+        .cta-btn-primary {
+            background: var(--gold);
+            color: var(--primary);
+        }
+
+        .cta-btn-primary:hover {
+            background: var(--cream);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.3);
+        }
+
+        .cta-btn-secondary {
+            border: 2px solid var(--cream);
+            color: var(--cream);
+        }
+
+        .cta-btn-secondary:hover {
+            background: var(--cream);
+            color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: var(--cream);
+            padding: 3rem 5%;
+            text-align: center;
+        }
+
+        footer p {
+            opacity: 0.7;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 5rem;
+            }
+
+            .service-block {
+                flex-direction: column !important;
+                min-height: auto;
+            }
+
+            .service-content {
+                padding: 3rem 2rem;
+            }
+
+            .service-number {
+                font-size: 5rem;
+            }
+
+            .service-content h3 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+
+            .services-intro h2 {
+                font-size: 2.5rem;
+            }
+
+            .cta-content h2 {
+                font-size: 3rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+                font-size: 0.85rem;
+            }
+            .menu-toggle {
+             display: block;
+            }
+
+            .nav-links {
+               position: absolute;
+               top: 100%;
+              right: 0;
+              background: rgba(10, 10, 10, 0.98);
+              flex-direction: column;
+              width: 100%;
+              padding: 2rem 0;
+              gap: 1.5rem;
+              display: none;
+            }
+            .nav-links.active {
+                display: flex;
+            }
+        }
+        .menu-toggle {
+          display: none;
+          font-size: 2rem;
+          color: var(--cream);
+          cursor: pointer;
+        }
+
+        
+       
+    </style>
+</head>
+<body>
+    
+    <!-- ================= NAVBAR ================= -->
+    <nav>
+        <div class="logo">LAPHIC <span>MODERN</span></div>
+        <div class="menu-toggle" id="menuToggle">☰</div>
+
+     <ul class="nav-links" id="navLinks">
+         <li><a href="laphic-website.html" class="nav-link">HOME</a></li>
+         <li><a href="who-we-are.html" class="nav-link">WHO WE ARE</a></li>
+         <li><a href="services.html" class="nav-link">SERVICES</a></li>
+         <li><a href="portfolio.html" class="nav-link">PORTFOLIO</a></li>
+         <li><a href="testimonials.html" class="nav-link">TESTIMONIALS</a></li>
+         <li><a href="contact.html" class="nav-link">CONTACT</a></li>
+      </ul>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>OUR SERVICES</h1>
+            <p>COMPREHENSIVE DESIGN & CONSTRUCTION SOLUTIONS</p>
+        </div>
+    </section>
+
+    <!-- Services Intro -->
+    <section class="services-section">
+        <div class="services-intro">
+            <h2>WHAT WE OFFER</h2>
+            <p>At LAPHIC Modern Homes, we provide end-to-end design and construction services. From concept to completion, we transform your vision into reality with precision, creativity, and exceptional craftsmanship.</p>
+        </div>
+
+        <!-- Services Grid -->
+        <div class="services-grid">
+            <!-- Interior Design -->
+            <div class="service-block">
+                <div class="service-visual">
+                  <svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg"
+                      preserveAspectRatio="xMidYMid slice">
+
+                      <!-- Background Image -->
+                     <image
+                         href="images/interior.jfif"
+                          x="0"
+                          y="0"
+                          width="800"
+                          height="600"
+                          preserveAspectRatio="xMidYMid slice"
+                      />
+
+                     <!-- Dark overlay for readability -->
+                     <rect width="800" height="600" fill="rgba(0,0,0,0.45)" />
+
+                     <!-- Your existing decorative elements -->
+                     <rect x="100" y="100" width="250" height="350"
+                       fill="none" stroke="#d4af37" stroke-width="3" opacity="0.4"/>
+
+                     <rect x="450" y="150" width="250" height="300"
+                       fill="none" stroke="#d4af37" stroke-width="3" opacity="0.6"/>
+
+                      <circle cx="400" cy="300" r="80"
+                        fill="none" stroke="#d4af37" stroke-width="2" opacity="0.3"/>
+                    </svg>
+               </div>
+
+                <div class="service-content">
+                    <div class="service-number">01</div>
+                    <h3>INTERIOR DESIGN</h3>
+                    <p>Transform your indoor spaces with our comprehensive interior design services. We create environments that reflect your personality while maximizing functionality and aesthetic appeal.</p>
+                    <ul class="service-features">
+                        <li>Expert Gypsum Work & Ceiling Design</li>
+                        <li>Professional Interior Painting</li>
+                        <li>Custom Indoor Aquariums</li>
+                        <li>Elegant Curtains & Blinds</li>
+                        <li>Bespoke Furniture Design & Installation</li>
+                    </ul>
+                    <a href="interior-design.html" class="service-btn">EXPLORE INTERIOR DESIGN</a>
+                </div>
+            </div>
+
+            <!-- Exterior Design -->
+            <div class="service-block">
+                <div class="service-visual">
+                    <svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+                     <image
+                          href="images/exterior.jfif"
+                           x="0"
+                           y="0"
+                           width="800"
+                           height="600"
+                           preserveAspectRatio="xMidYMid slice"
+                      />
+                        <rect width="800" height="600" fill="rgba(255,255,255,0.6)" />
+
+                        
+                        <polygon points="150,200 400,100 650,200 650,450 150,450" fill="none" stroke="#c85a3e" stroke-width="3" opacity="0.5"/>
+                        <rect x="250" y="250" width="100" height="150" fill="none" stroke="#c85a3e" stroke-width="2" opacity="0.4"/>
+                        <rect x="450" y="250" width="100" height="150" fill="none" stroke="#c85a3e" stroke-width="2" opacity="0.4"/>
+                        <line x1="400" y1="100" x2="400" y2="450" stroke="#d4af37" stroke-width="2" opacity="0.3"/>
+                    </svg>
+                </div>
+                <div class="service-content">
+                    <div class="service-number">02</div>
+                    <h3>EXTERIOR DESIGN</h3>
+                    <p>Enhance your property's curb appeal with our exterior design expertise. We combine architectural beauty with durable construction to create stunning outdoor spaces.</p>
+                    <ul class="service-features">
+                        <li>Complete Construction Services</li>
+                        <li>Premium Exterior Painting</li>
+                        <li>Outdoor Aquarium Features</li>
+                        <li>Modern Aluminum Works</li>
+                        <li>Façade Renovation & Design</li>
+                    </ul>
+                    <a href="exterior-design.html" class="service-btn">EXPLORE EXTERIOR DESIGN</a>
+                </div>
+            </div>
+
+            <!-- Landscape Design -->
+            <div class="service-block">
+                <div class="service-visual">
+                    <svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+                       <image
+                          href="images/landscape.jfif"
+                          x="0"
+                          y="0"
+                          width="800"
+                          height="600"
+                          preserveAspectRatio="xMidYMid slice"
+                        />
+                       <rect width="800" height="600" fill="rgba(0,0,0,0.35)" />
+
+                        
+                        <rect width="800" height="600" fill="url(#grad3)"/>
+                        <circle cx="300" cy="250" r="100" fill="none" stroke="#d4af37" stroke-width="2" opacity="0.4"/>
+                        <circle cx="500" cy="350" r="120" fill="none" stroke="#d4af37" stroke-width="2" opacity="0.3"/>
+                        <path d="M 100,500 Q 400,300 700,500" fill="none" stroke="#c9a050" stroke-width="3" opacity="0.5"/>
+                        <rect x="200" y="100" width="400" height="20" fill="#d4af37" opacity="0.2"/>
+                    </svg>
+                </div>
+                <div class="service-content">
+                    <div class="service-number">03</div>
+                    <h3>LANDSCAPE DESIGN</h3>
+                    <p>Create breathtaking outdoor environments that seamlessly blend with nature. Our landscape designs transform your compound into a private paradise.</p>
+                    <ul class="service-features">
+                        <li>Premium Tiles & Terrazzo Installation</li>
+                        <li>Complete Compound Design</li>
+                        <li>Architectural 3D Visualization</li>
+                        <li>Garden & Outdoor Living Spaces</li>
+                        <li>Sustainable Landscape Solutions</li>
+                    </ul>
+                    <a href="landscape-design.html" class="service-btn">EXPLORE LANDSCAPE DESIGN</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>READY TO START YOUR PROJECT?</h2>
+            <p>Let's discuss how we can bring your vision to life. Our team is ready to transform your space into something extraordinary.</p>
+            <div class="cta-buttons">
+                <a href="contact.html" class="cta-btn cta-btn-primary">GET A QUOTE</a>
+                <a href="portfolio.html" class="cta-btn cta-btn-secondary">VIEW PORTFOLIO</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 LAPHIC Modern Homes. All Rights Reserved.</p>
+    </footer>
+      
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+         navLinks.classList.toggle('active');
+        });
+   </script>
+
+
+    <script>
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateX(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.service-block').forEach((el, index) => {
+            el.style.opacity = '0';
+            el.style.transform = index % 2 === 0 ? 'translateX(-50px)' : 'translateX(50px)';
+            el.style.transition = 'all 0.8s ease-out';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

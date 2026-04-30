@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LAPHIC Modern Homes - Think It, We Create It</title>
+    <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a1a1a;
+            --secondary: #c9a050;
+            --accent: #d49727;
+            --light: #f5f5f5;
+            --white: #ffffff;
+            --grey: #666666;
+            --gold: #d4af37;
+            --cream: #f1e0bd;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            color: var(--primary);
+            overflow-x: hidden;
+            background: var(--white);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 2rem;
+            color: var(--gold);
+            letter-spacing: 3px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--cream);
+            text-decoration: none;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(100px, 100px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: var(--white);
+            max-width: 1200px;
+            padding: 0 2rem;
+        }
+
+        .hero h1 {
+            font-family: 'Italiana', serif;
+            font-size: 7rem;
+            font-weight: 400;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.3s both;
+            letter-spacing: 3px;
+        }
+
+        .hero h1 span {
+            display: block;
+            color: var(--accent);
+            font-size: 3.5rem;
+            margin-top: 1rem;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            font-weight: 300;
+            margin-bottom: 3rem;
+            animation: fadeInUp 1s ease-out 0.6s both;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            animation: fadeInUp 1s ease-out 0.9s both;
+        }
+
+        .btn {
+            padding: 1.2rem 3rem;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 0;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            border: none;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--primary);
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--secondary);
+            transition: left 0.4s ease;
+            z-index: -1;
+        }
+
+        .btn-primary:hover::before {
+            left: 0;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-secondary:hover {
+            background: var(--white);
+            color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+        }
+
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+            cursor: pointer;
+        }
+
+        .scroll-indicator::before {
+            content: '';
+            width: 2px;
+            height: 60px;
+            background: linear-gradient(to bottom, transparent, var(--accent));
+            display: block;
+            margin: 0 auto 10px;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(15px); }
+        }
+
+        /* Section Styles */
+        section {
+            padding: 8rem 5%;
+            position: relative;
+        }
+
+        .section-title {
+            font-family: 'Italiana', serif;
+            font-size: 4rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: var(--accent);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--grey);
+            margin-bottom: 5rem;
+            font-weight: 300;
+        }
+
+        /* Services Section */
+        .services {
+            background: var(--cream);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 3rem 2rem;
+            text-align: center;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.05);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--secondary) 100%);
+            transition: left 0.5s ease;
+            z-index: 0;
+        }
+
+        .service-card:hover::before {
+            left: 0;
+        }
+
+        .service-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        .service-card * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-card:hover h3,
+        .service-card:hover p {
+            color: var(--white);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 2rem;
+            background: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            transition: all 0.5s ease;
+        }
+
+        .service-card:hover .service-icon {
+            background: var(--white);
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .service-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            transition: color 0.5s ease;
+        }
+
+        .service-card p {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--grey);
+            transition: color 0.5s ease;
+        }
+
+        /* Portfolio Section */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* .portfolio-item {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+            cursor: pointer;
+            background: var(--primary);
+        } */
+        .portfolio-item {
+           position: relative;
+           height: 400px;
+           width: 100%;
+           overflow: hidden;
+        }  
+
+        .portfolio-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.9) 0%, rgba(201, 160, 80, 0.9) 100%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: 1;
+        }
+
+        .portfolio-item:hover::before {
+            opacity: 1;
+        }
+
+        .portfolio-item img {
+           width: 100%;
+           height: 100%;
+           object-fit: cover;
+           object-position: center;
+           display: block;
+           transition: transform 0.7s ease;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.15);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem;
+            color: var(--white);
+            transform: translateY(100%);
+            transition: transform 0.5s ease;
+            z-index: 2;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            transform: translateY(0);
+        }
+
+        .portfolio-overlay h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .portfolio-overlay p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .testimonials .section-title,
+        .testimonials .section-subtitle {
+            color: var(--white);
+        }
+
+        .testimonials-slider {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .testimonial {
+            padding: 3rem;
+        }
+
+        .testimonial-text {
+            font-size: 1.5rem;
+            line-height: 2;
+            font-style: italic;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .testimonial-author {
+            font-size: 1.2rem;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .testimonial-role {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 0.5rem;
+        }
+
+        .stars {
+            color: var(--accent);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            line-height: 2;
+            color: var(--grey);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+            background: var(--light);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: var(--grey);
+            font-weight: 500;
+        }
+
+        .about-image {
+            position: relative;
+            height: 600px;
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: -30px;
+            right: -30px;
+            width: 100%;
+            height: 100%;
+            border: 3px solid var(--accent);
+            z-index: -1;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--light);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .contact-item h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-item p {
+            color: var(--grey);
+            font-size: 1rem;
+        }
+
+        .contact-form {
+            background: var(--white);
+            padding: 3rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: var(--white);
+            padding: 4rem 5% 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto 3rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .social-link:hover {
+            background: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            animation: slideInLeft 0.8s ease-out forwards;
+        }
+
+        @keyframes slideInLeft {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            animation: slideInRight 0.8s ease-out forwards;
+        }
+
+        @keyframes slideInRight {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 4rem;
+            }
+
+            .hero h1 span {
+                font-size: 2.5rem;
+            }
+
+            .services-grid,
+            .portfolio-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 5%;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+                font-size: 0.85rem;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero h1 span {
+                font-size: 1.8rem;
+            }
+
+            .services-grid,
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 5rem 5%;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">LAPHIC <span>MODERN</span></div>
+        <ul class="nav-links">
+            <li><a href="laphic-website.html">HOME</a></li>
+            <li><a href="who-we-are.html">WHO WE ARE</a></li>
+            <li><a href="services.html">SERVICES</a></li>
+            <li><a href="portfolio.html">PORTFOLIO</a></li>
+            <li><a href="testimonials.html">TESTIMONIALS</a></li>
+            <li><a href="contact.html">CONTACT</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <h1>
+                CREATING SPACES
+                <span>THAT INSPIRE</span>
+            </h1>
+            <p>Think it, we create it. Transforming visions into extraordinary living experiences.</p>
+            <div class="cta-buttons">
+                <a href="#contact" class="btn btn-primary">REQUEST A QUOTE</a>
+                <a href="#portfolio" class="btn btn-secondary">VIEW OUR WORK</a>
+            </div>
+        </div>
+        <div class="scroll-indicator"></div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <h2 class="section-title">OUR SERVICES</h2>
+        <p class="section-subtitle">Comprehensive design solutions tailored to your vision</p>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🏠</div>
+                <h3>Interior Design</h3>
+                <p>Expert gypsum work, painting, aquariums, curtains, blinds, and custom furniture design that transforms your indoor spaces.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">🏗️</div>
+                <h3>Exterior Design</h3>
+                <p>Professional construction, exterior painting, outdoor aquariums, and aluminum works that enhance your property's curb appeal.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">🌳</div>
+                <h3>Landscape Design</h3>
+                <p>Beautiful tiles & terrazzo, compound designing, and house architecture that seamlessly blend with nature.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="about-content">
+            <div class="about-text slide-in-left">
+                <h2 class="section-title" style="text-align: left; transform: none; left: 0;">WHO WE ARE</h2>
+                <h3>Building Trust Through Excellence</h3>
+                <p>LAPHIC Modern Homes is Uganda's premier design and construction company, dedicated to transforming your dreams into reality. With years of experience and a passion for innovation, we bring together expert craftsmanship and cutting-edge design.</p>
+                <p>Our mission is simple: to create living spaces that not only meet but exceed your expectations. We believe in the power of thoughtful design, quality materials, and meticulous attention to detail.</p>
+                
+                <div class="about-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">500+</div>
+                        <div class="stat-label">Projects Completed</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">98%</div>
+                        <div class="stat-label">Client Satisfaction</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Expert Team</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="about-image slide-in-right">
+                <img src="images/exterior2.jfif" alt="Luxury Villa">
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+        <h2 class="section-title">FEATURED PROJECTS</h2>
+        <p class="section-subtitle">Explore our portfolio of exceptional designs</p>
+        
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <img src="images/interior.jfif" alt="Luxury Villa">
+                <div class="portfolio-overlay">
+                    <h3>Luxury Villa</h3>
+                    <p>Interior Design | Kampala</p>
+                </div>
+            </div>
+            
+            <div class="portfolio-item">
+                <img src="images/compound1.jfif" alt="Luxury Villa">
+                <div class="portfolio-overlay">
+                    <h3>Modern Compound</h3>
+                    <p>Landscape Design | Entebbe</p>
+                </div>
+            </div>
+            
+            <div class="portfolio-item">
+                <img src="images/ontemporary Home.jpg" alt="Luxury Villa">
+                <div class="portfolio-overlay">
+                    <h3>Contemporary Home</h3>
+                    <p>Full Construction | Jinja</p>
+                </div>
+            </div>
+            
+            <!-- <div class="portfolio-item">
+                <img src="images/9.jpeg" alt="Luxury Villa">
+                    <h3>Office Renovation</h3>
+                    <p>Interior Design | Kampala</p>
+                </div>
+            </div> -->
+            <div class="portfolio-item">
+              <img src="images/office design.jfif" alt="Office Renovation">
+              <div class="portfolio-overlay">
+                 <h3>Office Renovation</h3>
+                 <p>Interior Design | Kampala</p>
+              </div>
+           </div>
+            
+            <div class="portfolio-item">
+                <img src="images/gazebo.jfif" alt="Luxury Villa">
+                <div class="portfolio-overlay">
+                    <h3>Garden Paradise</h3>
+                    <p>Landscape Design | Mbarara</p>
+                </div>
+            </div>
+            
+            <div class="portfolio-item">
+                <img src="images/minimalistjpeg" alt="Luxury Villa">
+                <div class="portfolio-overlay">
+                    <h3>Minimalist Residence</h3>
+                    <p>Full Design | Kampala</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <h2 class="section-title">CLIENT TESTIMONIALS</h2>
+        <p class="section-subtitle">What our clients say about us</p>
+        
+        <div class="testimonials-slider">
+            <div class="testimonial">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"LAPHIC Modern Homes transformed our house into a dream home. Their attention to detail and professional approach exceeded all our expectations. Highly recommended!"</p>
+                <div class="testimonial-author">Sarah Nakato</div>
+                <div class="testimonial-role">Homeowner | Kampala</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2 class="section-title">GET IN TOUCH</h2>
+        <p class="section-subtitle">Let's bring your vision to life</p>
+        
+        <div class="contact-content">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <div>
+                        <h4>Location</h4>
+                        <p>Kampala, Central Region<br>Uganda</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">📞</div>
+                    <div>
+                        <h4>Phone</h4>
+                        <p>+256 780535307/0702620878</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">✉️</div>
+                    <div>
+                        <h4>Email</h4>
+                        <p>laphicmodernhomes@gmail.com</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">💬</div>
+                    <div>
+                        <h4>WhatsApp</h4>
+                        <p>Chat with us instantly</p>
+                        <!-- <p>+256 705 029 291</p> -->
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <form>
+                    <div class="form-group">
+                        <label>Your Name</label>
+                        <input type="text" placeholder="Enter your name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" placeholder="your.email@example.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" placeholder="+256 XXX XXX XXX">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Message</label>
+                        <textarea placeholder="Tell us about your project..." required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">SEND MESSAGE</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>LAPHIC Modern Homes</h3>
+                <p style="color: rgba(255, 255, 255, 0.7); line-height: 1.8;">Transforming dreams into reality through exceptional design and construction. Your trusted partner in creating beautiful spaces.</p>
+                <div class="social-links" style="margin-top: 1.5rem;">
+                    <a href="#" class="social-link">f</a>
+                    <a href="#" class="social-link">📷</a>
+                    <a href="#" class="social-link">in</a>
+                    <a href="#" class="social-link">💬</a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="laphic-website.html">Home</a></li>
+                    <li><a href="who-we-are.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="#">Interior Design</a></li>
+                    <li><a href="#">Exterior Design</a></li>
+                    <li><a href="#">Landscape Design</a></li>
+                    <li><a href="#">Construction</a></li>
+                   
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <ul>
+                    <li><a href="#">Kampala, Uganda</a></li>
+                    <li><a href="tel:+256">+256 780 535 307 / 702 620 878</a></li>
+                    <li><a href="mailto:info@laphic.com">laphicmodernhomes@gmail.com</a></li>
+                    <li><a href="#">Mon - Sat: 8AM - 6PM</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 LAPHIC Modern Homes. All rights reserved. | Think it, we create it.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.service-card, .portfolio-item, .testimonial').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease-out';
+            observer.observe(el);
+        });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(255, 255, 255, 0.98)';
+                nav.style.boxShadow = '0 2px 30px rgba(0,0,0,0.1)';
+            } else {
+                nav.style.background = 'rgba(255, 255, 255, 0.95)';
+                nav.style.boxShadow = '0 2px 20px rgba(0,0,0,0.05)';
+            }
+        });
+    </script>
+</body>
+</html>

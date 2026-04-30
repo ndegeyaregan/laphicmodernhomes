@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exterior Design Services - LAPHIC Modern Homes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:wght@300;400;500;600&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --midnight: #0f1419;
+            --teal: #9c6c24;
+            --coral: #ff6b6b;
+            --cream: #f8f6f0;
+            --charcoal: #3a3a3a;
+            --gold: #c9a050;
+            --primary: #0a0a0a;
+            --white: #ffffff;
+            --off-white: #f5f5f5;
+            --slate: #2c2c2c;
+            --copper: #c9a050;
+            --steel: #555555;
+           --concrete: #eaeaea;
+        }
+
+        body {
+            font-family: 'Crimson Pro', serif;
+            background: var(--cream);
+            color: var(--charcoal);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 2rem;
+            color: var(--gold);
+            letter-spacing: 3px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--cream);
+            text-decoration: none;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 80vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                        url('images/exterior.jfif') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 80px;
+        }
+
+        .hero-content h1 {
+            font-family: 'Merriweather', serif;
+            font-size: 5rem;
+            margin-bottom: 1rem;
+            color: var(--gold);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-content .service-number {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 8rem;
+            color: rgba(201, 160, 80, 0.2);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--cream);
+        }
+
+        .breadcrumb {
+            position: absolute;
+            top: 120px;
+            left: 5%;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .breadcrumb a {
+            color: var(--gold);
+            text-decoration: none;
+            margin-right: 0.5rem;
+        }
+
+        /* Service Overview */
+        .service-overview {
+            padding: 6rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .overview-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .overview-content h2 {
+            font-family: 'Merriweather', serif;
+            font-size: 3rem;
+            color: var(--midnight);
+            margin-bottom: 1.5rem;
+        }
+
+        .overview-content p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: var(--charcoal);
+            margin-bottom: 1.5rem;
+        }
+
+        .overview-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 1.5rem;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .stat-box .number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-box .label {
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--charcoal);
+        }
+
+        .overview-image {
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+        }
+
+        .overview-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+
+        /* Services Section */
+        .services-section {
+            padding: 8rem 5%;
+            background: var(--white);
+        }
+
+        .section-header {
+            max-width: 800px;
+            margin: 0 auto 6rem;
+            text-align: center;
+        }
+
+        .section-header h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 4.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--slate);
+            letter-spacing: -1px;
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            line-height: 1.9;
+            color: #7f8c8d;
+        }
+
+        .services-layout {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: grid;
+            gap: 0;
+        }
+
+        .service-feature {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 500px;
+            background: var(--off-white);
+        }
+
+        .service-feature:nth-child(even) {
+            background: var(--white);
+        }
+
+        .service-feature:nth-child(even) .feature-content {
+            order: 2;
+        }
+
+        .service-feature:nth-child(even) .feature-visual {
+            order: 1;
+        }
+        .feature-content {
+            padding: 5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--copper);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+        }
+
+        .feature-content h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--slate);
+            font-weight: 600;
+        }
+
+        .feature-content p {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: #7f8c8d;
+            margin-bottom: 2rem;
+        }
+
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-list li {
+            padding: 0.8rem 0;
+            padding-left: 2rem;
+            position: relative;
+            font-size: 1rem;
+            color: var(--steel);
+        }
+
+        .feature-list li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--copper);
+            font-size: 1.2rem;
+        }
+
+        .feature-visual {
+            background: var(--concrete);
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .feature-visual svg {
+            width: 100%;
+            height: 100%;
+        }
+
+
+        /* Sub-Services Section */
+        .sub-services {
+            background: var(--midnight);
+            padding: 6rem 5%;
+            color: var(--cream);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Merriweather', serif;
+            font-size: 3.5rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: rgba(255,255,255,0.05);
+            padding: 3rem;
+            border-left: 4px solid var(--gold);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(201,160,80,0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .service-card:hover::before {
+            left: 100%;
+        }
+
+        .service-card:hover {
+            background: rgba(255,255,255,0.08);
+            transform: translateX(10px);
+            border-left-color: var(--cream);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .service-card h3 {
+            font-family: 'Merriweather', serif;
+            font-size: 1.8rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .service-features {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 2rem;
+        }
+
+        .service-features li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 1rem;
+            opacity: 0.85;
+        }
+
+        .service-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: bold;
+        }
+
+        .service-link {
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            background: transparent;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
+
+        .service-link:hover {
+            background: var(--gold);
+            color: var(--midnight);
+        }
+
+        /* Process Section */
+        .process-section {
+            padding: 6rem 5%;
+            background: var(--cream);
+        }
+
+        .process-timeline {
+            max-width: 1200px;
+            margin: 3rem auto 0;
+            position: relative;
+        }
+
+        .process-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--gold);
+            transform: translateX(-50%);
+        }
+
+        .process-step {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .process-step:nth-child(even) .step-content {
+            order: 2;
+        }
+
+        .process-step:nth-child(even) .step-number {
+            order: 1;
+        }
+
+        .step-content {
+            background: white;
+            padding: 2.5rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .step-content h3 {
+            font-family: 'Merriweather', serif;
+            font-size: 1.8rem;
+            color: var(--midnight);
+            margin-bottom: 1rem;
+        }
+
+        .step-content p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: var(--charcoal);
+        }
+
+        .step-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .step-number .number {
+            width: 100px;
+            height: 100px;
+            background: var(--gold);
+            color: var(--midnight);
+            font-family: 'Bebas Neue', cursive;
+            font-size: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            border: 5px solid var(--cream);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            padding: 6rem 5%;
+            background: var(--midnight);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 3rem auto 0;
+        }
+
+        .gallery-item {
+            position: relative;
+            height: 350px;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            padding: 2rem;
+            color: white;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        .gallery-overlay h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--gold);
+        }
+
+        /* Testimonials */
+        .testimonials-section {
+            padding: 6rem 5%;
+            background: var(--cream);
+        }
+
+        .testimonials-slider {
+            max-width: 900px;
+            margin: 3rem auto 0;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .testimonial-text {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            color: var(--charcoal);
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+
+        .testimonial-author {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--gold);
+        }
+
+        .testimonial-role {
+            font-size: 0.95rem;
+            color: var(--charcoal);
+            opacity: 0.7;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 6rem 5%;
+            background: var(--midnight);
+            text-align: center;
+            color: var(--cream);
+        }
+
+        .cta-content h2 {
+            font-family: 'Merriweather', serif;
+            font-size: 3.5rem;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-content p {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            padding: 1.2rem 3rem;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border: 2px solid;
+        }
+
+        .cta-btn-primary {
+            background: var(--gold);
+            color: var(--midnight);
+            border-color: var(--gold);
+        }
+
+        .cta-btn-primary:hover {
+            background: transparent;
+            color: var(--gold);
+        }
+
+        .cta-btn-secondary {
+            background: transparent;
+            color: var(--cream);
+            border-color: var(--cream);
+        }
+
+        .cta-btn-secondary:hover {
+            background: var(--cream);
+            color: var(--midnight);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: var(--cream);
+            padding: 3rem 5%;
+            text-align: center;
+        }
+
+        footer p {
+            opacity: 0.9;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-content h1 {
+                font-size: 3.5rem;
+            }
+
+            .overview-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-timeline::before {
+                left: 30px;
+            }
+
+            .process-step {
+                grid-template-columns: 1fr;
+                padding-left: 80px;
+            }
+
+            .process-step:nth-child(even) .step-content {
+                order: 1;
+            }
+
+            .step-number {
+                position: absolute;
+                left: 0;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content .service-number {
+                font-size: 5rem;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+                font-size: 0.85rem;
+            }
+
+            .overview-stats {
+                grid-template-columns: 1fr;
+            }
+
+             .service-feature {
+                grid-template-columns: 1fr;
+            }
+
+            .service-feature:nth-child(even) .feature-content,
+            .service-feature:nth-child(even) .feature-visual {
+                order: initial;
+            }
+
+            .section-header h2 {
+                font-size: 2.5rem;
+            }
+
+            .cta-content h2 {
+                font-size: 2.5rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">LAPHIC <span>MODERN</span></div>
+        <ul class="nav-links">
+            <li><a href="laphic-website.html">HOME</a></li>
+            <li><a href="who-we-are.html">WHO WE ARE</a></li>
+            <li><a href="services.html">SERVICES</a></li>
+            <li><a href="portfolio.html">PORTFOLIO</a></li>
+            <li><a href="testimonials.html">TESTIMONIALS</a></li>
+            <li><a href="contact.html">CONTACT</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <!-- <div class="breadcrumb">
+            <a href="index.html">Home</a> / <a href="services.html">Services</a> / Exterior Design
+        </div> -->
+        <div class="hero-content">
+            <span class="service-number">02</span>
+            <h1>Exterior Design</h1>
+            <p>Elevating First Impressions & Curb Appeal</p>
+
+        </div>
+    </section>
+
+    <!-- Service Overview -->
+    <section class="service-overview">
+        <div class="overview-grid">
+            <div class="overview-content">
+                <h2>Exceptional Exterior Architecture</h2>
+                <p>Your home's exterior is the first thing people see. We create stunning facades and outdoor spaces that make lasting impressions while ensuring durability and weather resistance.</p>
+                <p>From modern minimalist designs to classic architectural styles, our team brings expertise in creating exteriors that are both beautiful and functional.</p>
+                
+                <div class="overview-stats">
+                    <div class="stat-box">
+                        <div class="number">300+</div>
+                        <div class="label">Exteriors Designed</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="number">100%</div>
+                        <div class="label">Quality Materials</div>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="overview-image">
+                <img src="images/exterior2.jfif" alt="Exterior Design">
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Services Section -->
+    <section class="services-section">
+        <div class="section-header">
+            <h2>OUR EXPERTISE</h2>
+            <p>From foundation to finish, we deliver comprehensive exterior design and construction services that transform architectural visions into reality.</p>
+        </div>
+
+        <div class="services-layout">
+            <div class="service-feature">
+                <div class="feature-content">
+                    <div class="feature-icon">🏗️</div>
+                    <h3>Construction Services</h3>
+                    <p>Full-scale construction management from concept to completion. Our experienced team ensures every project is built to the highest standards of quality and safety.</p>
+                    <ul class="feature-list">
+                        <li>Residential & Commercial Construction</li>
+                        <li>Structural Engineering</li>
+                        <li>Foundation & Framework</li>
+                        <li>Project Management</li>
+                        <li>Quality Control & Inspection</li>
+                    </ul>
+                </div>
+                <div class="feature-visual">
+                    <img src="images/construction2.jpg" alt="Exterior Design">
+                </div>
+            </div>
+
+            <div class="service-feature">
+                <div class="feature-content">
+                    <div class="feature-icon">🎨</div>
+                    <h3>Exterior Painting</h3>
+                    <p>Professional exterior painting services using premium weather-resistant materials that protect and beautify your property for years to come.</p>
+                    <ul class="feature-list">
+                        <li>Surface Preparation & Treatment</li>
+                        <li>Premium Paint Application</li>
+                        <li>Weather-Resistant Coatings</li>
+                        <li>Color Consultation</li>
+                        <li>Protective Sealants</li>
+                    </ul>
+                </div>
+                <div class="feature-visual">
+                   <img src="images/outer paint1.jfif" alt="Exterior Design">
+                </div>
+            </div>
+
+            <div class="service-feature">
+                <div class="feature-content">
+                    <div class="feature-icon">💧</div>
+                    <h3>Outdoor Aquariums</h3>
+                    <p>Stunning outdoor water features that add tranquility and visual interest to your exterior spaces, designed for both beauty and functionality.</p>
+                    <ul class="feature-list">
+                        <li>Custom Aquarium Design</li>
+                        <li>Professional Installation</li>
+                        <li>Filtration Systems</li>
+                        <li>Landscape Integration</li>
+                        <li>Maintenance Support</li>
+                    </ul>
+                </div>
+                <div class="feature-visual">
+                    <img src="images/aq0.jfif" alt="Exterior Design">
+                </div>
+            </div>
+
+            
+
+
+            <div class="service-feature">
+                <div class="feature-content">
+                    <div class="feature-icon">⚙️</div>
+                    <h3>Aluminum Works</h3>
+                    <p>Modern aluminum installations including windows, doors, railings, and architectural features that combine durability with contemporary aesthetics.</p>
+                    <ul class="feature-list">
+                        <li>Aluminum Windows & Doors</li>
+                        <li>Railings & Balustrades</li>
+                        <li>Cladding & Facades</li>
+                        <li>Custom Fabrication</li>
+                        <li>Powder Coating Options</li>
+                    </ul>
+                </div>
+                <div class="feature-visual">
+                    
+                  <img src="images/al.jfif" alt="Aluminum Works">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sub-Services Section -->
+    <section class="sub-services">
+        <div class="section-header">
+            <h2>Our Exterior Design Services</h2>
+            <p>Complete exterior solutions for your property</p>
+        </div>
+
+        <div class="services-grid">
+            <!-- Facade Design -->
+            <div class="service-card">
+                <span class="service-icon">🏛️</span>
+                <h3>Modern Facade Design</h3>
+                <p>Create a stunning first impression with our contemporary facade designs. We blend aesthetics with functionality to give your home a unique character.</p>
+                <ul class="service-features">
+                    <li>Contemporary facade concepts</li>
+                    <li>Material selection and sourcing</li>
+                    <li>3D visualization</li>
+                    <li>Weather-resistant materials</li>
+                    <li>Architectural detailing</li>
+                    <li>Color and texture consultation</li>
+                </ul>
+                <a href="contact.html" class="service-link">Request Quote</a>
+            </div>
+
+            <!-- Exterior Painting -->
+            <div class="service-card">
+                <span class="service-icon">🎨</span>
+                <h3>Exterior Painting & Finishing</h3>
+                <p>Protect and beautify your home with our professional exterior painting services using premium weather-resistant paints.</p>
+                <ul class="service-features">
+                    <li>Premium exterior paints</li>
+                    <li>Surface preparation</li>
+                    <li>Waterproofing treatments</li>
+                    <li>Texture coatings</li>
+                    <li>Color consultation</li>
+                    <li>Multi-year warranty</li>
+                </ul>
+                <a href="contact.html" class="service-link">Request Quote</a>
+            </div>
+
+            <!-- Roofing -->
+            <div class="service-card">
+                <span class="service-icon">🏠</span>
+                <h3>Roofing Solutions</h3>
+                <p>Quality roofing systems that protect your home while adding to its aesthetic appeal. We work with various roofing materials and styles.</p>
+                <ul class="service-features">
+                    <li>Metal roofing systems</li>
+                    <li>Tile roofing installation</li>
+                    <li>Asphalt shingles</li>
+                    <li>Roof repairs and maintenance</li>
+                    <li>Gutter installation</li>
+                    <li>Waterproofing solutions</li>
+                </ul>
+                <a href="contact.html" class="service-link">Request Quote</a>
+            </div>
+
+            <!-- Outdoor Lighting -->
+            <div class="service-card">
+                <span class="service-icon">💡</span>
+                <h3>Outdoor Lighting Design</h3>
+                <p>Illuminate your home's exterior with strategic lighting that enhances beauty, security, and functionality.</p>
+                <ul class="service-features">
+                    <li>Architectural lighting</li>
+                    <li>Pathway and garden lights</li>
+                    <li>Security lighting</li>
+                    <li>Solar lighting solutions</li>
+                    <li>LED energy-efficient systems</li>
+                    <li>Smart lighting control</li>
+                </ul>
+                <a href="contact.html" class="service-link">Request Quote</a>
+            </div>
+
+            <!-- Outdoor Structures -->
+            <div class="service-card">
+                <span class="service-icon">🏗️</span>
+                <h3>Outdoor Structures</h3>
+                <p>Extend your living space outdoors with custom-built structures including pergolas, gazebos, and outdoor kitchens.</p>
+                <ul class="service-features">
+                    <li>Custom pergolas</li>
+                    <li>Gazebos and pavilions</li>
+                    <li>Outdoor kitchens</li>
+                    <li>Pool houses</li>
+                    <li>Carports and garages</li>
+                    <li>Entertainment areas</li>
+                </ul>
+                <a href="contact.html" class="service-link">Request Quote</a>
+            </div>
+
+            <!-- Complete Exterior -->
+            <div class="service-card">
+                <span class="service-icon">✨</span>
+                <h3>Complete Exterior Packages</h3>
+                <p>Comprehensive exterior design and construction services from foundation to roofing, all coordinated seamlessly.</p>
+                <ul class="service-features">
+                    <li>Full architectural design</li>
+                    <li>Structural engineering</li>
+                    <li>Material procurement</li>
+                    <li>Construction management</li>
+                    <li>Quality assurance</li>
+                    <li>Post-project support</li>
+                </ul>
+                <a href="contact.html" class="service-link">Request Quote</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process-section">
+        <div class="section-header">
+            <h2>Our Design Process</h2>
+            <p>From concept to completion</p>
+        </div>
+
+        <div class="process-timeline">
+            <div class="process-step">
+                <div class="step-content">
+                    <h3>Site Assessment</h3>
+                    <p>We conduct a thorough site evaluation, considering orientation, climate, surroundings, and local building codes to inform our design.</p>
+                </div>
+                <div class="step-number">
+                    <div class="number">01</div>
+                </div>
+            </div>
+
+            <div class="process-step">
+                <div class="step-content">
+                    <h3>Design Development</h3>
+                    <p>Our architects create detailed designs with 3D renderings, allowing you to visualize the final result before construction begins.</p>
+                </div>
+                <div class="step-number">
+                    <div class="number">02</div>
+                </div>
+            </div>
+
+            <div class="process-step">
+                <div class="step-content">
+                    <h3>Material Selection</h3>
+                    <p>We guide you through selecting premium, weather-resistant materials that match your aesthetic preferences and budget.</p>
+                </div>
+                <div class="step-number">
+                    <div class="number">03</div>
+                </div>
+            </div>
+
+            <div class="process-step">
+                <div class="step-content">
+                    <h3>Construction</h3>
+                    <p>Our experienced team executes the design with precision, maintaining high quality standards and adhering to timelines.</p>
+                </div>
+                <div class="step-number">
+                    <div class="number">04</div>
+                </div>
+            </div>
+
+            <div class="process-step">
+                <div class="step-content">
+                    <h3>Finishing Touches</h3>
+                    <p>Final details including painting, lighting, and landscaping integration complete your home's transformation.</p>
+                </div>
+                <div class="step-number">
+                    <div class="number">05</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section">
+        <div class="section-header">
+            <h2>Our Exterior Design Portfolio</h2>
+            <p>Explore our recent exterior projects</p>
+        </div>
+
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="images/outer paint1.jfif" alt="Modern Villa">
+                <div class="gallery-overlay">
+                    <h4>Contemporary Villa</h4>
+                    <p>Sleek modern painting</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/outer paint2.jfif" alt="Classic Home">
+                <div class="gallery-overlay">
+                    <h4>Classic Residence</h4>
+                    <p>Timeless elegance</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/outer paint1.jfif" alt="Luxury Estate">
+                <div class="gallery-overlay">
+                    <h4>Luxury Estate</h4>
+                    <p>outer painting  design</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/al 1.jfif" alt="Beach House">
+                <div class="gallery-overlay">
+                    <h4>Aluminum Work</h4>
+                    <p>Harmonious with metal for the best interior</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/al2.jfif" alt="Urban Home">
+                <div class="gallery-overlay">
+                    <h4>Aluminum work </h4>
+                    <p>Sophisticated metal work for windows</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/al3.jfif" alt="Country Home">
+                <div class="gallery-overlay">
+                    <h4>Aluminum gates </h4>
+                    <p>Rustic charm meets modern</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/aq1.jfif" alt="Beach House">
+                <div class="gallery-overlay">
+                    <h4>Aquarium</h4>
+                    <p>Harmonious with nature</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/aq2.jfif" alt="Urban Home">
+                <div class="gallery-overlay">
+                    <h4>Urban aquarium</h4>
+                    <p>Sophisticated aquatic design</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/aq3.jfif" alt="Country Home">
+                <div class="gallery-overlay">
+                    <h4>outer Aquarium</h4>
+                    <p>make your home cool</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/construction1.jpg" alt="Beach House">
+                <div class="gallery-overlay">
+                    <h4>Lakeside Retreat</h4>
+                    <p>Harmonious with nature</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/construction0.jpg" alt="Urban Home">
+                <div class="gallery-overlay">
+                    <h4>Urban Residence</h4>
+                    <p>Sophisticated city living</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/construction3.jpg" alt="Country Home">
+                <div class="gallery-overlay">
+                    <h4>Country Estate</h4>
+                    <p>Rustic charm meets modern</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials-section">
+        <div class="section-header">
+            <h2>What Our Clients Say</h2>
+            <p>Real experiences from satisfied homeowners</p>
+        </div>
+
+        <div class="testimonials-slider">
+            <div class="testimonial-card">
+                <p class="testimonial-text">"The exterior transformation of our home by LAPHIC Modern Homes exceeded all expectations. The modern facade design and quality finishing have made our house the talk of the neighborhood!"</p>
+                <p class="testimonial-author">David Mukasa</p>
+                <p class="testimonial-role">Homeowner, Bugolobi</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Ready to Transform Your Exterior?</h2>
+            <p>Let's create an exterior that makes a statement</p>
+            <div class="cta-buttons">
+                <a href="contact.html" class="cta-btn cta-btn-primary">Get Free Consultation</a>
+                <a href="projects.html" class="cta-btn cta-btn-secondary">View Our Portfolio</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 LAPHIC Modern Homes. All Rights Reserved. | Think It, We Create It.</p>
+    </footer>
+</body>
+</html>

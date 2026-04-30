@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interior Design - LAPHIC Modern Homes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+           --ivory: #fffff0;
+           --navy: #1e3a5f;
+           --midnight: #0f1419;
+           --primary: #0a0a0a;
+           --gold: #c9a050;
+           --bronze: #cd7f32;
+           --sage: #9caf88;
+
+           --cream: #f8f6f0;
+           --white: #ffffff;
+           --off-white: #f5f5f5;
+
+           --slate: #2c2c2c;
+           --steel: #555555;
+          --concrete: #eaeaea;
+       }
+
+
+        body {
+            font-family: 'Crimson Pro', serif;
+            background: var(--ivory);
+            color: var(--charcoal);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 2rem;
+            color: var(--gold);
+            letter-spacing: 3px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--cream);
+            text-decoration: none;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        
+        
+       
+
+       
+
+        
+
+
+
+
+        .hero {
+         position: relative;
+         height: 100vh;
+         overflow: hidden;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+        } 
+
+       .hero-slider {
+          position: absolute;
+          inset: 0;
+        }
+
+       .hero-slider .slide {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+         height: 100%;
+         object-fit: cover;
+         opacity: 0;
+         transform: scale(1.1);
+         transition: opacity 1.5s ease, transform 6s ease;
+        }
+
+       .hero-slider .slide.active {
+          opacity: 1;
+         transform: scale(1);
+        }
+
+       /* dark overlay */
+      .hero-overlay {
+         position: absolute;
+         inset: 0;
+          background: rgba(0,0,0,0.55);
+          z-index: 1;
+          object-fit: cover;
+        }
+
+      .hero-content {
+         position: relative;
+         z-index: 2;
+         text-align: center;
+         color: #fff;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Intro Section */
+        .intro-section {
+            padding: 8rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .intro-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 400;
+            margin-bottom: 2rem;
+            color: var(--navy);
+        }
+
+        .intro-section p {
+            font-size: 1.2rem;
+            line-height: 2;
+            color: var(--steel);
+
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Services Grid */
+        .services-showcase {
+            padding: 6rem 5%;
+            background: linear-gradient(to bottom, var(--ivory) 0%, #f5f5f0 100%);
+        }
+
+        .showcase-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 4rem;
+        }
+
+        .showcase-item {
+            position: relative;
+            overflow: hidden;
+            background: white;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .showcase-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+        }
+
+        .showcase-image {
+            height: 350px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .showcase-image::before {
+           content: '';
+          position: absolute;
+         inset: 0;
+          background: linear-gradient(
+              135deg,
+             rgba(205, 127, 50, 0.35),
+             rgba(156, 175, 136, 0.35)
+           );
+         mix-blend-mode: overlay;
+         pointer-events: none;
+          z-index: 1;
+          opacity: 0;
+          transition: opacity 0.4s ease;
+        }
+
+        .showcase-image img {
+          backface-visibility: hidden;
+          transform: translateZ(0);
+          image-rendering: auto;
+       }
+
+
+        .showcase-item:hover .showcase-image img {
+          transform: scale(1.04);
+        }
+
+
+        .showcase-item:hover .showcase-image::before {
+            opacity: 1;
+        }
+
+        .showcase-image img {
+          width: 100%;
+         height: 100%;
+         object-fit: cover;   /* keeps image sharp & well-cropped */
+         object-position: center;
+         transition: transform 0.6s ease;
+         display: block;
+        }
+
+
+        .showcase-content {
+            padding: 3rem;
+        }
+
+        .showcase-content h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            color: var(--navy);
+        }
+
+        .showcase-content p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--steel);
+            margin-bottom: 1.5rem;
+        }
+
+        .showcase-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .showcase-features li {
+            padding: 0.6rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        .showcase-features li::before {
+            content: '✦';
+            position: absolute;
+            left: 0;
+            color: var(--bronze);
+        }
+
+        /* Process Section */
+        .process-section {
+            padding: 8rem 5%;
+            background: var(--midnight);
+            color: var(--ivory);
+        }
+
+        .process-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .process-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            text-align: center;
+            margin-bottom: 5rem;
+            font-weight: 300;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem;
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 2rem;
+            border: 2px solid var(--bronze);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--bronze);
+            position: relative;
+            transition: all 0.4s ease;
+        }
+
+        .process-step:hover .step-number {
+            background: var(--bronze);
+            color: var(--midnight);
+            transform: scale(1.1);
+        }
+
+        .process-step h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .process-step p {
+            font-size: 0.95rem;
+            opacity: 0.85;
+            line-height: 1.7;
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            padding: 8rem 5%;
+        }
+
+        .gallery-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            text-align: center;
+            margin-bottom: 4rem;
+            color: var(--gold);
+        }
+
+        .gallery-grid {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .gallery-item {
+            height: 400px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+        }
+        .showcase-image img,
+        .gallery-item img {
+          width: 100%;
+          height: 100%;
+         object-fit: cover;
+         display: block;
+        }
+
+
+        .gallery-item:nth-child(1) {
+            grid-column: span 2;
+            grid-row: span 2;
+            height: auto;
+        }
+
+        
+        .showcase-image::before {
+            background: linear-gradient(
+              135deg,
+               rgba(205, 127, 50, 0.25),
+              rgba(156, 175, 136, 0.25)
+            );
+        }
+        
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(40, 42, 45, 0.85), rgba(205, 127, 50, 0.85));
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--cream);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay-content {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .gallery-overlay h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .gallery-overlay p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        .showcase-image img {
+           transition: transform 0.6s ease;
+        }
+
+        .showcase-item:hover .showcase-image img {
+          transform: scale(1.08);
+       }
+
+
+        /* CTA Section */
+        .cta-section {
+            padding: 8rem 5%;
+            background: linear-gradient(135deg, var(--midnight) 0%, var(--midnight) 100%);
+            text-align: center;
+            color: rgb(230, 182, 106);
+        }
+
+        .cta-content h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+
+        .cta-content p {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            opacity: 0.95;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 1.5rem 4rem;
+            background: white;
+            color: var(--navy);
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(190, 153, 18, 0.2);
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        /* Footer */
+        footer {
+            
+            padding: 3rem 5%;
+            text-align: center;
+            background: var(--primary);
+            color: var(--ivory);
+        }
+
+        footer p {
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 4rem;
+            }
+
+            .showcase-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .gallery-item:nth-child(1) {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+   <nav>
+        <div class="logo">LAPHIC <span>MODERN</span></div>
+        <ul class="nav-links">
+            <li><a href="laphic-website.html">HOME</a></li>
+            <li><a href="who-we-are.html">WHO WE ARE</a></li>
+            <li><a href="services.html">SERVICES</a></li>
+            <li><a href="projects.html">PORTFOLIO</a></li>
+            <li><a href="testimonials.html">TESTIMONIALS</a></li>
+            <li><a href="contact.html">CONTACT</a></li>
+        </ul>
+   </nav>
+
+    <!-- Hero Section -->
+  <section class="hero" id="home">
+      <!-- IMAGE SLIDER -->
+        <div class="hero-slider">
+          <img src="images/interior1.jfif" class="slide active">
+          <img src="images/bedroom.jfif" class="slide">
+          <img src="images/kittech.jfif" class="slide">
+       </div>
+
+       <!-- DARK OVERLAY -->
+       <div class="hero-overlay"></div>
+
+        <!-- TEXT -->
+        <div class="hero-content">
+           <h1>INTERIOR DESIGNS </h1>
+          <p>Make Your space Feel Modern and peacefull</p>
+       </div>
+   </section>
+
+    <!-- Intro Section -->
+    <section class="intro-section">
+        <h2>Transform Your Indoor Environment</h2>
+        <p>Our interior design services combine aesthetic sophistication with functional excellence. We believe that every space should tell a story—your story. From concept to completion, we craft interiors that reflect your personality, enhance your lifestyle, and create lasting impressions.</p>
+    </section>
+
+    <!-- Services Showcase -->
+    <section class="services-showcase">
+        <div class="showcase-grid">
+            <div class="showcase-item">
+                <div class="showcase-image">
+                    <img src="images/gypsum.jfif" alt="Exterior Design">
+                </div>
+                <div class="showcase-content">
+                    <h3>Gypsum Works</h3>
+                    <p>Expert craftsmanship in false ceiling designs, decorative moldings, and architectural details that add character and elegance to your spaces.</p>
+                    <ul class="showcase-features">
+                        <li>Contemporary false ceilings</li>
+                        <li>Decorative cornices and moldings</li>
+                        <li>Acoustic ceiling solutions</li>
+                        <li>Custom lighting integration</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="showcase-item">
+                <div class="showcase-image">
+                    <img src="images/painting1.jfif" alt="Exterior Design">
+                </div>
+                <div class="showcase-content">
+                    <h3>Interior Painting</h3>
+                    <p>Professional painting services using premium materials and techniques to create flawless finishes that enhance your interior aesthetics.</p>
+                    <ul class="showcase-features">
+                        <li>Expert color consultation</li>
+                        <li>Premium paint application</li>
+                        <li>Textured wall finishes</li>
+                        <li>Decorative painting techniques</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="showcase-item">
+                <div class="showcase-image">
+                    <img src="images/aquarium.jfif" alt="Exterior Design">
+                </div>
+                <div class="showcase-content">
+                    <h3>Indoor Aquariums</h3>
+                    <p>Custom-designed aquariums that serve as stunning focal points, bringing tranquility and natural beauty into your living spaces.</p>
+                    <ul class="showcase-features">
+                        <li>Bespoke aquarium design</li>
+                        <li>Professional installation</li>
+                        <li>Maintenance solutions</li>
+                        <li>Integrated lighting systems</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="showcase-item">
+                <div class="showcase-image">
+                    <img src="images/curtains.jfif" alt="Exterior Design">
+                </div>
+                <div class="showcase-content">
+                    <h3>Curtains & Blinds</h3>
+                    <p>Elegant window treatments that combine functionality with style, offering light control, privacy, and aesthetic enhancement.</p>
+                    <ul class="showcase-features">
+                        <li>Custom curtain design</li>
+                        <li>Premium fabric selection</li>
+                        <li>Modern blinds & shutters</li>
+                        <li>Motorized solutions available</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="showcase-item">
+                <div class="showcase-image">
+                    <img src="images/furniture.jfif" alt="Exterior Design">
+                </div>
+                <div class="showcase-content">
+                    <h3>Furniture Design</h3>
+                    <p>Bespoke furniture pieces crafted to perfection, designed to fit your space perfectly while reflecting your unique style and needs.</p>
+                    <ul class="showcase-features">
+                        <li>Custom furniture design</li>
+                        <li>Quality craftsmanship</li>
+                        <li>Space optimization</li>
+                        <li>Professional installation</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="showcase-item">
+                <div class="showcase-image">
+                    <img src="images/lighting.jfif" alt="Exterior Design">
+                </div>
+                <div class="showcase-content">
+                    <h3>Lighting Design</h3>
+                    <p>Strategic lighting solutions that create ambiance, highlight architectural features, and enhance the overall atmosphere of your space.</p>
+                    <ul class="showcase-features">
+                        <li>Ambient lighting design</li>
+                        <li>Task & accent lighting</li>
+                        <li>Smart lighting systems</li>
+                        <li>Energy-efficient solutions</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process-section">
+        <div class="process-container">
+            <h2 class="process-title">Our Design Process</h2>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">01</div>
+                    <h4>Consultation</h4>
+                    <p>We meet with you to understand your vision, lifestyle, and requirements for the space.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">02</div>
+                    <h4>Concept Design</h4>
+                    <p>Our team creates initial designs, mood boards, and 3D visualizations for your approval.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">03</div>
+                    <h4>Development</h4>
+                    <p>We refine the design, select materials, and prepare detailed plans for implementation.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">04</div>
+                    <h4>Execution</h4>
+                    <p>Our skilled craftsmen bring the design to life with precision and attention to detail.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section">
+        <h2 class="gallery-title">Featured Interior Projects</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="images/interior1.jfif" alt="Exterior Design">
+                <div class="gallery-overlay">
+                    <div class="gallery-overlay-content">
+                        <h4>Luxury Villa Interior</h4>
+                        <p>Contemporary design with traditional touches</p>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/office design.jfif" alt="Exterior Design">
+                <div class="gallery-overlay">
+                    <div class="gallery-overlay-content">
+                        <h4>modern office </h4>
+                        <p>Serene sanctuary design</p>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/bedroom.jfif" alt="Exterior Design">
+                <div class="gallery-overlay">
+                    <div class="gallery-overlay-content">
+                        <h4> modern  Space</h4>
+                        <p>Elegant entertaining area</p>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/dinning.jfif" alt="Exterior Design">
+                <div class="gallery-overlay">
+                    <div class="gallery-overlay-content">
+                        <h4>Dinning space </h4>
+                        <p>Productive workspace design</p>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/kittech.jfif" alt="Exterior Design">
+                <div class="gallery-overlay">
+                    <div class="gallery-overlay-content">
+                        <h4>Kitchen Design</h4>
+                        <p>Modern culinary haven</p>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/bathroom.jfif" alt="Exterior Design">
+                <div class="gallery-overlay">
+                    <div class="gallery-overlay-content">
+                        <h4>modern bathroom</h4>
+                        <p>Elegant</p>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/sitting room.jfif" alt="Exterior Design">
+                <div class="gallery-overlay">
+                    <div class="gallery-overlay-content">
+                        <h4>sitting room</h4>
+                        <p>Productive workspace design</p>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/wall design.jfif" alt="Exterior Design">
+                <div class="gallery-overlay">
+                    <div class="gallery-overlay-content">
+                        <h4>wall design</h4>
+                        <p>we make your dream come true</p>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/tv unit.jfif" alt="Exterior Design">
+                <div class="gallery-overlay">
+                    <div class="gallery-overlay-content">
+                        <h4>modern tv unit</h4>
+                        <p>make fun peacefull</p>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/painting1.jfif" alt="Exterior Design">
+                <div class="gallery-overlay">
+                    <div class="gallery-overlay-content">
+                        <h4>beauty</h4>
+                        <p>Productive workspace design</p>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/aquarium.jfif" alt="Exterior Design">
+                <div class="gallery-overlay">
+                    <div class="gallery-overlay-content">
+                        <h4>nature</h4>
+                        <p>inner aquarium</p>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/curtains.jfif" alt="Exterior Design">
+                <div class="gallery-overlay">
+                    <div class="gallery-overlay-content">
+                        <h4>curtains</h4>
+                        <p>beauty</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Ready to Transform Your Space?</h2>
+            <p>Let's collaborate to create an interior that reflects your style, meets your needs, and exceeds your expectations.</p>
+            <a href="contact.html" class="cta-btn">START YOUR PROJECT</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 LAPHIC Modern Homes. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+       const slides = document.querySelectorAll(".slide");
+       let index = 0;
+
+       function showSlide() {
+          slides.forEach(s => s.classList.remove("active"));
+          slides[index].classList.add("active");
+
+         index = (index + 1) % slides.length;
+       }
+
+       showSlide();
+       setInterval(showSlide, 5000);
+    </script>
+
+    <script>
+        // Scroll reveal animations
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.showcase-item, .process-step, .gallery-item').forEach((el, index) => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = `all 0.6s ease-out ${index * 0.1}s`;
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Experience - LAPHIC Modern Homes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a1a1a;
+            --secondary: #c9a050;
+            --accent: #d49727;
+            --light: #f5f5f5;
+            --white: #ffffff;
+            --grey: #666666;
+            --gold: #d4af37;
+            --cream: #f1e0bd;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            color: var(--primary);
+            overflow-x: hidden;
+            background: var(--primary);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 2rem;
+            color: var(--gold);
+            letter-spacing: 3px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--cream);
+            text-decoration: none;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        /* Hero Section with 3D Effect */
+        .hero-3d {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: #0a0a0a;
+            perspective: 1000px;
+        }
+
+        /* Animated Background Slideshow */
+        .hero-bg-slideshow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .hero-bg-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            animation: slideshow 32s infinite;
+        }
+
+        .hero-bg-slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, 
+                rgba(10, 10, 10, 0.85) 0%, 
+                rgba(26, 26, 26, 0.75) 50%, 
+                rgba(10, 10, 10, 0.85) 100%);
+            z-index: 1;
+        }
+
+        .hero-bg-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.7) contrast(1.1);
+            animation: kenburns 32s ease-in-out infinite;
+        }
+
+        .hero-bg-slide:nth-child(1) {
+            animation-delay: 0s;
+        }
+        .hero-bg-slide:nth-child(2) {
+            animation-delay: 4s;
+        }
+        .hero-bg-slide:nth-child(3) {
+            animation-delay: 8s;
+        }
+        .hero-bg-slide:nth-child(4) {
+            animation-delay: 12s;
+        }
+        .hero-bg-slide:nth-child(5) {
+            animation-delay: 16s;
+        }
+        .hero-bg-slide:nth-child(6) {
+            animation-delay: 20s;
+        }
+        .hero-bg-slide:nth-child(7) {
+            animation-delay: 24s;
+        }
+        .hero-bg-slide:nth-child(8) {
+            animation-delay: 28s;
+        }
+
+        @keyframes slideshow {
+            0% { opacity: 0; transform: scale(1); }
+            2% { opacity: 1; transform: scale(1); }
+            12.5% { opacity: 1; transform: scale(1.08); }
+            14.5% { opacity: 0; transform: scale(1.1); }
+            100% { opacity: 0; transform: scale(1.1); }
+        }
+
+        @keyframes kenburns {
+            0% { transform: scale(1) translateX(0) translateY(0); }
+            50% { transform: scale(1.15) translateX(-5%) translateY(-3%); }
+            100% { transform: scale(1) translateX(0) translateY(0); }
+        }
+
+        /* Floating particles overlay */
+        .hero-3d::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                repeating-linear-gradient(
+                    0deg,
+                    rgba(212, 175, 55, 0.02) 0px,
+                    transparent 1px,
+                    transparent 40px,
+                    rgba(212, 175, 55, 0.02) 41px
+                ),
+                repeating-linear-gradient(
+                    90deg,
+                    rgba(212, 175, 55, 0.02) 0px,
+                    transparent 1px,
+                    transparent 40px,
+                    rgba(212, 175, 55, 0.02) 41px
+                );
+            animation: gridPulse 4s ease-in-out infinite;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        @keyframes gridPulse {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.02); }
+        }
+
+        .hero-content-3d {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: var(--white);
+            max-width: 1200px;
+            padding: 0 2rem;
+            animation: floatIn 1.5s ease-out;
+        }
+
+        @keyframes floatIn {
+            0% {
+                opacity: 0;
+                transform: translateZ(-200px) translateY(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateZ(0) translateY(0);
+            }
+        }
+
+        .hero-content-3d h1 {
+            font-family: 'Italiana', serif;
+            font-size: 6rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--gold), var(--cream), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.3); }
+        }
+
+        .hero-content-3d p {
+            font-size: 1.3rem;
+            color: var(--cream);
+            letter-spacing: 2px;
+            margin-bottom: 3rem;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--gold);
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-20px); }
+        }
+
+        /* Video Showcase Section */
+        .video-showcase {
+            position: relative;
+            padding: 8rem 5%;
+            background: linear-gradient(180deg, var(--primary) 0%, #0a0a0a 100%);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-family: 'Italiana', serif;
+            font-size: 4rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            letter-spacing: 4px;
+        }
+
+        .section-title p {
+            color: var(--cream);
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+        }
+
+        .video-container {
+            position: relative;
+            max-width: 1400px;
+            margin: 0 auto;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 
+                0 20px 60px rgba(212, 175, 55, 0.2),
+                0 0 100px rgba(212, 175, 55, 0.1);
+            transform-style: preserve-3d;
+            transition: transform 0.5s ease;
+        }
+
+        .video-container:hover {
+            transform: scale(1.02) translateZ(20px);
+        }
+
+        .video-container video {
+            width: 100%;
+            height: auto;
+            display: block;
+            border: 3px solid var(--gold);
+        }
+
+        /* 3D Gallery Section */
+        .gallery-3d {
+            padding: 8rem 5%;
+            background: var(--primary);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            aspect-ratio: 4/3;
+            cursor: pointer;
+            transform-style: preserve-3d;
+            transition: all 0.5s ease;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-15px) rotateX(5deg) rotateY(5deg) scale(1.05);
+            box-shadow: 
+                0 20px 60px rgba(212, 175, 55, 0.3),
+                0 0 80px rgba(212, 175, 55, 0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+            padding: 2rem;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        .gallery-overlay h3 {
+            color: var(--gold);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+        }
+
+        .gallery-overlay p {
+            color: var(--cream);
+            font-size: 0.95rem;
+        }
+
+        /* Architectural Designs Section */
+        .architectural-section {
+            padding: 8rem 5%;
+            background: linear-gradient(180deg, var(--primary) 0%, #2d2d2d 100%);
+        }
+
+        .arch-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .arch-card {
+            position: relative;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            transition: all 0.5s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .arch-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(212, 175, 55, 0.3);
+        }
+
+        .arch-image {
+            width: 100%;
+            height: 350px;
+            overflow: hidden;
+        }
+
+        .arch-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+
+        .arch-card:hover .arch-image img {
+            transform: scale(1.15) rotate(2deg);
+        }
+
+        .arch-content {
+            padding: 2rem;
+        }
+
+        .arch-content h3 {
+            color: var(--gold);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+
+        .arch-content p {
+            color: var(--cream);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .arch-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .feature-tag {
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--gold);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        /* CTA Section */
+        .cta-3d {
+            padding: 8rem 5%;
+            text-align: center;
+            background: var(--primary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-3d::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.1), transparent);
+            transform: translate(-50%, -50%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.3; }
+            50% { transform: translate(-50%, -50%) scale(1.3); opacity: 0.6; }
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-content h2 {
+            font-family: 'Italiana', serif;
+            font-size: 3.5rem;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            letter-spacing: 4px;
+        }
+
+        .cta-content p {
+            color: var(--cream);
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.5rem 4rem;
+            background: linear-gradient(135deg, var(--gold), var(--accent));
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            border-radius: 50px;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 40px rgba(212, 175, 55, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 60px rgba(212, 175, 55, 0.5);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content-3d h1 {
+                font-size: 3.5rem;
+            }
+
+            .section-title h2 {
+                font-size: 2.5rem;
+            }
+
+            .gallery-grid,
+            .arch-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .cta-content h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">LAPHICMODERN</div>
+        <ul class="nav-links">
+            <li><a href="laphic-website.html">HOME</a></li>
+            <li><a href="who-we-are.html">WHO WE ARE</a></li>
+            <li><a href="services.html">SERVICES</a></li>
+            <li><a href="portfolio.html">PORTFOLIO</a></li>
+            <li><a href="testimonials.html">TESTIMONIALS</a></li>
+            <li><a href="contact.html">CONTACT</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-3d">
+        <!-- Animated Background Slideshow -->
+        <div class="hero-bg-slideshow">
+            <div class="hero-bg-slide">
+                <img src="images/3Dimages/1 copy.jpg" alt="3D Background 1">
+            </div>
+            <div class="hero-bg-slide">
+                <img src="images/3Dimages/2 copy.jpg" alt="3D Background 2">
+            </div>
+            <div class="hero-bg-slide">
+                <img src="images/3Dimages/2Q copy.jpg" alt="3D Background 3">
+            </div>
+            <div class="hero-bg-slide">
+                <img src="images/3Dimages/3 copy.jpg alt="3D Background 4">
+            </div>
+            <div class="hero-bg-slide">
+                <img src="images/3Dimages/A copy 2.jpg" alt="3D Background 5">
+            </div>
+            <div class="hero-bg-slide">
+                <img src="images/3Dimages/a copy.jpg" alt="3D Background 6">
+            </div>
+            <div class="hero-bg-slide">
+                <img src="images/3Dimages/asha1 copy.jpg" alt="3D Background 7">
+            </div>
+            <div class="hero-bg-slide">
+                <img src="images/3Dimages/asha2 copy.jpg"alt="3D Background 8">
+            </div>
+            <div class="hero-bg-slide">
+                <img src="images/3Dimages/asha4 copy.jpg" alt="3D Background 7">
+            </div>
+            <div class="hero-bg-slide">
+                <img src="images/3Dimages/dd-1-1copy.jpg " alt="3D Background 8">
+            </div>
+            <div class="hero-bg-slide">
+                <img src="images/3Dimages/IMG-20250729-WA0040.jpg " alt="3D Background 7">
+            </div>
+            <!-- <div class="hero-bg-slide">
+                <img src="images/3Dimages/IMG-20250729-WA0041.jpg" alt="3D Background 8">
+            </div>
+            <div class="hero-bg-slide">
+                <img src="images/3Dimages/IMG-20250729-WA0042.jpg" alt="3D Background 7">
+            </div>
+            <div class="hero-bg-slide">
+                <img src="images/3Dimages/IMG-20250729-WA0044.jpg" alt=" Background 8">
+            </div>
+            <div class="hero-bg-slide">
+                <img src="images/3Dimages/IMG-20250729-WA0043.jpg" alt=" Background 8">
+            </div> -->
+
+        </div>
+        
+        <div class="hero-content-3d">
+            <h1>3D Experience</h1>
+            <p>Step into the Future of Design</p>
+        </div>
+        <div class="scroll-indicator">SCROLL TO EXPLORE ↓</div>
+    </section>
+
+    <!-- Video Showcase -->
+    <section class="video-showcase">
+        <div class="section-title">
+            <h2>Immersive 3D Walkthrough</h2>
+            <p>Experience your dream space before it's built</p>
+        </div>
+        <div class="video-container">
+            <video controls autoplay muted loop>
+                <source src="images/3Dimages/Kitovu 3d.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </section>
+
+    <!-- 3D Gallery -->
+    <section class="gallery-3d">
+        <div class="section-title">
+            <h2>3D Visualizations</h2>
+            <p>Photorealistic renders that bring concepts to life</p>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="images/3Dimages/1 copy.jpg" alt="3D Visualization 1">
+                <div class="gallery-overlay">
+                    <h3>Modern Exterior</h3>
+                    <p>Contemporary architectural design with premium finishes</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/3Dimages/2 copy.jpg" alt="3D Visualization 2">
+                <div class="gallery-overlay">
+                    <h3>Luxury Interior</h3>
+                    <p>Sophisticated living spaces with elegant details</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/3Dimages/2Q copy.jpg" alt="3D Visualization 3">
+                <div class="gallery-overlay">
+                    <h3>Dream Home</h3>
+                    <p>Customized design tailored to your lifestyle</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/3Dimages/3 copy.jpg" alt="3D Visualization 4">
+                <div class="gallery-overlay">
+                    <h3>Architectural Marvel</h3>
+                    <p>Innovative design meets functional excellence</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/3Dimages/A copy 2.jpg" alt="3D Visualization 5">
+                <div class="gallery-overlay">
+                    <h3>Premium Residence</h3>
+                    <p>Luxury living redefined through 3D visualization</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/3Dimages/a copy.jpg" alt="3D Visualization 6">
+                <div class="gallery-overlay">
+                    <h3>Contemporary Design</h3>
+                    <p>Modern aesthetics with timeless appeal</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/3Dimages/asha1 copy.jpg" alt="3D Visualization 7">
+                <div class="gallery-overlay">
+                    <h3>Elegant Living</h3>
+                    <p>Refined spaces for sophisticated lifestyles</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/3Dimages/asha2 copy.jpg" alt="3D Visualization 8">
+                <div class="gallery-overlay">
+                    <h3>Visionary Architecture</h3>
+                    <p>Where imagination meets reality in 3D</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/3Dimages/dd-1-1copy.jpg" alt="3D Visualization 8">
+                <div class="gallery-overlay">
+                    <h3>Visionary Architecture</h3>
+                    <p>Where imagination meets reality in 3D</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/3Dimages/IMG-20250729-WA0040.jpg" alt="3D Visualization 8">
+                <div class="gallery-overlay">
+                    <h3>Visionary Architecture</h3>
+                    <p>Where imagination meets reality in 3D</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/3Dimages/IMG-20250729-WA0043.jpg" alt="3D Visualization 8">
+                <div class="gallery-overlay">
+                    <h3>Visionary Architecture</h3>
+                    <p>Where imagination meets reality in 3D</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/3Dimages/IMG-20250729-WA0042.jpg" alt="3D Visualization 8">
+                <div class="gallery-overlay">
+                    <h3>Visionary Architecture</h3>
+                    <p>Where imagination meets reality in 3D</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Architectural Designs -->
+    <section class="architectural-section">
+        <div class="section-title">
+            <h2>Architectural Designs</h2>
+            <p>Precision-crafted blueprints for extraordinary spaces</p>
+        </div>
+        <div class="arch-grid">
+            <div class="arch-card">
+                <div class="arch-image">
+                    <img src="images/3Dimages/IMG-20260407-WA0001.jpg" alt="Exterior Design">
+                </div>
+                <div class="arch-content">
+                    <h3>Exterior Architecture</h3>
+                    <p>Stunning facades that make a lasting impression. Our exterior designs blend aesthetics with functionality, creating homes that stand out.</p>
+                    <div class="arch-features">
+                        <span class="feature-tag">Modern Design</span>
+                        <span class="feature-tag">Premium Materials</span>
+                        <span class="feature-tag">Energy Efficient</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="arch-card">
+                <div class="arch-image">
+                    <img src="images/3Dimages/IMG-20260407-WA0002.jpg" alt="Interior Design">
+                </div>
+                <div class="arch-content">
+                    <h3>Interior Architecture</h3>
+                    <p>Thoughtfully designed interiors that maximize space and comfort. Every detail is crafted to enhance your living experience.</p>
+                    <div class="arch-features">
+                        <span class="feature-tag">Space Optimization</span>
+                        <span class="feature-tag">Luxury Finishes</span>
+                        <span class="feature-tag">Custom Layouts</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="arch-card">
+                <div class="arch-image">
+                    <img src="images/3Dimages/IMG-20260407-WA0003.jpg" alt="Contemporary Architecture">
+                </div>
+                <div class="arch-content">
+                    <h3>Contemporary Facades</h3>
+                    <p>Bold architectural statements that define modern living. Clean lines, innovative materials, and timeless elegance.</p>
+                    <div class="arch-features">
+                        <span class="feature-tag">Minimalist</span>
+                        <span class="feature-tag">Sustainable</span>
+                        <span class="feature-tag">Innovative</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="arch-card">
+                <div class="arch-image">
+                    <img src="images/3Dimages/IMG-20260407-WA0004.jpg" alt="Structural Design">
+                </div>
+                <div class="arch-content">
+                    <h3>Structural Excellence</h3>
+                    <p>Engineering precision meets architectural beauty. Our designs ensure durability without compromising aesthetics.</p>
+                    <div class="arch-features">
+                        <span class="feature-tag">High Quality</span>
+                        <span class="feature-tag">Durable Build</span>
+                        <span class="feature-tag">Tested Design</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="arch-card">
+                <div class="arch-image">
+                    <img src="images/3Dimages/MECC NASSER 1.jpg.jpeg" alt="Landscape Architecture">
+                </div>
+                <div class="arch-content">
+                    <h3>Landscape Design</h3>
+                    <p>Harmonious outdoor spaces that complement your architecture. Creating seamless transitions between indoor and outdoor living.</p>
+                    <div class="arch-features">
+                        <span class="feature-tag">Green Spaces</span>
+                        <span class="feature-tag">Natural Flow</span>
+                        <span class="feature-tag">Outdoor Living</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="arch-card">
+                <div class="arch-image">
+                    <img src="images/3Dimages/strt 1.jpg.jpeg" alt="Commercial Architecture">
+                </div>
+                <div class="arch-content">
+                    <h3>Commercial Spaces</h3>
+                    <p>Professional environments designed for productivity and inspiration. Architecture that empowers business success.</p>
+                    <div class="arch-features">
+                        <span class="feature-tag">Professional</span>
+                        <span class="feature-tag">Productive</span>
+                        <span class="feature-tag">Impressive</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="arch-card">
+                <div class="arch-image">
+                    <img src="images/3Dimages/IMG-20260407-WA0005.jpg" alt="Interior Design">
+                </div>
+                <div class="arch-content">
+                    <h3>Interior Architecture</h3>
+                    <p>Thoughtfully designed interiors that maximize space and comfort. Every detail is crafted to enhance your living experience.</p>
+                    <div class="arch-features">
+                        <span class="feature-tag">Space Optimization</span>
+                        <span class="feature-tag">Luxury Finishes</span>
+                        <span class="feature-tag">Custom Layouts</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="arch-card">
+                <div class="arch-image">
+                    <img src="images/3Dimages/IMG-20260407-WA0001.jpg" alt="Exterior Design">
+                </div>
+                <div class="arch-content">
+                    <h3>Exterior Architecture</h3>
+                    <p>Stunning facades that make a lasting impression. Our exterior designs blend aesthetics with functionality, creating homes that stand out.</p>
+                    <div class="arch-features">
+                        <span class="feature-tag">Modern Design</span>
+                        <span class="feature-tag">Premium Materials</span>
+                        <span class="feature-tag">Energy Efficient</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="arch-card">
+                <div class="arch-image">
+                    <img src="images/3Dimages/strt 2.jpg.jpeg" alt="Commercial Architecture">
+                </div>
+                <div class="arch-content">
+                    <h3>Commercial Spaces</h3>
+                    <p>Professional environments designed for productivity and inspiration. Architecture that empowers business success.</p>
+                    <div class="arch-features">
+                        <span class="feature-tag">Professional</span>
+                        <span class="feature-tag">Productive</span>
+                        <span class="feature-tag">Impressive</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-3d">
+        <div class="cta-content">
+            <h2>Ready to Visualize Your Dream?</h2>
+            <p>Let us transform your vision into stunning 3D reality. Experience your project before construction begins.</p>
+            <a href="contact.html" class="cta-button">START YOUR 3D  JOURNEY</a>
+        </div>
+    </section>
+
+    <script>
+        // Parallax effect for gallery items
+        document.addEventListener('mousemove', (e) => {
+            const items = document.querySelectorAll('.gallery-item');
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            
+            items.forEach((item, index) => {
+                const speed = (index % 3 + 1) * 0.5;
+                const xOffset = (x - 0.5) * speed * 10;
+                const yOffset = (y - 0.5) * speed * 10;
+                
+                item.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
+            });
+        });
+
+        // Smooth scroll reveal
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.gallery-item, .arch-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(50px)';
+            el.style.transition = 'all 0.8s ease-out';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

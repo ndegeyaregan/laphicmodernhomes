@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LAPHIC Modern Homes | Think it, we create it</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro&display=swap" rel="stylesheet">
+
+<style>
+     * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0a0a0a;
+            --gold: #c9a050;
+            --cream: #f8f6f0;
+            --charcoal: #2c2c2c;
+            --rust: #c85a3e;
+            --accent: #c9a050;
+            --grey: #666;
+            --light: #ffffff;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Crimson Pro', serif;
+            background: var(--cream);
+            color: var(--primary);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 2rem;
+            color: var(--gold);
+            letter-spacing: 3px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--cream);
+            text-decoration: none;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        /* ================= SECTIONS ================= */
+        section {
+            padding: 80px 20px;
+        }
+
+        .hero {
+            
+            padding-top: 80px; /* pushes content below navbar */
+            
+           position: relative;
+            height: 100vh;
+            overflow: hidden;
+           display: flex;
+           align-items: center;
+           justify-content: center;
+           text-align: center;
+        }
+
+    
+        .hero-slider {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+        }
+
+        .hero-slider .slide {
+           position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          opacity: 0;
+           transition: opacity 1s ease-in-out;
+        }
+
+        .hero-slider .slide.active {
+            
+            opacity: 1;
+           transform: scale(1);
+           transition: opacity 1s ease-in-out, transform 6s ease;
+        }
+
+        /* Dark overlay */
+       .hero-overlay {
+           position: absolute;
+           width: 100%;
+           top: 0%;
+           left: 0;
+           height: 100%;
+           background: rgba(0,0,0,0.6);
+           z-index: 1;
+        }
+
+       /* Text stays above */
+       .hero-content {
+         position: relative;
+         z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 40px;
+            color: #c9a050;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 18px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            color: #c9a050;
+            font-size: 32px;
+        }
+
+        /* About Section */
+        .aboutUS-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            align-items: center;
+        }
+
+        .aboutUS-text h3 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .aboutUS-text p {
+            font-size: 1.1rem;
+            line-height: 2;
+            color: var(--grey);
+            margin-bottom: 1.5rem;
+        }
+
+        .aboutUS-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+            background: var(--light);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: var(--grey);
+            font-weight: 500;
+        }
+
+        .aboutUS-image {
+            position: relative;
+            height: 600px;
+        }
+
+        .aboutUS-image::before {
+            content: '';
+            position: absolute;
+            top: -30px;
+            right: -30px;
+            width: 100%;
+            height: 100%;
+            border: 3px solid var(--accent);
+            z-index: -1;
+        }
+
+        .aboutUS-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* ABOUT */
+        .about-box {
+            background: #fff;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 6px;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .why-us li {
+            margin-bottom: 10px;
+            list-style: none;
+        }
+
+        .values {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .value {
+            background: #f9f9f9;
+            padding: 20px;
+            border-left: 4px solid #c9a050;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #1a1a1a;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+        footer {
+            background: var(--primary);
+            color: var(--white);
+            padding: 4rem 5% 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto 3rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .social-link:hover {
+            background: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            animation: slideInLeft 0.8s ease-out forwards;
+        }
+
+        @keyframes slideInLeft {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            animation: slideInRight 0.8s ease-out forwards;
+        }
+
+        @keyframes slideInRight {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 4rem;
+            }
+
+            .hero h1 span {
+                font-size: 2.5rem;
+            }
+
+            .services-grid,
+            .portfolio-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* ===== IMAGE + TEXT SPLIT SECTIONS ===== */
+ 
+        .split-section {
+         display: grid;
+         grid-template-columns: 1fr 1fr;
+         gap: 3rem;
+         align-items: center;
+         margin-bottom: 4rem;
+       }
+
+        .split-section.reverse {
+         grid-template-columns: 1fr 1fr;
+         direction: rtl;
+        }
+
+       .split-section.reverse > * {
+          direction: ltr;
+        }
+
+       .split-text h3 {
+          font-size: 2rem;
+         margin-bottom: 1rem;
+         color: var(--primary);
+        }
+
+      .split-text p,
+      .split-text li {
+         font-size: 1.05rem;
+         line-height: 1.9;
+         color: #444;
+        }
+
+       .split-text ul {
+         padding-left: 0;
+         list-style: none;
+        }
+
+       .split-text li {
+         margin-bottom: 0.6rem;
+       }
+
+        .split-image {
+           position: relative;
+       }
+
+       .split-image img {
+         width: 100%;
+         height: 380px;
+         object-fit: cover;
+         border-radius: 6px;
+       } 
+
+      .split-image::after {
+         content: "";
+         position: absolute;
+         top: -15px;
+         left: -15px;
+         width: 100%;
+         height: 100%;
+          border: 3px solid var(--gold);
+         z-index: -1;
+      }
+
+      /* Responsive */
+       @media (max-width: 900px) {
+        .split-section,
+        .split-section.reverse {
+             grid-template-columns: 1fr;
+             direction: ltr;
+             }
+
+       .split-image img {
+           height: 300px;
+             
+              }
+      }
+
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 5%;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+                font-size: 0.85rem;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero h1 span {
+                font-size: 1.8rem;
+            }
+
+            .services-grid,
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 5rem 5%;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<nav>
+    <div class="logo">LAPHIC <span>MODERN</span></div>
+    <div class="menu-toggle" id="menuToggle">☰</div>
+
+    <ul class="nav-links" id="navLinks">
+        <li><a href="laphic-website.html" class="nav-link">HOME</a></li>
+        <li><a href="who-we-are.html" class="nav-link">WHO WE ARE</a></li>
+       <li><a href="services.html" class="nav-link">SERVICES</a></li>
+        <li><a href="portfolio.html" class="nav-link">PORTFOLIO</a></li>
+        <li><a href="testimonials.html" class="nav-link">TESTIMONIALS</a></li>
+        <li><a href="contact.html" class="nav-link">CONTACT</a></li>
+    </ul>
+</nav>
+
+<!-- ================= HOME ================= -->
+<section class="hero" id="home">
+
+    <!-- SLIDES -->
+    <div class="hero-slider">
+        <img src="images/interior1.jfif" class="slide active">
+        <img src="images/exterior.jfif" class="slide">
+        <img src="images/exterior2.jfif" class="slide">
+    </div>
+
+    <!-- DARK OVERLAY -->
+    <div class="hero-overlay"></div>
+
+    <!-- TEXT -->
+    <div class="hero-content">
+        <h1>Think it, we create it</h1>
+        <p>Modern Interior, Exterior & Landscape Design</p>
+    </div>
+
+</section>
+
+<!-- ===== IMPROVED ABOUT SECTIONS ===== -->
+<section id="about">
+    <div class="container">
+        <div class="section-title">
+            <h2>Who We Are</h2>
+        </div>
+
+        <!-- Mission -->
+        <div class="split-section">
+            <div class="split-text">
+                <h3>Our Mission</h3>
+                <p>
+                    To maintain a high level of ethics,
+                    teamwork and professionalism while desmonstrating 
+                    a caring attitude toward employee and customer.
+                </p>
+            </div>
+            <div class="split-image">
+                <img src="images/us.jpeg" alt="Interior Design Mission">
+            </div>
+        </div>
+
+        <!-- Vision -->
+        <div class="split-section reverse">
+            <div class="split-text">
+                <h3>Our Vision</h3>
+                <p>
+                    To be a leading brand in the construction and interior designing industry
+                    and those we serve and aswell to be committed to stability,sustainability and effective 
+                    strategic growth.
+                </p>
+            </div>
+            <div class="split-image">
+                <img src="images/7.jpeg" alt="Modern Home Vision">
+            </div>
+        </div>
+
+        <!-- Why Choose Us -->
+        <div class="split-section">
+            <div class="split-text">
+                <h3>Why Choose Us</h3>
+                <ul>
+                    <li>✔ Experienced and skilled professionals</li>
+                    <li>✔ We provide creative designs </li>
+                    <li>✔ Client-focused design approach</li>
+                    <li>✔ Affordable and transparent pricing</li>
+                    <li>✔ Timely project delivery</li>
+                </ul>
+            </div>
+            <div class="split-image">
+                <img src="images/gypsum.jfif" alt="Why Choose LAPHIC">
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- About Section -->
+    <section id="aboutUS" class="aboutUS">
+        <div class="aboutUS-content">
+            <div class="aboutUS-text slide-in-left">
+                <h2 class="section-title" style="text-align: left; transform: none; left: 0;">WHO WE ARE</h2>
+                <h3>Building Trust Through Excellence</h3>
+                <p>LAPHIC Modern Homes is Uganda's premier design and construction company, dedicated to transforming your dreams into reality. With years of experience and a passion for innovation, we bring together expert craftsmanship and cutting-edge design.</p>
+                <p>Our mission is simple: to create living spaces that not only meet but exceed your expectations. We believe in the power of thoughtful design, quality materials, and meticulous attention to detail.</p>
+                
+                <div class="aboutUS-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">500+</div>
+                        <div class="stat-label">Projects Completed</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">98%</div>
+                        <div class="stat-label">Client Satisfaction</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Expert Team</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="aboutUS-image slide-in-right">
+                 <img src="images/abtus.jpeg" alt="about us">
+                <!-- <img src="data:image/svg+xml,%3Csvg width='600' height='600' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='600' height='600' fill='%23c9a050'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='24' fill='white'%3EModern Home Design%3C/text%3E%3C/svg%3E" alt="About LAPHIC Modern Homes"> -->
+            </div>
+        </div>
+    </section>
+
+
+
+<!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3 style="color: rgba(189, 133, 11, 0.7); line-height: 1.8;">LAPHIC Modern Homes</h3>
+                <p style="color: rgba(255, 255, 255, 0.7); line-height: 1.8;">Transforming dreams into reality through exceptional design and construction. Your trusted partner in creating beautiful spaces.</p>
+                <div class="social-links" style="margin-top: 1.5rem;">
+                    <a href="#" class="social-link">f</a>
+                    <a href="#" class="social-link">📷</a>
+                    <a href="#" class="social-link">in</a>
+                    <a href="#" class="social-link">💬</a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3 style="color: rgba(189, 133, 11, 0.7); line-height: 1.8;">Quick Links</h3>
+                <ul>
+                    <li><a href="laphic-website.html">Home</a></li>
+                    <li><a href="who-we-are.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3 style="color: rgba(189, 133, 11, 0.7); line-height: 1.8;">Services</h3>
+                <ul>
+                    <li><a href="interior-design.html">Interior Design</a></li>
+                    <li><a href="exterior-design.html">Exterior Design</a></li>
+                    <li><a href="landscape-design.html">Landscape Design</a></li>
+                    <li><a href="projects.html">Construction</a></li>
+                   
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3 style="color: rgba(189, 133, 11, 0.7); line-height: 1.8;">Contact Info</h3>
+                <ul>
+                    <li><a href="#">Kampala, Uganda</a></li>
+                    <li><a href="tel:+256">+256 780 535 307 / 702 620 878</a></li>
+                    <li><a href="mailto:info@laphic.com">laphicmodernhomes@gmail.com</a></li>
+                    <li><a href="#">Mon - Sat: 8AM - 6PM</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 LAPHIC Modern Homes. All rights reserved. | Think it, we create it.</p>
+        </div>
+    </footer>
+
+<!-- ================= JS ================= -->
+<script>
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+    const sections = document.querySelectorAll("section");
+    const navItems = document.querySelectorAll(".nav-link");
+
+    menuToggle.addEventListener("click", () => {
+        navLinks.classList.toggle("show");
+    });
+
+    window.addEventListener("scroll", () => {
+        let current = "";
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 120;
+            if (pageYOffset >= sectionTop) {
+                current = section.getAttribute("id");
+            }
+        });
+
+        navItems.forEach(link => {
+            link.classList.remove("active");
+            if (link.getAttribute("href").includes(current)) {
+                link.classList.add("active");
+            }
+        });
+    });
+
+    const slides = document.querySelectorAll(".slide");
+    let index = 0;
+
+    function showSlide() {
+        slides.forEach(slide => slide.classList.remove("active"));
+        slides[index].classList.add("active");
+
+       index = (index + 1) % slides.length;
+    }
+    showSlide(); // ensures first slide is shown properly
+    setInterval(showSlide, 4000); // change every 4 seconds
+    
+</script>
+
+</body>
+</html>

@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Design Inspiration</title>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    :root {
+     --midnight: #0f1419;
+     --teal: #9c6c24;
+     --coral: #ff6b6b;
+     --cream: #f8f6f0;
+     --charcoal: #3a3a3a;
+     --gold: #c9a050;
+     --primary: #0a0a0a;
+    }
+
+    body {
+        background: #0f1419;
+        color: #ffffff;
+        padding-top: 100px;
+    }
+    /* Navigation */
+    nav {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      background: rgba(10, 10, 10, 0.95);
+       backdrop-filter: blur(10px);
+      padding: 1.5rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 2rem;
+      color: var(--gold);
+      letter-spacing: 3px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+        color: var(--cream);
+       text-decoration: none;
+       font-size: 0.95rem;
+       letter-spacing: 1px;
+       transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+        color: var(--gold);
+    }
+
+    /* SECTION */
+    .inspiration-section {
+        
+        
+        text-align: center;
+    }
+
+    .inspiration-section h1 {
+        font-size: 2.6rem;
+        margin-bottom: 0.5rem;
+        letter-spacing: 1px;
+    }
+
+    .inspiration-section p {
+        color: #bbbbbb;
+        margin-bottom: 2.5rem;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* FILTER BUTTONS */
+    .filter-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+        margin-bottom: 3rem;
+    }
+
+    .filter-btn {
+        padding: 0.8rem 2.2rem;
+        border: 2px solid #9c6c24;
+        background: transparent;
+        color: #ffffff;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+        background: #9c6c24;
+    }
+
+    /* GRID */
+    .inspiration-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 1.5rem;
+    }
+
+    /* CARD */
+    .inspiration-card {
+        border-radius: 10px;
+        overflow: hidden;
+        position: relative;
+        cursor: pointer;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+        aspect-ratio: 4 / 3;
+    }
+
+    .inspiration-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.4s ease;
+        
+        transform: scale(0.9);
+        
+    }
+
+    .inspiration-card:hover img {
+        transform: scale(1.1);
+    }
+
+    /* OVERLAY TEXT */
+    .overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: 0.4s ease;
+    }
+
+    .overlay h3 {
+        font-size: 1.4rem;
+        letter-spacing: 1px;
+    }
+
+    .inspiration-card:hover .overlay {
+        opacity: 1;
+    }
+
+    /* LIGHTBOX */
+    .lightbox {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.9);
+       display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.4s ease;
+       z-index: 1000;
+    }
+
+    .lightbox img {
+       max-width: 90%;
+       max-height: 90%;
+       border-radius: 10px;
+       animation: zoomIn 0.4s ease;
+   }
+
+   .lightbox.active {
+       opacity: 1;
+       pointer-events: auto;
+   }
+
+   .lightbox .close {
+       position: absolute;
+       top: 30px;
+       right: 40px;
+        font-size: 3rem;
+        color: #fff;
+       cursor: pointer;
+   }
+
+   @keyframes zoomIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+  }
+
+
+    /* HIDE */
+    .hidden {
+        display: none;
+    }
+
+    @media (max-width: 600px) {
+        .inspiration-section h1 {
+            font-size: 2rem;
+        }
+        
+    }
+    @media (max-width: 768px) {
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
+}
+</style>
+</head>
+
+<body>
+    <nav>
+        <div class="logo">LAPHIC <span>MODERN</span></div>
+        <ul class="nav-links">
+            <li><a href="laphic-website.html">HOME</a></li>
+            <li><a href="who-we-are.html">WHO WE ARE</a></li>
+            <li><a href="services.html">SERVICES</a></li>
+            <li><a href="portfolio.html">PORTFOLIO</a></li>
+            <li><a href="testimonials.html">TESTIMONIALS</a></li>
+            <li><a href="contact.html">CONTACT</a></li>
+        </ul>
+    </nav>
+
+  <section class="inspiration-section">
+     <h1>Design Inspiration</h1>
+     <p>
+        Discover interior, exterior, and landscape inspirations designed to spark ideas and
+        bring your dream spaces to life.
+     </p>
+
+      <!-- FILTER -->
+     <div class="filter-buttons">
+         <button class="filter-btn active" data-filter="all">All</button>
+         <button class="filter-btn" data-filter="interior">Interior</button>
+         <button class="filter-btn" data-filter="exterior">Exterior</button>
+         <button class="filter-btn" data-filter="landscape">Landscape</button>
+     </div>
+
+     <!-- GRID -->
+      <div class="inspiration-grid">
+          <div class="inspiration-card" data-category="interior">
+              <img src="images/inspiration/interior/int.jfif" alt="Interior Design">
+              <div class="overlay"><h3>Interior Design</h3></div>
+         </div>
+
+           <div class="inspiration-card" data-category="interior">
+              <img src="images/inspiration/interior/download (9).jfif" alt="Interior Design">
+              <div class="overlay"><h3>Interior Design</h3></div>
+           </div>
+
+          <div class="inspiration-card" data-category="exterior">
+              <img src="images/construction2.jpg" alt="Exterior Design">
+              <div class="overlay"><h3>Exterior Design</h3></div>
+          </div>
+
+           <div class="inspiration-card" data-category="exterior">
+              <img src="images/al 1.jfif" alt="Exterior Design">
+             <div class="overlay"><h3>Exterior Design</h3></div>
+          </div>
+
+          <div class="inspiration-card" data-category="landscape">
+             <img src="images/bathroom.jfif" alt="Landscape Design">
+             <div class="overlay"><h3>Landscape Design</h3></div>
+         </div>
+
+          <div class="inspiration-card" data-category="landscape">
+             <img src="images/compound3.jfif" alt="Landscape Design">
+             <div class="overlay"><h3>Landscape Design</h3></div>
+          </div>
+          <div class="inspiration-card" data-category="interior">
+              <img src="images/inspiration/interior/NocturnalAbstract_com (1).jfif" alt="Interior Design">
+              <div class="overlay"><h3>Interior Design</h3></div>
+         </div>
+
+           <div class="inspiration-card" data-category="interior">
+              <img src="images/inspiration/interior/download (10).jfif" alt="Interior Design">
+              <div class="overlay"><h3>Interior Design</h3></div>
+           </div>
+
+          <div class="inspiration-card" data-category="exterior">
+              <img src="images/construction2.jpg" alt="Exterior Design">
+              <div class="overlay"><h3>Exterior Design</h3></div>
+          </div>
+
+           <div class="inspiration-card" data-category="exterior">
+              <img src="images/al 1.jfif" alt="Exterior Design">
+             <div class="overlay"><h3>Exterior Design</h3></div>
+          </div>
+
+          <div class="inspiration-card" data-category="landscape">
+             <img src="images/bathroom.jfif" alt="Landscape Design">
+             <div class="overlay"><h3>Landscape Design</h3></div>
+         </div>
+
+          <div class="inspiration-card" data-category="landscape">
+             <img src="images/compound3.jfif" alt="Landscape Design">
+             <div class="overlay"><h3>Landscape Design</h3></div>
+          </div>
+          <div class="inspiration-card" data-category="interior">
+              <img src="images/inspiration/interior/download (11).jfif" alt="Interior Design">
+              <div class="overlay"><h3>Interior Design</h3></div>
+         </div>
+
+           <div class="inspiration-card" data-category="interior">
+              <img src="images/inspiration/interior/download (12).jfif" alt="Interior Design">
+              <div class="overlay"><h3>Interior Design</h3></div>
+           </div>
+
+          <div class="inspiration-card" data-category="exterior">
+              <img src="images/construction2.jpg" alt="Exterior Design">
+              <div class="overlay"><h3>Exterior Design</h3></div>
+          </div>
+
+           <div class="inspiration-card" data-category="exterior">
+              <img src="images/al 1.jfif" alt="Exterior Design">
+             <div class="overlay"><h3>Exterior Design</h3></div>
+          </div>
+
+          <div class="inspiration-card" data-category="landscape">
+             <img src="images/bathroom.jfif" alt="Landscape Design">
+             <div class="overlay"><h3>Landscape Design</h3></div>
+         </div>
+
+          <div class="inspiration-card" data-category="landscape">
+             <img src="images/compound3.jfif" alt="Landscape Design">
+             <div class="overlay"><h3>Landscape Design</h3>
+          </div>
+          </div><div class="inspiration-card" data-category="interior">
+              <img src="images/inspiration/interior/download (8).jfif" alt="Interior Design">
+              <div class="overlay"><h3>Interior Design</h3></div>
+         </div>
+
+           <div class="inspiration-card" data-category="interior">
+              <img src="images/inspiration/interior/download (13).jfif" alt="Interior Design">
+              <div class="overlay"><h3>Interior Design</h3></div>
+           </div>
+
+          <div class="inspiration-card" data-category="exterior">
+              <img src="images/construction2.jpg" alt="Exterior Design">
+              <div class="overlay"><h3>Exterior Design</h3></div>
+          </div>
+
+           <div class="inspiration-card" data-category="exterior">
+              <img src="images/al 1.jfif" alt="Exterior Design">
+             <div class="overlay"><h3>Exterior Design</h3></div>
+          </div>
+
+          <div class="inspiration-card" data-category="landscape">
+             <img src="images/bathroom.jfif" alt="Landscape Design">
+             <div class="overlay"><h3>Landscape Design</h3></div>
+         </div>
+
+          <div class="inspiration-card" data-category="landscape">
+             <img src="images/compound3.jfif" alt="Landscape Design">
+             <div class="overlay"><h3>Landscape Design</h3>
+            </div>
+          </div><div class="inspiration-card" data-category="interior">
+              <img src="images/inspiration/interior/download (5).jfif" alt="Interior Design">
+              <div class="overlay"><h3>Interior Design</h3></div>
+         </div>
+
+           <div class="inspiration-card" data-category="interior">
+              <img src="images/inspiration/interior/download (14).jfif" alt="Interior Design">
+              <div class="overlay"><h3>Interior Design</h3></div>
+           </div>
+
+          <div class="inspiration-card" data-category="exterior">
+              <img src="images/construction2.jpg" alt="Exterior Design">
+              <div class="overlay"><h3>Exterior Design</h3></div>
+          </div>
+
+           <div class="inspiration-card" data-category="exterior">
+              <img src="images/al 1.jfif" alt="Exterior Design">
+             <div class="overlay"><h3>Exterior Design</h3></div>
+          </div>
+
+          <div class="inspiration-card" data-category="landscape">
+             <img src="images/bathroom.jfif" alt="Landscape Design">
+             <div class="overlay"><h3>Landscape Design</h3></div>
+         </div>
+
+          <div class="inspiration-card" data-category="landscape">
+             <img src="images/compound3.jfif" alt="Landscape Design">
+             <div class="overlay"><h3>Landscape Design</h3>
+            </div>
+
+          </div><div class="inspiration-card" data-category="interior">
+              <img src="images/inspiration/interior/download (15).jfif" alt="Interior Design">
+              <div class="overlay"><h3>Interior Design</h3></div>
+         </div>
+
+           <div class="inspiration-card" data-category="interior">
+              <img src="images/inspiration/interior/download (16).jfif" alt="Interior Design">
+              <div class="overlay"><h3>Interior Design</h3></div>
+           </div>
+
+          <div class="inspiration-card" data-category="exterior">
+              <img src="images/construction2.jpg" alt="Exterior Design">
+              <div class="overlay"><h3>Exterior Design</h3></div>
+          </div>
+
+           <div class="inspiration-card" data-category="exterior">
+              <img src="images/al 1.jfif" alt="Exterior Design">
+             <div class="overlay"><h3>Exterior Design</h3></div>
+          </div>
+
+          <div class="inspiration-card" data-category="landscape">
+             <img src="images/bathroom.jfif" alt="Landscape Design">
+             <div class="overlay"><h3>Landscape Design</h3></div>
+         </div>
+
+          <div class="inspiration-card" data-category="landscape">
+             <img src="images/compound3.jfif" alt="Landscape Design">
+             <div class="overlay"><h3>Landscape Design</h3>
+            </div>
+          </div><div class="inspiration-card" data-category="interior">
+              <img src="images/inspiration/interior/download (17).jfif" alt="Interior Design">
+              <div class="overlay"><h3>Interior Design</h3></div>
+         </div>
+
+           <div class="inspiration-card" data-category="interior">
+              <img src="images/inspiration/interior/download (4).jfif" alt="Interior Design">
+              <div class="overlay"><h3>Interior Design</h3></div>
+           </div>
+
+          <div class="inspiration-card" data-category="exterior">
+              <img src="images/construction2.jpg" alt="Exterior Design">
+              <div class="overlay"><h3>Exterior Design</h3></div>
+          </div>
+
+           <div class="inspiration-card" data-category="exterior">
+              <img src="images/al 1.jfif" alt="Exterior Design">
+             <div class="overlay"><h3>Exterior Design</h3></div>
+          </div>
+
+          <div class="inspiration-card" data-category="landscape">
+             <img src="images/bathroom.jfif" alt="Landscape Design">
+             <div class="overlay"><h3>Landscape Design</h3></div>
+         </div>
+
+          <div class="inspiration-card" data-category="landscape">
+             <img src="images/compound3.jfif" alt="Landscape Design">
+             <div class="overlay"><h3>Landscape Design</h3></div>
+          </div>
+      </div>
+  </section>
+   <!-- LIGHTBOX -->
+   <div class="lightbox" id="lightbox">
+      <span class="close">&times;</span>
+      <img id="lightbox-img" src="" alt="Inspiration Image">
+  </div>
+
+
+  <script>
+       const filterButtons = document.querySelectorAll('.filter-btn');
+       const cards = document.querySelectorAll('.inspiration-card');
+
+      // FILTER FUNCTION
+        filterButtons.forEach(button => {
+          button.addEventListener('click', () => {
+              filterButtons.forEach(btn => btn.classList.remove('active'));
+              button.classList.add('active');
+
+              const filter = button.dataset.filter;
+
+             cards.forEach(card => {
+                const category = card.dataset.category;
+                if (filter === 'all' || category === filter) {
+                    card.classList.remove('hidden');
+                  } else {
+                      card.classList.add('hidden');
+                  }
+                });
+            });
+        });
+
+      // LIGHTBOX FUNCTION
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const closeBtn = document.querySelector('.close');
+
+       cards.forEach(card => {
+            card.addEventListener('click', () => {
+                const img = card.querySelector('img');
+                lightboxImg.src = img.src;
+                lightbox.classList.add('active');
+           });
+        });
+
+       closeBtn.addEventListener('click', () => {
+          lightbox.classList.remove('active');
+       });
+
+       lightbox.addEventListener('click', (e) => {
+          if (e.target === lightbox) {
+             lightbox.classList.remove('active');
+          }
+       });
+   </script>
+
+
+</body>
+</html>

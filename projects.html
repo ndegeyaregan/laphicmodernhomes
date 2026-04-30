@@ -1,0 +1,2092 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Projects - LAPHIC Modern Homes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --midnight: #0f1419;
+            --teal: #9c6c24;
+            --coral: #ff6b6b;
+            --cream: #f8f6f0;
+            --charcoal: #3a3a3a;
+            --gold: #c9a050;
+            --primary: #0a0a0a;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--cream);
+            color: var(--charcoal);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 2rem;
+            color: var(--gold);
+            letter-spacing: 3px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--cream);
+            text-decoration: none;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 70vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-slider {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+        }
+
+        .hero-slider span {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            animation: slideShow 15s infinite;
+        }
+
+        .hero-slider span:nth-child(1) {
+            background-image: url("images/interior.jfif");
+            animation-delay: 0s;
+        }
+
+        .hero-slider span:nth-child(2) {
+            background-image: url("images/exterior.jfif");
+            animation-delay: 5s;
+        }
+
+        .hero-slider span:nth-child(3) {
+            background-image: url("images/landscape.jfif");
+            animation-delay: 10s;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.55);
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            color: #fff;
+        }
+
+        .hero-content h1 {
+            font-family: 'Merriweather', serif;
+            font-size: 4.5rem;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            font-weight: 300;
+            animation: fadeIn 1s ease-out 0.3s both;
+        }
+
+        @keyframes slideShow {
+            0% { opacity: 0; transform: scale(1); }
+            10% { opacity: 1; transform: scale(1.05); }
+            30% { opacity: 1; }
+            40% { opacity: 0; }
+            100% { opacity: 0; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Filter Tabs */
+        .filter-section {
+            padding: 4rem 5%;
+            background: var(--midnight);
+            text-align: center;
+        }
+
+        .filter-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 1rem 2.5rem;
+            background: transparent;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--gold);
+            color: var(--midnight);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(201, 160, 80, 0.4);
+        }
+
+        /* Projects Section */
+        .projects-section {
+            padding: 6rem 5%;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Merriweather', serif;
+            font-size: 3.5rem;
+            color: var(--midnight);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--gold);
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--charcoal);
+            opacity: 0.8;
+            margin-top: 1.5rem;
+        }
+
+        /* Project Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            position: relative;
+            background: #fff;
+            border-radius: 0;
+            overflow: hidden;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-image {
+            position: relative;
+            height: 320px;
+            overflow: hidden;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.1);
+        }
+
+        .project-status {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 0.5rem 1.5rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            z-index: 10;
+            border-radius: 30px;
+        }
+
+        .status-ongoing {
+            background: var(--coral);
+            color: white;
+        }
+
+        .status-completed {
+            background: var(--gold);
+            color: var(--midnight);
+        }
+
+        .project-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            padding: 2rem;
+            transform: translateY(60%);
+            transition: transform 0.4s ease;
+        }
+
+        .project-card:hover .project-overlay {
+            transform: translateY(0);
+        }
+
+        .project-category {
+            color: var(--gold);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-overlay h3 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .project-overlay p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .project-info {
+            padding: 2rem;
+            background: white;
+        }
+
+        .project-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+        }
+
+        .project-location {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--charcoal);
+            font-size: 0.9rem;
+        }
+
+        .project-progress {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--teal);
+            font-weight: 600;
+        }
+
+        .view-details-btn {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.75rem 2rem;
+            background: transparent;
+            border: 2px solid var(--midnight);
+            color: var(--midnight);
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
+
+        .view-details-btn:hover {
+            background: var(--midnight);
+            color: white;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: var(--midnight);
+            padding: 5rem 5%;
+            margin: 4rem 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stat-item {
+            text-align: center;
+            color: var(--cream);
+        }
+
+        .stat-number {
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.9;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 6rem 5%;
+            text-align: center;
+            background: var(--cream);
+        }
+
+        .cta-content h2 {
+            font-family: 'Merriweather', serif;
+            font-size: 3rem;
+            color: var(--midnight);
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-content p {
+            font-size: 1.2rem;
+            color: var(--charcoal);
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            padding: 1.2rem 3rem;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border: 2px solid;
+        }
+
+        .cta-btn-primary {
+            background: var(--gold);
+            color: var(--midnight);
+            border-color: var(--gold);
+        }
+
+        .cta-btn-primary:hover {
+            background: transparent;
+            color: var(--gold);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(201, 160, 80, 0.3);
+        }
+
+        .cta-btn-secondary {
+            background: transparent;
+            color: var(--midnight);
+            border-color: var(--midnight);
+        }
+
+        .cta-btn-secondary:hover {
+            background: var(--midnight);
+            color: var(--cream);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--midnight);
+            color: var(--cream);
+            padding: 3rem 5%;
+            text-align: center;
+        }
+
+        footer p {
+            opacity: 0.9;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-content h1 {
+                font-size: 3.5rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+
+            .section-header h2 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+                font-size: 0.85rem;
+            }
+
+            .filter-tabs {
+                gap: 1rem;
+            }
+
+            .filter-btn {
+                padding: 0.75rem 1.5rem;
+                font-size: 0.85rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .cta-content h2 {
+                font-size: 2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        /* Hide/Show based on filter */
+        .project-card.hidden {
+            display: none;
+        }
+
+        /* Modal/Popup Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(5px);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .modal-content {
+            background: var(--cream);
+            max-width: 1000px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            animation: slideUp 0.4s ease;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 45px;
+            height: 45px;
+            background: var(--gold);
+            color: var(--midnight);
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .modal-close:hover {
+            background: var(--midnight);
+            color: var(--gold);
+            transform: rotate(90deg);
+        }
+
+        .modal-hero {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+        }
+
+        .modal-hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .modal-hero-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            padding: 3rem;
+            color: white;
+        }
+
+        .modal-status {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 30px;
+            margin-bottom: 1rem;
+        }
+
+        .modal-hero-overlay h2 {
+            font-family: 'Merriweather', serif;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-category {
+            color: var(--gold);
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .modal-body {
+            padding: 3rem;
+        }
+
+        .modal-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: white;
+            border-left: 4px solid var(--gold);
+        }
+
+        .modal-info-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .modal-info-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--charcoal);
+            opacity: 0.7;
+            font-weight: 600;
+        }
+
+        .modal-info-value {
+            font-size: 1.1rem;
+            color: var(--midnight);
+            font-weight: 600;
+        }
+
+        .modal-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .modal-section h3 {
+            font-family: 'Merriweather', serif;
+            font-size: 1.8rem;
+            color: var(--midnight);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--gold);
+            display: inline-block;
+        }
+
+        .modal-section p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--charcoal);
+            margin-bottom: 1rem;
+        }
+
+        .modal-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .modal-section ul li {
+            padding: 0.75rem 0;
+            padding-left: 2rem;
+            position: relative;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: var(--charcoal);
+        }
+
+        .modal-section ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .progress-bar-container {
+            margin-top: 1rem;
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 25px;
+            background: #e0e0e0;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--teal), var(--gold));
+            border-radius: 15px;
+            transition: width 1s ease;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 1rem;
+            color: white;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        .modal-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .modal-gallery img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            border: 3px solid transparent;
+        }
+
+        .modal-gallery img:hover {
+            transform: scale(1.05);
+            border-color: var(--gold);
+        }
+
+        .modal-cta {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .modal-btn {
+            padding: 1rem 2.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border: 2px solid;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .modal-btn-primary {
+            background: var(--gold);
+            color: var(--midnight);
+            border-color: var(--gold);
+        }
+
+        .modal-btn-primary:hover {
+            background: var(--midnight);
+            color: var(--gold);
+        }
+
+        .modal-btn-secondary {
+            background: transparent;
+            color: var(--midnight);
+            border-color: var(--midnight);
+        }
+
+        .modal-btn-secondary:hover {
+            background: var(--midnight);
+            color: var(--cream);
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 3rem;
+            margin-top: 1.5rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--gold);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-left: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -3.4rem;
+            top: 0.3rem;
+            width: 15px;
+            height: 15px;
+            background: var(--gold);
+            border-radius: 50%;
+            border: 3px solid var(--cream);
+        }
+
+        .timeline-date {
+            font-size: 0.9rem;
+            color: var(--gold);
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .timeline-content {
+            font-size: 1rem;
+            color: var(--charcoal);
+            line-height: 1.6;
+        }
+
+        /* Responsive Modal */
+        @media (max-width: 768px) {
+            .modal-content {
+                max-height: 95vh;
+            }
+
+            .modal-hero {
+                height: 300px;
+            }
+
+            .modal-hero-overlay h2 {
+                font-size: 1.8rem;
+            }
+
+            .modal-body {
+                padding: 2rem 1.5rem;
+            }
+
+            .modal-info-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .modal-section h3 {
+                font-size: 1.5rem;
+            }
+
+            .modal-cta {
+                flex-direction: column;
+            }
+
+            .modal-btn {
+                width: 100%;
+            }
+
+            .modal-gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">LAPHIC <span>MODERN</span></div>
+        <ul class="nav-links">
+            <li><a href="laphic-website.html">HOME</a></li>
+            <li><a href="who-we-are.html">WHO WE ARE</a></li>
+            <li><a href="services.html">SERVICES</a></li>
+            <li><a href="portfolio.html">PORTFOLIO</a></li>
+            <li><a href="testimonials.html">TESTIMONIALS</a></li>
+            <li><a href="contact.html">CONTACT</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-slider">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="hero-content">
+            <h1>Our Projects</h1>
+            <p>Transforming Visions Into Reality</p>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <!-- <section class="filter-section">
+        <div class="filter-tabs">
+            <button class="filter-btn active" data-filter="all">All Projects</button>
+            <button class="filter-btn" data-filter="ongoing">Ongoing</button>
+            <button class="filter-btn" data-filter="completed">Completed</button>
+            <button class="filter-btn" data-filter="interior">Interior Design</button>
+            <button class="filter-btn" data-filter="exterior">Exterior Design</button>
+            <button class="filter-btn" data-filter="landscape">Landscape</button>
+        </div>
+    </section> -->
+    <section class="filter-section">
+        <div class="filter-tabs">
+            <a href="inspirations.html" class="filter-btn">inspirations</a>
+            <a href="3d-experience.html" class="filter-btn">3d-experience</a>
+           <a href="exterior-design.html" class="filter-btn">Exterior Design</a>
+           <a href="landscape-design.html" class="filter-btn">Landscape Design</a>
+       </div>
+    </section>
+
+
+    <!-- Ongoing Projects Section -->
+    <section class="projects-section">
+        <div class="section-header">
+            <h2>Ongoing Projects</h2>
+            <p>Currently bringing dreams to life with these exceptional projects</p>
+        </div>
+
+        <div class="projects-grid" id="ongoingGrid">
+            <!-- Project 1 -->
+            <div class="project-card" data-category="ongoing interior"
+                 data-title="Modern Luxury Villa"
+                 data-category-label="Interior Design"
+                 data-status="In Progress"
+                 data-location="Kololo, Kampala"
+                 data-client="Private Residence"
+                 data-year="2024"
+                 data-duration="8 Months"
+                 data-progress="65"
+                 data-description="This contemporary luxury villa showcases the perfect blend of modern aesthetics and functional living spaces. The interior design features a minimalist approach with warm, natural elements including custom oak flooring, floor-to-ceiling windows, and curated lighting fixtures. Every room has been meticulously designed to create a harmonious flow throughout the home, with emphasis on natural light and open-concept living."
+                 data-features="Open-concept kitchen and living area|Custom Italian marble countertops|Smart home automation system|Designer lighting throughout|Built-in entertainment center|Walk-in closets with custom organization|Spa-inspired bathrooms|Energy-efficient climate control"
+                 data-timeline="Jan 2024:Project kickoff and initial planning|Feb 2024:Demolition and structural modifications|Mar 2024:Electrical and plumbing rough-in|Apr 2024:Drywall and interior framing|May 2024:Kitchen and bathroom installation|Jun 2024:Flooring and finishing work|Currently:Final touches and furniture placement"
+                 data-image="images/interior.jfif">
+                <div class="project-image">
+                    <img src="images/projects/ongoing/1.jpeg" alt="Luxury Villa Interior">
+                    <span class="project-status status-ongoing">In Progress</span>
+                    <div class="project-overlay">
+                        <div class="project-category">Interior Design</div>
+                        <h3>Modern Two-Storey Family Residence</h3>
+                        <p>Contemporary interior design featuring minimalist aesthetics with warm, natural elements.</p>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <div class="project-meta">
+                        <div class="project-location">
+                            📍 Kololo, Kampala
+                        </div>
+                        <div class="project-progress">
+                            ⏱️ 65% Complete
+                        </div>
+                    </div>
+                    <a href="#" class="view-details-btn" onclick="openModal(this); return false;">View Details</a>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-card" data-category="ongoing exterior">
+                <div class="project-image">
+                    <img src="images/projects/ongoing/10.jpeg" alt="Contemporary Home Exterior">
+                    <span class="project-status status-ongoing">In Progress</span>
+                    <div class="project-overlay">
+                        <div class="project-category">Exterior Design</div>
+                        <h3>Rental Homes</h3>
+                        <p>Sleek exterior design with modern architectural elements and sustainable materials.</p>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <div class="project-meta">
+                        <div class="project-location">
+                            📍 Muyenga, Kampala
+                        </div>
+                        <div class="project-progress">
+                            ⏱️ 85% Complete
+                        </div>
+                    </div>
+                    <a href="#" class="view-details-btn">View Details</a>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="project-card" data-category="ongoing landscape">
+                <div class="project-image">
+                    <img src="images/projects/ongoing/2.jpeg" alt="Garden Paradise">
+                    <span class="project-status status-ongoing">In Progress</span>
+                    <div class="project-overlay">
+                        <div class="project-category">Landscape Design</div>
+                        <h3>contemporaryfamily home</h3>
+                        <p>.This contemporary family home showcases the perfect blend of modern aesthetics and functional living spaces. The interior design features a minimalist approach with warm, natural elements including custom oak flooring, floor-to-ceiling windows, and curated lighting fixtures. Every room has been meticulously designed to create a harmonious flow throughout the home, with emphasis on natural light and open-concept living</p>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <div class="project-meta">
+                        <div class="project-location">
+                            📍 Entebbe Road
+                        </div>
+                        <div class="project-progress">
+                            ⏱️ 80% Complete
+                        </div>
+                    </div>
+                    <a href="#" class="view-details-btn">View Details</a>
+                </div>
+            </div>
+
+            <!-- Project 4 -->
+            <div class="project-card" data-category="ongoing interior">
+                <div class="project-image">
+                    <img src="images/projects/ongoing/4.jpeg" alt="Office Space">
+                    <span class="project-status status-ongoing">In Progress</span>
+                    <div class="project-overlay">
+                        <div class="project-category">Interior Design</div>
+                        <h3>Elegant Contemporary Villa</h3>
+                        <p>an elegant contemporary villa featuring grand columns, spacious balconies, and a refined exterior finish. Designed for luxury and comfort, the home offers expansive living spaces, ample natural light, and a beautifully planned outdoor area. </p>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <div class="project-meta">
+                        <div class="project-location">
+                            📍 Nakasero, Kampala
+                        </div>
+                        <div class="project-progress">
+                            ⏱️ 80% Complete
+                        </div>
+                    </div>
+                    <a href="#" class="view-details-btn">View Details</a>
+                </div>
+            </div>
+
+            <!-- Project 5-->
+            <div class="project-card" data-category="ongoing interior">
+                <div class="project-image">
+                    <img src="images/projects/ongoing/5.jpeg" alt="Office Space">
+                    <span class="project-status status-ongoing">In Progress</span>
+                    <div class="project-overlay">
+                        <div class="project-category">Interior Design</div>
+                        <h3>humble home</h3>
+                        <p>This stunning contemporary villa showcases sophisticated architectural detailing with elevated columns, expansive balconies, and a polished exterior finish. Designed to offer both luxury and functionality, the residence provides generous living spaces, natural lighting, and a serene outdoor environment</p>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <div class="project-meta">
+                        <div class="project-location">
+                            📍 kitende, Kampala
+                        </div>
+                        <div class="project-progress">
+                            ⏱️ 75% Complete
+                        </div>
+                    </div>
+                    <a href="#" class="view-details-btn">View Details</a>
+                </div>
+            </div>
+            <!-- Project 6 -->
+            <div class="project-card" data-category="ongoing interior">
+                <div class="project-image">
+                    <img src="images/projects/ongoing/9.jpeg" alt="Office Space">
+                    <span class="project-status status-ongoing">In Progress</span>
+                    <div class="project-overlay">
+                        <div class="project-category">Interior Design</div>
+                        <h3>Contemporary Two-Storey Residence</h3>
+                        <p>Elegant modern villa with grand columns, balcony spaces, and a refined exterior finish..</p>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <div class="project-meta">
+                        <div class="project-location">
+                            📍 Jinja, uganda
+                        </div>
+                        <div class="project-progress">
+                            ⏱️ 65% Complete
+                        </div>
+                    </div>
+                    <a href="#" class="view-details-btn">View Details</a>
+                </div>
+            </div>
+            <!-- Project 7 -->
+            <div class="project-card" data-category="ongoing interior">
+                <div class="project-image">
+                    <img src="images/projects/ongoing/construction0.jpg" alt="Office Space">
+                    <span class="project-status status-ongoing">In Progress</span>
+                    <div class="project-overlay">
+                        <div class="project-category">Interior Design</div>
+                        <h3>Corporate Office Redesign</h3>
+                        <p>Modern workspace transformation focusing on productivity and employee wellness.</p>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <div class="project-meta">
+                        <div class="project-location">
+                            📍 DRCONGO , 
+                        </div>
+                        <div class="project-progress">
+                            ⏱️ 30% Complete
+                        </div>
+                    </div>
+                    <a href="#" class="view-details-btn">View Details</a>
+                </div>
+            </div>
+            <!-- Project 8-->
+            <div class="project-card" data-category="ongoing interior">
+                <div class="project-image">
+                    <img src="images/projects/ongoing/construction1.jpg" alt="Office Space">
+                    <span class="project-status status-ongoing">In Progress</span>
+                    <div class="project-overlay">
+                        <div class="project-category">Interior Design</div>
+                        <h3>Corporate Office Redesign</h3>
+                        <p>Modern two-storey residence with balcony spaces and tiled roofing, currently in the final stages of construction.</p>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <div class="project-meta">
+                        <div class="project-location">
+                            📍 kitovu,  kitende ,Kampala
+                        </div>
+                        <div class="project-progress">
+                            ⏱️ 85% Complete
+                        </div>
+                    </div>
+                    <a href="#" class="view-details-btn">View Details</a>
+                </div>
+            </div>
+
+            <!-- Project 9 -->
+            <div class="project-card" data-category="ongoing interior">
+                <div class="project-image">
+                    <img src="images/construction2.jpg" alt="Office Space">
+                    <span class="project-status status-ongoing">In Progress</span>
+                    <div class="project-overlay">
+                        <div class="project-category">Interior Design</div>
+                        <h3>Corporate Office Redesign</h3>
+                        <p>Modern workspace transformation focusing on productivity and employee wellness.</p>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <div class="project-meta">
+                        <div class="project-location">
+                            📍 Buddo, Kampala
+                        </div>
+                        <div class="project-progress">
+                            ⏱️ 30% Complete
+                        </div>
+                    </div>
+                    <a href="#" class="view-details-btn">View Details</a>
+                </div>
+            </div>
+
+            <!-- Project 10-->
+            <div class="project-card" data-category="ongoing interior">
+                <div class="project-image">
+                    <img src="images/construction3.jpg" alt="Office Space">
+                    <span class="project-status status-ongoing">In Progress</span>
+                    <div class="project-overlay">
+                        <div class="project-category">Interior Design</div>
+                        <h3>Corporate Office Redesign</h3>
+                        <p>Modern workspace transformation focusing on productivity and employee wellness.</p>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <div class="project-meta">
+                        <div class="project-location">
+                            📍 kishasha , congo
+                        </div>
+                        <div class="project-progress">
+                            ⏱️ 30% Complete
+                        </div>
+                    </div>
+                    <a href="#" class="view-details-btn">View Details</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number">150+</div>
+                <div class="stat-label">Projects Completed</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">12</div>
+                <div class="stat-label">Ongoing Projects</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">200+</div>
+                <div class="stat-label">Happy Clients</div>
+            </div>
+          
+        </div>
+    </section>
+
+    <!-- Completed Projects Section -->
+    <section class="projects-section">
+        <div class="section-header">
+            <h2>Completed Projects</h2>
+            <p>Showcasing our finest work and successful project deliveries</p>
+        </div>
+
+        <div class="projects-grid" id="completedGrid">
+            <!-- Completed Project 1 -->
+            <div class="project-card" data-category="completed interior">
+                <div class="project-image">
+                    <img src="images/projects/10.jpeg" alt="Elegant Penthouse">
+                    <span class="project-status status-completed">Completed</span>
+                    <div class="project-overlay">
+                        <div class="project-category">Interior Design</div>
+                        <h3>Luxury Penthouse Suite</h3>
+                        <p>Sophisticated interior featuring custom furniture and smart home integration.</p>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <div class="project-meta">
+                        <div class="project-location">
+                            📍 Naguru, Kampala
+                        </div>
+                        <div class="project-progress">
+                            ✓ Completed 2024
+                        </div>
+                    </div>
+                    <a href="#" class="view-details-btn">View Details</a>
+                </div>
+            </div>
+
+            <!-- Completed Project 2 -->
+            <div class="project-card" data-category="completed exterior">
+                <div class="project-image">
+                    <img src="images/projects/2.jpeg" alt="Modern Villa">
+                    <span class="project-status status-completed">Completed</span>
+                    <div class="project-overlay">
+                        <div class="project-category">Exterior Design</div>
+                        <h3>Architectural Masterpiece</h3>
+                        <p>Award-winning modern villa with innovative structural design and eco-friendly features.</p>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <div class="project-meta">
+                        <div class="project-location">
+                            📍 Bugolobi, Kampala
+                        </div>
+                        <div class="project-progress">
+                            ✓ Completed 2024
+                        </div>
+                    </div>
+                    <a href="#" class="view-details-btn">View Details</a>
+                </div>
+            </div>
+
+            <!-- Completed Project 3 -->
+            <div class="project-card" data-category="completed landscape">
+                <div class="project-image">
+                    <img src="images/projects/3.jpeg" alt="Zen Garden">
+                    <span class="project-status status-completed">Completed</span>
+                    <div class="project-overlay">
+                        <div class="project-category">Landscape Design</div>
+                        <h3>Zen Garden Oasis</h3>
+                        <p>Tranquil outdoor space with meditation areas, koi pond, and Japanese-inspired elements.</p>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <div class="project-meta">
+                        <div class="project-location">
+                            📍 Lubowa, Kampala
+                        </div>
+                        <div class="project-progress">
+                            ✓ Completed 2023
+                        </div>
+                    </div>
+                    <a href="#" class="view-details-btn">View Details</a>
+                </div>
+            </div>
+
+            <!-- Completed Project 4 -->
+            <div class="project-card" data-category="completed interior">
+                <div class="project-image">
+                    <img src="images/projects/6.jpeg" alt="Restaurant Interior">
+                    <span class="project-status status-completed">Completed</span>
+                    <div class="project-overlay">
+                        <div class="project-category">Interior Design</div>
+                        <h3>Fine Dining Restaurant</h3>
+                        <p>Elegant restaurant interior with ambient lighting and luxurious finishes.</p>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <div class="project-meta">
+                        <div class="project-location">
+                            📍 Acacia Mall, Kampala
+                        </div>
+                        <div class="project-progress">
+                            ✓ Completed 2023
+                        </div>
+                    </div>
+                    <a href="#" class="view-details-btn">View Details</a>
+                </div>
+            </div>
+
+            <!-- Completed Project 5 -->
+            <div class="project-card" data-category="completed exterior">
+                <div class="project-image">
+                    <img src="images/projects/7.jpeg" alt="Beach House">
+                    <span class="project-status status-completed">Completed</span>
+                    <div class="project-overlay">
+                        <div class="project-category">Exterior Design</div>
+                        <h3>Lakeside Retreat</h3>
+                        <p>Contemporary beach house with panoramic views and indoor-outdoor living spaces.</p>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <div class="project-meta">
+                        <div class="project-location">
+                            📍 Entebbe
+                        </div>
+                        <div class="project-progress">
+                            ✓ Completed 2024
+                        </div>
+                    </div>
+                    <a href="#" class="view-details-btn">View Details</a>
+                </div>
+            </div>
+
+            <!-- Completed Project 6 -->
+            <div class="project-card" data-category="completed exterior">
+                <div class="project-image">
+                    <img src="images/projects/8.jpeg" alt="Beach House">
+                    <span class="project-status status-completed">Completed</span>
+                    <div class="project-overlay">
+                        <div class="project-category">Exterior Design</div>
+                        <h3>Lakeside Retreat</h3>
+                        <p>Contemporary beach house with panoramic views and indoor-outdoor living spaces.</p>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <div class="project-meta">
+                        <div class="project-location">
+                            📍 Entebbe
+                        </div>
+                        <div class="project-progress">
+                            ✓ Completed 2023
+                        </div>
+                    </div>
+                    <a href="#" class="view-details-btn">View Details</a>
+                </div>
+            </div>
+
+            <!-- Completed Project 7 -->
+            <div class="project-card" data-category="completed exterior">
+                <div class="project-image">
+                    <img src="images/projects/kitovu .jpeg" alt="Beach House">
+                    <span class="project-status status-completed">Completed</span>
+                    <div class="project-overlay">
+                        <div class="project-category">Exterior Design</div>
+                        <h3>modern Two-Storey Residence</h3>
+                        <p>Contemporary beach house with panoramic views and indoor-outdoor living spaceThis elegant two-storey residence showcases modern architectural design with expansive balcony spaces and a distinctive tiled roof. As the project nears completion, it reflects a perfect balance of style, comfort, and structural durability for contemporary family living..</p>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <div class="project-meta">
+                        <div class="project-location">
+                            📍 Entebbe
+                        </div>
+                        <div class="project-progress">
+                            ✓ Completed 2023
+                        </div>
+                    </div>
+                    <a href="#" class="view-details-btn">View Details</a>
+                </div>
+            </div>
+
+            <!-- Completed Project 8 --->
+            <div class="project-card" data-category="completed exterior">
+                <div class="project-image">
+                    <img src="images/projects/muyoyo.jpeg" alt="Beach House">
+                    <span class="project-status status-completed">Completed</span>
+                    <div class="project-overlay">
+                        <div class="project-category">Exterior Design</div>
+                        <h3>Modern Two-Storey Family Residence</h3>
+                        <p>Modern two-storey home with clean lines, balcony spaces, and a durable tiled roof, currently in the final construction phase.</p>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <div class="project-meta">
+                        <div class="project-location">
+                            📍 muyoyo
+                        </div>
+                        <div class="project-progress">
+                            ✓ Completed 2025
+                        </div>
+                    </div>
+                    <a href="#" class="view-details-btn">View Details</a>
+                </div>
+            </div>
+
+            <!-- Completed Project 9 -->
+            <div class="project-card" data-category="completed interior">
+                <div class="project-image">
+                    <img src="images/projects/office.jpeg" alt="Beach House">
+                    <span class="project-status status-completed">Completed</span>
+                    <div class="project-overlay">
+                        <div class="project-category">interior  Design</div>
+                        <h3>Corporate Office Redesign</h3>
+                        <p>A contemporary office redesign featuring open workspaces, ergonomic furniture, and smart layout planning to enhance productivity, collaboration, and employee well-being..</p>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <div class="project-meta">
+                        <div class="project-location">
+                            📍 congo
+                        </div>
+                        <div class="project-progress">
+                            ✓ Completed 2026
+                        </div>
+                    </div>
+                    <a href="#" class="view-details-btn">View Details</a>
+                </div>
+            </div>
+
+            <!-- Completed Project 10 -->
+            <div class="project-card" data-category="completed landscape">
+                <div class="project-image">
+                    <img src="images/projects/outer space.jfif" alt="Resort Landscape">
+                    <span class="project-status status-completed">Completed</span>
+                    <div class="project-overlay">
+                        <div class="project-category">Landscape Design</div>
+                        <h3>modern gazebo Gardens</h3>
+                        <p>Tropical landscape design with palm gardens with cool air   and cabanas.</p>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <div class="project-meta">
+                        <div class="project-location">
+                            📍 Jinja
+                        </div>
+                        <div class="project-progress">
+                            ✓ Completed 2022
+                        </div>
+                    </div>
+                    <a href="#" class="view-details-btn">View Details</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Ready to Start Your Project?</h2>
+            <p>Let's discuss how we can bring your vision to life. Our team of experts is ready to transform your space into something extraordinary.</p>
+            <div class="cta-buttons">
+                <a href="contact.html" class="cta-btn cta-btn-primary">Get Started</a>
+                <a href="services.html" class="cta-btn cta-btn-secondary">Our Services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Details Modal -->
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            
+            <div class="modal-hero">
+                <img id="modalImage" src="" alt="Project Image">
+                <div class="modal-hero-overlay">
+                    <span id="modalStatus" class="modal-status"></span>
+                    <div class="modal-category" id="modalCategory"></div>
+                    <h2 id="modalTitle"></h2>
+                </div>
+            </div>
+
+            <div class="modal-body">
+                <!-- Project Info Grid -->
+                <div class="modal-info-grid">
+                    <div class="modal-info-item">
+                        <div class="modal-info-label">Location</div>
+                        <div class="modal-info-value" id="modalLocation"></div>
+                    </div>
+                    <div class="modal-info-item">
+                        <div class="modal-info-label">Client</div>
+                        <div class="modal-info-value" id="modalClient"></div>
+                    </div>
+                    <div class="modal-info-item">
+                        <div class="modal-info-label">Year</div>
+                        <div class="modal-info-value" id="modalYear"></div>
+                    </div>
+                    <div class="modal-info-item">
+                        <div class="modal-info-label">Duration</div>
+                        <div class="modal-info-value" id="modalDuration"></div>
+                    </div>
+                </div>
+
+                <!-- Progress Bar (for ongoing projects) -->
+                <div id="progressSection" class="progress-bar-container" style="display: none;">
+                    <div class="progress-label">
+                        <span>Project Progress</span>
+                        <span id="progressPercent"></span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                </div>
+
+                <!-- Project Description -->
+                <div class="modal-section">
+                    <h3>Project Overview</h3>
+                    <p id="modalDescription"></p>
+                </div>
+
+                <!-- Key Features -->
+                <div class="modal-section">
+                    <h3>Key Features</h3>
+                    <ul id="modalFeatures"></ul>
+                </div>
+
+                <!-- Project Timeline -->
+                <div class="modal-section" id="timelineSection">
+                    <h3>Project Timeline</h3>
+                    <div class="timeline" id="modalTimeline"></div>
+                </div>
+
+                <!-- Project Gallery -->
+                <div class="modal-section">
+                    <h3>Project Gallery</h3>
+                    <div class="modal-gallery" id="modalGallery"></div>
+                </div>
+
+                <!-- CTA Buttons -->
+                <div class="modal-cta">
+                    <a href="contact.html" class="modal-btn modal-btn-primary">Start Your Project</a>
+                    <a href="services.html" class="modal-btn modal-btn-secondary">View Our Services</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 LAPHIC Modern Homes. All Rights Reserved. | Think It, We Create It.</p>
+    </footer>
+
+    <script>
+        // Filter functionality
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterBtns.forEach(b => b.classList.remove('active'));
+                // Add active class to clicked button
+                btn.classList.add('active');
+
+                const filterValue = btn.getAttribute('data-filter');
+
+                projectCards.forEach(card => {
+                    const category = card.getAttribute('data-category');
+                    
+                    if (filterValue === 'all') {
+                        card.classList.remove('hidden');
+                    } else if (category.includes(filterValue)) {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.05,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    observer.unobserve(entry.target); // Stop observing once animated
+                }
+            });
+        }, observerOptions);
+
+        // Observe project cards with staggered initial setup
+        projectCards.forEach((card, index) => {
+            // Only apply animation if card is not in viewport initially
+            const rect = card.getBoundingClientRect();
+            const isInViewport = rect.top < window.innerHeight && rect.bottom > 0;
+            
+            if (!isInViewport) {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+            } else {
+                // Cards already in viewport appear immediately with slight stagger
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 50);
+            }
+            
+            card.style.transition = 'all 0.6s ease';
+            observer.observe(card);
+        });
+
+        // Modal functionality
+        const projectData = {
+            "Modern Luxury Villa": {
+                category: "Interior Design",
+                status: "In Progress",
+                statusClass: "status-ongoing",
+                location: "Kololo, Kampala",
+                client: "Private Residence",
+                year: "2024",
+                duration: "8 Months",
+                progress: 65,
+                description: "This contemporary luxury villa showcases the perfect blend of modern aesthetics and functional living spaces. The interior design features a minimalist approach with warm, natural elements including custom oak flooring, floor-to-ceiling windows, and curated lighting fixtures. Every room has been meticulously designed to create a harmonious flow throughout the home.",
+                features: [
+                    "Open-concept kitchen and living area",
+                    "Custom Italian marble countertops",
+                    "Smart home automation system",
+                    "Designer lighting throughout",
+                    "Built-in entertainment center",
+                    "Walk-in closets with custom organization",
+                    "Spa-inspired bathrooms",
+                    "Energy-efficient climate control"
+                ],
+                timeline: [
+                    { date: "January 2024", event: "Project kickoff and initial planning" },
+                    { date: "February 2024", event: "Demolition and structural modifications" },
+                    { date: "March 2024", event: "Electrical and plumbing rough-in" },
+                    { date: "April 2024", event: "Drywall and interior framing" },
+                    { date: "May 2024", event: "Kitchen and bathroom installation" },
+                    { date: "June 2024", event: "Flooring and finishing work" },
+                    { date: "Currently", event: "Final touches and furniture placement" }
+                ],
+                images: ["images/interior.jfif", "images/exterior.jfif", "images/landscape.jfif"]
+            },
+            "Contemporary Family Home": {
+                category: "Exterior Design",
+                status: "In Progress",
+                statusClass: "status-ongoing",
+                location: "Muyenga, Kampala",
+                client: "Mukasa Family",
+                year: "2024",
+                duration: "10 Months",
+                progress: 45,
+                description: "A stunning contemporary family home featuring sleek exterior design with modern architectural elements. The project incorporates sustainable materials and innovative building techniques to create an energy-efficient and visually striking residence. Large windows maximize natural light while maintaining privacy.",
+                features: [
+                    "Modern architectural facade",
+                    "Sustainable building materials",
+                    "Energy-efficient window systems",
+                    "Outdoor entertainment area",
+                    "Contemporary landscaping",
+                    "Covered parking for 3 vehicles",
+                    "Security features integrated into design",
+                    "Rainwater harvesting system"
+                ],
+                timeline: [
+                    { date: "December 2023", event: "Site preparation and foundation work" },
+                    { date: "January 2024", event: "Structural framework construction" },
+                    { date: "February 2024", event: "Roofing and exterior walls" },
+                    { date: "March 2024", event: "Window and door installation" },
+                    { date: "Currently", event: "Exterior finishing and landscaping preparation" }
+                ],
+                images: ["images/exterior.jfif", "images/interior.jfif", "images/landscape.jfif"]
+            },
+            "Botanical Garden Estate": {
+                category: "Landscape Design",
+                status: "In Progress",
+                statusClass: "status-ongoing",
+                location: "Entebbe Road",
+                client: "Green Estate Developers",
+                year: "2024",
+                duration: "6 Months",
+                progress: 80,
+                description: "An expansive botanical garden estate featuring lush landscape design that incorporates indigenous Ugandan plants and carefully designed water features. The project creates a serene outdoor sanctuary with walking paths, meditation areas, and diverse plant zones that showcase the beauty of native flora.",
+                features: [
+                    "Indigenous plant species showcase",
+                    "Decorative water features and ponds",
+                    "Winding stone pathways",
+                    "Meditation and seating areas",
+                    "Automated irrigation system",
+                    "Night lighting design",
+                    "Butterfly and bird-friendly zones",
+                    "Organic vegetable garden section"
+                ],
+                timeline: [
+                    { date: "October 2023", event: "Landscape design and planning" },
+                    { date: "November 2023", event: "Site clearing and soil preparation" },
+                    { date: "December 2023", event: "Irrigation system installation" },
+                    { date: "January 2024", event: "Major planting phase" },
+                    { date: "February 2024", event: "Water features installation" },
+                    { date: "Currently", event: "Final planting and finishing touches" }
+                ],
+                images: ["images/landscape.jfif", "images/interior.jfif", "images/exterior.jfif"]
+            },
+            "Corporate Office Redesign": {
+                category: "Interior Design",
+                status: "In Progress",
+                statusClass: "status-ongoing",
+                location: "Nakasero, Kampala",
+                client: "TechHub Uganda",
+                year: "2024",
+                duration: "5 Months",
+                progress: 30,
+                description: "Modern workspace transformation focusing on productivity and employee wellness. This corporate office redesign creates collaborative work zones, private meeting spaces, and relaxation areas. The design emphasizes natural light, ergonomic furniture, and technology integration to foster innovation and creativity.",
+                features: [
+                    "Open collaborative workspaces",
+                    "Private meeting pods",
+                    "Employee wellness areas",
+                    "Ergonomic furniture throughout",
+                    "Advanced AV systems",
+                    "Acoustic treatment for noise control",
+                    "Biophilic design elements",
+                    "Flexible workspace configurations"
+                ],
+                timeline: [
+                    { date: "January 2024", event: "Space planning and design approval" },
+                    { date: "February 2024", event: "Demolition of existing partitions" },
+                    { date: "Currently", event: "Electrical and data cabling installation" },
+                    { date: "Upcoming", event: "Furniture installation and final setup" }
+                ],
+                images: ["images/interior.jfif", "images/exterior.jfif", "images/landscape.jfif"]
+            },
+            "Luxury Penthouse Suite": {
+                category: "Interior Design",
+                status: "Completed",
+                statusClass: "status-completed",
+                location: "Naguru, Kampala",
+                client: "Private Client",
+                year: "2024",
+                duration: "7 Months",
+                progress: 100,
+                description: "A sophisticated penthouse interior featuring custom furniture and comprehensive smart home integration. This luxury residence combines timeless elegance with cutting-edge technology, offering panoramic city views and bespoke finishes throughout. Every detail has been carefully curated to create an exclusive urban retreat.",
+                features: [
+                    "Custom-designed furniture pieces",
+                    "Complete smart home automation",
+                    "Premium Italian fixtures",
+                    "Wine cellar and bar area",
+                    "Home theater system",
+                    "Master suite with spa bathroom",
+                    "Private rooftop terrace access",
+                    "Art lighting and display systems"
+                ],
+                timeline: [
+                    { date: "August 2023", event: "Initial consultation and design concept" },
+                    { date: "September 2023", event: "Smart home system installation" },
+                    { date: "October 2023", event: "Custom furniture fabrication" },
+                    { date: "November 2023", event: "Interior finishing and painting" },
+                    { date: "December 2023", event: "Furniture installation" },
+                    { date: "January 2024", event: "Final touches and client handover" }
+                ],
+                images: ["images/interior.jfif", "images/exterior.jfif", "images/landscape.jfif"]
+            },
+            "Architectural Masterpiece": {
+                category: "Exterior Design",
+                status: "Completed",
+                statusClass: "status-completed",
+                location: "Bugolobi, Kampala",
+                client: "Namwase Residence",
+                year: "2024",
+                duration: "12 Months",
+                progress: 100,
+                description: "Award-winning modern villa with innovative structural design and eco-friendly features. This architectural masterpiece pushes boundaries with its unique geometric forms, sustainable materials, and integration with the surrounding landscape. The design has received recognition for its innovative approach to tropical modern architecture.",
+                features: [
+                    "Innovative geometric design",
+                    "Solar panel integration",
+                    "Rainwater collection system",
+                    "Natural ventilation design",
+                    "Local and sustainable materials",
+                    "Indoor-outdoor living spaces",
+                    "Green roof technology",
+                    "Passive cooling systems"
+                ],
+                timeline: [
+                    { date: "January 2023", event: "Architectural design development" },
+                    { date: "March 2023", event: "Foundation and structural work" },
+                    { date: "June 2023", event: "Wall and roof construction" },
+                    { date: "September 2023", event: "Exterior finishing" },
+                    { date: "November 2023", event: "Landscaping integration" },
+                    { date: "December 2023", event: "Project completion and awards" }
+                ],
+                images: ["images/exterior.jfif", "images/interior.jfif", "images/landscape.jfif"]
+            },
+            "Zen Garden Oasis": {
+                category: "Landscape Design",
+                status: "Completed",
+                statusClass: "status-completed",
+                location: "Lubowa, Kampala",
+                client: "Wellness Retreat Center",
+                year: "2023",
+                duration: "8 Months",
+                progress: 100,
+                description: "Tranquil outdoor space with meditation areas, koi pond, and Japanese-inspired elements. This zen garden creates a peaceful sanctuary for reflection and relaxation. The design incorporates principles of Japanese garden design adapted to the Ugandan climate, using local stone and carefully selected plants.",
+                features: [
+                    "Traditional koi pond with filtration",
+                    "Japanese maple and bamboo groves",
+                    "Stone lanterns and pathways",
+                    "Meditation pavilion",
+                    "Rock garden (karesansui)",
+                    "Water feature with natural sounds",
+                    "Moon viewing platform",
+                    "Native plant integration"
+                ],
+                timeline: [
+                    { date: "March 2023", event: "Design consultation and planning" },
+                    { date: "April 2023", event: "Site preparation and pond excavation" },
+                    { date: "May 2023", event: "Stone placement and pathways" },
+                    { date: "June 2023", event: "Water system installation" },
+                    { date: "July 2023", event: "Planting phase" },
+                    { date: "August 2023", event: "Structures and final touches" },
+                    { date: "September 2023", event: "Project completion" }
+                ],
+                images: ["images/landscape.jfif", "images/interior.jfif", "images/exterior.jfif"]
+            },
+            "Fine Dining Restaurant": {
+                category: "Interior Design",
+                status: "Completed",
+                statusClass: "status-completed",
+                location: "Acacia Mall, Kampala",
+                client: "Savanna Grill Restaurant",
+                year: "2023",
+                duration: "4 Months",
+                progress: 100,
+                description: "Elegant restaurant interior with ambient lighting and luxurious finishes. The design creates an intimate dining atmosphere while accommodating high customer flow. Custom lighting fixtures, rich materials, and carefully planned acoustics combine to deliver an exceptional dining experience.",
+                features: [
+                    "Custom lighting design",
+                    "Acoustic panels for sound control",
+                    "Premium leather seating",
+                    "Open kitchen concept",
+                    "Wine display feature wall",
+                    "Private dining areas",
+                    "Restaurant-grade finishes",
+                    "Integrated music system"
+                ],
+                timeline: [
+                    { date: "May 2023", event: "Concept design and approval" },
+                    { date: "June 2023", event: "Demolition and prep work" },
+                    { date: "July 2023", event: "Kitchen and electrical installation" },
+                    { date: "August 2023", event: "Interior finishing and furniture" },
+                    { date: "September 2023", event: "Grand opening" }
+                ],
+                images: ["images/interior.jfif", "images/exterior.jfif", "images/landscape.jfif"]
+            },
+            "Lakeside Retreat": {
+                category: "Exterior Design",
+                status: "Completed",
+                statusClass: "status-completed",
+                location: "Entebbe",
+                client: "Private Beach House",
+                year: "2023",
+                duration: "10 Months",
+                progress: 100,
+                description: "Contemporary beach house with panoramic lake views and indoor-outdoor living spaces. This lakeside retreat maximizes the stunning waterfront location with large sliding glass doors, expansive decks, and weather-resistant materials designed for the humid lakeside environment.",
+                features: [
+                    "Floor-to-ceiling glass walls",
+                    "Infinity pool overlooking lake",
+                    "Covered outdoor living area",
+                    "Weather-resistant materials",
+                    "Private dock access",
+                    "Outdoor kitchen and bar",
+                    "Hurricane-rated windows",
+                    "Sustainable design features"
+                ],
+                timeline: [
+                    { date: "January 2023", event: "Site assessment and design" },
+                    { date: "February 2023", event: "Foundation on lakeside terrain" },
+                    { date: "May 2023", event: "Structural completion" },
+                    { date: "July 2023", event: "Exterior work and deck" },
+                    { date: "September 2023", event: "Pool installation" },
+                    { date: "October 2023", event: "Project completion" }
+                ],
+                images: ["images/exterior.jfif", "images/interior.jfif", "images/landscape.jfif"]
+            },
+            "Boutique Resort Gardens": {
+                category: "Landscape Design",
+                status: "Completed",
+                statusClass: "status-completed",
+                location: "Jinja",
+                client: "Nile View Resort",
+                year: "2022",
+                duration: "9 Months",
+                progress: 100,
+                description: "Tropical landscape design with palm gardens, swimming pool area, and cabanas. This resort landscape creates multiple outdoor zones for guests including activity areas, quiet relaxation spaces, and social gathering spots. Native tropical plants provide shade and privacy while maintaining the property's connection to its natural surroundings.",
+                features: [
+                    "Tropical palm garden zones",
+                    "Resort-style swimming pool",
+                    "Private cabana structures",
+                    "Outdoor bar and lounge area",
+                    "Walking trails through gardens",
+                    "Native plant landscaping",
+                    "Decorative lighting throughout",
+                    "Irrigation and maintenance systems"
+                ],
+                timeline: [
+                    { date: "March 2022", event: "Master plan development" },
+                    { date: "April 2022", event: "Pool construction" },
+                    { date: "June 2022", event: "Cabana structures" },
+                    { date: "August 2022", event: "Major planting phase" },
+                    { date: "October 2022", event: "Lighting and irrigation" },
+                    { date: "November 2022", event: "Project completion" }
+                ],
+                images: ["images/landscape.jfif", "images/interior.jfif", "images/exterior.jfif"]
+            }
+        };
+
+        // Open modal function
+        function openModal(element) {
+            const card = element.closest('.project-card');
+            const projectTitle = card.querySelector('h3').textContent;
+            const data = projectData[projectTitle];
+            
+            if (!data) {
+                console.error('Project data not found');
+                return;
+            }
+
+            // Populate modal
+            document.getElementById('modalImage').src = data.images[0];
+            document.getElementById('modalTitle').textContent = projectTitle;
+            document.getElementById('modalCategory').textContent = data.category;
+            document.getElementById('modalLocation').textContent = data.location;
+            document.getElementById('modalClient').textContent = data.client;
+            document.getElementById('modalYear').textContent = data.year;
+            document.getElementById('modalDuration').textContent = data.duration;
+            document.getElementById('modalDescription').textContent = data.description;
+
+            // Status
+            const statusElement = document.getElementById('modalStatus');
+            statusElement.textContent = data.status;
+            statusElement.className = 'modal-status ' + data.statusClass;
+
+            // Progress bar (only for ongoing projects)
+            if (data.status === 'In Progress') {
+                document.getElementById('progressSection').style.display = 'block';
+                document.getElementById('progressPercent').textContent = data.progress + '%';
+                document.getElementById('progressFill').style.width = data.progress + '%';
+                document.getElementById('progressFill').textContent = data.progress + '%';
+            } else {
+                document.getElementById('progressSection').style.display = 'none';
+            }
+
+            // Features
+            const featuresList = document.getElementById('modalFeatures');
+            featuresList.innerHTML = '';
+            data.features.forEach(feature => {
+                const li = document.createElement('li');
+                li.textContent = feature;
+                featuresList.appendChild(li);
+            });
+
+            // Timeline
+            const timelineContainer = document.getElementById('modalTimeline');
+            timelineContainer.innerHTML = '';
+            data.timeline.forEach(item => {
+                const timelineItem = document.createElement('div');
+                timelineItem.className = 'timeline-item';
+                timelineItem.innerHTML = `
+                    <div class="timeline-date">${item.date}</div>
+                    <div class="timeline-content">${item.event}</div>
+                `;
+                timelineContainer.appendChild(timelineItem);
+            });
+
+            // Gallery
+            const gallery = document.getElementById('modalGallery');
+            gallery.innerHTML = '';
+            data.images.forEach(imgSrc => {
+                const img = document.createElement('img');
+                img.src = imgSrc;
+                img.alt = projectTitle;
+                img.onclick = function() {
+                    document.getElementById('modalImage').src = this.src;
+                    document.querySelector('.modal-hero').scrollIntoView({ behavior: 'smooth' });
+                };
+                gallery.appendChild(img);
+            });
+
+            // Show modal
+            document.getElementById('projectModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close modal function
+        function closeModal() {
+            document.getElementById('projectModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('projectModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // Attach event listeners to all view details buttons
+        document.querySelectorAll('.view-details-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                openModal(this);
+            });
+        });
+    </script>
+</body>
+</html>
