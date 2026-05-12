@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -308,7 +308,7 @@
         }
 
         .service-features li::before {
-            content: '→';
+            content: 'â†’';
             position: absolute;
             left: 0;
             font-weight: 700;
@@ -546,14 +546,178 @@
 
         
        
-    </style>
+    
+/* === MOBILE RESPONSIVE PATCH v1 === */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { overflow-x: hidden; max-width: 100%; }
+img, video, iframe { max-width: 100%; height: auto; }
+p, li, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; word-wrap: break-word; }
+
+/* Tablets and below */
+@media (max-width: 1024px) {
+  .nav-links { gap: 1.2rem; }
+  .services-grid, .portfolio-grid, .projects-grid, .testimonials-grid,
+  .inspiration-grid, .values-grid, .stats-grid, .trust-grid, .info-cards {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .footer-content { grid-template-columns: repeat(2, 1fr) !important; }
+}
+
+/* Tablets / large phones */
+@media (max-width: 768px) {
+  /* Navigation: hamburger */
+  .nav-toggle { display: flex !important; }
+  .nav-links {
+    position: fixed;
+    top: 70px;
+    right: 0;
+    left: 0;
+    flex-direction: column;
+    background: rgba(15, 15, 15, 0.97);
+    padding: 1.5rem;
+    gap: 1rem;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    z-index: 999;
+    max-height: calc(100vh - 70px);
+    overflow-y: auto;
+  }
+  .nav-links.active, .nav-links.open, .nav-links.show {
+    transform: translateX(0);
+  }
+  .nav-links a { font-size: 0.95rem; }
+  .nav-logo img { height: 42px !important; max-height: 42px; width: auto; }
+  .nav-cta { display: none; }
+
+  /* Hero */
+  .hero, .hero-3d { min-height: auto; padding: 6rem 1rem 3rem !important; }
+  .hero-content, .hero-content-3d { padding: 0 1rem; }
+  .hero h1, .hero-content h1, .hero-content-3d h1 {
+    font-size: clamp(2rem, 6vw, 3.5rem) !important;
+    line-height: 1.15;
+  }
+  .hero p, .hero-content p, .hero-tagline, .hero-desc {
+    font-size: 1rem !important;
+  }
+  .hero-trust, .trust-strip, .scroll-indicator { display: none !important; }
+
+  /* Generic sections */
+  section { padding-left: 1.5rem !important; padding-right: 1.5rem !important; }
+
+  /* Grids â†’ 1 col */
+  .services-grid, .portfolio-grid, .projects-grid, .testimonials-grid,
+  .testimonials-slider, .values-grid, .info-cards, .services-layout,
+  .services-showcase, .services-container, .trust-grid, .trust-points {
+    grid-template-columns: 1fr !important;
+    display: grid !important;
+  }
+
+  /* Service blocks (image + text) stack */
+  .service-block, .services-layout, .trust { 
+    flex-direction: column !important;
+    grid-template-columns: 1fr !important;
+  }
+  .service-visual, .service-content, .service-image, .service-info,
+  .trust-image, .trust-text { width: 100% !important; max-width: 100%; }
+
+  /* Cards */
+  .service-card, .portfolio-item, .project-card, .testimonial-card,
+  .inspiration-card, .info-card, .stat-item, .value-card, .team-card {
+    max-width: 100%; width: 100%;
+  }
+
+  /* CTA stacks */
+  .cta-buttons, .hero-ctas, .cta-content { 
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+  .cta-btn, .cta-button, .hero-ctas a, .cta-buttons a { 
+    width: 100%; text-align: center; max-width: 100%;
+  }
+  .cta-section, .cta-3d { padding: 3rem 1.5rem !important; }
+  .cta-content h2, .cta-section h2 { font-size: clamp(1.6rem, 5vw, 2.4rem) !important; }
+
+  /* Footer */
+  .footer-content { 
+    grid-template-columns: 1fr 1fr !important;
+    gap: 2rem !important;
+    text-align: left;
+  }
+
+  /* Forms */
+  .form-row { flex-direction: column !important; gap: 1rem; }
+  .form-group, input, textarea, select, button { max-width: 100%; box-sizing: border-box; }
+  input, textarea, select { font-size: 16px !important; /* prevent iOS zoom */ }
+
+  /* Filters */
+  .filter-buttons, .filter-tabs { 
+    flex-wrap: wrap !important;
+    gap: 0.5rem !important;
+    justify-content: center;
+  }
+  .filter-btn { font-size: 0.85rem !important; padding: 0.5rem 0.9rem !important; }
+
+  /* Stats */
+  .stats-grid, .stats-container { grid-template-columns: repeat(2, 1fr) !important; gap: 1rem; }
+
+  /* Section headings */
+  h2 { font-size: clamp(1.6rem, 5vw, 2.4rem) !important; }
+  h3 { font-size: clamp(1.2rem, 4vw, 1.6rem) !important; }
+
+  /* iframes / embeds */
+  iframe { width: 100% !important; height: 60vh; min-height: 320px; }
+}
+
+/* Small phones */
+@media (max-width: 640px) {
+  section { padding-left: 1rem !important; padding-right: 1rem !important; }
+  .hero, .hero-3d { padding: 5rem 1rem 2.5rem !important; }
+  .hero h1, .hero-content h1, .hero-content-3d h1 {
+    font-size: clamp(1.9rem, 7vw, 2.6rem) !important;
+  }
+  .services-grid, .portfolio-grid, .projects-grid, .testimonials-grid,
+  .inspiration-grid, .values-grid, .info-cards, .trust-grid,
+  .stats-grid, .stats-container {
+    grid-template-columns: 1fr !important;
+  }
+  body, p, li { font-size: 0.95rem; }
+  .footer-content { 
+    grid-template-columns: 1fr !important;
+    text-align: center;
+  }
+  .footer-section { text-align: center; }
+  .footer-section img, .footer-bottom img { margin-left: auto; margin-right: auto; }
+}
+
+/* Very small phones */
+@media (max-width: 480px) {
+  section { padding-left: 1rem !important; padding-right: 1rem !important; }
+  .hero h1, .hero-content h1, .hero-content-3d h1 {
+    font-size: clamp(1.8rem, 8vw, 2.3rem) !important;
+  }
+  .nav-logo img { height: 38px !important; }
+  .hero-trust, .trust-strip, .trust-divider, .scroll-indicator { display: none !important; }
+  h2 { font-size: 1.5rem !important; }
+}
+/* === END MOBILE RESPONSIVE PATCH v1 === */
+/* Page-specific: services */
+@media (max-width: 768px) {
+  .service-block { 
+    flex-direction: column !important;
+    display: flex !important;
+  }
+  .service-block.reverse { flex-direction: column !important; }
+  .service-visual, .service-content { width: 100% !important; padding: 1.5rem !important; }
+  .service-content h2, .service-content h3 { font-size: clamp(1.5rem, 5vw, 2rem) !important; }
+}
+</style>
 </head>
 <body>
     
     <!-- ================= NAVBAR ================= -->
     <nav>
         <div class="logo">LAPHIC <span>MODERN</span></div>
-        <div class="menu-toggle" id="menuToggle">☰</div>
+        <div class="menu-toggle" id="menuToggle">â˜°</div>
 
      <ul class="nav-links" id="navLinks">
          <li><a href="laphic-website.html" class="nav-link">HOME</a></li>
@@ -658,7 +822,7 @@
                         <li>Premium Exterior Painting</li>
                         <li>Outdoor Aquarium Features</li>
                         <li>Modern Aluminum Works</li>
-                        <li>Façade Renovation & Design</li>
+                        <li>FaÃ§ade Renovation & Design</li>
                     </ul>
                     <a href="exterior-design.html" class="service-btn">EXPLORE EXTERIOR DESIGN</a>
                 </div>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -795,7 +795,169 @@
                 grid-template-columns: 1fr;
             }
         }
-    </style>
+    
+/* === MOBILE RESPONSIVE PATCH v1 === */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { overflow-x: hidden; max-width: 100%; }
+img, video, iframe { max-width: 100%; height: auto; }
+p, li, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; word-wrap: break-word; }
+
+/* Tablets and below */
+@media (max-width: 1024px) {
+  .nav-links { gap: 1.2rem; }
+  .services-grid, .portfolio-grid, .projects-grid, .testimonials-grid,
+  .inspiration-grid, .values-grid, .stats-grid, .trust-grid, .info-cards {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .footer-content { grid-template-columns: repeat(2, 1fr) !important; }
+}
+
+/* Tablets / large phones */
+@media (max-width: 768px) {
+  /* Navigation: hamburger */
+  .nav-toggle { display: flex !important; }
+  .nav-links {
+    position: fixed;
+    top: 70px;
+    right: 0;
+    left: 0;
+    flex-direction: column;
+    background: rgba(15, 15, 15, 0.97);
+    padding: 1.5rem;
+    gap: 1rem;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    z-index: 999;
+    max-height: calc(100vh - 70px);
+    overflow-y: auto;
+  }
+  .nav-links.active, .nav-links.open, .nav-links.show {
+    transform: translateX(0);
+  }
+  .nav-links a { font-size: 0.95rem; }
+  .nav-logo img { height: 42px !important; max-height: 42px; width: auto; }
+  .nav-cta { display: none; }
+
+  /* Hero */
+  .hero, .hero-3d { min-height: auto; padding: 6rem 1rem 3rem !important; }
+  .hero-content, .hero-content-3d { padding: 0 1rem; }
+  .hero h1, .hero-content h1, .hero-content-3d h1 {
+    font-size: clamp(2rem, 6vw, 3.5rem) !important;
+    line-height: 1.15;
+  }
+  .hero p, .hero-content p, .hero-tagline, .hero-desc {
+    font-size: 1rem !important;
+  }
+  .hero-trust, .trust-strip, .scroll-indicator { display: none !important; }
+
+  /* Generic sections */
+  section { padding-left: 1.5rem !important; padding-right: 1.5rem !important; }
+
+  /* Grids â†’ 1 col */
+  .services-grid, .portfolio-grid, .projects-grid, .testimonials-grid,
+  .testimonials-slider, .values-grid, .info-cards, .services-layout,
+  .services-showcase, .services-container, .trust-grid, .trust-points {
+    grid-template-columns: 1fr !important;
+    display: grid !important;
+  }
+
+  /* Service blocks (image + text) stack */
+  .service-block, .services-layout, .trust { 
+    flex-direction: column !important;
+    grid-template-columns: 1fr !important;
+  }
+  .service-visual, .service-content, .service-image, .service-info,
+  .trust-image, .trust-text { width: 100% !important; max-width: 100%; }
+
+  /* Cards */
+  .service-card, .portfolio-item, .project-card, .testimonial-card,
+  .inspiration-card, .info-card, .stat-item, .value-card, .team-card {
+    max-width: 100%; width: 100%;
+  }
+
+  /* CTA stacks */
+  .cta-buttons, .hero-ctas, .cta-content { 
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+  .cta-btn, .cta-button, .hero-ctas a, .cta-buttons a { 
+    width: 100%; text-align: center; max-width: 100%;
+  }
+  .cta-section, .cta-3d { padding: 3rem 1.5rem !important; }
+  .cta-content h2, .cta-section h2 { font-size: clamp(1.6rem, 5vw, 2.4rem) !important; }
+
+  /* Footer */
+  .footer-content { 
+    grid-template-columns: 1fr 1fr !important;
+    gap: 2rem !important;
+    text-align: left;
+  }
+
+  /* Forms */
+  .form-row { flex-direction: column !important; gap: 1rem; }
+  .form-group, input, textarea, select, button { max-width: 100%; box-sizing: border-box; }
+  input, textarea, select { font-size: 16px !important; /* prevent iOS zoom */ }
+
+  /* Filters */
+  .filter-buttons, .filter-tabs { 
+    flex-wrap: wrap !important;
+    gap: 0.5rem !important;
+    justify-content: center;
+  }
+  .filter-btn { font-size: 0.85rem !important; padding: 0.5rem 0.9rem !important; }
+
+  /* Stats */
+  .stats-grid, .stats-container { grid-template-columns: repeat(2, 1fr) !important; gap: 1rem; }
+
+  /* Section headings */
+  h2 { font-size: clamp(1.6rem, 5vw, 2.4rem) !important; }
+  h3 { font-size: clamp(1.2rem, 4vw, 1.6rem) !important; }
+
+  /* iframes / embeds */
+  iframe { width: 100% !important; height: 60vh; min-height: 320px; }
+}
+
+/* Small phones */
+@media (max-width: 640px) {
+  section { padding-left: 1rem !important; padding-right: 1rem !important; }
+  .hero, .hero-3d { padding: 5rem 1rem 2.5rem !important; }
+  .hero h1, .hero-content h1, .hero-content-3d h1 {
+    font-size: clamp(1.9rem, 7vw, 2.6rem) !important;
+  }
+  .services-grid, .portfolio-grid, .projects-grid, .testimonials-grid,
+  .inspiration-grid, .values-grid, .info-cards, .trust-grid,
+  .stats-grid, .stats-container {
+    grid-template-columns: 1fr !important;
+  }
+  body, p, li { font-size: 0.95rem; }
+  .footer-content { 
+    grid-template-columns: 1fr !important;
+    text-align: center;
+  }
+  .footer-section { text-align: center; }
+  .footer-section img, .footer-bottom img { margin-left: auto; margin-right: auto; }
+}
+
+/* Very small phones */
+@media (max-width: 480px) {
+  section { padding-left: 1rem !important; padding-right: 1rem !important; }
+  .hero h1, .hero-content h1, .hero-content-3d h1 {
+    font-size: clamp(1.8rem, 8vw, 2.3rem) !important;
+  }
+  .nav-logo img { height: 38px !important; }
+  .hero-trust, .trust-strip, .trust-divider, .scroll-indicator { display: none !important; }
+  h2 { font-size: 1.5rem !important; }
+}
+/* === END MOBILE RESPONSIVE PATCH v1 === */
+/* Page-specific: laphic-website */
+@media (max-width: 768px) {
+  .testimonials-grid { grid-template-columns: 1fr !important; }
+  .portfolio-grid { grid-template-columns: 1fr !important; }
+}
+@media (max-width: 480px) {
+  .hero-trust, .trust-divider, .trust-item { display: none !important; }
+}
+</style>
 </head>
 <body>
     <!-- Navigation -->
@@ -835,19 +997,19 @@
         
         <div class="services-grid">
             <div class="service-card">
-                <div class="service-icon">🏠</div>
+                <div class="service-icon">ðŸ </div>
                 <h3>Interior Design</h3>
                 <p>Expert gypsum work, painting, aquariums, curtains, blinds, and custom furniture design that transforms your indoor spaces.</p>
             </div>
             
             <div class="service-card">
-                <div class="service-icon">🏗️</div>
+                <div class="service-icon">ðŸ—ï¸</div>
                 <h3>Exterior Design</h3>
                 <p>Professional construction, exterior painting, outdoor aquariums, and aluminum works that enhance your property's curb appeal.</p>
             </div>
             
             <div class="service-card">
-                <div class="service-icon">🌳</div>
+                <div class="service-icon">ðŸŒ³</div>
                 <h3>Landscape Design</h3>
                 <p>Beautiful tiles & terrazzo, compound designing, and house architecture that seamlessly blend with nature.</p>
             </div>
@@ -958,7 +1120,7 @@
         
         <div class="testimonials-slider">
             <div class="testimonial">
-                <div class="stars">★★★★★</div>
+                <div class="stars">â˜…â˜…â˜…â˜…â˜…</div>
                 <p class="testimonial-text">"LAPHIC Modern Homes transformed our house into a dream home. Their attention to detail and professional approach exceeded all our expectations. Highly recommended!"</p>
                 <div class="testimonial-author">Sarah Nakato</div>
                 <div class="testimonial-role">Homeowner | Kampala</div>
@@ -974,7 +1136,7 @@
         <div class="contact-content">
             <div class="contact-info">
                 <div class="contact-item">
-                    <div class="contact-icon">📍</div>
+                    <div class="contact-icon">ðŸ“</div>
                     <div>
                         <h4>Location</h4>
                         <p>Kampala, Central Region<br>Uganda</p>
@@ -982,7 +1144,7 @@
                 </div>
                 
                 <div class="contact-item">
-                    <div class="contact-icon">📞</div>
+                    <div class="contact-icon">ðŸ“ž</div>
                     <div>
                         <h4>Phone</h4>
                         <p>+256 780535307/0702620878</p>
@@ -990,7 +1152,7 @@
                 </div>
                 
                 <div class="contact-item">
-                    <div class="contact-icon">✉️</div>
+                    <div class="contact-icon">âœ‰ï¸</div>
                     <div>
                         <h4>Email</h4>
                         <p>laphicmodernhomes@gmail.com</p>
@@ -998,7 +1160,7 @@
                 </div>
                 
                 <div class="contact-item">
-                    <div class="contact-icon">💬</div>
+                    <div class="contact-icon">ðŸ’¬</div>
                     <div>
                         <h4>WhatsApp</h4>
                         <p>Chat with us instantly</p>
@@ -1043,9 +1205,9 @@
                 <p style="color: rgba(255, 255, 255, 0.7); line-height: 1.8;">Transforming dreams into reality through exceptional design and construction. Your trusted partner in creating beautiful spaces.</p>
                 <div class="social-links" style="margin-top: 1.5rem;">
                     <a href="#" class="social-link">f</a>
-                    <a href="#" class="social-link">📷</a>
+                    <a href="#" class="social-link">ðŸ“·</a>
                     <a href="#" class="social-link">in</a>
-                    <a href="#" class="social-link">💬</a>
+                    <a href="#" class="social-link">ðŸ’¬</a>
                 </div>
             </div>
             
