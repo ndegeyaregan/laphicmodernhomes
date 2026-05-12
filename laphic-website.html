@@ -1005,14 +1005,100 @@ p, li, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; word-wrap: break-word
 @media(max-width:900px) { .footer-content { grid-template-columns:1fr 1fr !important; gap:2rem !important; } }
 @media(max-width:480px) { .footer-content { grid-template-columns:1fr !important; } }
 /* === END UNIFIED NAV + FOOTER === */
-/* Page-specific: laphic-website */
-@media (max-width: 768px) {
-  .testimonials-grid { grid-template-columns: 1fr !important; }
-  .portfolio-grid { grid-template-columns: 1fr !important; }
-}
-@media (max-width: 480px) {
-  .hero-trust, .trust-divider, .trust-item { display: none !important; }
-}
+/* === HOMEPAGE REDESIGN CSS === */
+body { font-family:'Inter',sans-serif; }
+/* Hero */
+.hero { position:relative; height:100vh; min-height:600px; overflow:hidden; display:flex; align-items:center; justify-content:center; margin-top:0; background:none !important; }
+.hero-bg { display:none; }
+.hero-slides { position:absolute; inset:0; }
+.hero-slide { position:absolute; inset:0; background-size:cover; background-position:center; opacity:0; animation:heroFade 30s infinite; transform:scale(1.05); }
+.hero-slide:nth-child(1) { background-image:url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1920&q=80&auto=format&fit=crop'); animation-delay:0s; }
+.hero-slide:nth-child(2) { background-image:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&q=80&auto=format&fit=crop'); animation-delay:6s; }
+.hero-slide:nth-child(3) { background-image:url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1920&q=80&auto=format&fit=crop'); animation-delay:12s; }
+@keyframes heroFade { 0%{opacity:0;transform:scale(1.05)} 5%{opacity:1} 28%{opacity:1;transform:scale(1.12)} 33%{opacity:0;transform:scale(1.12)} 100%{opacity:0;transform:scale(1.05)} }
+@media(prefers-reduced-motion:reduce){ .hero-slide{animation:none !important;opacity:0} .hero-slide:first-child{opacity:1;transform:scale(1)} }
+.hero-overlay { position:absolute; inset:0; background:linear-gradient(180deg,rgba(0,0,0,.25) 0%,rgba(13,13,18,.55) 50%,rgba(13,13,18,.75) 100%); z-index:1; }
+.hero-vignette { position:absolute; inset:0; background:radial-gradient(ellipse at center,transparent 40%,rgba(0,0,0,.5) 100%); z-index:1; }
+.hero-content { position:relative; z-index:2; text-align:center; color:#fff; max-width:900px; padding:0 2rem; }
+.hero-eyebrow { display:inline-block; font-family:'Bebas Neue',cursive; font-size:.95rem; letter-spacing:6px; color:var(--gold); margin-bottom:1.5rem; animation:fadeInUp 1s ease-out .2s both; }
+.hero-subhead { font-family:'Playfair Display',serif; font-size:clamp(1.2rem,2.5vw,1.8rem); font-weight:400; letter-spacing:2px; color:rgba(255,255,255,.85); margin-bottom:3rem; animation:fadeInUp 1s ease-out .5s both; }
+.hero-ctas { display:flex; gap:1.5rem; justify-content:center; flex-wrap:wrap; animation:fadeInUp 1s ease-out .8s both; }
+.hero-btn { display:inline-block; padding:.9rem 2.4rem; font-family:'Inter',sans-serif; font-size:.82rem; font-weight:600; letter-spacing:2px; text-transform:uppercase; text-decoration:none; border-radius:50px; transition:all .3s ease; }
+.hero-btn-primary { background:var(--gold); color:#0d0d12; }
+.hero-btn-primary:hover { background:#e6c068; box-shadow:0 0 30px rgba(212,175,55,.5); transform:translateY(-3px); }
+.hero-btn-secondary { background:transparent; color:#fff; border:1.5px solid rgba(255,255,255,.6); }
+.hero-btn-secondary:hover { background:rgba(255,255,255,.1); border-color:#fff; transform:translateY(-3px); }
+.hero-bottom-fade { position:absolute; bottom:0; left:0; right:0; height:120px; background:linear-gradient(to top,#fff,transparent); z-index:2; }
+@keyframes fadeInUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+/* Services */
+.hp-services { padding:8rem 5%; background:#fff; }
+.hp-section-label { font-family:'Bebas Neue',cursive; font-size:.85rem; letter-spacing:5px; color:var(--gold); text-transform:uppercase; margin-bottom:.8rem; }
+.hp-section-title { font-family:'Playfair Display',serif; font-size:clamp(2rem,4vw,3rem); color:#0d0d12; margin-bottom:1rem; }
+.hp-section-sub { font-size:1rem; color:#666; max-width:500px; line-height:1.7; margin-bottom:4rem; }
+.hp-section-header { max-width:1400px; margin:0 auto 4rem; }
+.hp-services-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1.5rem; max-width:1400px; margin:0 auto; }
+.hp-service-card { position:relative; overflow:hidden; height:420px; cursor:pointer; }
+.hp-service-card::before { content:''; position:absolute; inset:0; background:linear-gradient(180deg,transparent 40%,rgba(13,13,18,.9) 100%); z-index:1; transition:background .5s; }
+.hp-service-card:hover::before { background:linear-gradient(180deg,rgba(212,175,55,.1) 0%,rgba(13,13,18,.95) 100%); }
+.hp-service-img { width:100%; height:100%; object-fit:cover; transition:transform .7s cubic-bezier(.4,0,.2,1); }
+.hp-service-card:hover .hp-service-img { transform:scale(1.08); }
+.hp-service-info { position:absolute; bottom:0; left:0; right:0; padding:2rem; z-index:2; }
+.hp-service-accent { width:32px; height:2px; background:var(--gold); margin-bottom:.8rem; transition:width .4s; }
+.hp-service-card:hover .hp-service-accent { width:56px; }
+.hp-service-info h3 { font-family:'Bebas Neue',cursive; font-size:1.6rem; letter-spacing:2px; color:#fff; margin-bottom:.4rem; }
+.hp-service-info p { font-size:.85rem; color:rgba(255,255,255,.7); line-height:1.5; max-height:0; overflow:hidden; transition:max-height .4s,opacity .4s; opacity:0; }
+.hp-service-card:hover .hp-service-info p { max-height:60px; opacity:1; }
+@media(max-width:1024px){ .hp-services-grid { grid-template-columns:repeat(2,1fr); } }
+@media(max-width:640px){ .hp-services-grid { grid-template-columns:1fr; } .hp-service-card{height:300px;} }
+/* Stats */
+.hp-stats { padding:6rem 5%; background:#0d0d12; }
+.hp-stats-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:2rem; max-width:1000px; margin:0 auto; text-align:center; }
+.hp-stat { padding:2rem 1rem; }
+.hp-stat-num { font-family:'Bebas Neue',cursive; font-size:4rem; color:var(--gold); line-height:1; display:block; }
+.hp-stat-label { font-size:.85rem; letter-spacing:2px; color:rgba(255,255,255,.6); text-transform:uppercase; margin-top:.5rem; }
+@media(max-width:768px){ .hp-stats-grid{grid-template-columns:repeat(2,1fr);} }
+/* Portfolio */
+.hp-portfolio { padding:8rem 5%; background:#f5f0e8; }
+.hp-portfolio-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; max-width:1400px; margin:0 auto; }
+.hp-portfolio-item { position:relative; overflow:hidden; cursor:pointer; }
+.hp-portfolio-item:nth-child(1){grid-column:span 2;height:420px}
+.hp-portfolio-item:nth-child(2){height:420px}
+.hp-portfolio-item:nth-child(3){height:340px}
+.hp-portfolio-item:nth-child(4){height:340px}
+.hp-portfolio-item:nth-child(5){height:340px;grid-column:span 2}
+.hp-portfolio-item:nth-child(6){height:340px}
+.hp-portfolio-img { width:100%; height:100%; object-fit:cover; transition:transform .7s ease; }
+.hp-portfolio-item:hover .hp-portfolio-img { transform:scale(1.06); }
+.hp-portfolio-overlay { position:absolute; inset:0; background:linear-gradient(180deg,transparent 50%,rgba(13,13,18,.88) 100%); display:flex; flex-direction:column; justify-content:flex-end; padding:1.5rem; opacity:0; transition:opacity .4s; }
+.hp-portfolio-item:hover .hp-portfolio-overlay { opacity:1; }
+.hp-portfolio-overlay h3 { font-family:'Bebas Neue',cursive; font-size:1.4rem; color:#fff; letter-spacing:1px; }
+.hp-portfolio-overlay p { font-size:.8rem; color:var(--gold); letter-spacing:1px; }
+@media(max-width:768px){ .hp-portfolio-grid{grid-template-columns:1fr 1fr} .hp-portfolio-item:nth-child(1){grid-column:span 2;height:260px} .hp-portfolio-item:nth-child(5){grid-column:span 2} .hp-portfolio-item:nth-child(n){height:200px} }
+@media(max-width:480px){ .hp-portfolio-grid{grid-template-columns:1fr} .hp-portfolio-item:nth-child(n){grid-column:span 1;height:240px} }
+/* Testimonials */
+.hp-testimonials { padding:8rem 5%; background:#fff; }
+.hp-testimonials-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; max-width:1200px; margin:0 auto; }
+.hp-tcard { background:rgba(13,13,18,.04); border:1px solid rgba(212,175,55,.15); padding:2.5rem; transition:transform .3s,box-shadow .3s; }
+.hp-tcard:hover { transform:translateY(-6px); box-shadow:0 20px 50px rgba(0,0,0,.1),0 0 0 1px rgba(212,175,55,.2); }
+.hp-tcard-stars { color:var(--gold); font-size:1rem; margin-bottom:1.2rem; letter-spacing:2px; }
+.hp-tcard-text { font-family:'Playfair Display',serif; font-size:1rem; line-height:1.8; color:#333; margin-bottom:1.5rem; font-style:italic; }
+.hp-tcard-author { font-weight:600; font-size:.9rem; color:#0d0d12; }
+.hp-tcard-role { font-size:.8rem; color:#999; margin-top:.2rem; }
+@media(max-width:768px){ .hp-testimonials-grid{grid-template-columns:1fr;} }
+/* CTA */
+.hp-cta { padding:6rem 5%; background:linear-gradient(135deg,#c9a050 0%,#d4af37 50%,#e6c068 100%); text-align:center; }
+.hp-cta h2 { font-family:'Bebas Neue',cursive; font-size:clamp(2.5rem,5vw,4rem); letter-spacing:4px; color:#0d0d12; margin-bottom:1rem; }
+.hp-cta p { font-size:1.1rem; color:rgba(13,13,18,.75); max-width:500px; margin:0 auto 2.5rem; line-height:1.6; }
+.hp-cta-btn { display:inline-block; padding:1rem 2.8rem; background:#0d0d12; color:#fff; text-decoration:none; font-family:'Inter',sans-serif; font-size:.82rem; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; border-radius:50px; transition:all .3s; }
+.hp-cta-btn:hover { background:#1a1a2e; transform:translateY(-3px); box-shadow:0 10px 30px rgba(13,13,18,.3); }
+/* Fade-up */
+.fade-up { opacity:0; transform:translateY(40px); transition:opacity .7s ease,transform .7s ease; }
+.fade-up.visible { opacity:1; transform:translateY(0); }
+@media(prefers-reduced-motion:reduce){ .fade-up{opacity:1 !important;transform:none !important;transition:none !important} }
+/* Hide superseded old sections (compatibility) */
+.hp-services > h2,.hp-services > p,.hp-services > .services-grid { display:none !important; }
+section.portfolio:not(.hp-portfolio),section.testimonials:not(.hp-testimonials),section.contact { display:none !important; }
+/* === END HOMEPAGE REDESIGN CSS === */
 </style>
 </head>
 <body>
@@ -1036,25 +1122,28 @@ p, li, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; word-wrap: break-word
         </button>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Cinematic Hero -->
     <section id="home" class="hero">
-        <div class="hero-bg"></div>
+        <div class="hero-slides">
+            <div class="hero-slide"></div>
+            <div class="hero-slide"></div>
+            <div class="hero-slide"></div>
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-vignette"></div>
         <div class="hero-content">
-            <h1>
-                CREATING SPACES
-                <span>THAT INSPIRE</span>
-            </h1>
-            <p>Think it, we create it. Transforming visions into extraordinary living experiences.</p>
-            <div class="cta-buttons">
-                <a href="#contact" class="btn btn-primary">REQUEST A QUOTE</a>
-                <a href="#portfolio" class="btn btn-secondary">VIEW OUR WORK</a>
+            <span class="hero-eyebrow">LAPHIC MODERN HOMES</span>
+            <p class="hero-subhead">Architecture &middot; Interiors &middot; Construction</p>
+            <div class="hero-ctas">
+                <a href="projects.html" class="hero-btn hero-btn-primary">Explore Projects</a>
+                <a href="contact.html" class="hero-btn hero-btn-secondary">Get In Touch</a>
             </div>
         </div>
-        <div class="scroll-indicator"></div>
+        <div class="hero-bottom-fade"></div>
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="services">
+    <section id="services" class="hp-services">
         <h2 class="section-title">OUR SERVICES</h2>
         <p class="section-subtitle">Comprehensive design solutions tailored to your vision</p>
         
@@ -1077,41 +1166,155 @@ p, li, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; word-wrap: break-word
                 <p>Beautiful tiles & terrazzo, compound designing, and house architecture that seamlessly blend with nature.</p>
             </div>
         </div>
+
+        <div class="hp-section-header fade-up">
+            <div class="hp-section-label">What We Do</div>
+            <h2 class="hp-section-title">Our Services</h2>
+            <p class="hp-section-sub">End-to-end design and construction — from concept to completion, crafted with precision.</p>
+        </div>
+        <div class="hp-services-grid">
+            <a href="interior-design.html" class="hp-service-card fade-up">
+                <img class="hp-service-img" src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777647089/interior_xfvroj.jpg" alt="Interior Design" loading="lazy">
+                <div class="hp-service-info">
+                    <div class="hp-service-accent"></div>
+                    <h3>Interior Design</h3>
+                    <p>Gypsum, painting, curtains, furniture &amp; aquariums.</p>
+                </div>
+            </a>
+            <a href="exterior-design.html" class="hp-service-card fade-up">
+                <img class="hp-service-img" src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777646941/exterior2_svgchj.jpg" alt="Exterior Design" loading="lazy">
+                <div class="hp-service-info">
+                    <div class="hp-service-accent"></div>
+                    <h3>Exterior Design</h3>
+                    <p>Facades, painting, aluminum works &amp; outdoor features.</p>
+                </div>
+            </a>
+            <a href="landscape-design.html" class="hp-service-card fade-up">
+                <img class="hp-service-img" src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777647195/landscape_x1zecv.jpg" alt="Landscape Design" loading="lazy">
+                <div class="hp-service-info">
+                    <div class="hp-service-accent"></div>
+                    <h3>Landscape Design</h3>
+                    <p>Tiles, terrazzo, compound design &amp; garden spaces.</p>
+                </div>
+            </a>
+            <a href="services.html" class="hp-service-card fade-up">
+                <img class="hp-service-img" src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777647290/office_design_lli7hh.jpg" alt="Construction" loading="lazy">
+                <div class="hp-service-info">
+                    <div class="hp-service-accent"></div>
+                    <h3>Construction</h3>
+                    <p>Full-build construction from foundation to finish.</p>
+                </div>
+            </a>
+        </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="about-content">
-            <div class="about-text slide-in-left">
-                <h2 class="section-title" style="text-align: left; transform: none; left: 0;">WHO WE ARE</h2>
-                <h3>Building Trust Through Excellence</h3>
-                <p>LAPHIC Modern Homes is Uganda's premier design and construction company, dedicated to transforming your dreams into reality. With years of experience and a passion for innovation, we bring together expert craftsmanship and cutting-edge design.</p>
-                <p>Our mission is simple: to create living spaces that not only meet but exceed your expectations. We believe in the power of thoughtful design, quality materials, and meticulous attention to detail.</p>
-                
-                <div class="about-stats">
-                    <div class="stat-item">
-                        <div class="stat-number">500+</div>
-                        <div class="stat-label">Projects Completed</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">15+</div>
-                        <div class="stat-label">Years Experience</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">98%</div>
-                        <div class="stat-label">Client Satisfaction</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">50+</div>
-                        <div class="stat-label">Expert Team</div>
-                    </div>
-                </div>
+    <!-- Stats Strip -->
+    <section class="hp-stats">
+        <div class="hp-stats-grid">
+            <div class="hp-stat fade-up">
+                <span class="hp-stat-num" data-target="50" data-suffix="+">0</span>
+                <span class="hp-stat-label">Projects Completed</span>
             </div>
-            
-            <div class="about-image slide-in-right">
-                <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777646941/exterior2_svgchj.jpg" alt="Luxury Villa">
+            <div class="hp-stat fade-up">
+                <span class="hp-stat-num" data-target="12" data-suffix="+">0</span>
+                <span class="hp-stat-label">Years Experience</span>
+            </div>
+            <div class="hp-stat fade-up">
+                <span class="hp-stat-num" data-target="100" data-suffix="+">0</span>
+                <span class="hp-stat-label">Happy Clients</span>
+            </div>
+            <div class="hp-stat fade-up">
+                <span class="hp-stat-num" data-target="5" data-suffix="&#9733;">0</span>
+                <span class="hp-stat-label">Star Rating</span>
             </div>
         </div>
+    </section>
+
+    <!-- Portfolio Masonry -->
+    <section id="portfolio" class="hp-portfolio">
+        <div class="hp-section-header fade-up" style="text-align:center;max-width:1400px;margin:0 auto 3rem;">
+            <div class="hp-section-label">Our Work</div>
+            <h2 class="hp-section-title">Featured Projects</h2>
+        </div>
+        <div class="hp-portfolio-grid">
+            <div class="hp-portfolio-item fade-up">
+                <img class="hp-portfolio-img" src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777647089/interior_xfvroj.jpg" alt="Luxury Villa Interior" loading="lazy">
+                <div class="hp-portfolio-overlay">
+                    <h3>Luxury Villa</h3>
+                    <p>Interior Design &middot; Kampala</p>
+                </div>
+            </div>
+            <div class="hp-portfolio-item fade-up">
+                <img class="hp-portfolio-img" src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777646329/compound1_qztyaa.jpg" alt="Modern Compound" loading="lazy">
+                <div class="hp-portfolio-overlay">
+                    <h3>Modern Compound</h3>
+                    <p>Landscape &middot; Entebbe</p>
+                </div>
+            </div>
+            <div class="hp-portfolio-item fade-up">
+                <img class="hp-portfolio-img" src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777647339/ontemporary_Home_nkksuw.jpg" alt="Contemporary Home" loading="lazy">
+                <div class="hp-portfolio-overlay">
+                    <h3>Contemporary Home</h3>
+                    <p>Full Construction &middot; Jinja</p>
+                </div>
+            </div>
+            <div class="hp-portfolio-item fade-up">
+                <img class="hp-portfolio-img" src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777647290/office_design_lli7hh.jpg" alt="Office Renovation" loading="lazy">
+                <div class="hp-portfolio-overlay">
+                    <h3>Office Renovation</h3>
+                    <p>Interior Design &middot; Kampala</p>
+                </div>
+            </div>
+            <div class="hp-portfolio-item fade-up">
+                <img class="hp-portfolio-img" src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777647026/gazebo_xfwfnb.jpg" alt="Garden Paradise" loading="lazy">
+                <div class="hp-portfolio-overlay">
+                    <h3>Garden Paradise</h3>
+                    <p>Landscape &middot; Mbarara</p>
+                </div>
+            </div>
+            <div class="hp-portfolio-item fade-up">
+                <img class="hp-portfolio-img" src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777647249/minimalistjpeg_dtyceo.jpg" alt="Minimalist Residence" loading="lazy">
+                <div class="hp-portfolio-overlay">
+                    <h3>Minimalist Residence</h3>
+                    <p>Full Design &middot; Kampala</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="hp-testimonials">
+        <div class="hp-section-header fade-up" style="text-align:center;max-width:1400px;margin:0 auto 4rem;">
+            <div class="hp-section-label">What Clients Say</div>
+            <h2 class="hp-section-title">Testimonials</h2>
+        </div>
+        <div class="hp-testimonials-grid">
+            <div class="hp-tcard fade-up">
+                <div class="hp-tcard-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <p class="hp-tcard-text">"LAPHIC Modern Homes transformed our house into a dream home. Their attention to detail and professional approach exceeded all our expectations."</p>
+                <div class="hp-tcard-author">Sarah Nakato</div>
+                <div class="hp-tcard-role">Homeowner &middot; Kampala</div>
+            </div>
+            <div class="hp-tcard fade-up">
+                <div class="hp-tcard-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <p class="hp-tcard-text">"Outstanding craftsmanship and timely delivery. The team brought our vision to life with incredible precision and creativity."</p>
+                <div class="hp-tcard-author">James Museveni</div>
+                <div class="hp-tcard-role">Property Developer &middot; Entebbe</div>
+            </div>
+            <div class="hp-tcard fade-up">
+                <div class="hp-tcard-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <p class="hp-tcard-text">"From the initial design concept to the final handover, every step was handled with professionalism. Truly world-class work in Uganda."</p>
+                <div class="hp-tcard-author">Grace Auma</div>
+                <div class="hp-tcard-role">Business Owner &middot; Jinja</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="hp-cta fade-up">
+        <h2>READY TO TRANSFORM YOUR SPACE?</h2>
+        <p>Let's build something extraordinary together. Your dream home starts with a conversation.</p>
+        <a href="contact.html" class="hp-cta-btn">Get In Touch</a>
     </section>
 
     <!-- Portfolio Section -->
@@ -1320,50 +1523,40 @@ p, li, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; word-wrap: break-word
     </footer>
 
     <script>
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    /* Homepage JS */
+    (function(){
+        var rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        // Fade-up observer
+        if (!rm) {
+            var fuObs = new IntersectionObserver(function(entries){
+                entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('visible'); fuObs.unobserve(e.target); } });
+            }, {threshold:0.12, rootMargin:'0px 0px -60px 0px'});
+            document.querySelectorAll('.fade-up').forEach(function(el){ fuObs.observe(el); });
+        } else {
+            document.querySelectorAll('.fade-up').forEach(function(el){ el.classList.add('visible'); });
+        }
+        // Stat counter animation
+        var statObs = new IntersectionObserver(function(entries){
+            entries.forEach(function(entry){
+                if(entry.isIntersecting){
+                    var el = entry.target;
+                    var target = parseInt(el.getAttribute('data-target'), 10);
+                    var suffix = el.getAttribute('data-suffix') || '+';
+                    if(rm){ el.textContent = target + suffix; statObs.unobserve(el); return; }
+                    var start = null, duration = 1500;
+                    function step(ts){
+                        if(!start) start = ts;
+                        var p = Math.min((ts - start) / duration, 1);
+                        el.textContent = Math.floor(p * target) + (p < 1 ? '' : suffix);
+                        if(p < 1) requestAnimationFrame(step);
+                    }
+                    requestAnimationFrame(step);
+                    statObs.unobserve(el);
                 }
             });
-        });
-
-        // Scroll animations
-        const observerOptions = {
-            threshold: 0.2,
-            rootMargin: '0px 0px -100px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.service-card, .portfolio-item, .testimonial').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'all 0.6s ease-out';
-            observer.observe(el);
-        });
-
-        // Navbar background on scroll
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 100) {
-                nav.style.background = 'rgba(255, 255, 255, 0.98)';
-                nav.style.boxShadow = '0 2px 30px rgba(0,0,0,0.1)';
-            } else {
-                nav.style.background = 'rgba(255, 255, 255, 0.95)';
-                nav.style.boxShadow = '0 2px 20px rgba(0,0,0,0.05)';
-            }
-        });
+        }, {threshold:0.5});
+        document.querySelectorAll('.hp-stat-num').forEach(function(el){ statObs.observe(el); });
+    })();
     </script>
     <script>
     /* Unified Nav JS */
