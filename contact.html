@@ -877,32 +877,37 @@ p, li, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; word-wrap: break-word
             <!-- Contact Form -->
             <div class="contact-form">
                 <h3>Send Us A Message</h3>
-                <form>
+                <form action="https://formsubmit.co/laphicmodernhomes@gmail.com" method="POST" id="contactForm">
+                    <input type="hidden" name="_subject" value="New message from LAPHIC website">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_next" value="https://laphicmodernhomes.com/contact.html">
+                    <input type="text" name="_honey" style="display:none">
                     <div class="form-row">
                         <div class="form-group">
                             <label>First Name *</label>
-                            <input type="text" required placeholder="mannie">
+                            <input type="text" name="name" required placeholder="mannie">
                         </div>
                         <div class="form-group">
                             <label>Last Name *</label>
-                            <input type="text" required placeholder="baine">
+                            <input type="text" name="last_name" required placeholder="baine">
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group">
                             <label>Email Address *</label>
-                            <input type="email" required placeholder="mannie@gmail.com">
+                            <input type="email" name="email" required placeholder="mannie@gmail.com">
                         </div>
                         <div class="form-group">
                             <label>Phone Number</label>
-                            <input type="tel" placeholder="+256 XXX XXX XXX">
+                            <input type="tel" name="phone" placeholder="+256 XXX XXX XXX">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label>Service Interested In *</label>
-                        <select required>
+                        <select name="subject" required>
                             <option value="">Select a service</option>
                             <option value="interior">Interior Design</option>
                             <option value="exterior">Exterior Design</option>
@@ -919,12 +924,12 @@ p, li, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; word-wrap: break-word
 
                     <div class="form-group">
                         <label>Project Details *</label>
-                        <textarea required placeholder="Tell us about your project, timeline, and any specific requirements..."></textarea>
+                        <textarea name="message" required placeholder="Tell us about your project, timeline, and any specific requirements..."></textarea>
                     </div>
 
                     <div class="form-group">
                         <label>Budget Range</label>
-                        <select>
+                        <select name="budget">
                             <option value="">Select budget range</option>
                             <option value="small">Under 10M UGX</option>
                             <option value="medium">10M - 50M UGX</option>
@@ -934,6 +939,7 @@ p, li, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; word-wrap: break-word
                     </div>
 
                     <button type="submit" class="submit-btn">SEND MESSAGE</button>
+                    <div id="formStatus" style="margin-top:1rem;font-weight:500"></div>
                 </form>
             </div>
         </div>
@@ -1103,27 +1109,51 @@ p, li, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; word-wrap: break-word
     </script>
     
     <script>
-        // Form submission (placeholder)
-        document.querySelector('form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for your message! We will get back to you within 24 hours.');
-            this.reset();
+    /* FormSubmit wiring */
+    (function(){
+      var form = document.getElementById('contactForm');
+      if (!form) return;
+      var status = document.getElementById('formStatus');
+      var submitBtn = form.querySelector('button[type="submit"], input[type="submit"]');
+      var originalBtnText = submitBtn ? (submitBtn.textContent || submitBtn.value) : '';
+
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        if (status) { status.textContent = ''; status.style.color = ''; }
+        if (submitBtn) {
+          if (submitBtn.tagName === 'BUTTON') submitBtn.textContent = 'SENDING...';
+          else submitBtn.value = 'SENDING...';
+          submitBtn.disabled = true;
+        }
+        var data = new FormData(form);
+        fetch(form.action, {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        }).then(function(res){
+          if (res.ok) {
+            if (status) {
+              status.textContent = '✓ Message sent! We\'ll be in touch soon.';
+              status.style.color = '#2ecc71';
+            }
+            form.reset();
+          } else {
+            return res.json().then(function(d){ throw new Error(d.error || 'Submission failed'); });
+          }
+        }).catch(function(err){
+          if (status) {
+            status.textContent = '✗ ' + (err.message || 'Could not send. Please try again or email laphicmodernhomes@gmail.com directly.');
+            status.style.color = '#e74c3c';
+          }
+        }).finally(function(){
+          if (submitBtn) {
+            if (submitBtn.tagName === 'BUTTON') submitBtn.textContent = originalBtnText;
+            else submitBtn.value = originalBtnText;
+            submitBtn.disabled = false;
+          }
         });
-
-        // Scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
+      });
+    })();
     </script>
     <script>
     /* Unified Nav JS */
