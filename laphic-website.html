@@ -1108,6 +1108,575 @@ body { font-family:'Inter',sans-serif; }
 /* Hide superseded old sections (compatibility) */
 .hp-services > h2,.hp-services > p,.hp-services > .services-grid { display:none !important; }
 section.portfolio:not(.hp-portfolio),section.testimonials:not(.hp-testimonials),section.contact { display:none !important; }
+
+/* ═══════════════════════════════════════════════════
+   LX PREMIUM REDESIGN — all new homepage sections
+   ═══════════════════════════════════════════════════ */
+
+/* Shared helpers */
+.lx-eyebrow {
+  display: inline-block;
+  font-family: 'Bebas Neue', cursive;
+  font-size: .78rem;
+  letter-spacing: 5px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: .5rem;
+}
+.lx-eyebrow--light { color: rgba(212,175,55,.75); }
+.lx-eyebrow--gold  { color: var(--gold); }
+/* Stagger for service cards */
+.lx-scard { transition-delay: calc(var(--i, 0) * 90ms); }
+
+/* ── 1  Philosophy ── */
+.lx-philosophy {
+  background: #fff;
+  padding: 8rem 5%;
+  border-top: 1px solid rgba(212,175,55,.28);
+}
+.lx-philosophy-inner {
+  max-width: 1260px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 7rem;
+  align-items: center;
+}
+.lx-philosophy-quote {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.65rem, 2.8vw, 2.65rem);
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.5;
+  color: #0d0d12;
+  quotes: none;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+.lx-philosophy-right { display: flex; flex-direction: column; gap: 1.4rem; }
+.lx-philosophy-right p {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  line-height: 1.85;
+  color: #555;
+}
+
+/* ── 2  Signature Services ── */
+.lx-services {
+  background: #0d0d12;
+  padding: 8rem 5%;
+}
+.lx-section-header { max-width: 1260px; margin: 0 auto 4rem; }
+.lx-section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 3.8vw, 3rem);
+  color: #fff;
+  margin-top: .5rem;
+  line-height: 1.2;
+}
+.lx-section-title--dark { color: #0d0d12; }
+.lx-services-grid {
+  max-width: 1260px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+.lx-scard {
+  position: relative;
+  overflow: hidden;
+  display: block;
+  text-decoration: none;
+  background: #13131e;
+  border: 1px solid rgba(255,255,255,.05);
+  transition: transform .45s cubic-bezier(.4,0,.2,1), box-shadow .45s, border-color .45s;
+}
+.lx-scard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 32px 64px rgba(0,0,0,.65);
+  border-color: rgba(212,175,55,.18);
+}
+.lx-scard-num {
+  position: absolute;
+  top: 1.1rem;
+  right: 1.2rem;
+  font-family: 'Bebas Neue', cursive;
+  font-size: .82rem;
+  letter-spacing: 3px;
+  color: rgba(212,175,55,.6);
+  z-index: 3;
+}
+.lx-scard-img-wrap { height: 240px; overflow: hidden; }
+.lx-scard-img-wrap img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform .75s cubic-bezier(.4,0,.2,1);
+  display: block;
+}
+.lx-scard:hover .lx-scard-img-wrap img { transform: scale(1.09); }
+.lx-scard-body { padding: 1.6rem 1.8rem 2rem; }
+.lx-scard-line {
+  width: 28px; height: 1.5px;
+  background: var(--gold);
+  margin-bottom: 1rem;
+  transition: width .4s ease;
+}
+.lx-scard:hover .lx-scard-line { width: 52px; }
+.lx-scard-body h3 {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 1.45rem;
+  letter-spacing: 2px;
+  color: #fff;
+  margin-bottom: .5rem;
+}
+.lx-scard-body p {
+  font-size: .875rem;
+  color: rgba(255,255,255,.5);
+  line-height: 1.65;
+  margin-bottom: 1.2rem;
+}
+.lx-scard-link {
+  display: inline-block;
+  font-family: 'Inter', sans-serif;
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  transition: letter-spacing .3s, color .3s;
+}
+.lx-scard:hover .lx-scard-link { letter-spacing: 3.5px; color: #e6c068; }
+
+/* ── 3  Stats Strip ── */
+.lx-stats {
+  background: #08080e;
+  padding: 6rem 5%;
+  position: relative;
+  overflow: hidden;
+}
+.lx-stats::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 15% 50%, rgba(212,175,55,.09) 0%, transparent 55%),
+    radial-gradient(ellipse at 85% 50%, rgba(212,175,55,.06) 0%, transparent 55%);
+  pointer-events: none;
+}
+.lx-stats-eyebrow {
+  text-align: center;
+  font-family: 'Bebas Neue', cursive;
+  font-size: .78rem;
+  letter-spacing: 5px;
+  color: rgba(212,175,55,.6);
+  margin-bottom: 3.5rem;
+  position: relative;
+}
+.lx-stats-grid {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  position: relative;
+}
+.lx-stat { position: relative; }
+.lx-stat + .lx-stat::before {
+  content: '';
+  position: absolute;
+  top: 15%; bottom: 15%;
+  left: 0; width: 1px;
+  background: rgba(212,175,55,.18);
+}
+.lx-stat-inner { padding: 2rem; text-align: center; }
+.lx-stat-num {
+  display: block;
+  font-family: 'Bebas Neue', cursive;
+  font-size: clamp(3.2rem, 5.5vw, 4.8rem);
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: .5rem;
+}
+.lx-stat-label {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: .75rem;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.45);
+}
+
+/* ── 4  Featured Projects ── */
+.lx-projects {
+  background: #f5f0e8;
+  padding: 8rem 5%;
+}
+.lx-projects-header { max-width: 1260px; margin: 0 auto 3.5rem; }
+.lx-projects-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.9rem, 3.5vw, 3rem);
+  color: #0d0d12;
+  margin-top: .5rem;
+  max-width: 480px;
+  line-height: 1.25;
+}
+.lx-projects-grid {
+  max-width: 1260px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+.lx-ptile {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  background: #0d0d12;
+}
+.lx-ptile:nth-child(1) { grid-column: span 2; height: 420px; }
+.lx-ptile:nth-child(2) { height: 420px; }
+.lx-ptile:nth-child(3) { height: 300px; }
+.lx-ptile:nth-child(4) { height: 300px; }
+.lx-ptile:nth-child(5) { height: 300px; }
+.lx-ptile:nth-child(6) { grid-column: span 3; height: 200px; }
+.lx-ptile-img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform .8s cubic-bezier(.4,0,.2,1);
+  display: block;
+}
+.lx-ptile:hover .lx-ptile-img { transform: scale(1.07); }
+.lx-ptile-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(13,13,18,.9) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.6rem 1.8rem;
+  opacity: 0;
+  transition: opacity .4s ease;
+}
+.lx-ptile:hover .lx-ptile-overlay { opacity: 1; }
+.lx-ptile-name {
+  display: block;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 1.3rem;
+  letter-spacing: 1.5px;
+  color: #fff;
+}
+.lx-ptile-loc {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: .75rem;
+  letter-spacing: 1.5px;
+  color: var(--gold);
+  margin-top: .2rem;
+}
+.lx-ptile-cta {
+  display: inline-block;
+  margin-top: .7rem;
+  font-family: 'Inter', sans-serif;
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.75);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(212,175,55,.45);
+  padding-bottom: 1px;
+  transition: color .3s, border-color .3s;
+  width: fit-content;
+}
+.lx-ptile:hover .lx-ptile-cta { color: var(--gold); border-color: var(--gold); }
+.lx-projects-more {
+  max-width: 1260px;
+  margin: 2.5rem auto 0;
+  text-align: right;
+}
+.lx-projects-more a {
+  font-family: 'Inter', sans-serif;
+  font-size: .78rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #0d0d12;
+  text-decoration: none;
+  border-bottom: 1px solid var(--gold);
+  padding-bottom: 2px;
+  transition: color .3s;
+}
+.lx-projects-more a:hover { color: var(--gold); }
+
+/* ── 5  Process ── */
+.lx-process {
+  background: #f9f6f1;
+  padding: 8rem 5%;
+}
+.lx-process-header { max-width: 1260px; margin: 0 auto 5rem; text-align: center; }
+.lx-process-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+  color: #0d0d12;
+  margin-top: .5rem;
+}
+.lx-process-steps {
+  max-width: 1260px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  position: relative;
+}
+.lx-process-steps::before {
+  content: '';
+  position: absolute;
+  top: 38px;
+  left: calc(12.5% + 14px);
+  right: calc(12.5% + 14px);
+  height: 1px;
+  background: linear-gradient(90deg, rgba(212,175,55,.6), rgba(212,175,55,.2) 50%, rgba(212,175,55,.6));
+  pointer-events: none;
+}
+.lx-step { text-align: center; padding: 0 1.5rem; }
+.lx-step-circle {
+  width: 76px; height: 76px;
+  border-radius: 50%;
+  background: #fff;
+  border: 1.5px solid var(--gold);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 1.5rem;
+  color: var(--gold);
+  margin: 0 auto 2rem;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 4px 24px rgba(212,175,55,.15);
+  transition: background .35s, color .35s, box-shadow .35s;
+}
+.lx-step:hover .lx-step-circle {
+  background: var(--gold);
+  color: #0d0d12;
+  box-shadow: 0 8px 32px rgba(212,175,55,.4);
+}
+.lx-step h3 {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 1.3rem;
+  letter-spacing: 2px;
+  color: #0d0d12;
+  margin-bottom: .6rem;
+}
+.lx-step p {
+  font-family: 'Inter', sans-serif;
+  font-size: .875rem;
+  color: #777;
+  line-height: 1.75;
+}
+
+/* ── 6  Testimonials ── */
+.lx-testimonials {
+  background: linear-gradient(150deg, #0d0d12 0%, #10101e 100%);
+  padding: 8rem 5%;
+  position: relative;
+  overflow: hidden;
+}
+.lx-testimonials::before {
+  content: '';
+  position: absolute;
+  top: -120px; left: -80px;
+  width: 420px; height: 420px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(212,175,55,.09) 0%, transparent 70%);
+  pointer-events: none;
+}
+.lx-testimonials::after {
+  content: '';
+  position: absolute;
+  bottom: -120px; right: -80px;
+  width: 420px; height: 420px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(212,175,55,.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+.lx-testimonials-header { text-align: center; margin-bottom: 4rem; }
+.lx-testimonials-grid {
+  max-width: 1260px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  position: relative;
+  z-index: 1;
+}
+.lx-tcard {
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(212,175,55,.12);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 2.5rem;
+  transition: transform .4s ease, box-shadow .4s ease, border-color .4s;
+}
+.lx-tcard:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 28px 64px rgba(0,0,0,.45);
+  border-color: rgba(212,175,55,.32);
+}
+.lx-tcard-quotemark {
+  font-family: 'Playfair Display', serif;
+  font-size: 4.5rem;
+  line-height: .8;
+  color: var(--gold);
+  opacity: .55;
+  display: block;
+  margin-bottom: .8rem;
+  user-select: none;
+}
+.lx-tcard-text {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1rem;
+  line-height: 1.85;
+  color: rgba(255,255,255,.8);
+  margin-bottom: 1.8rem;
+}
+.lx-tcard-dash {
+  display: inline-block;
+  width: 18px; height: 1.5px;
+  background: var(--gold);
+  vertical-align: middle;
+  margin-right: .6rem;
+  margin-bottom: 2px;
+}
+.lx-tcard-name {
+  display: block;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 1rem;
+  letter-spacing: 2.5px;
+  color: #fff;
+  margin-top: .8rem;
+}
+.lx-tcard-role {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: .78rem;
+  letter-spacing: 1px;
+  color: rgba(255,255,255,.38);
+  margin-top: .25rem;
+}
+
+/* ── 7  CTA Banner ── */
+.lx-cta {
+  background: #0d0d12;
+  padding: 5.5rem 5%;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+.lx-cta::before {
+  content: '';
+  position: absolute;
+  top: -80px; left: -80px;
+  width: 340px; height: 340px;
+  background: radial-gradient(circle, rgba(212,175,55,.13) 0%, transparent 70%);
+  pointer-events: none;
+}
+.lx-cta::after {
+  content: '';
+  position: absolute;
+  bottom: -80px; right: -80px;
+  width: 340px; height: 340px;
+  background: radial-gradient(circle, rgba(212,175,55,.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+.lx-cta-inner { position: relative; z-index: 1; max-width: 820px; margin: 0 auto; }
+.lx-cta-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 3.5vw, 3rem);
+  color: #fff;
+  line-height: 1.3;
+  margin: .8rem 0 2.5rem;
+}
+.lx-cta-title em { font-style: italic; color: var(--gold); }
+.lx-cta-btns {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.lx-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  padding: 1rem 2.5rem;
+  font-family: 'Inter', sans-serif;
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 50px;
+  transition: all .35s ease;
+}
+.lx-cta-btn--gold {
+  background: var(--gold);
+  color: #0d0d12;
+  box-shadow: 0 6px 24px rgba(212,175,55,.28);
+}
+.lx-cta-btn--gold:hover {
+  background: #e6c068;
+  transform: translateY(-3px);
+  box-shadow: 0 14px 40px rgba(212,175,55,.48);
+}
+.lx-cta-btn--ghost {
+  background: transparent;
+  color: #fff;
+  border: 1.5px solid rgba(255,255,255,.3);
+}
+.lx-cta-btn--ghost:hover {
+  background: rgba(255,255,255,.06);
+  border-color: rgba(255,255,255,.7);
+  transform: translateY(-3px);
+}
+
+/* ── LX Responsive ── */
+@media (max-width: 1024px) {
+  .lx-philosophy-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .lx-services-grid { grid-template-columns: repeat(2, 1fr); }
+  .lx-stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .lx-stat + .lx-stat::before { display: none; }
+  .lx-process-steps { grid-template-columns: repeat(2, 1fr); gap: 3.5rem 2rem; }
+  .lx-process-steps::before { display: none; }
+  .lx-testimonials-grid { grid-template-columns: 1fr 1fr; }
+  .lx-projects-grid { grid-template-columns: 1fr 1fr; }
+  .lx-ptile:nth-child(1),
+  .lx-ptile:nth-child(6) { grid-column: span 2; }
+  .lx-ptile:nth-child(2),
+  .lx-ptile:nth-child(3),
+  .lx-ptile:nth-child(4),
+  .lx-ptile:nth-child(5) { grid-column: span 1; }
+  .lx-ptile:nth-child(n) { height: 280px; }
+  .lx-ptile:nth-child(1),
+  .lx-ptile:nth-child(6) { height: 320px; }
+}
+@media (max-width: 768px) {
+  .lx-philosophy,
+  .lx-services,
+  .lx-projects,
+  .lx-process,
+  .lx-testimonials { padding: 4rem 5%; }
+  .lx-stats { padding: 3.5rem 5%; }
+  .lx-cta { padding: 4rem 5%; }
+  .lx-services-grid { grid-template-columns: 1fr; gap: 1.2rem; }
+  .lx-stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .lx-projects-grid { grid-template-columns: 1fr; }
+  .lx-ptile:nth-child(n) { grid-column: span 1 !important; height: 260px !important; }
+  .lx-ptile-overlay { opacity: 1; }
+  .lx-process-steps { grid-template-columns: 1fr; gap: 2.5rem; }
+  .lx-testimonials-grid { grid-template-columns: 1fr; }
+  .lx-projects-more { text-align: center; }
+}
+@media (max-width: 640px) {
+  .lx-stats-grid { grid-template-columns: 1fr 1fr; }
+}
+/* ─── END LX PREMIUM REDESIGN ─── */
 /* === END HOMEPAGE REDESIGN CSS === */
 </style>
 </head>
@@ -1160,323 +1729,247 @@ section.portfolio:not(.hp-portfolio),section.testimonials:not(.hp-testimonials),
         <div class="hero-bottom-fade"></div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services" class="hp-services">
-        <h2 class="section-title">OUR SERVICES</h2>
-        <p class="section-subtitle">Comprehensive design solutions tailored to your vision</p>
-        
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="service-icon">ðŸ </div>
-                <h3>Interior Design</h3>
-                <p>Expert gypsum work, painting, aquariums, curtains, blinds, and custom furniture design that transforms your indoor spaces.</p>
-            </div>
-            
-            <div class="service-card">
-                <div class="service-icon">ðŸ—ï¸</div>
-                <h3>Exterior Design</h3>
-                <p>Professional construction, exterior painting, outdoor aquariums, and aluminum works that enhance your property's curb appeal.</p>
-            </div>
-            
-            <div class="service-card">
-                <div class="service-icon">ðŸŒ³</div>
-                <h3>Landscape Design</h3>
-                <p>Beautiful tiles & terrazzo, compound designing, and house architecture that seamlessly blend with nature.</p>
-            </div>
-        </div>
+    <!-- ════════════════════════════════════════
+         PREMIUM SECTIONS — LX REDESIGN
+         ════════════════════════════════════════ -->
 
-        <div class="hp-section-header fade-up">
-            <div class="hp-section-label">What We Do</div>
-            <h2 class="hp-section-title">Our Services</h2>
-            <p class="hp-section-sub">End-to-end design and construction — from concept to completion, crafted with precision.</p>
+    <!-- 1 — Philosophy Strip -->
+    <section class="lx-philosophy">
+        <div class="lx-philosophy-inner fade-up">
+            <blockquote class="lx-philosophy-quote">"We don't build houses. We compose the rooms in which lives unfold."</blockquote>
+            <div class="lx-philosophy-right">
+                <span class="lx-eyebrow">OUR PHILOSOPHY · 01</span>
+                <p>At LAPHIC Modern Homes, every project begins with a single question: <em>how should this space make you feel?</em> Architecture is not merely construction — it is the deliberate art of framing human experience, day after day, year after year.</p>
+                <p>From a single room to a complete estate, we bring the same obsessive attention to proportion, light, material, and meaning. Kampala's finest addresses trust us precisely for that reason.</p>
+            </div>
         </div>
-        <div class="hp-services-grid">
-            <a href="interior-design.html" class="hp-service-card fade-up">
-                <img class="hp-service-img" src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777647089/interior_xfvroj.jpg" alt="Interior Design" loading="lazy">
-                <div class="hp-service-info">
-                    <div class="hp-service-accent"></div>
+    </section>
+
+    <!-- 2 — Signature Services -->
+    <section id="services" class="lx-services">
+        <div class="lx-section-header fade-up">
+            <span class="lx-eyebrow lx-eyebrow--light">WHAT WE DO · 02</span>
+            <h2 class="lx-section-title">Signature Services</h2>
+        </div>
+        <div class="lx-services-grid">
+            <a href="interior-design.html" class="lx-scard fade-up" style="--i:0" aria-label="Interior Design">
+                <span class="lx-scard-num">01</span>
+                <div class="lx-scard-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1200&q=80" alt="Interior Design" loading="lazy">
+                </div>
+                <div class="lx-scard-body">
+                    <div class="lx-scard-line"></div>
                     <h3>Interior Design</h3>
-                    <p>Gypsum, painting, curtains, furniture &amp; aquariums.</p>
+                    <p>Gypsum, bespoke furniture, curated lighting, aquariums, curtains and painted surfaces that breathe.</p>
+                    <span class="lx-scard-link">View work →</span>
                 </div>
             </a>
-            <a href="exterior-design.html" class="hp-service-card fade-up">
-                <img class="hp-service-img" src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777646941/exterior2_svgchj.jpg" alt="Exterior Design" loading="lazy">
-                <div class="hp-service-info">
-                    <div class="hp-service-accent"></div>
+            <a href="exterior-design.html" class="lx-scard fade-up" style="--i:1" aria-label="Exterior Design">
+                <span class="lx-scard-num">02</span>
+                <div class="lx-scard-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80" alt="Exterior Design" loading="lazy">
+                </div>
+                <div class="lx-scard-body">
+                    <div class="lx-scard-line"></div>
                     <h3>Exterior Design</h3>
-                    <p>Facades, painting, aluminum works &amp; outdoor features.</p>
+                    <p>Facades, cladding, aluminum works, outdoor features and curb appeal that commands attention.</p>
+                    <span class="lx-scard-link">View work →</span>
                 </div>
             </a>
-            <a href="landscape-design.html" class="hp-service-card fade-up">
-                <img class="hp-service-img" src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777647195/landscape_x1zecv.jpg" alt="Landscape Design" loading="lazy">
-                <div class="hp-service-info">
-                    <div class="hp-service-accent"></div>
+            <a href="landscape-design.html" class="lx-scard fade-up" style="--i:2" aria-label="Landscape Design">
+                <span class="lx-scard-num">03</span>
+                <div class="lx-scard-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80" alt="Landscape Design" loading="lazy">
+                </div>
+                <div class="lx-scard-body">
+                    <div class="lx-scard-line"></div>
                     <h3>Landscape Design</h3>
-                    <p>Tiles, terrazzo, compound design &amp; garden spaces.</p>
+                    <p>Tiles, terrazzo, compound design and sculpted garden environments that blur indoors and out.</p>
+                    <span class="lx-scard-link">View work →</span>
                 </div>
             </a>
-            <a href="services.html" class="hp-service-card fade-up">
-                <img class="hp-service-img" src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777647290/office_design_lli7hh.jpg" alt="Construction" loading="lazy">
-                <div class="hp-service-info">
-                    <div class="hp-service-accent"></div>
+            <a href="services.html" class="lx-scard fade-up" style="--i:3" aria-label="Construction">
+                <span class="lx-scard-num">04</span>
+                <div class="lx-scard-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1200&q=80" alt="Construction" loading="lazy">
+                </div>
+                <div class="lx-scard-body">
+                    <div class="lx-scard-line"></div>
                     <h3>Construction</h3>
-                    <p>Full-build construction from foundation to finish.</p>
+                    <p>Full-build projects from foundation to finish — structure, finish and soul under one roof.</p>
+                    <span class="lx-scard-link">View work →</span>
                 </div>
             </a>
         </div>
     </section>
 
-    <!-- Stats Strip -->
-    <section class="hp-stats">
-        <div class="hp-stats-grid">
-            <div class="hp-stat fade-up">
-                <span class="hp-stat-num" data-target="50" data-suffix="+">0</span>
-                <span class="hp-stat-label">Projects Completed</span>
-            </div>
-            <div class="hp-stat fade-up">
-                <span class="hp-stat-num" data-target="12" data-suffix="+">0</span>
-                <span class="hp-stat-label">Years Experience</span>
-            </div>
-            <div class="hp-stat fade-up">
-                <span class="hp-stat-num" data-target="100" data-suffix="+">0</span>
-                <span class="hp-stat-label">Happy Clients</span>
-            </div>
-            <div class="hp-stat fade-up">
-                <span class="hp-stat-num" data-target="5" data-suffix="&#9733;">0</span>
-                <span class="hp-stat-label">Star Rating</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- Portfolio Masonry -->
-    <section id="portfolio" class="hp-portfolio">
-        <div class="hp-section-header fade-up" style="text-align:center;max-width:1400px;margin:0 auto 3rem;">
-            <div class="hp-section-label">Our Work</div>
-            <h2 class="hp-section-title">Featured Projects</h2>
-        </div>
-        <div class="hp-portfolio-grid">
-            <div class="hp-portfolio-item fade-up">
-                <img class="hp-portfolio-img" src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777647089/interior_xfvroj.jpg" alt="Luxury Villa Interior" loading="lazy">
-                <div class="hp-portfolio-overlay">
-                    <h3>Luxury Villa</h3>
-                    <p>Interior Design &middot; Kampala</p>
+    <!-- 3 — Stats / Trust Strip -->
+    <section class="lx-stats">
+        <div class="lx-stats-eyebrow fade-up">BY THE NUMBERS · 03</div>
+        <div class="lx-stats-grid">
+            <div class="lx-stat fade-up">
+                <div class="lx-stat-inner">
+                    <span class="lx-stat-num" data-target="50" data-suffix="+">0</span>
+                    <span class="lx-stat-label">Projects Completed</span>
                 </div>
             </div>
-            <div class="hp-portfolio-item fade-up">
-                <img class="hp-portfolio-img" src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777646329/compound1_qztyaa.jpg" alt="Modern Compound" loading="lazy">
-                <div class="hp-portfolio-overlay">
-                    <h3>Modern Compound</h3>
-                    <p>Landscape &middot; Entebbe</p>
+            <div class="lx-stat fade-up">
+                <div class="lx-stat-inner">
+                    <span class="lx-stat-num" data-target="12" data-suffix="+">0</span>
+                    <span class="lx-stat-label">Years Experience</span>
                 </div>
             </div>
-            <div class="hp-portfolio-item fade-up">
-                <img class="hp-portfolio-img" src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777647339/ontemporary_Home_nkksuw.jpg" alt="Contemporary Home" loading="lazy">
-                <div class="hp-portfolio-overlay">
-                    <h3>Contemporary Home</h3>
-                    <p>Full Construction &middot; Jinja</p>
+            <div class="lx-stat fade-up">
+                <div class="lx-stat-inner">
+                    <span class="lx-stat-num" data-target="100" data-suffix="+">0</span>
+                    <span class="lx-stat-label">Happy Clients</span>
                 </div>
             </div>
-            <div class="hp-portfolio-item fade-up">
-                <img class="hp-portfolio-img" src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777647290/office_design_lli7hh.jpg" alt="Office Renovation" loading="lazy">
-                <div class="hp-portfolio-overlay">
-                    <h3>Office Renovation</h3>
-                    <p>Interior Design &middot; Kampala</p>
-                </div>
-            </div>
-            <div class="hp-portfolio-item fade-up">
-                <img class="hp-portfolio-img" src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777647026/gazebo_xfwfnb.jpg" alt="Garden Paradise" loading="lazy">
-                <div class="hp-portfolio-overlay">
-                    <h3>Garden Paradise</h3>
-                    <p>Landscape &middot; Mbarara</p>
-                </div>
-            </div>
-            <div class="hp-portfolio-item fade-up">
-                <img class="hp-portfolio-img" src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777647249/minimalistjpeg_dtyceo.jpg" alt="Minimalist Residence" loading="lazy">
-                <div class="hp-portfolio-overlay">
-                    <h3>Minimalist Residence</h3>
-                    <p>Full Design &middot; Kampala</p>
+            <div class="lx-stat fade-up">
+                <div class="lx-stat-inner">
+                    <span class="lx-stat-num" data-target="5" data-suffix="&#9733;">0</span>
+                    <span class="lx-stat-label">Star Rating</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials -->
-    <section id="testimonials" class="hp-testimonials">
-        <div class="hp-section-header fade-up" style="text-align:center;max-width:1400px;margin:0 auto 4rem;">
-            <div class="hp-section-label">What Clients Say</div>
-            <h2 class="hp-section-title">Testimonials</h2>
+    <!-- 4 — Featured Projects (editorial masonry) -->
+    <section id="portfolio" class="lx-projects">
+        <div class="lx-projects-header fade-up">
+            <span class="lx-eyebrow">SELECTED WORK · 04</span>
+            <h2 class="lx-projects-title">A glimpse of what we've built.</h2>
         </div>
-        <div class="hp-testimonials-grid">
-            <div class="hp-tcard fade-up">
-                <div class="hp-tcard-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                <p class="hp-tcard-text">"LAPHIC Modern Homes transformed our house into a dream home. Their attention to detail and professional approach exceeded all our expectations."</p>
-                <div class="hp-tcard-author">Sarah Nakato</div>
-                <div class="hp-tcard-role">Homeowner &middot; Kampala</div>
+        <div class="lx-projects-grid">
+            <div class="lx-ptile fade-up">
+                <img class="lx-ptile-img" src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777647089/interior_xfvroj.jpg" alt="Luxury Villa Interior" loading="lazy">
+                <div class="lx-ptile-overlay">
+                    <span class="lx-ptile-name">Luxury Villa</span>
+                    <span class="lx-ptile-loc">Interior Design · Kampala</span>
+                    <a href="projects.html" class="lx-ptile-cta">VIEW PROJECT →</a>
+                </div>
             </div>
-            <div class="hp-tcard fade-up">
-                <div class="hp-tcard-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                <p class="hp-tcard-text">"Outstanding craftsmanship and timely delivery. The team brought our vision to life with incredible precision and creativity."</p>
-                <div class="hp-tcard-author">James Museveni</div>
-                <div class="hp-tcard-role">Property Developer &middot; Entebbe</div>
+            <div class="lx-ptile fade-up">
+                <img class="lx-ptile-img" src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777646329/compound1_qztyaa.jpg" alt="Modern Compound" loading="lazy">
+                <div class="lx-ptile-overlay">
+                    <span class="lx-ptile-name">Modern Compound</span>
+                    <span class="lx-ptile-loc">Landscape · Entebbe</span>
+                    <a href="projects.html" class="lx-ptile-cta">VIEW PROJECT →</a>
+                </div>
             </div>
-            <div class="hp-tcard fade-up">
-                <div class="hp-tcard-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                <p class="hp-tcard-text">"From the initial design concept to the final handover, every step was handled with professionalism. Truly world-class work in Uganda."</p>
-                <div class="hp-tcard-author">Grace Auma</div>
-                <div class="hp-tcard-role">Business Owner &middot; Jinja</div>
+            <div class="lx-ptile fade-up">
+                <img class="lx-ptile-img" src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777647339/ontemporary_Home_nkksuw.jpg" alt="Contemporary Home" loading="lazy">
+                <div class="lx-ptile-overlay">
+                    <span class="lx-ptile-name">Contemporary Home</span>
+                    <span class="lx-ptile-loc">Full Construction · Jinja</span>
+                    <a href="projects.html" class="lx-ptile-cta">VIEW PROJECT →</a>
+                </div>
             </div>
+            <div class="lx-ptile fade-up">
+                <img class="lx-ptile-img" src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777647290/office_design_lli7hh.jpg" alt="Office Renovation" loading="lazy">
+                <div class="lx-ptile-overlay">
+                    <span class="lx-ptile-name">Office Renovation</span>
+                    <span class="lx-ptile-loc">Interior Design · Kampala</span>
+                    <a href="projects.html" class="lx-ptile-cta">VIEW PROJECT →</a>
+                </div>
+            </div>
+            <div class="lx-ptile fade-up">
+                <img class="lx-ptile-img" src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777647026/gazebo_xfwfnb.jpg" alt="Garden Paradise" loading="lazy">
+                <div class="lx-ptile-overlay">
+                    <span class="lx-ptile-name">Garden Paradise</span>
+                    <span class="lx-ptile-loc">Landscape · Mbarara</span>
+                    <a href="projects.html" class="lx-ptile-cta">VIEW PROJECT →</a>
+                </div>
+            </div>
+            <div class="lx-ptile fade-up">
+                <img class="lx-ptile-img" src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777647249/minimalistjpeg_dtyceo.jpg" alt="Minimalist Residence" loading="lazy">
+                <div class="lx-ptile-overlay">
+                    <span class="lx-ptile-name">Minimalist Residence</span>
+                    <span class="lx-ptile-loc">Full Design · Kampala</span>
+                    <a href="projects.html" class="lx-ptile-cta">VIEW PROJECT →</a>
+                </div>
+            </div>
+        </div>
+        <div class="lx-projects-more fade-up">
+            <a href="projects.html">View All Projects →</a>
         </div>
     </section>
 
-    <!-- CTA Banner -->
-    <section class="hp-cta fade-up">
-        <h2>READY TO TRANSFORM YOUR SPACE?</h2>
-        <p>Let's build something extraordinary together. Your dream home starts with a conversation.</p>
-        <a href="contact.html" class="hp-cta-btn">Get In Touch</a>
-    </section>
-
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="portfolio">
-        <h2 class="section-title">FEATURED PROJECTS</h2>
-        <p class="section-subtitle">Explore our portfolio of exceptional designs</p>
-        
-        <div class="portfolio-grid">
-            <div class="portfolio-item">
-                <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777647089/interior_xfvroj.jpg" alt="Luxury Villa">
-                <div class="portfolio-overlay">
-                    <h3>Luxury Villa</h3>
-                    <p>Interior Design | Kampala</p>
-                </div>
+    <!-- 5 — Process / How We Work -->
+    <section class="lx-process">
+        <div class="lx-process-header fade-up">
+            <span class="lx-eyebrow">HOW WE WORK · 05</span>
+            <h2 class="lx-process-title">Our process, simplified.</h2>
+        </div>
+        <div class="lx-process-steps">
+            <div class="lx-step fade-up">
+                <div class="lx-step-circle">01</div>
+                <h3>Discovery</h3>
+                <p>We listen first. Every great space begins with understanding your life, your aspirations, and how you move through the world.</p>
             </div>
-            
-            <div class="portfolio-item">
-                <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777646329/compound1_qztyaa.jpg" alt="Luxury Villa">
-                <div class="portfolio-overlay">
-                    <h3>Modern Compound</h3>
-                    <p>Landscape Design | Entebbe</p>
-                </div>
+            <div class="lx-step fade-up">
+                <div class="lx-step-circle">02</div>
+                <h3>Design</h3>
+                <p>Concepts, mood boards and 3D walkthroughs bring your vision to life before a single nail is struck. You're involved at every turn.</p>
             </div>
-            
-            <div class="portfolio-item">
-                <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777647339/ontemporary_Home_nkksuw.jpg" alt="Luxury Villa">
-                <div class="portfolio-overlay">
-                    <h3>Contemporary Home</h3>
-                    <p>Full Construction | Jinja</p>
-                </div>
+            <div class="lx-step fade-up">
+                <div class="lx-step-circle">03</div>
+                <h3>Build</h3>
+                <p>Our skilled craftsmen execute with precision. We manage the full site, timeline and quality — so you never have to worry.</p>
             </div>
-            
-            <!-- <div class="portfolio-item">
-                <img src="images/9.jpeg" alt="Luxury Villa">
-                    <h3>Office Renovation</h3>
-                    <p>Interior Design | Kampala</p>
-                </div>
-            </div> -->
-            <div class="portfolio-item">
-              <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777647290/office_design_lli7hh.jpg" alt="Office Renovation">
-              <div class="portfolio-overlay">
-                 <h3>Office Renovation</h3>
-                 <p>Interior Design | Kampala</p>
-              </div>
-           </div>
-            
-            <div class="portfolio-item">
-                <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777647026/gazebo_xfwfnb.jpg" alt="Luxury Villa">
-                <div class="portfolio-overlay">
-                    <h3>Garden Paradise</h3>
-                    <p>Landscape Design | Mbarara</p>
-                </div>
-            </div>
-            
-            <div class="portfolio-item">
-                <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777647249/minimalistjpeg_dtyceo.jpg" alt="Luxury Villa">
-                <div class="portfolio-overlay">
-                    <h3>Minimalist Residence</h3>
-                    <p>Full Design | Kampala</p>
-                </div>
+            <div class="lx-step fade-up">
+                <div class="lx-step-circle">04</div>
+                <h3>Reveal</h3>
+                <p>We hand over a finished space that exceeds expectations — styled, photographed and ready for the life it was always meant to hold.</p>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="testimonials">
-        <h2 class="section-title">CLIENT TESTIMONIALS</h2>
-        <p class="section-subtitle">What our clients say about us</p>
-        
-        <div class="testimonials-slider">
-            <div class="testimonial">
-                <div class="stars">â˜…â˜…â˜…â˜…â˜…</div>
-                <p class="testimonial-text">"LAPHIC Modern Homes transformed our house into a dream home. Their attention to detail and professional approach exceeded all our expectations. Highly recommended!"</p>
-                <div class="testimonial-author">Sarah Nakato</div>
-                <div class="testimonial-role">Homeowner | Kampala</div>
+    <!-- 6 — Testimonials (glass-morphism) -->
+    <section id="testimonials" class="lx-testimonials">
+        <div class="lx-testimonials-header fade-up">
+            <span class="lx-eyebrow lx-eyebrow--light">WHAT CLIENTS SAY · 06</span>
+            <h2 class="lx-section-title">Words from those we've served.</h2>
+        </div>
+        <div class="lx-testimonials-grid">
+            <div class="lx-tcard fade-up">
+                <span class="lx-tcard-quotemark">"</span>
+                <p class="lx-tcard-text">LAPHIC Modern Homes transformed our house into a dream home. Their attention to detail and professional approach exceeded all our expectations. Truly world-class work right here in Kampala.</p>
+                <div>
+                    <span class="lx-tcard-dash"></span>
+                    <span class="lx-tcard-name">Sarah Nakato</span>
+                    <span class="lx-tcard-role">Homeowner · Kampala</span>
+                </div>
+            </div>
+            <div class="lx-tcard fade-up">
+                <span class="lx-tcard-quotemark">"</span>
+                <p class="lx-tcard-text">Outstanding craftsmanship and timely delivery. The team brought our vision to life with incredible precision and creativity. Every room tells a story — and it's ours.</p>
+                <div>
+                    <span class="lx-tcard-dash"></span>
+                    <span class="lx-tcard-name">James Museveni</span>
+                    <span class="lx-tcard-role">Property Developer · Entebbe</span>
+                </div>
+            </div>
+            <div class="lx-tcard fade-up">
+                <span class="lx-tcard-quotemark">"</span>
+                <p class="lx-tcard-text">From the initial design concept to the final handover, every step was handled with professionalism. I've worked with agencies in Nairobi and Dubai — LAPHIC stands with the best of them.</p>
+                <div>
+                    <span class="lx-tcard-dash"></span>
+                    <span class="lx-tcard-name">Grace Auma</span>
+                    <span class="lx-tcard-role">Business Owner · Jinja</span>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <h2 class="section-title">GET IN TOUCH</h2>
-        <p class="section-subtitle">Let's bring your vision to life</p>
-        
-        <div class="contact-content">
-            <div class="contact-info">
-                <div class="contact-item">
-                    <div class="contact-icon">ðŸ“</div>
-                    <div>
-                        <h4>Location</h4>
-                        <p>Kampala, Central Region<br>Uganda</p>
-                    </div>
-                </div>
-                
-                <div class="contact-item">
-                    <div class="contact-icon">ðŸ“ž</div>
-                    <div>
-                        <h4>Phone</h4>
-                        <p>+256 780535307/0702620878</p>
-                    </div>
-                </div>
-                
-                <div class="contact-item">
-                    <div class="contact-icon">âœ‰ï¸</div>
-                    <div>
-                        <h4>Email</h4>
-                        <p>laphicmodernhomes@gmail.com</p>
-                    </div>
-                </div>
-                
-                <div class="contact-item">
-                    <div class="contact-icon">ðŸ’¬</div>
-                    <div>
-                        <h4>WhatsApp</h4>
-                        <p>Chat with us instantly</p>
-                        <!-- <p>+256 705 029 291</p> -->
-                    </div>
-                </div>
-            </div>
-            
-            <div class="contact-form">
-                <form>
-                    <div class="form-group">
-                        <label>Your Name</label>
-                        <input type="text" placeholder="Enter your name" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Email Address</label>
-                        <input type="email" placeholder="your.email@example.com" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Phone Number</label>
-                        <input type="tel" placeholder="+256 XXX XXX XXX">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Message</label>
-                        <textarea placeholder="Tell us about your project..." required></textarea>
-                    </div>
-                    
-                    <button type="submit" class="btn btn-primary" style="width: 100%;">SEND MESSAGE</button>
-                </form>
+    <!-- 7 — CTA Banner -->
+    <section class="lx-cta">
+        <div class="lx-cta-inner fade-up">
+            <span class="lx-eyebrow lx-eyebrow--gold">LET'S BEGIN · 07</span>
+            <h2 class="lx-cta-title">Have a vision? Let's draw the <em>first line</em> together.</h2>
+            <div class="lx-cta-btns">
+                <a href="contact.html" class="lx-cta-btn lx-cta-btn--gold">Start a Project →</a>
+                <a href="portfolio.html" class="lx-cta-btn lx-cta-btn--ghost">Browse Portfolio →</a>
             </div>
         </div>
     </section>
@@ -1573,7 +2066,7 @@ section.portfolio:not(.hp-portfolio),section.testimonials:not(.hp-testimonials),
                 }
             });
         }, {threshold:0.5});
-        document.querySelectorAll('.hp-stat-num').forEach(function(el){ statObs.observe(el); });
+        document.querySelectorAll('.hp-stat-num,.lx-stat-num').forEach(function(el){ statObs.observe(el); });
     })();
     </script>
     <script>
