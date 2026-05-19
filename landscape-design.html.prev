@@ -1,0 +1,1491 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landscape Design Services - LAPHIC Modern Homes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --midnight: #0f1419;
+            --teal: #9c6c24;
+            --coral: #ff6b6b;
+            --cream: #f8f6f0;
+            --charcoal: #3a3a3a;
+            --gold: #c9a050;
+            --primary: #0a0a0a;
+            --green: #2d7a4f;
+            /* --sand: #f3e6c9; */
+           --forest: #2d4f3a;
+          --moss: #7da87b;
+        }
+
+        body {
+            font-family: 'Crimson Pro', serif;
+            background: var(--cream);
+            color: var(--charcoal);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 2rem;
+            color: var(--gold);
+            letter-spacing: 3px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--cream);
+            text-decoration: none;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 80vh;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                        url('images/landscape.jfif') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 0;
+        }
+
+        .hero-content h1 {
+            font-family: 'Merriweather', serif;
+            font-size: 5rem;
+            margin-bottom: 1rem;
+            color: var(--gold);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-content .service-number {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 8rem;
+            color: rgba(201, 160, 80, 0.2);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--cream);
+        }
+
+        .breadcrumb {
+            position: absolute;
+            top: 120px;
+            left: 5%;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .breadcrumb a {
+            color: var(--gold);
+            text-decoration: none;
+            margin-right: 0.5rem;
+        }
+
+        /* Service Overview */
+        .service-overview {
+            padding: 6rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .overview-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .overview-content h2 {
+            font-family: 'Merriweather', serif;
+            font-size: 3rem;
+            color: var(--midnight);
+            margin-bottom: 1.5rem;
+        }
+
+        .overview-content p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: var(--charcoal);
+            margin-bottom: 1.5rem;
+        }
+
+        .overview-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 1.5rem;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .stat-box .number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--green);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-box .label {
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--charcoal);
+        }
+
+        .overview-image {
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+        }
+
+        .overview-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+
+        /* Services Grid */
+        .services-section {
+            padding: 8rem 5%;
+            background: linear-gradient(to bottom, var(--sand) 0%, #e8d7b0 100%);
+        }
+
+        .services-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .services-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            color: var(--forest);
+        }
+
+        .services-header p {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .services-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 0;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(45, 80, 22, 0.1);
+            transition: all 0.5s ease;
+            position: relative;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 0;
+            background: var(--moss);
+            transition: height 0.5s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(45, 80, 22, 0.15);
+        }
+
+        .service-card:hover::before {
+            height: 100%;
+        }
+
+        .service-image {
+            height: auto;
+            overflow: hidden;
+            position: relative;
+            
+        }
+        .service-image img {
+           width: 100%;
+           height: auto;
+          object-fit: contain;
+       }
+
+        
+        .service-info {
+            padding: 2.5rem;
+        }
+
+        .service-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--forest);
+        }
+
+        .service-info p {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-features {
+            list-style: none;
+        }
+
+        .service-features li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        .service-features li::before {
+            content: 'ðŸŒ¿';
+            position: absolute;
+            left: 0;
+            font-size: 0.9rem;
+        }
+
+        /* Sub-Services Section */
+        .sub-services {
+            background: var(--midnight);
+            padding: 6rem 5%;
+            color: var(--cream);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Merriweather', serif;
+            font-size: 3.5rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: rgba(255,255,255,0.05);
+            padding: 3rem;
+            border-left: 4px solid var(--gold);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(201,160,80,0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .service-card:hover::before {
+            left: 100%;
+        }
+
+        .service-card:hover {
+            background: rgba(255,255,255,0.08);
+            transform: translateX(10px);
+            border-left-color: var(--cream);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .service-card h3 {
+            font-family: 'Merriweather', serif;
+            font-size: 1.8rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .service-features {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 2rem;
+        }
+
+        .service-features li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 1rem;
+            opacity: 0.85;
+        }
+
+        .service-features li::before {
+            content: 'âœ“';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: bold;
+        }
+
+        .service-link {
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            background: transparent;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
+
+        .service-link:hover {
+            background: var(--gold);
+            color: var(--midnight);
+        }
+
+        /* Process Section */
+        .process-section {
+            padding: 6rem 5%;
+            background: var(--cream);
+        }
+
+        .process-timeline {
+            max-width: 1200px;
+            margin: 3rem auto 0;
+            position: relative;
+        }
+
+        .process-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--gold);
+            transform: translateX(-50%);
+        }
+
+        .process-step {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .process-step:nth-child(even) .step-content {
+            order: 2;
+        }
+
+        .process-step:nth-child(even) .step-number {
+            order: 1;
+        }
+
+        .step-content {
+            background: white;
+            padding: 2.5rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .step-content h3 {
+            font-family: 'Merriweather', serif;
+            font-size: 1.8rem;
+            color: var(--midnight);
+            margin-bottom: 1rem;
+        }
+
+        .step-content p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: var(--charcoal);
+        }
+
+        .step-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .step-number .number {
+            width: 100px;
+            height: 100px;
+            background: var(--gold);
+            color: var(--midnight);
+            font-family: 'Bebas Neue', cursive;
+            font-size: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            border: 5px solid var(--cream);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            padding: 6rem 5%;
+            background: var(--midnight);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 3rem auto 0;
+        }
+
+        .gallery-item {
+            position: relative;
+            height: 350px;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            padding: 2rem;
+            color: white;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        .gallery-overlay h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--gold);
+        }
+
+        /* Testimonials */
+        .testimonials-section {
+            padding: 6rem 5%;
+            background: var(--cream);
+        }
+
+        .testimonials-slider {
+            max-width: 900px;
+            margin: 3rem auto 0;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .testimonial-text {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            color: var(--charcoal);
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+
+        .testimonial-author {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--gold);
+        }
+
+        .testimonial-role {
+            font-size: 0.95rem;
+            color: var(--charcoal);
+            opacity: 0.7;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 6rem 5%;
+            background: var(--midnight);
+            text-align: center;
+            color: var(--cream);
+        }
+
+        .cta-content h2 {
+            font-family: 'Merriweather', serif;
+            font-size: 3.5rem;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-content p {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            padding: 1.2rem 3rem;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border: 2px solid;
+        }
+
+        .cta-btn-primary {
+            background: var(--gold);
+            color: var(--midnight);
+            border-color: var(--gold);
+        }
+
+        .cta-btn-primary:hover {
+            background: transparent;
+            color: var(--gold);
+        }
+
+        .cta-btn-secondary {
+            background: transparent;
+            color: var(--cream);
+            border-color: var(--cream);
+        }
+
+        .cta-btn-secondary:hover {
+            background: var(--cream);
+            color: var(--midnight);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: var(--cream);
+            padding: 3rem 5%;
+            text-align: center;
+        }
+
+        footer p {
+            opacity: 0.9;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-content h1 {
+                font-size: 3.5rem;
+            }
+
+            .overview-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-timeline::before {
+                left: 30px;
+            }
+
+            .process-step {
+                grid-template-columns: 1fr;
+                padding-left: 80px;
+            }
+
+            .process-step:nth-child(even) .step-content {
+                order: 1;
+            }
+
+            .step-number {
+                position: absolute;
+                left: 0;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content .service-number {
+                font-size: 5rem;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+                font-size: 0.85rem;
+            }
+
+            .overview-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .section-header h2 {
+                font-size: 2.5rem;
+            }
+
+            .cta-content h2 {
+                font-size: 2.5rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    
+/* === MOBILE RESPONSIVE PATCH v1 === */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { overflow-x: hidden; max-width: 100%; }
+img, video, iframe { max-width: 100%; height: auto; }
+p, li, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; word-wrap: break-word; }
+
+/* Tablets and below */
+@media (max-width: 1024px) {
+  .nav-links { gap: 1.2rem; }
+  .services-grid, .portfolio-grid, .projects-grid, .testimonials-grid,
+  .inspiration-grid, .values-grid, .stats-grid, .trust-grid, .info-cards {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .footer-content { grid-template-columns: repeat(2, 1fr) !important; }
+}
+
+/* Tablets / large phones */
+@media (max-width: 768px) {
+  /* Navigation: hamburger */
+  .nav-toggle { display: flex !important; }
+  .nav-links {
+    position: fixed;
+    top: 70px;
+    right: 0;
+    left: 0;
+    flex-direction: column;
+    background: rgba(15, 15, 15, 0.97);
+    padding: 1.5rem;
+    gap: 1rem;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    z-index: 999;
+    max-height: calc(100vh - 70px);
+    overflow-y: auto;
+  }
+  .nav-links.active, .nav-links.open, .nav-links.show {
+    transform: translateX(0);
+  }
+  .nav-links a { font-size: 0.95rem; }
+  .nav-logo img { height: 42px !important; max-height: 42px; width: auto; }
+  .nav-cta { display: none; }
+
+  /* Hero */
+  .hero, .hero-3d { min-height: auto; padding: 6rem 1rem 3rem !important; }
+  .hero-content, .hero-content-3d { padding: 0 1rem; }
+  .hero h1, .hero-content h1, .hero-content-3d h1 {
+    font-size: clamp(2rem, 6vw, 3.5rem) !important;
+    line-height: 1.15;
+  }
+  .hero p, .hero-content p, .hero-tagline, .hero-desc {
+    font-size: 1rem !important;
+  }
+  .hero-trust, .trust-strip, .scroll-indicator { display: none !important; }
+
+  /* Generic sections */
+  section { padding-left: 1.5rem !important; padding-right: 1.5rem !important; }
+
+  /* Grids â†’ 1 col */
+  .services-grid, .portfolio-grid, .projects-grid, .testimonials-grid,
+  .testimonials-slider, .values-grid, .info-cards, .services-layout,
+  .services-showcase, .services-container, .trust-grid, .trust-points {
+    grid-template-columns: 1fr !important;
+    display: grid !important;
+  }
+
+  /* Service blocks (image + text) stack */
+  .service-block, .services-layout, .trust { 
+    flex-direction: column !important;
+    grid-template-columns: 1fr !important;
+  }
+  .service-visual, .service-content, .service-image, .service-info,
+  .trust-image, .trust-text { width: 100% !important; max-width: 100%; }
+
+  /* Cards */
+  .service-card, .portfolio-item, .project-card, .testimonial-card,
+  .inspiration-card, .info-card, .stat-item, .value-card, .team-card {
+    max-width: 100%; width: 100%;
+  }
+
+  /* CTA stacks */
+  .cta-buttons, .hero-ctas, .cta-content { 
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+  .cta-btn, .cta-button, .hero-ctas a, .cta-buttons a { 
+    width: 100%; text-align: center; max-width: 100%;
+  }
+  .cta-section, .cta-3d { padding: 3rem 1.5rem !important; }
+  .cta-content h2, .cta-section h2 { font-size: clamp(1.6rem, 5vw, 2.4rem) !important; }
+
+  /* Footer */
+  .footer-content { 
+    grid-template-columns: 1fr 1fr !important;
+    gap: 2rem !important;
+    text-align: left;
+  }
+
+  /* Forms */
+  .form-row { flex-direction: column !important; gap: 1rem; }
+  .form-group, input, textarea, select, button { max-width: 100%; box-sizing: border-box; }
+  input, textarea, select { font-size: 16px !important; /* prevent iOS zoom */ }
+
+  /* Filters */
+  .filter-buttons, .filter-tabs { 
+    flex-wrap: wrap !important;
+    gap: 0.5rem !important;
+    justify-content: center;
+  }
+  .filter-btn { font-size: 0.85rem !important; padding: 0.5rem 0.9rem !important; }
+
+  /* Stats */
+  .stats-grid, .stats-container { grid-template-columns: repeat(2, 1fr) !important; gap: 1rem; }
+
+  /* Section headings */
+  h2 { font-size: clamp(1.6rem, 5vw, 2.4rem) !important; }
+  h3 { font-size: clamp(1.2rem, 4vw, 1.6rem) !important; }
+
+  /* iframes / embeds */
+  iframe { width: 100% !important; height: 60vh; min-height: 320px; }
+}
+
+/* Small phones */
+@media (max-width: 640px) {
+  section { padding-left: 1rem !important; padding-right: 1rem !important; }
+  .hero, .hero-3d { padding: 5rem 1rem 2.5rem !important; }
+  .hero h1, .hero-content h1, .hero-content-3d h1 {
+    font-size: clamp(1.9rem, 7vw, 2.6rem) !important;
+  }
+  .services-grid, .portfolio-grid, .projects-grid, .testimonials-grid,
+  .inspiration-grid, .values-grid, .info-cards, .trust-grid,
+  .stats-grid, .stats-container {
+    grid-template-columns: 1fr !important;
+  }
+  body, p, li { font-size: 0.95rem; }
+  .footer-content { 
+    grid-template-columns: 1fr !important;
+    text-align: center;
+  }
+  .footer-section { text-align: center; }
+  .footer-section img, .footer-bottom img { margin-left: auto; margin-right: auto; }
+}
+
+/* Very small phones */
+@media (max-width: 480px) {
+  section { padding-left: 1rem !important; padding-right: 1rem !important; }
+  .hero h1, .hero-content h1, .hero-content-3d h1 {
+    font-size: clamp(1.8rem, 8vw, 2.3rem) !important;
+  }
+  .nav-logo img { height: 38px !important; }
+  .hero-trust, .trust-strip, .trust-divider, .scroll-indicator { display: none !important; }
+  h2 { font-size: 1.5rem !important; }
+}
+/* === END MOBILE RESPONSIVE PATCH v1 === */
+
+/* === UNIFIED NAV + FOOTER === */
+:root { --gold:#d4af37; --gold-dark:#c9a050; --gold-light:#e6c068; --navy:#0d0d12; }
+#siteNav { position:fixed; width:100%; top:0; z-index:1000; padding:0 5%; display:flex; justify-content:space-between; align-items:center; min-height:80px; transition:background .4s,box-shadow .4s,min-height .4s; background:transparent; }
+#siteNav.scrolled { background:linear-gradient(180deg,rgba(13,13,18,.92),rgba(20,20,28,.88)); backdrop-filter:blur(28px) saturate(1.4); -webkit-backdrop-filter:blur(28px) saturate(1.4); box-shadow:0 0 0 1px rgba(255,255,255,.04); min-height:66px; }
+#siteNav::after { content:''; position:absolute; bottom:0; left:0; right:0; height:1px; background:linear-gradient(90deg,transparent,var(--gold),transparent); opacity:0; transition:opacity .4s; pointer-events:none; }
+#siteNav.scrolled::after { animation:navGlow 6s ease-in-out infinite; }
+@keyframes navGlow { 0%,100%{opacity:.3}50%{opacity:1} }
+.nav-logo a { display:flex; align-items:center; text-decoration:none; }
+.nav-logo img { height:58px; width:auto; filter:drop-shadow(0 2px 8px rgba(0,0,0,.5)); transition:height .4s; }
+#siteNav.scrolled .nav-logo img { height:44px; }
+.nav-links { display:flex; align-items:center; gap:1.8rem; list-style:none; }
+.nav-links a { color:rgba(255,255,255,.9); text-decoration:none; font-family:'Inter',sans-serif; font-size:.82rem; letter-spacing:1.5px; text-transform:uppercase; position:relative; padding-bottom:2px; transition:color .25s; }
+.nav-links a::after { content:''; position:absolute; bottom:-2px; left:50%; right:50%; height:1px; background:var(--gold); transition:left .3s,right .3s; }
+.nav-links a:hover,.nav-links a.active { color:var(--gold); }
+.nav-links a:hover::after,.nav-links a.active::after { left:0; right:0; }
+.nav-cta-btn { background:var(--gold) !important; color:#0d0d12 !important; padding:.55rem 1.4rem !important; border-radius:50px; font-weight:700 !important; letter-spacing:2px !important; transition:box-shadow .3s,transform .3s !important; }
+.nav-cta-btn:hover { box-shadow:0 0 20px rgba(212,175,55,.6),0 0 40px rgba(212,175,55,.3) !important; transform:translateY(-2px) !important; }
+.nav-cta-btn::after { display:none !important; }
+.nav-toggle { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:4px; z-index:1001; position:relative; }
+.nav-toggle span { display:block; width:24px; height:2px; background:#fff; transition:all .3s; border-radius:2px; }
+.nav-toggle.open span:nth-child(1) { transform:rotate(45deg) translate(5px,5px); }
+.nav-toggle.open span:nth-child(2) { opacity:0; }
+.nav-toggle.open span:nth-child(3) { transform:rotate(-45deg) translate(5px,-5px); }
+@media(max-width:900px) {
+  .nav-logo img { height:42px !important; }
+  #siteNav.scrolled .nav-logo img { height:36px !important; }
+  .nav-toggle { display:flex !important; }
+  .nav-links { position:fixed; top:0; right:-100%; bottom:0; width:280px; flex-direction:column; align-items:flex-start; background:linear-gradient(180deg,rgba(13,13,18,.97),rgba(20,20,28,.95)); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); padding:80px 2rem 2rem; transition:right .35s cubic-bezier(.4,0,.2,1); gap:0; z-index:999; overflow-y:auto; }
+  .nav-links li { width:100%; border-bottom:1px solid rgba(255,255,255,.06); }
+  .nav-links a { display:block; padding:.9rem 0; font-size:.9rem; }
+  .nav-links.open { right:0; }
+  .nav-cta-item { border-bottom:none !important; margin-top:1rem; }
+  .nav-cta-btn { width:100% !important; text-align:center; display:block !important; padding:.7rem 1rem !important; border-radius:8px !important; }
+}
+.site-footer { background:linear-gradient(180deg,#0d0d12 0%,#0a0a0f 100%); color:rgba(255,255,255,.75); font-family:'Inter',sans-serif; padding-top:5rem; }
+.footer-content { display:grid; grid-template-columns:2fr 1fr 1fr 1.5fr; gap:3rem; padding:0 5% 3rem; max-width:1400px; margin:0 auto; }
+.footer-section h4 { font-family:'Bebas Neue',cursive; font-size:1.1rem; letter-spacing:2px; color:var(--gold); margin-bottom:1.2rem; }
+.footer-section ul { list-style:none; }
+.footer-section ul li { margin-bottom:.6rem; font-size:.9rem; color:rgba(255,255,255,.65); }
+.footer-section ul li a { color:rgba(255,255,255,.65); text-decoration:none; transition:color .25s; }
+.footer-section ul li a:hover { color:var(--gold); }
+.footer-brand img { filter:drop-shadow(0 2px 8px rgba(0,0,0,.5)); }
+.footer-tagline { margin-top:1rem; font-size:.95rem; color:rgba(255,255,255,.5); font-style:italic; font-family:'Playfair Display',serif; }
+.footer-socials { display:flex; gap:.8rem; margin-top:1.2rem; flex-wrap:wrap; }
+.footer-social-link { width:38px; height:38px; border-radius:50%; background:rgba(255,255,255,.06); border:1px solid rgba(212,175,55,.2); display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,.7); text-decoration:none; transition:all .3s; }
+.footer-social-link svg { width:18px; height:18px; }
+.footer-social-link:hover { background:var(--gold); color:#0d0d12; border-color:var(--gold); transform:translateY(-2px); }
+.footer-divider { height:1px; background:linear-gradient(90deg,transparent,rgba(212,175,55,.3),transparent); margin:0 5%; }
+.footer-bottom { text-align:center; padding:1.5rem 5%; font-size:.82rem; color:rgba(255,255,255,.3); }
+.footer-bottom a { color:var(--gold); text-decoration:none; }
+@media(max-width:900px) { .footer-content { grid-template-columns:1fr 1fr !important; gap:2rem !important; } }
+@media(max-width:480px) { .footer-content { grid-template-columns:1fr !important; } }
+/* === END UNIFIED NAV + FOOTER === */
+/* Page-specific: landscape-design */
+@media (max-width: 1024px) and (min-width: 641px) {
+  .services-grid, .gallery-grid { grid-template-columns: repeat(2, 1fr) !important; }
+}
+@media (max-width: 640px) {
+  .services-grid, .gallery-grid { grid-template-columns: 1fr !important; }
+  .service-card { flex-direction: column !important; }
+}
+@media (max-width: 768px) {
+  .service-image, .service-info { width: 100% !important; }
+}
+</style>
+</head>
+<body>
+    <!-- Unified Navigation -->
+    <nav id="siteNav">
+        <div class="nav-logo">
+            <a href="laphic-website.html"><img src="images/logo.png" alt="LAPHIC Modern Homes"></a>
+        </div>
+        <ul class="nav-links" id="navLinksMenu">
+            <li><a href="who-we-are.html">Who We Are</a></li>
+            <li><a href="services.html" class="active">Services</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="inspirations.html">Inspiration</a></li>
+            <li><a href="3d-experience.html">3D</a></li>
+            <li><a href="testimonials.html">Testimonials</a></li>
+            <li class="nav-cta-item"><a href="contact.html" class="nav-cta-btn">CONTACT</a></li>
+        </ul>
+        <button class="nav-toggle" id="navToggleBtn" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <!-- <div class="breadcrumb">
+            <a href="index.html">Home</a> / <a href="services.html">Services</a> / Landscape Design
+        </div> -->
+        <div class="hero-content">
+            <span class="service-number">03</span>
+            <h1>Landscape Design</h1>
+            <p>Crafting Outdoor Sanctuaries & Natural Beauty</p>
+        </div>
+    </section>
+
+    <section class="services-section">
+        <div class="services-header">
+            <h2>Our Services</h2>
+            <p>Comprehensive landscape solutions that transform outdoor spaces into beautiful, functional environments.</p>
+        </div>
+
+        <div class="services-container">
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777647583/Terrazzo_tiles_jymupk.jpg" alt="Exterior Design">
+                </div>
+                <div class="service-info">
+                    <h3>Tiles & Terrazzo</h3>
+                    <p>Premium outdoor flooring solutions that combine durability with aesthetic excellence.</p>
+                    <ul class="service-features">
+                        <li>Designer tile installation</li>
+                        <li>Custom terrazzo work</li>
+                        <li>Patio & walkway design</li>
+                        <li>Weather-resistant materials</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777646329/compound1_qztyaa.jpg" alt="Compound Design">
+                </div>
+                <div class="service-info">
+                    <h3>Compound Design</h3>
+                    <p>Complete outdoor environment planning that maximizes space and enhances property aesthetics.</p>
+                    <ul class="service-features">
+                        <li>Site analysis & planning</li>
+                        <li>Garden & lawn design</li>
+                        <li>Outdoor lighting systems</li>
+                        <li>Water feature integration</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777646875/exterior_hupzca.jpg" alt="Exterior Design">
+                </div>
+                <div class="service-info">
+                    <h3>3D Visualization</h3>
+                    <p>Advanced architectural visualization that brings your outdoor vision to life before construction begins.</p>
+                    <ul class="service-features">
+                        <li>Photo-realistic renders</li>
+                        <li>Virtual walkthroughs</li>
+                        <li>Material & color previews</li>
+                        <li>Design iterations</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777647000/garden_xla2nh.jpg" alt="Garden Design">
+                </div>
+                <div class="service-info">
+                    <h3>Garden Design</h3>
+                    <p>Custom garden spaces that blend beauty, functionality, and sustainability.</p>
+                    <ul class="service-features">
+                        <li>Plant selection & placement</li>
+                        <li>Irrigation systems</li>
+                        <li>Sustainable landscaping</li>
+                        <li>Seasonal maintenance plans</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777647485/outer_space_woraez.jpg" alt="Exterior Design">
+                </div>
+                <div class="service-info">
+                    <h3>Outdoor Living Spaces</h3>
+                    <p>Create functional outdoor areas perfect for entertainment and relaxation.</p>
+                    <ul class="service-features">
+                        <li>Patio & deck design</li>
+                        <li>Outdoor kitchens</li>
+                        <li>Seating areas</li>
+                        <li>Fire pit installations</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777646732/compound2_v8zdva.jpg" alt="Exterior Design">
+                </div>
+                <div class="service-info">
+                    <h3>Maintenance Services</h3>
+                    <p>Professional ongoing care to keep your landscape looking its best year-round.</p>
+                    <ul class="service-features">
+                        <li>Regular lawn care</li>
+                        <li>Pruning & trimming</li>
+                        <li>Seasonal planting</li>
+                        <li>Pest & disease management</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sub-Services Section -->
+    <section class="sub-services">
+        <div class="section-header">
+            <h2>Our Landscape Design Services</h2>
+            <p>Complete outdoor solutions for your property</p>
+        </div>
+
+        <div class="services-grid">
+            <!-- Garden Design -->
+            <div class="service-card">
+                <span class="service-icon">ðŸŒº</span>
+                <h3>Custom Garden Design</h3>
+                <p>Create your personal paradise with custom-designed gardens featuring native and exotic plants arranged for year-round beauty.</p>
+                <ul class="service-features">
+                    <li>Native plant landscaping</li>
+                    <li>Tropical garden designs</li>
+                    <li>Flower gardens and borders</li>
+                    <li>Herb and vegetable gardens</li>
+                    <li>Zen and meditation gardens</li>
+                    <li>Seasonal planting plans</li>
+                </ul>
+                <a href="contact.html" class="service-link">Request Quote</a>
+            </div>
+
+            <!-- Irrigation Systems -->
+            <div class="service-card">
+                <span class="service-icon">ðŸ’§</span>
+                <h3>Irrigation & Water Features</h3>
+                <p>Efficient irrigation systems and beautiful water features that enhance your landscape while conserving water.</p>
+                <ul class="service-features">
+                    <li>Automated irrigation systems</li>
+                    <li>Drip irrigation installation</li>
+                    <li>Decorative fountains</li>
+                    <li>Koi ponds and water gardens</li>
+                    <li>Waterfalls and streams</li>
+                    <li>Rainwater harvesting systems</li>
+                </ul>
+                <a href="contact.html" class="service-link">Request Quote</a>
+            </div>
+
+            <!-- Hardscaping -->
+            <div class="service-card">
+                <span class="service-icon">ðŸª¨</span>
+                <h3>Hardscaping & Pathways</h3>
+                <p>Durable and beautiful hardscape elements including patios, walkways, retaining walls, and decorative stonework.</p>
+                <ul class="service-features">
+                    <li>Paver patios and walkways</li>
+                    <li>Natural stone installations</li>
+                    <li>Retaining walls</li>
+                    <li>Outdoor stairs and steps</li>
+                    <li>Decorative rock gardens</li>
+                    <li>Driveway design</li>
+                </ul>
+                <a href="contact.html" class="service-link">Request Quote</a>
+            </div>
+
+            <!-- Lawn Care -->
+            <div class="service-card">
+                <span class="service-icon">ðŸŒ±</span>
+                <h3>Professional Lawn Installation</h3>
+                <p>Perfect green lawns using quality grass varieties suited to Uganda's climate, with expert installation and maintenance guidance.</p>
+                <ul class="service-features">
+                    <li>Natural grass installation</li>
+                    <li>Artificial turf solutions</li>
+                    <li>Soil preparation and grading</li>
+                    <li>Lawn edging and borders</li>
+                    <li>Maintenance programs</li>
+                    <li>Organic lawn care options</li>
+                </ul>
+                <a href="contact.html" class="service-link">Request Quote</a>
+            </div>
+
+            <!-- Outdoor Living -->
+            <div class="service-card">
+                <span class="service-icon">ðŸ¡</span>
+                <h3>Outdoor Living Spaces</h3>
+                <p>Extend your home outdoors with designed living areas perfect for entertaining, relaxing, and enjoying nature.</p>
+                <ul class="service-features">
+                    <li>Outdoor kitchens and bars</li>
+                    <li>Fire pits and fireplaces</li>
+                    <li>Seating and lounge areas</li>
+                    <li>Pergolas and shade structures</li>
+                    <li>Outdoor lighting design</li>
+                    <li>Entertainment zones</li>
+                </ul>
+                <a href="contact.html" class="service-link">Request Quote</a>
+            </div>
+
+            <!-- Complete Landscape -->
+            <div class="service-card">
+                <span class="service-icon">âœ¨</span>
+                <h3>Complete Landscape Packages</h3>
+                <p>Comprehensive landscape design and installation from concept to completion, creating cohesive outdoor environments.</p>
+                <ul class="service-features">
+                    <li>Master landscape planning</li>
+                    <li>3D landscape visualization</li>
+                    <li>Full project management</li>
+                    <li>Plant procurement</li>
+                    <li>Installation and planting</li>
+                    <li>Maintenance guidance</li>
+                </ul>
+                <a href="contact.html" class="service-link">Request Quote</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process-section">
+        <div class="section-header">
+            <h2>Our Design Process</h2>
+            <p>From bare ground to beautiful garden</p>
+        </div>
+
+        <div class="process-timeline">
+            <div class="process-step">
+                <div class="step-content">
+                    <h3>Site Analysis</h3>
+                    <p>We assess your property's soil, drainage, sun exposure, and existing features to create a landscape plan that thrives.</p>
+                </div>
+                <div class="step-number">
+                    <div class="number">01</div>
+                </div>
+            </div>
+
+            <div class="process-step">
+                <div class="step-content">
+                    <h3>Design Concept</h3>
+                    <p>Our landscape architects develop concepts with plant selections, hardscape elements, and 3D renderings of your future garden.</p>
+                </div>
+                <div class="step-number">
+                    <div class="number">02</div>
+                </div>
+            </div>
+
+            <div class="process-step">
+                <div class="step-content">
+                    <h3>Material Selection</h3>
+                    <p>Choose plants, stones, and materials with our guidance, ensuring they suit Uganda's climate and your maintenance preferences.</p>
+                </div>
+                <div class="step-number">
+                    <div class="number">03</div>
+                </div>
+            </div>
+
+            <div class="process-step">
+                <div class="step-content">
+                    <h3>Installation</h3>
+                    <p>Our skilled team brings the design to life with expert planting, irrigation setup, and hardscape construction.</p>
+                </div>
+                <div class="step-number">
+                    <div class="number">04</div>
+                </div>
+            </div>
+
+            <div class="process-step">
+                <div class="step-content">
+                    <h3>Care & Maintenance</h3>
+                    <p>We provide detailed care instructions and optional maintenance services to keep your landscape looking its best.</p>
+                </div>
+                <div class="step-number">
+                    <div class="number">05</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section">
+        <div class="section-header">
+            <h2>Our Landscape Design Portfolio</h2>
+            <p>Explore our recent landscape projects</p>
+        </div>
+
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777892607/download_7_rzqsr5.jpg" alt="Tropical Garden">
+                <div class="gallery-overlay">
+                    <h4>Tropical Paradise</h4>
+                    <p>Lush exotic plantings</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777646906/fresh_state_ccubdp.jpg" alt="Zen Garden">
+                <div class="gallery-overlay">
+                    <h4>Zen Sanctuary</h4>
+                    <p>Peaceful meditation space</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777647026/gazebo_xfwfnb.jpg" alt="Water Feature">
+                <div class="gallery-overlay">
+                    <h4>Water Garden</h4>
+                    <p>Tranquil koi pond</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777647485/outer_space_woraez.jpg" alt="Entertainment Area">
+                <div class="gallery-overlay">
+                    <h4>Outdoor Living</h4>
+                    <p>Perfect for entertaining</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777647801/til_gl7sm1.jpg" alt="Garden Path">
+                <div class="gallery-overlay">
+                    <h4>moble tiles</h4>
+                    <p>Beautiful mosaic tiles </p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777646455/compound3_pgyeo4.jpg" alt="Native Landscape">
+                <div class="gallery-overlay">
+                    <h4>Native Garden</h4>
+                    <p>Sustainable indigenous plants with white stones </p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777647583/Terrazzo_tiles_jymupk.jpg" alt="Tropical Garden">
+                <div class="gallery-overlay">
+                    <h4>tiles</h4>
+                    <p>terrazo designs</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777647922/tiles_sx7tye.jpg" alt="Zen Garden">
+                <div class="gallery-overlay">
+                    <h4> smooth tiles</h4>
+                    <p>smooth and elegant</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777647485/outer_space_woraez.jpg" alt="Water Feature">
+                <div class="gallery-overlay">
+                    <h4>outdooor chilling space </h4>
+                    <p>perfect for relaxing </p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777647026/gazebo_xfwfnb.jpg" alt="Tropical Garden">
+                <div class="gallery-overlay">
+                    <h4>modern gazabo</h4>
+                    <p>modern out door space with a water feature </p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777647000/garden_xla2nh.jpg" alt="Zen Garden">
+                <div class="gallery-overlay">
+                    <h4>flower garden</h4>
+                    <p>colorful and vibrant</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777646906/fresh_state_ccubdp.jpg" alt="Water Feature">
+                <div class="gallery-overlay">
+                    <h4> modern space </h4>
+                    <p>simple space with modern furniture</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials-section">
+        <div class="section-header">
+            <h2>What Our Clients Say</h2>
+            <p>Real experiences from satisfied property owners</p>
+        </div>
+
+        <div class="testimonials-slider">
+            <div class="testimonial-card">
+                <p class="testimonial-text">"LAPHIC Modern Homes transformed our backyard into a tropical paradise. The water feature and native plants create a peaceful retreat. Their knowledge of plants that thrive in Uganda is exceptional!"</p>
+                <p class="testimonial-author">Grace Nakato</p>
+                <p class="testimonial-role">Homeowner, Lubowa</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Ready to Create Your Dream Garden?</h2>
+            <p>Let's design an outdoor space you'll love</p>
+            <div class="cta-buttons">
+                <a href="contact.html" class="cta-btn cta-btn-primary">Get Free Consultation</a>
+                <a href="projects.html" class="cta-btn cta-btn-secondary">View Our Portfolio</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Unified Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-section footer-brand">
+                <img src="images/logo.png" alt="LAPHIC Modern Homes" height="70">
+                <p class="footer-tagline">Designing tomorrow's spaces, today</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="laphic-website.html">Home</a></li>
+                    <li><a href="who-we-are.html">Who We Are</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="inspirations.html">Inspiration</a></li>
+                    <li><a href="testimonials.html">Testimonials</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="interior-design.html">Interior Design</a></li>
+                    <li><a href="exterior-design.html">Exterior Design</a></li>
+                    <li><a href="landscape-design.html">Landscape Design</a></li>
+                    <li><a href="services.html">Construction</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <ul>
+                    <li>📍 Kampala, Uganda</li>
+                    <li><a href="tel:+256780535307">+256 780 535 307</a></li>
+                    <li><a href="mailto:laphicmodernhomes@gmail.com">laphicmodernhomes@gmail.com</a></li>
+                    <li>Mon-Sun: 8AM – 8PM</li>
+                </ul>
+                <div class="footer-socials">
+                    <a href="https://www.instagram.com/laphichomes" target="_blank" rel="noopener" class="footer-social-link" title="Instagram">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    </a>
+                    <a href="https://x.com/laphichomes" target="_blank" rel="noopener" class="footer-social-link" title="X (Twitter)">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    </a>
+                    <a href="https://www.tiktok.com/@laphic.modern.hom" target="_blank" rel="noopener" class="footer-social-link" title="TikTok">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V9.05a8.14 8.14 0 0 0 4.78 1.52V7.13a4.85 4.85 0 0 1-1.01-.44z"/></svg>
+                    </a>
+                    <a href="https://wa.me/256705029291" target="_blank" rel="noopener" class="footer-social-link" title="WhatsApp">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-divider"></div>
+        <div class="footer-bottom">
+            <p>&copy; <span id="footer-year">2026</span> LAPHIC Modern Homes. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+    /* Unified Nav JS */
+    (function(){
+        var siteNav = document.getElementById('siteNav');
+        var navToggleBtn = document.getElementById('navToggleBtn');
+        var navLinksMenu = document.getElementById('navLinksMenu');
+        var footerYearEl = document.getElementById('footer-year');
+        if(footerYearEl) footerYearEl.textContent = new Date().getFullYear();
+        if(siteNav) {
+            window.addEventListener('scroll', function(){
+                siteNav.classList.toggle('scrolled', window.scrollY > 50);
+            }, {passive:true});
+            if(window.scrollY > 50) siteNav.classList.add('scrolled');
+        }
+        if(navToggleBtn && navLinksMenu) {
+            navToggleBtn.addEventListener('click', function(){
+                navToggleBtn.classList.toggle('open');
+                navLinksMenu.classList.toggle('open');
+            });
+            navLinksMenu.querySelectorAll('a').forEach(function(a){
+                a.addEventListener('click', function(){
+                    navToggleBtn.classList.remove('open');
+                    navLinksMenu.classList.remove('open');
+                });
+            });
+        }
+    })();
+    </script>
+</body>
+</html>

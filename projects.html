@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -16,11 +16,12 @@
 
         :root {
             --midnight: #0f1419;
-            --teal: #9c6c24;
+            --teal: #8b5a1e;
             --coral: #ff6b6b;
             --cream: #f8f6f0;
             --charcoal: #3a3a3a;
             --gold: #c9a050;
+            --gold-soft: #e0bf84;
             --primary: #0a0a0a;
         }
 
@@ -73,7 +74,8 @@
         /* Hero Section */
         .hero {
             position: relative;
-            height: 70vh;
+            min-height: 88vh;
+            padding: 8rem 5% 5rem;
             overflow: hidden;
             display: flex;
             align-items: center;
@@ -92,29 +94,38 @@
             background-size: cover;
             background-position: center;
             opacity: 0;
-            animation: slideShow 15s infinite;
+            animation: slideShow 18s infinite;
+            transform-origin: center;
         }
 
         .hero-slider span:nth-child(1) {
-            background-image: url("images/interior.jfif");
+            background-image: url("https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1920&q=80");
             animation-delay: 0s;
         }
 
         .hero-slider span:nth-child(2) {
-            background-image: url("images/exterior.jfif");
-            animation-delay: 5s;
+            background-image: url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80");
+            animation-delay: 6s;
         }
 
         .hero-slider span:nth-child(3) {
-            background-image: url("images/landscape.jfif");
-            animation-delay: 10s;
+            background-image: url("https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=1920&q=80");
+            animation-delay: 12s;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 50% 40%, rgba(201, 160, 80, 0.3), rgba(0, 0, 0, 0.1) 45%, rgba(0, 0, 0, 0.7) 100%);
+            z-index: 2;
         }
 
         .hero::after {
             content: "";
             position: absolute;
             inset: 0;
-            background: rgba(0, 0, 0, 0.55);
+            background: linear-gradient(120deg, rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0.38));
             z-index: 2;
         }
 
@@ -123,25 +134,73 @@
             z-index: 3;
             text-align: center;
             color: #fff;
+            max-width: 900px;
+        }
+
+        .hero-label {
+            display: inline-block;
+            margin-bottom: 1.2rem;
+            padding: 0.5rem 1.1rem;
+            border: 1px solid rgba(255, 255, 255, 0.42);
+            border-radius: 999px;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            background: rgba(8, 8, 8, 0.35);
+            backdrop-filter: blur(3px);
         }
 
         .hero-content h1 {
-            font-family: 'Merriweather', serif;
-            font-size: 4.5rem;
-            letter-spacing: 2px;
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.3rem, 6vw, 5.2rem);
+            line-height: 1.06;
+            letter-spacing: 1px;
             margin-bottom: 1rem;
-            animation: fadeIn 1s ease-out;
+            animation: fadeIn 0.95s ease-out;
+            text-wrap: balance;
         }
 
         .hero-content p {
-            font-size: 1.3rem;
-            font-weight: 300;
-            animation: fadeIn 1s ease-out 0.3s both;
+            font-size: clamp(1rem, 2.1vw, 1.28rem);
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.93);
+            max-width: 720px;
+            margin: 0 auto;
+            animation: fadeIn 1s ease-out 0.2s both;
+        }
+
+        .hero-meta {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 2rem;
+            animation: fadeIn 1.1s ease-out 0.3s both;
+        }
+
+        .hero-meta span {
+            padding: 0.55rem 1rem;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            background: rgba(255, 255, 255, 0.12);
+            color: #fff;
+        }
+
+        .scroll-cue {
+            margin-top: 2.4rem;
+            color: rgba(255, 255, 255, 0.87);
+            font-size: 0.9rem;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            animation: floatY 1.5s ease-in-out infinite;
         }
 
         @keyframes slideShow {
             0% { opacity: 0; transform: scale(1); }
-            10% { opacity: 1; transform: scale(1.05); }
+            10% { opacity: 1; transform: scale(1.04); }
             30% { opacity: 1; }
             40% { opacity: 0; }
             100% { opacity: 0; }
@@ -150,6 +209,11 @@
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes floatY {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(6px); }
         }
 
         /* Filter Tabs */
@@ -237,11 +301,12 @@
         .project-card {
             position: relative;
             background: #fff;
-            border-radius: 0;
+            border-radius: 18px;
             overflow: hidden;
             box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
             transition: all 0.4s ease;
             cursor: pointer;
+            border: 1px solid rgba(201, 160, 80, 0.16);
         }
 
         .project-card:hover {
@@ -327,68 +392,140 @@
         }
 
         .project-info {
-            padding: 2rem;
-            background: white;
+            padding: 2.5rem;
+            background: linear-gradient(180deg, #fff, #fcfaf6);
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            position: relative;
+        }
+
+        .project-info::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--teal));
+        }
+
+        .project-card h3 {
+            font-size: 1.2rem;
+            color: var(--gold);
+            font-weight: 700;
+            margin: 0;
+            line-height: 1.4;
+            font-family: 'Merriweather', serif;
         }
 
         .project-meta {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            padding: 1.5rem 0;
+            border-top: 1px solid rgba(201, 160, 80, 0.2);
+            border-bottom: 1px solid rgba(201, 160, 80, 0.2);
+        }
+
+        .project-location-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: var(--gold);
+            letter-spacing: 1px;
+            font-weight: 700;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid #eee;
+            gap: 0.5rem;
+        }
+
+        .project-location-label::before {
+            content: '📍';
+            font-size: 1rem;
         }
 
         .project-location {
             display: flex;
-            align-items: center;
+            flex-direction: column;
             gap: 0.5rem;
+        }
+
+        .project-location-value {
             color: var(--charcoal);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
+            font-weight: 500;
         }
 
         .project-progress {
             display: flex;
-            align-items: center;
+            flex-direction: column;
             gap: 0.5rem;
-            font-size: 0.9rem;
+        }
+
+        .project-progress-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: var(--teal);
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+
+        .project-progress-value {
+            font-size: 0.95rem;
             color: var(--teal);
             font-weight: 600;
         }
 
         .view-details-btn {
-            display: inline-block;
-            margin-top: 1rem;
-            padding: 0.75rem 2rem;
-            background: transparent;
-            border: 2px solid var(--midnight);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: auto;
+            padding: 0.9rem 2.5rem;
+            background: linear-gradient(135deg, var(--gold), var(--gold-soft));
+            border: 2px solid var(--gold);
             color: var(--midnight);
             text-decoration: none;
-            font-weight: 600;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
             text-transform: uppercase;
             font-size: 0.85rem;
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .view-details-btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--teal), var(--coral));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: -1;
         }
 
         .view-details-btn:hover {
             background: var(--midnight);
-            color: white;
+            color: var(--gold);
+            border-color: var(--midnight);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(201, 160, 80, 0.25);
         }
 
         /* Stats Section */
         .stats-section {
             background: var(--midnight);
-            padding: 5rem 5%;
-            margin: 4rem 0;
+            padding: 2.5rem 5%;
+            margin: 2rem 0;
         }
 
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            max-width: 1200px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 900px;
             margin: 0 auto;
         }
 
@@ -398,16 +535,17 @@
         }
 
         .stat-number {
-            font-size: 4rem;
+            font-size: 2.5rem;
             font-weight: 700;
             color: var(--gold);
             margin-bottom: 0.5rem;
+            font-variant-numeric: tabular-nums;
         }
 
         .stat-label {
-            font-size: 1.1rem;
+            font-size: 0.95rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
             opacity: 0.9;
         }
 
@@ -415,7 +553,41 @@
         .cta-section {
             padding: 6rem 5%;
             text-align: center;
-            background: var(--cream);
+            background: linear-gradient(135deg, var(--cream) 0%, #faf8f4 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(201, 160, 80, 0.1), transparent);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .cta-container {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .cta-label {
+            display: inline-block;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--gold);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            padding: 0.5rem 1.5rem;
+            border: 1px solid var(--gold);
+            border-radius: 50px;
         }
 
         .cta-content h2 {
@@ -423,46 +595,63 @@
             font-size: 3rem;
             color: var(--midnight);
             margin-bottom: 1.5rem;
+            line-height: 1.2;
         }
 
         .cta-content p {
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             color: var(--charcoal);
             margin-bottom: 2.5rem;
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
+            line-height: 1.8;
         }
 
         .cta-buttons {
             display: flex;
-            gap: 2rem;
+            gap: 1.5rem;
             justify-content: center;
             flex-wrap: wrap;
         }
 
         .cta-btn {
-            padding: 1.2rem 3rem;
-            font-size: 1rem;
-            font-weight: 600;
+            padding: 1.1rem 3rem;
+            font-size: 0.95rem;
+            font-weight: 700;
             text-decoration: none;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
+            letter-spacing: 1.5px;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
             border: 2px solid;
+            border-radius: 4px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            position: relative;
+            overflow: hidden;
         }
 
         .cta-btn-primary {
-            background: var(--gold);
+            background: linear-gradient(135deg, var(--gold), var(--gold-soft));
             color: var(--midnight);
             border-color: var(--gold);
         }
 
         .cta-btn-primary:hover {
-            background: transparent;
+            background: var(--midnight);
             color: var(--gold);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(201, 160, 80, 0.3);
+            border-color: var(--midnight);
+            transform: translateY(-4px);
+            box-shadow: 0 15px 40px rgba(201, 160, 80, 0.3);
+        }
+
+        .btn-arrow {
+            transition: transform 0.3s ease;
+        }
+
+        .cta-btn-primary:hover .btn-arrow {
+            transform: translateX(5px);
         }
 
         .cta-btn-secondary {
@@ -474,8 +663,9 @@
         .cta-btn-secondary:hover {
             background: var(--midnight);
             color: var(--cream);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border-color: var(--midnight);
+            transform: translateY(-4px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
         }
 
         /* Footer */
@@ -536,6 +726,10 @@
                 font-size: 2rem;
             }
 
+            .cta-label {
+                font-size: 0.75rem;
+            }
+
             .cta-buttons {
                 flex-direction: column;
                 align-items: center;
@@ -550,6 +744,37 @@
         /* Hide/Show based on filter */
         .project-card.hidden {
             display: none;
+        }
+
+        /* Typing Animation Styles */
+        .listed-item {
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .listed-item.show {
+            opacity: 1;
+        }
+
+        .scroll-typing {
+            min-height: 1.2em;
+            display: block;
+        }
+
+        .scroll-typing.typing-active::after {
+            content: '|';
+            animation: blink 0.7s infinite;
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        @keyframes blink {
+            0%, 49% {
+                opacity: 1;
+            }
+            50%, 100% {
+                opacity: 0;
+            }
         }
 
         /* Modal/Popup Styles */
@@ -891,6 +1116,39 @@
             line-height: 1.6;
         }
 
+        .listed-item {
+            opacity: 0;
+            transform: translateY(16px);
+            transition: opacity 0.45s ease, transform 0.45s ease;
+        }
+
+        .listed-item.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .scroll-typing {
+            opacity: 0;
+        }
+
+        .scroll-typing.show {
+            opacity: 1;
+            transition: opacity 0.25s ease;
+        }
+
+        .scroll-typing.typing-active::after {
+            content: "|";
+            margin-left: 2px;
+            color: var(--gold);
+            animation: blinkCaret 0.7s step-end infinite;
+        }
+
+        @keyframes blinkCaret {
+            50% {
+                opacity: 0;
+            }
+        }
+
         /* Responsive Modal */
         @media (max-width: 768px) {
             .modal-content {
@@ -1162,49 +1420,854 @@ p, li, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; word-wrap: break-word
 @media (max-width: 640px) {
   .modal-title { font-size: 1.4rem !important; }
 }
+
+/* === FINAL COMPATIBILITY PATCH (all screens) === */
+/* Prevent any element ever causing horizontal scroll */
+html, body { overflow-x: hidden !important; }
+* { min-width: 0; }
+
+/* Filter tabs: tighten gap on small screens */
+@media (max-width: 768px) {
+  .filter-tabs { gap: 0.6rem !important; }
+  .filter-btn  { padding: 0.6rem 1.1rem !important; font-size: 0.8rem !important; letter-spacing: 0.5px !important; }
+  .section-header { margin-bottom: 2.5rem !important; }
+  .section-header h2 { font-size: clamp(1.7rem, 5.5vw, 2.4rem) !important; }
+  .section-header p  { font-size: 0.95rem !important; }
+  .projects-section, .stats-section, .cta-section { padding: 3.5rem 1.25rem !important; }
+  .stat-number { font-size: 2rem !important; }
+  .stat-label  { font-size: 0.78rem !important; letter-spacing: 1px !important; }
+}
+
+/* Landscape phones (short height) */
+@media (max-height: 480px) and (orientation: landscape) {
+  .hero, .hero-3d { min-height: 100vh; padding: 5rem 1rem 2rem !important; }
+  .modal-hero { height: 180px !important; }
+  .modal-content { max-height: 100vh !important; }
+}
+
+/* Ultra-small phones (Galaxy Fold ~280px, etc.) */
+@media (max-width: 360px) {
+  section { padding-left: 0.85rem !important; padding-right: 0.85rem !important; }
+  .hero h1, .hero-content h1 { font-size: clamp(1.6rem, 8vw, 2rem) !important; }
+  .filter-btn { padding: 0.55rem 0.9rem !important; font-size: 0.72rem !important; }
+  .cta-btn, .cta-btn-primary, .cta-btn-secondary { padding: 0.9rem 1.2rem !important; font-size: 0.8rem !important; letter-spacing: 1px !important; }
+  .modal-hero { height: 220px !important; }
+  .modal-hero-overlay { padding: 1.5rem !important; }
+  .modal-hero-overlay h2 { font-size: 1.4rem !important; }
+  .modal-body { padding: 1.5rem 1rem !important; }
+  .stat-number { font-size: 1.8rem !important; }
+  .nav-logo img { height: 34px !important; }
+}
+
+/* Touch targets ≥44px on touch devices (WCAG) */
+@media (hover: none) and (pointer: coarse) {
+  .filter-btn, .cta-btn, .modal-btn, .nav-links a, .nav-cta-btn {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* Large screens: cap content nicely so it doesn't stretch */
+@media (min-width: 1600px) {
+  .projects-section, .filter-section, .cta-section { max-width: 1600px; margin-left: auto; margin-right: auto; }
+}
+/* === END FINAL COMPATIBILITY PATCH === */
+/* ============================================================
+   PROJECTS PAGE — TURNER-STYLE CORPORATE SHOWCASE
+   Clean. Confident. Photography-led. All sans-serif.
+   Palette: midnight #0f1419 / gold #c9a050 / cream #f8f6f0 / white
+   ============================================================ */
+
+body {
+    --shadow-card: 0 2px 6px rgba(15,20,25,.06);
+    --shadow-hover: 0 14px 40px -10px rgba(15,20,25,.22);
+    --line: #e6e3dc;
+    --muted: #6a6f76;
+}
+
+/* Globally enforce sans-serif everywhere on this page (Turner uses no serifs) */
+body, body h1, body h2, body h3, body h4, body p, body a, body span, body div {
+    font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+}
+
+/* ============================================================
+   HERO — Big photo slider + bold corporate headline at bottom
+   ============================================================ */
+body .hero {
+    position: relative !important;
+    min-height: 78vh !important;
+    display: flex !important;
+    align-items: flex-end !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+    background: #0a0d11 !important;
+    grid-template-columns: none !important;
+}
+/* Dark gradient overlay for text legibility */
+body .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(10,13,17,.35) 0%, rgba(10,13,17,.25) 40%, rgba(10,13,17,.85) 100%);
+    z-index: 2;
+    pointer-events: none;
+}
+/* Image slider — seamless crossfade with overlap (no black gaps) */
+body .hero .hero-slider {
+    display: block !important;
+    position: absolute !important;
+    inset: 0;
+    z-index: 0;
+}
+body .hero .hero-slider span {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    animation: heroSlideSeamless 18s ease-in-out infinite;
+}
+body .hero .hero-slider span:nth-child(1) { animation-delay: 0s; }
+body .hero .hero-slider span:nth-child(2) { animation-delay: 6s; }
+body .hero .hero-slider span:nth-child(3) { animation-delay: 12s; }
+@keyframes heroSlideSeamless {
+    0%   { opacity: 1; transform: scale(1); }
+    30%  { opacity: 1; transform: scale(1.05); }
+    36%  { opacity: 0; transform: scale(1.08); }
+    100% { opacity: 0; }
+}
+body .hero .hero-content {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 5% 5rem !important;
+    color: #fff !important;
+    background: transparent !important;
+    text-align: left !important;
+    display: block !important;
+}
+body .hero .hero-label {
+    display: inline-block !important;
+    font-size: .72rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 3px !important;
+    text-transform: uppercase !important;
+    color: var(--gold) !important;
+    background: transparent !important;
+    border: 0 !important;
+    padding: 0 !important;
+    margin-bottom: 1rem !important;
+}
+body .hero h1 {
+    font-size: clamp(2.4rem, 5.4vw, 4.6rem) !important;
+    font-weight: 700 !important;
+    line-height: 1.05 !important;
+    letter-spacing: -1.5px !important;
+    color: #fff !important;
+    margin: 0 0 1.2rem 0 !important;
+    max-width: 20ch;
+    text-transform: none !important;
+}
+body .hero h1 em {
+    font-style: normal !important;
+    color: #fff !important;
+    font-weight: 700 !important;
+}
+body .hero p {
+    font-size: clamp(1rem, 1.15vw, 1.15rem) !important;
+    font-weight: 400 !important;
+    line-height: 1.6 !important;
+    color: rgba(255,255,255,.85) !important;
+    max-width: 560px !important;
+    margin: 0 !important;
+}
+body .hero .hero-meta { display: none !important; }
+body .hero .scroll-cue { display: none !important; }
+
+/* ============================================================
+   FILTER BAR — Turner-style horizontal pill row, white bg
+   ============================================================ */
+body .filter-section {
+    position: sticky !important;
+    top: 80px !important;
+    z-index: 50 !important;
+    background: #fff !important;
+    backdrop-filter: none !important;
+    border-top: 0 !important;
+    border-bottom: 1px solid var(--line) !important;
+    padding: 1.2rem 5% !important;
+    margin: 0 !important;
+    box-shadow: 0 1px 0 rgba(15,20,25,.02) !important;
+}
+body .filter-section .filter-tabs {
+    max-width: 1400px;
+    margin: 0 auto !important;
+    display: flex !important;
+    flex-wrap: wrap;
+    justify-content: flex-start !important;
+    align-items: center;
+    gap: 0 !important;
+}
+body .filter-section .filter-tabs::before {
+    content: 'FILTER BY';
+    font-size: .7rem;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    color: var(--muted);
+    margin-right: 1.6rem;
+    padding-right: 1.6rem;
+    border-right: 1px solid var(--line);
+    align-self: center;
+}
+body .filter-section .filter-btn {
+    display: inline-flex !important;
+    align-items: center;
+    padding: .6rem 1.2rem !important;
+    margin: .25rem .35rem .25rem 0 !important;
+    font-size: .78rem !important;
+    font-weight: 600 !important;
+    letter-spacing: .5px !important;
+    text-transform: none !important;
+    color: var(--midnight) !important;
+    background: transparent !important;
+    border: 1px solid var(--line) !important;
+    border-radius: 2px !important;
+    text-decoration: none !important;
+    transition: all .25s ease !important;
+    cursor: pointer;
+}
+body .filter-section .filter-btn:hover {
+    background: var(--midnight) !important;
+    color: #fff !important;
+    border-color: var(--midnight) !important;
+}
+body .filter-section .filter-btn.active {
+    background: var(--midnight) !important;
+    color: #fff !important;
+    border-color: var(--midnight) !important;
+    position: relative;
+}
+body .filter-section .filter-btn.active::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; bottom: -1.2rem;
+    height: 3px;
+    background: var(--gold);
+}
+
+/* ============================================================
+   SECTION HEADERS — Left-aligned with thin rule, like Turner
+   ============================================================ */
+body .projects-section {
+    background: #fff !important;
+    padding: 6rem 5% 5rem !important;
+    margin: 0 !important;
+    max-width: none !important;
+}
+body .projects-section:nth-of-type(odd) {
+    background: #fafaf8 !important;
+}
+body .projects-section .section-header {
+    max-width: 1400px;
+    margin: 0 auto 3.5rem !important;
+    text-align: left !important;
+    display: flex !important;
+    align-items: flex-end !important;
+    justify-content: space-between !important;
+    gap: 3rem !important;
+    grid-template-columns: none !important;
+    border: 0 !important;
+    border-bottom: 1px solid var(--line) !important;
+    padding: 0 0 1.6rem 0 !important;
+    flex-wrap: wrap;
+}
+body .projects-section .section-header::before {
+    display: none !important;
+}
+body .projects-section .section-header h2 {
+    font-size: clamp(1.8rem, 3vw, 2.6rem) !important;
+    font-weight: 700 !important;
+    color: var(--midnight) !important;
+    margin: 0 !important;
+    line-height: 1.1 !important;
+    letter-spacing: -.8px !important;
+    text-transform: none !important;
+    font-style: normal !important;
+}
+body .projects-section .section-header h2::after { display: none !important; }
+body .projects-section .section-header p {
+    font-size: 1rem !important;
+    font-weight: 400 !important;
+    line-height: 1.55 !important;
+    color: var(--muted) !important;
+    max-width: 480px !important;
+    margin: 0 !important;
+    text-align: left !important;
+}
+
+/* ============================================================
+   PROJECT CARDS — Turner clean card: image on top, white below
+   ============================================================ */
+body .projects-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 2rem !important;
+    max-width: 1400px;
+    margin: 0 auto !important;
+    padding: 0 !important;
+}
+
+body .project-card {
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column !important;
+    background: #fff !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    overflow: hidden !important;
+    cursor: pointer !important;
+    box-shadow: var(--shadow-card) !important;
+    transition: transform .35s ease, box-shadow .35s ease !important;
+}
+body .project-card:hover {
+    transform: translateY(-4px) !important;
+    box-shadow: var(--shadow-hover) !important;
+}
+
+/* Image area */
+body .project-card .project-image {
+    position: relative !important;
+    width: 100% !important;
+    aspect-ratio: 16 / 10 !important;
+    overflow: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: #e8e6df;
+}
+body .project-card .project-image img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    transition: transform .7s cubic-bezier(.22,.61,.36,1) !important;
+    display: block !important;
+    filter: none !important;
+}
+body .project-card:hover .project-image img {
+    transform: scale(1.05) !important;
+    filter: none !important;
+}
+body .project-card .project-image::after { display: none !important; }
+body .project-card .project-image::before { display: none !important; }
+
+/* Category tag — small badge top-left like Turner */
+body .project-card .project-status {
+    position: absolute !important;
+    top: 1rem !important;
+    left: 1rem !important;
+    right: auto !important;
+    z-index: 5 !important;
+    padding: .35rem .7rem !important;
+    font-size: .62rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 1.5px !important;
+    text-transform: uppercase !important;
+    border-radius: 2px !important;
+    border: 0 !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+body .project-card .project-status.status-ongoing {
+    background: var(--gold) !important;
+    color: var(--midnight) !important;
+}
+body .project-card .project-status.status-completed {
+    background: #fff !important;
+    color: var(--midnight) !important;
+}
+
+/* Overlay caption — now sits BELOW image in white panel */
+body .project-card .project-overlay {
+    position: static !important;
+    left: auto; right: auto; bottom: auto; top: auto;
+    z-index: auto !important;
+    display: block !important;
+    padding: 1.5rem 1.5rem .6rem !important;
+    background: transparent !important;
+    color: var(--midnight) !important;
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    text-align: left !important;
+    order: 2;
+}
+body .project-card .project-overlay .project-category {
+    font-size: .68rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 2px !important;
+    text-transform: uppercase !important;
+    color: var(--gold) !important;
+    margin: 0 0 .6rem 0 !important;
+    display: block !important;
+    background: transparent !important;
+    padding: 0 !important;
+    border: 0 !important;
+}
+body .project-card .project-overlay h3 {
+    font-size: 1.35rem !important;
+    font-weight: 700 !important;
+    line-height: 1.25 !important;
+    color: var(--midnight) !important;
+    margin: 0 0 .5rem 0 !important;
+    letter-spacing: -.3px !important;
+    text-transform: none !important;
+    font-style: normal !important;
+    transition: color .25s ease;
+}
+body .project-card:hover .project-overlay h3 {
+    color: var(--gold) !important;
+}
+body .project-card .project-overlay p {
+    font-size: .92rem !important;
+    line-height: 1.55 !important;
+    color: var(--muted) !important;
+    margin: 0 !important;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    max-height: none;
+    opacity: 1;
+}
+
+/* Info panel — meta below */
+body .project-card .project-info {
+    position: relative !important;
+    z-index: 2 !important;
+    padding: .6rem 1.5rem 1.6rem !important;
+    background: #fff !important;
+    border: 0 !important;
+    border-top: 1px solid transparent !important;
+    margin-top: auto;
+    order: 3;
+}
+body .project-card .project-info h3 { display: none !important; }
+body .project-card .project-info > p:first-of-type { display: none !important; }
+
+body .project-card .project-meta {
+    display: flex !important;
+    flex-wrap: wrap;
+    gap: 1.2rem !important;
+    align-items: center;
+    padding: 1rem 0 0 0 !important;
+    margin: 0 !important;
+    border: 0 !important;
+    border-top: 1px solid var(--line) !important;
+    background: transparent !important;
+}
+body .project-card .project-meta > * {
+    font-size: .74rem !important;
+    font-weight: 500 !important;
+    letter-spacing: .3px !important;
+    text-transform: none !important;
+    color: var(--muted) !important;
+    background: transparent !important;
+    padding: 0 !important;
+    border: 0 !important;
+    display: inline-flex !important;
+    align-items: center;
+    gap: 6px;
+}
+body .project-card .project-location::before {
+    content: '';
+    width: 13px; height: 13px;
+    background: var(--muted);
+    -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'><path d='M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z'/></svg>") center/contain no-repeat;
+            mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'><path d='M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z'/></svg>") center/contain no-repeat;
+}
+body .project-card .project-progress {
+    color: var(--midnight) !important;
+    font-weight: 600 !important;
+    margin-left: auto;
+}
+body .project-card .project-progress::before {
+    content: '';
+    width: 13px; height: 13px;
+    background: var(--gold);
+    -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'><path d='M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 11h-2V6h2z'/></svg>") center/contain no-repeat;
+            mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'><path d='M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 11h-2V6h2z'/></svg>") center/contain no-repeat;
+}
+
+/* View details link — bottom of card, gold arrow link Turner-style */
+body .project-card .project-link,
+body .project-card .view-details {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 8px;
+    padding: 0 !important;
+    margin: 1rem 0 0 0 !important;
+    font-size: .76rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 1.5px !important;
+    text-transform: uppercase !important;
+    color: var(--midnight) !important;
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    text-decoration: none !important;
+    transition: color .25s ease, gap .25s ease !important;
+}
+body .project-card .project-link::after,
+body .project-card .view-details::after {
+    content: '→';
+    color: var(--gold);
+    transition: transform .3s ease;
+}
+body .project-card:hover .project-link,
+body .project-card:hover .view-details {
+    color: var(--gold) !important;
+    gap: 14px;
+}
+body .project-card:hover .project-link::after,
+body .project-card:hover .view-details::after {
+    transform: translateX(4px);
+}
+
+/* Remove corner brackets from the previous design */
+body .project-card::before,
+body .project-card::after { display: none !important; content: none !important; }
+
+/* ============================================================
+   STATS — Light cream band, simple grid (Turner-style facts row)
+   ============================================================ */
+body .stats-section {
+    background: var(--cream) !important;
+    color: var(--midnight) !important;
+    padding: 4.5rem 5% !important;
+    margin: 0 !important;
+    border-top: 1px solid var(--line) !important;
+    border-bottom: 1px solid var(--line) !important;
+}
+body .stats-section::before { display: none !important; }
+body .stats-section .stats-grid,
+body .stats-section .stats-container {
+    max-width: 1200px;
+    margin: 0 auto !important;
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 0 !important;
+    padding: 0 !important;
+}
+body .stats-section .stat-item {
+    text-align: left !important;
+    padding: .5rem 2rem !important;
+    background: transparent !important;
+    border: 0 !important;
+    border-right: 1px solid rgba(15,20,25,.12) !important;
+}
+body .stats-section .stat-item:last-child { border-right: 0 !important; }
+body .stats-section .stat-number {
+    font-size: clamp(2.2rem, 3.6vw, 3rem) !important;
+    font-weight: 700 !important;
+    color: var(--midnight) !important;
+    margin: 0 0 .3rem 0 !important;
+    line-height: 1 !important;
+    display: block !important;
+    letter-spacing: -1px !important;
+}
+body .stats-section .stat-label {
+    font-size: .74rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 1.5px !important;
+    text-transform: uppercase !important;
+    color: var(--muted) !important;
+    margin: 0 !important;
+}
+
+/* ============================================================
+   CTA — Dark midnight band, clean and confident
+   ============================================================ */
+body .cta-section {
+    position: relative !important;
+    padding: 6rem 5% !important;
+    margin: 0 !important;
+    background: var(--midnight) !important;
+    color: #fff !important;
+    text-align: left !important;
+    overflow: hidden;
+    max-width: none !important;
+}
+body .cta-section::before { display: none !important; }
+body .cta-section > .cta-inner,
+body .cta-section {
+    /* layout flex */
+}
+body .cta-section .cta-eyebrow,
+body .cta-section .section-eyebrow {
+    display: inline-block;
+    font-size: .72rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 3px !important;
+    text-transform: uppercase !important;
+    color: var(--gold) !important;
+    margin-bottom: 1rem !important;
+}
+body .cta-section h2 {
+    font-size: clamp(2rem, 4vw, 3.2rem) !important;
+    font-weight: 700 !important;
+    color: #fff !important;
+    line-height: 1.15 !important;
+    letter-spacing: -.8px !important;
+    max-width: 24ch;
+    margin: 0 0 1.2rem 0 !important;
+    text-transform: none !important;
+    font-style: normal !important;
+}
+body .cta-section h2 em {
+    font-style: normal !important;
+    color: var(--gold) !important;
+    font-weight: 700 !important;
+}
+body .cta-section p {
+    font-size: 1.05rem !important;
+    font-weight: 400 !important;
+    line-height: 1.65 !important;
+    color: rgba(255,255,255,.78) !important;
+    max-width: 600px;
+    margin: 0 0 2.4rem 0 !important;
+}
+body .cta-section .cta-buttons,
+body .cta-section .cta-actions {
+    display: flex !important;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 1rem !important;
+}
+body .cta-section .cta-btn,
+body .cta-section .btn {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 10px;
+    padding: 1rem 1.8rem !important;
+    font-size: .76rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 2px !important;
+    text-transform: uppercase !important;
+    text-decoration: none !important;
+    border-radius: 2px !important;
+    transition: all .3s ease !important;
+    cursor: pointer;
+}
+body .cta-section .cta-btn.primary,
+body .cta-section .cta-btn:first-child {
+    background: var(--gold) !important;
+    color: var(--midnight) !important;
+    border: 1px solid var(--gold) !important;
+}
+body .cta-section .cta-btn.primary:hover,
+body .cta-section .cta-btn:first-child:hover {
+    background: #fff !important;
+    color: var(--midnight) !important;
+    border-color: #fff !important;
+}
+body .cta-section .cta-btn.secondary,
+body .cta-section .cta-btn:last-child:not(:first-child) {
+    background: transparent !important;
+    color: #fff !important;
+    border: 1px solid rgba(255,255,255,.45) !important;
+}
+body .cta-section .cta-btn.secondary:hover,
+body .cta-section .cta-btn:last-child:not(:first-child):hover {
+    background: #fff !important;
+    color: var(--midnight) !important;
+    border-color: #fff !important;
+}
+
+/* ============================================================
+   MODAL — Light polish
+   ============================================================ */
+body #projectModal .modal-content,
+body .modal-content {
+    border-radius: 2px !important;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 1100px) {
+    body .projects-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 1.6rem !important; }
+    body .stats-section .stats-grid,
+    body .stats-section .stats-container { grid-template-columns: repeat(2, 1fr) !important; }
+    body .stats-section .stat-item:nth-child(2) { border-right: 0 !important; }
+    body .stats-section .stat-item:nth-child(-n+2) { border-bottom: 1px solid rgba(15,20,25,.12) !important; padding-bottom: 2rem !important; }
+    body .stats-section .stat-item:nth-child(n+3) { padding-top: 2rem !important; }
+}
+@media (max-width: 768px) {
+    body .hero { min-height: 70vh !important; }
+    body .hero .hero-content { padding: 0 5% 3.5rem !important; }
+    body .filter-section { top: 64px !important; padding: 1rem 4% !important; overflow-x: auto !important; }
+    body .filter-section .filter-tabs { flex-wrap: nowrap !important; }
+    body .filter-section .filter-tabs::before { display: none !important; }
+    body .filter-section .filter-btn { flex-shrink: 0 !important; padding: .55rem 1rem !important; font-size: .72rem !important; }
+
+    body .projects-section { padding: 4rem 5% 3rem !important; }
+    body .projects-section .section-header { margin-bottom: 2.4rem !important; flex-direction: column; align-items: flex-start !important; gap: 1rem !important; }
+    body .projects-grid { grid-template-columns: 1fr !important; gap: 1.4rem !important; }
+    body .project-card .project-image { aspect-ratio: 16 / 11 !important; }
+
+    body .stats-section { padding: 3rem 5% !important; }
+    body .stats-section .stat-item { padding: 1.2rem !important; }
+
+    body .cta-section { padding: 4.5rem 5% !important; }
+}
+@media (max-width: 480px) {
+    body .stats-section .stats-grid,
+    body .stats-section .stats-container { grid-template-columns: 1fr !important; }
+    body .stats-section .stat-item { border-right: 0 !important; border-bottom: 1px solid rgba(15,20,25,.12) !important; padding: 1.4rem 0 !important; }
+    body .stats-section .stat-item:last-child { border-bottom: 0 !important; }
+    body .cta-section .cta-btn, body .cta-section .btn { width: 100%; justify-content: center; }
+}
+    body .stats-section .stat-item { border-right: 0 !important; border-bottom: 1px solid rgba(15,20,25,.12) !important; padding: 1.4rem 0 !important; }
+    body .stats-section .stat-item:last-child { border-bottom: 0 !important; }
+    body .cta-section .cta-btn, body .cta-section .btn { width: 100%; justify-content: center; }
+}
+@media (max-width: 480px) {
+    body .stats-section .stats-grid,
+    body .stats-section .stats-container { grid-template-columns: 1fr !important; }
+    body .stats-section .stat-item { border-right: 0 !important; border-bottom: 1px solid rgba(15,20,25,.12) !important; padding: 1.4rem 0 !important; }
+    body .stats-section .stat-item:last-child { border-bottom: 0 !important; }
+    body .cta-section .cta-btn, body .cta-section .btn { width: 100%; justify-content: center; }
+}
+    body .stats-section .stats-container { grid-template-columns: 1fr !important; }
+    body .stats-section .stat-item { border-right: 0 !important; border-bottom: 1px solid rgba(15,20,25,.12) !important; padding: 1.4rem 0 !important; }
+    body .stats-section .stat-item:last-child { border-bottom: 0 !important; }
+    body .cta-section .cta-btn, body .cta-section .btn { width: 100%; justify-content: center; }
+}
+</style>
+<style id="unified-nav-footer">
+:root{
+  --u-ink:#0a1a2f;--u-navy:#0a1a2f;--u-navy-2:#11233f;
+  --u-gold:#c9a050;--u-gold-soft:#e3c789;
+  --u-paper:#f7f5f1;--u-bone:#efeae1;--u-line:#e6e2db;
+  --u-muted:#5a6473;--u-muted-2:#8a8f98;
+}
+/* --- Unified Nav --- */
+nav.site-nav#siteNav{
+  position:fixed!important;top:0;left:0;right:0;z-index:1000;
+  display:flex!important;align-items:center;justify-content:space-between;
+  padding:1.1rem 5%;min-height:80px;background:transparent;
+  border-bottom:1px solid transparent;
+  transition:background .4s,padding .35s,min-height .4s,box-shadow .4s,border-color .4s;
+  font-family:'Inter',sans-serif;
+}
+nav.site-nav#siteNav.scrolled{
+  background:linear-gradient(180deg,rgba(13,13,18,.92),rgba(20,20,28,.88))!important;
+  backdrop-filter:blur(28px) saturate(1.4);-webkit-backdrop-filter:blur(28px) saturate(1.4);
+  box-shadow:0 0 0 1px rgba(255,255,255,.04);
+  border-bottom-color:rgba(255,255,255,.06);
+  padding:.75rem 5%;min-height:66px;
+}
+nav.site-nav#siteNav .nav-logo img{height:48px!important;width:auto!important;display:block}
+nav.site-nav#siteNav .nav-links{list-style:none!important;display:flex!important;align-items:center;gap:2rem;margin:0!important;padding:0!important}
+nav.site-nav#siteNav .nav-links a{color:#efe9dd!important;font-size:.85rem;letter-spacing:1.6px;text-transform:uppercase;font-weight:500;position:relative;padding:.4rem 0;transition:color .25s;text-decoration:none}
+nav.site-nav#siteNav .nav-links a:hover,
+nav.site-nav#siteNav .nav-links a.active{color:var(--u-gold)!important}
+nav.site-nav#siteNav .nav-links a:not(.nav-cta-btn):after{content:'';position:absolute;left:0;bottom:-2px;height:1px;width:0;background:var(--u-gold);transition:width .3s}
+nav.site-nav#siteNav .nav-links a:not(.nav-cta-btn):hover:after,
+nav.site-nav#siteNav .nav-links a.active:after{width:100%}
+nav.site-nav#siteNav .nav-cta-btn{border:1px solid var(--u-gold)!important;color:var(--u-gold)!important;padding:.6rem 1.3rem!important;border-radius:999px!important;background:transparent!important;transition:all .3s}
+nav.site-nav#siteNav .nav-cta-btn:hover{background:var(--u-gold)!important;color:#0d0f12!important}
+nav.site-nav#siteNav .nav-cta-btn:after{display:none!important}
+nav.site-nav#siteNav .nav-toggle{display:none;width:36px;height:28px;flex-direction:column;justify-content:space-between;background:none;border:0;cursor:pointer;padding:0}
+nav.site-nav#siteNav .nav-toggle span{display:block;height:2px;width:100%;background:#f5f1ea;transition:.3s}
+nav.site-nav#siteNav .nav-toggle.open span:nth-child(1){transform:translateY(13px) rotate(45deg)}
+nav.site-nav#siteNav .nav-toggle.open span:nth-child(2){opacity:0}
+nav.site-nav#siteNav .nav-toggle.open span:nth-child(3){transform:translateY(-13px) rotate(-45deg)}
+@media(max-width:1024px){
+  nav.site-nav#siteNav .nav-links{position:fixed;top:72px;left:0;right:0;background:rgba(10,10,10,.97);flex-direction:column!important;align-items:stretch;padding:1.2rem 5% 1.6rem;gap:0;border-bottom:1px solid rgba(255,255,255,.08);transform:translateY(-130%);transition:transform .4s}
+  nav.site-nav#siteNav .nav-links.open{transform:translateY(0)}
+  nav.site-nav#siteNav .nav-links a{padding:1rem 0;border-bottom:1px solid rgba(255,255,255,.08)}
+  nav.site-nav#siteNav .nav-links a:after{display:none}
+  nav.site-nav#siteNav .nav-cta-btn{margin-top:.8rem;text-align:center}
+  nav.site-nav#siteNav .nav-toggle{display:flex}
+}
+
+/* --- Unified Footer --- */
+footer.site-footer{background:#000!important;color:#cfd6e2!important;padding:90px 0 30px!important;font-family:'Inter',sans-serif;margin:0!important}
+footer.site-footer .wrap{max-width:1360px;margin:0 auto;padding:0 40px}
+footer.site-footer .foot-grid{display:grid!important;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:50px;margin-bottom:60px}
+footer.site-footer .foot-grid h4{font-size:12px!important;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:var(--u-gold-soft)!important;margin-bottom:24px!important;font-family:'Inter',sans-serif}
+footer.site-footer .foot-grid p{color:#9aa3b2!important;font-size:14.5px;line-height:1.7;margin-bottom:20px;font-family:'Inter',sans-serif}
+footer.site-footer .foot-grid ul{list-style:none!important;padding:0!important;margin:0!important}
+footer.site-footer .foot-grid ul li{margin-bottom:12px!important;padding:0!important;background:none!important}
+footer.site-footer .foot-grid ul a{color:#cfd6e2!important;font-size:14.5px;transition:color .3s,padding .3s;text-decoration:none}
+footer.site-footer .foot-grid ul a:hover{color:var(--u-gold-soft)!important;padding-left:6px}
+footer.site-footer .foot-brand .logo-row{display:flex!important;align-items:center;gap:12px;margin-bottom:20px}
+footer.site-footer .foot-brand .logo-row img{height:42px!important;width:auto!important;margin:0!important}
+footer.site-footer .foot-brand .logo-row .word{font-family:'Bebas Neue',sans-serif!important;font-size:18px!important;letter-spacing:.16em;color:#fff!important}
+footer.site-footer .foot-contact a{display:block!important;color:#cfd6e2!important;font-size:14.5px;margin-bottom:10px;transition:color .3s;text-decoration:none}
+footer.site-footer .foot-contact a:hover{color:var(--u-gold-soft)!important}
+footer.site-footer .socials{display:flex!important;gap:12px;margin-top:22px;list-style:none;padding:0}
+footer.site-footer .socials a{width:40px!important;height:40px!important;border-radius:50%!important;background:rgba(255,255,255,.06)!important;border:1px solid rgba(255,255,255,.1)!important;display:flex!important;align-items:center;justify-content:center;transition:all .3s;padding:0!important}
+footer.site-footer .socials a:hover{background:var(--u-gold)!important;border-color:var(--u-gold)!important;transform:translateY(-3px)}
+footer.site-footer .socials a:hover svg{fill:var(--u-navy)!important}
+footer.site-footer .socials svg{width:16px!important;height:16px!important;fill:#cfd6e2!important;transition:fill .3s}
+footer.site-footer .foot-bottom{padding-top:28px!important;border-top:1px solid rgba(255,255,255,.08)!important;display:flex!important;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;font-size:13px;color:#7a8395!important}
+footer.site-footer .foot-bottom a{color:#7a8395!important;margin-left:18px;transition:color .3s;text-decoration:none}
+footer.site-footer .foot-bottom a:hover{color:var(--u-gold-soft)!important}
+@media(max-width:1024px){footer.site-footer .foot-grid{grid-template-columns:1fr 1fr;gap:40px}}
+@media(max-width:560px){footer.site-footer .foot-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
     <!-- Unified Navigation -->
-    <nav id="siteNav">
-        <div class="nav-logo">
-            <a href="laphic-website.html"><img src="images/logo.png" alt="LAPHIC Modern Homes"></a>
-        </div>
-        <ul class="nav-links" id="navLinksMenu">
-            <li><a href="who-we-are.html">Who We Are</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="portfolio.html">Portfolio</a></li>
-            <li><a href="projects.html" class="active">Projects</a></li>
-            <li><a href="inspirations.html">Inspiration</a></li>
-            <li><a href="3d-experience.html">3D</a></li>
-            <li><a href="testimonials.html">Testimonials</a></li>
-            <li class="nav-cta-item"><a href="contact.html" class="nav-cta-btn">CONTACT</a></li>
-        </ul>
-        <button class="nav-toggle" id="navToggleBtn" aria-label="Toggle menu">
-            <span></span><span></span><span></span>
-        </button>
-    </nav>
+    <nav class="site-nav" id="siteNav">
+  <div class="nav-logo">
+    <a href="laphic-website.html"><img src="images/logo.png" alt="LAPHIC Modern Homes"></a>
+  </div>
+  <ul class="nav-links" id="navLinksMenu">
+    <li><a href="who-we-are.html">Who We Are</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="portfolio.html">Portfolio</a></li>
+    <li><a href="projects.html" class="active">Projects</a></li>
+    <li><a href="inspirations.html">Inspiration</a></li>
+    <li><a href="3d-experience.html">3D</a></li>
+    <li><a href="testimonials.html">Testimonials</a></li>
+    <li class="nav-cta-item"><a href="contact.html" class="nav-cta-btn">Contact</a></li>
+  </ul>
+  <button class="nav-toggle" id="navToggleBtn" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
 
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-slider">
-            <span></span>
-            <span></span>
-            <span></span>
+            <span style="background-image:url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1900&h=1200&fit=crop&q=85'); opacity:1;"></span>
+            <span style="background-image:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1900&h=1200&fit=crop&q=85')"></span>
+            <span style="background-image:url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=1900&h=1200&fit=crop&q=85')"></span>
         </div>
         <div class="hero-content">
-            <h1>Our Projects</h1>
-            <p>Transforming Visions Into Reality</p>
+            <span class="hero-label">Laphic Signature Projects</span>
+            <h1>Built spaces with <em style="font-style:normal;color:#fff;font-weight:700">lasting character.</em></h1>
+            <p>Explore selected residential and commercial projects where thoughtful design, quality materials, and execution come together beautifully.</p>
         </div>
     </section>
 
     <section class="filter-section">
         <div class="filter-tabs">
-            <a href="inspirations.html" class="filter-btn">inspirations</a>
-            <a href="3d-experience.html" class="filter-btn">3d-experience</a>
-           <a href="exterior-design.html" class="filter-btn">Exterior Design</a>
-           <a href="landscape-design.html" class="filter-btn">Landscape Design</a>
-       </div>
+            <a href="projects.html" class="filter-btn active">All Projects</a>
+            <a href="inspirations.html" class="filter-btn">Inspirations</a>
+            <a href="3d-experience.html" class="filter-btn">3D Experience</a>
+            <a href="exterior-design.html" class="filter-btn">Exterior Design</a>
+            <a href="landscape-design.html" class="filter-btn">Landscape Design</a>
+        </div>
     </section>
 
 
@@ -1229,7 +2292,8 @@ p, li, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; word-wrap: break-word
                  data-description="This contemporary luxury villa showcases the perfect blend of modern aesthetics and functional living spaces. The interior design features a minimalist approach with warm, natural elements including custom oak flooring, floor-to-ceiling windows, and curated lighting fixtures. Every room has been meticulously designed to create a harmonious flow throughout the home, with emphasis on natural light and open-concept living."
                  data-features="Open-concept kitchen and living area|Custom Italian marble countertops|Smart home automation system|Designer lighting throughout|Built-in entertainment center|Walk-in closets with custom organization|Spa-inspired bathrooms|Energy-efficient climate control"
                  data-timeline="Jan 2024:Project kickoff and initial planning|Feb 2024:Demolition and structural modifications|Mar 2024:Electrical and plumbing rough-in|Apr 2024:Drywall and interior framing|May 2024:Kitchen and bathroom installation|Jun 2024:Flooring and finishing work|Currently:Final touches and furniture placement"
-                 data-image="images/interior.jfif">
+                 data-image="images/interior.jfif"
+                 data-images="images/projects/ongoing/1.jpeg|images/projects/ongoing/2.jpeg|images/projects/ongoing/4.jpeg|images/projects/ongoing/5.jpeg|images/WhatsApp Image 2026-05-09 at 22.17.53.jpeg">
                 <div class="project-image">
                     <img src="images/projects/ongoing/1.jpeg" alt="Luxury Villa Interior">
                     <span class="project-status status-ongoing">In Progress</span>
@@ -1241,11 +2305,9 @@ p, li, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; word-wrap: break-word
                 </div>
                 <div class="project-info">
                     <div class="project-meta">
-                        <div class="project-location">
-                            ðŸ“ Kololo, Kampala
+                        <div class="project-location">Kololo, Kampala
                         </div>
-                        <div class="project-progress">
-                            â±ï¸ 65% Complete
+                        <div class="project-progress">65% Complete
                         </div>
                     </div>
                     <a href="#" class="view-details-btn" onclick="openModal(this); return false;">View Details</a>
@@ -1253,7 +2315,8 @@ p, li, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; word-wrap: break-word
             </div>
 
             <!-- Project 2 -->
-            <div class="project-card" data-category="ongoing exterior">
+            <div class="project-card" data-category="ongoing exterior"
+                 data-images="images/projects/ongoing/10.jpeg|images/projects/10.jpeg|images/projects/WhatsApp Image 2026-05-09 at 22.17.54.jpeg|images/projects/WhatsApp Image 2026-05-09 at 22.17.55.jpeg">
                 <div class="project-image">
                     <img src="images/projects/ongoing/10.jpeg" alt="Contemporary Home Exterior">
                     <span class="project-status status-ongoing">In Progress</span>
@@ -1265,11 +2328,9 @@ p, li, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; word-wrap: break-word
                 </div>
                 <div class="project-info">
                     <div class="project-meta">
-                        <div class="project-location">
-                            ðŸ“ Muyenga, Kampala
+                        <div class="project-location">Muyenga, Kampala
                         </div>
-                        <div class="project-progress">
-                            â±ï¸ 85% Complete
+                        <div class="project-progress">85% Complete
                         </div>
                     </div>
                     <a href="#" class="view-details-btn">View Details</a>
@@ -1277,7 +2338,8 @@ p, li, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; word-wrap: break-word
             </div>
 
             <!-- Project 3 -->
-            <div class="project-card" data-category="ongoing landscape">
+            <div class="project-card" data-category="ongoing landscape"
+                 data-images="images/projects/ongoing/2.jpeg|images/projects/2.jpeg|images/projects/WhatsApp Image 2026-05-09 at 22.17.56.jpeg|images/projects/WhatsApp Image 2026-05-09 at 22.17.57 (1).jpeg">
                 <div class="project-image">
                     <img src="images/projects/ongoing/2.jpeg" alt="Garden Paradise">
                     <span class="project-status status-ongoing">In Progress</span>
@@ -1289,11 +2351,9 @@ p, li, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; word-wrap: break-word
                 </div>
                 <div class="project-info">
                     <div class="project-meta">
-                        <div class="project-location">
-                            ðŸ“ Entebbe Road
+                        <div class="project-location">Entebbe Road
                         </div>
-                        <div class="project-progress">
-                            â±ï¸ 80% Complete
+                        <div class="project-progress">80% Complete
                         </div>
                     </div>
                     <a href="#" class="view-details-btn">View Details</a>
@@ -1301,7 +2361,8 @@ p, li, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; word-wrap: break-word
             </div>
 
             <!-- Project 4 -->
-            <div class="project-card" data-category="ongoing interior">
+            <div class="project-card" data-category="ongoing interior"
+                 data-images="images/projects/ongoing/4.jpeg|images/projects/3.jpeg|images/projects/WhatsApp Image 2026-05-09 at 22.17.57 (2).jpeg|images/projects/WhatsApp Image 2026-05-09 at 22.17.58 (1).jpeg">
                 <div class="project-image">
                     <img src="images/projects/ongoing/4.jpeg" alt="Office Space">
                     <span class="project-status status-ongoing">In Progress</span>
@@ -1313,11 +2374,9 @@ p, li, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; word-wrap: break-word
                 </div>
                 <div class="project-info">
                     <div class="project-meta">
-                        <div class="project-location">
-                            ðŸ“ Nakasero, Kampala
+                        <div class="project-location">Nakasero, Kampala
                         </div>
-                        <div class="project-progress">
-                            â±ï¸ 80% Complete
+                        <div class="project-progress">80% Complete
                         </div>
                     </div>
                     <a href="#" class="view-details-btn">View Details</a>
@@ -1325,7 +2384,8 @@ p, li, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; word-wrap: break-word
             </div>
 
             <!-- Project 5-->
-            <div class="project-card" data-category="ongoing interior">
+            <div class="project-card" data-category="ongoing interior"
+                 data-images="images/projects/ongoing/5.jpeg|images/projects/6.jpeg|images/projects/WhatsApp Image 2026-05-09 at 22.17.58.jpeg|images/projects/WhatsApp Image 2026-05-09 at 22.17.59 (1).jpeg">
                 <div class="project-image">
                     <img src="images/projects/ongoing/5.jpeg" alt="Office Space">
                     <span class="project-status status-ongoing">In Progress</span>
@@ -1337,18 +2397,17 @@ p, li, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; word-wrap: break-word
                 </div>
                 <div class="project-info">
                     <div class="project-meta">
-                        <div class="project-location">
-                            ðŸ“ kitende, Kampala
+                        <div class="project-location">kitende, Kampala
                         </div>
-                        <div class="project-progress">
-                            â±ï¸ 75% Complete
+                        <div class="project-progress">75% Complete
                         </div>
                     </div>
                     <a href="#" class="view-details-btn">View Details</a>
                 </div>
             </div>
             <!-- Project 6 -->
-            <div class="project-card" data-category="ongoing interior">
+            <div class="project-card" data-category="ongoing interior"
+                 data-images="images/projects/ongoing/9.jpeg|images/projects/7.jpeg|images/projects/WhatsApp Image 2026-05-09 at 22.17.59.jpeg|images/projects/WhatsApp Image 2026-05-09 at 22.18.00 (1).jpeg">
                 <div class="project-image">
                     <img src="images/projects/ongoing/9.jpeg" alt="Office Space">
                     <span class="project-status status-ongoing">In Progress</span>
@@ -1360,18 +2419,17 @@ p, li, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; word-wrap: break-word
                 </div>
                 <div class="project-info">
                     <div class="project-meta">
-                        <div class="project-location">
-                            ðŸ“ Jinja, uganda
+                        <div class="project-location">Jinja, uganda
                         </div>
-                        <div class="project-progress">
-                            â±ï¸ 65% Complete
+                        <div class="project-progress">65% Complete
                         </div>
                     </div>
                     <a href="#" class="view-details-btn">View Details</a>
                 </div>
             </div>
             <!-- Project 7 -->
-            <div class="project-card" data-category="ongoing interior">
+            <div class="project-card" data-category="ongoing interior"
+                 data-images="images/projects/ongoing/construction0.jpg|images/projects/8.jpeg|images/projects/WhatsApp Image 2026-05-09 at 22.18.00 (2).jpeg|images/projects/WhatsApp Image 2026-05-09 at 22.18.01 (1).jpeg">
                 <div class="project-image">
                     <img src="images/projects/ongoing/construction0.jpg" alt="Office Space">
                     <span class="project-status status-ongoing">In Progress</span>
@@ -1383,18 +2441,17 @@ p, li, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; word-wrap: break-word
                 </div>
                 <div class="project-info">
                     <div class="project-meta">
-                        <div class="project-location">
-                            ðŸ“ DRCONGO , 
+                        <div class="project-location">DRCONGO , 
                         </div>
-                        <div class="project-progress">
-                            â±ï¸ 30% Complete
+                        <div class="project-progress">30% Complete
                         </div>
                     </div>
                     <a href="#" class="view-details-btn">View Details</a>
                 </div>
             </div>
             <!-- Project 8-->
-            <div class="project-card" data-category="ongoing interior">
+            <div class="project-card" data-category="ongoing interior"
+                 data-images="images/projects/ongoing/construction1.jpg|images/projects/kitovu .jpeg|images/projects/WhatsApp Image 2026-05-09 at 22.18.01 (2).jpeg|images/projects/WhatsApp Image 2026-05-09 at 22.18.02 (1).jpeg">
                 <div class="project-image">
                     <img src="images/projects/ongoing/construction1.jpg" alt="Office Space">
                     <span class="project-status status-ongoing">In Progress</span>
@@ -1406,11 +2463,9 @@ p, li, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; word-wrap: break-word
                 </div>
                 <div class="project-info">
                     <div class="project-meta">
-                        <div class="project-location">
-                            ðŸ“ kitovu,  kitende ,Kampala
+                        <div class="project-location">kitovu,  kitende ,Kampala
                         </div>
-                        <div class="project-progress">
-                            â±ï¸ 85% Complete
+                        <div class="project-progress">85% Complete
                         </div>
                     </div>
                     <a href="#" class="view-details-btn">View Details</a>
@@ -1418,9 +2473,10 @@ p, li, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; word-wrap: break-word
             </div>
 
             <!-- Project 9 -->
-            <div class="project-card" data-category="ongoing interior">
+            <div class="project-card" data-category="ongoing interior"
+                 data-images="images/projects/ongoing/WhatsApp Image 2026-05-09 at 22.15.48.jpeg|images/projects/muyoyo.jpeg|images/projects/WhatsApp Image 2026-05-09 at 22.18.01.jpeg|images/projects/WhatsApp Image 2026-05-09 at 22.18.02 (2).jpeg">
                 <div class="project-image">
-                    <img src="images/construction2.jpg" alt="Office Space">
+                    <img src="images/projects/ongoing/WhatsApp Image 2026-05-09 at 22.15.48.jpeg" alt="Office Space">
                     <span class="project-status status-ongoing">In Progress</span>
                     <div class="project-overlay">
                         <div class="project-category">Interior Design</div>
@@ -1430,11 +2486,9 @@ p, li, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; word-wrap: break-word
                 </div>
                 <div class="project-info">
                     <div class="project-meta">
-                        <div class="project-location">
-                            ðŸ“ Buddo, Kampala
+                        <div class="project-location">Buddo, Kampala
                         </div>
-                        <div class="project-progress">
-                            â±ï¸ 30% Complete
+                        <div class="project-progress">30% Complete
                         </div>
                     </div>
                     <a href="#" class="view-details-btn">View Details</a>
@@ -1442,9 +2496,10 @@ p, li, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; word-wrap: break-word
             </div>
 
             <!-- Project 10-->
-            <div class="project-card" data-category="ongoing interior">
+            <div class="project-card" data-category="ongoing interior"
+                 data-images="images/projects/ongoing/construction3.jpg|images/projects/office.jpeg|images/projects/WhatsApp Image 2026-05-09 at 22.18.02.jpeg|images/projects/WhatsApp Image 2026-05-09 at 22.18.03.jpeg">
                 <div class="project-image">
-                    <img src="images/construction3.jpg" alt="Office Space">
+                    <img src="images/projects/ongoing/construction3.jpg" alt="Office Space">
                     <span class="project-status status-ongoing">In Progress</span>
                     <div class="project-overlay">
                         <div class="project-category">Interior Design</div>
@@ -1454,11 +2509,9 @@ p, li, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; word-wrap: break-word
                 </div>
                 <div class="project-info">
                     <div class="project-meta">
-                        <div class="project-location">
-                            ðŸ“ kishasha , congo
+                        <div class="project-location">kishasha , congo
                         </div>
-                        <div class="project-progress">
-                            â±ï¸ 30% Complete
+                        <div class="project-progress">30% Complete
                         </div>
                     </div>
                     <a href="#" class="view-details-btn">View Details</a>
@@ -1471,15 +2524,15 @@ p, li, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; word-wrap: break-word
     <section class="stats-section">
         <div class="stats-grid">
             <div class="stat-item">
-                <div class="stat-number">150+</div>
+                <div class="stat-number" data-target="150" data-symbol="+">0</div>
                 <div class="stat-label">Projects Completed</div>
             </div>
             <div class="stat-item">
-                <div class="stat-number">12</div>
+                <div class="stat-number" data-target="12" data-symbol="">0</div>
                 <div class="stat-label">Ongoing Projects</div>
             </div>
             <div class="stat-item">
-                <div class="stat-number">200+</div>
+                <div class="stat-number" data-target="200" data-symbol="+">0</div>
                 <div class="stat-label">Happy Clients</div>
             </div>
           
@@ -1507,11 +2560,9 @@ p, li, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; word-wrap: break-word
                 </div>
                 <div class="project-info">
                     <div class="project-meta">
-                        <div class="project-location">
-                            ðŸ“ Naguru, Kampala
+                        <div class="project-location">Naguru, Kampala
                         </div>
-                        <div class="project-progress">
-                            âœ“ Completed 2024
+                        <div class="project-progress">Completed 2024
                         </div>
                     </div>
                     <a href="#" class="view-details-btn">View Details</a>
@@ -1531,11 +2582,9 @@ p, li, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; word-wrap: break-word
                 </div>
                 <div class="project-info">
                     <div class="project-meta">
-                        <div class="project-location">
-                            ðŸ“ Bugolobi, Kampala
+                        <div class="project-location">Bugolobi, Kampala
                         </div>
-                        <div class="project-progress">
-                            âœ“ Completed 2024
+                        <div class="project-progress">Completed 2024
                         </div>
                     </div>
                     <a href="#" class="view-details-btn">View Details</a>
@@ -1555,11 +2604,9 @@ p, li, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; word-wrap: break-word
                 </div>
                 <div class="project-info">
                     <div class="project-meta">
-                        <div class="project-location">
-                            ðŸ“ Lubowa, Kampala
+                        <div class="project-location">Lubowa, Kampala
                         </div>
-                        <div class="project-progress">
-                            âœ“ Completed 2023
+                        <div class="project-progress">Completed 2023
                         </div>
                     </div>
                     <a href="#" class="view-details-btn">View Details</a>
@@ -1579,11 +2626,9 @@ p, li, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; word-wrap: break-word
                 </div>
                 <div class="project-info">
                     <div class="project-meta">
-                        <div class="project-location">
-                            ðŸ“ Acacia Mall, Kampala
+                        <div class="project-location">Acacia Mall, Kampala
                         </div>
-                        <div class="project-progress">
-                            âœ“ Completed 2023
+                        <div class="project-progress">Completed 2023
                         </div>
                     </div>
                     <a href="#" class="view-details-btn">View Details</a>
@@ -1603,11 +2648,9 @@ p, li, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; word-wrap: break-word
                 </div>
                 <div class="project-info">
                     <div class="project-meta">
-                        <div class="project-location">
-                            ðŸ“ Entebbe
+                        <div class="project-location">Entebbe
                         </div>
-                        <div class="project-progress">
-                            âœ“ Completed 2024
+                        <div class="project-progress">Completed 2024
                         </div>
                     </div>
                     <a href="#" class="view-details-btn">View Details</a>
@@ -1627,11 +2670,9 @@ p, li, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; word-wrap: break-word
                 </div>
                 <div class="project-info">
                     <div class="project-meta">
-                        <div class="project-location">
-                            ðŸ“ Entebbe
+                        <div class="project-location">Entebbe
                         </div>
-                        <div class="project-progress">
-                            âœ“ Completed 2023
+                        <div class="project-progress">Completed 2023
                         </div>
                     </div>
                     <a href="#" class="view-details-btn">View Details</a>
@@ -1651,11 +2692,9 @@ p, li, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; word-wrap: break-word
                 </div>
                 <div class="project-info">
                     <div class="project-meta">
-                        <div class="project-location">
-                            ðŸ“ Entebbe
+                        <div class="project-location">Entebbe
                         </div>
-                        <div class="project-progress">
-                            âœ“ Completed 2023
+                        <div class="project-progress">Completed 2023
                         </div>
                     </div>
                     <a href="#" class="view-details-btn">View Details</a>
@@ -1675,11 +2714,9 @@ p, li, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; word-wrap: break-word
                 </div>
                 <div class="project-info">
                     <div class="project-meta">
-                        <div class="project-location">
-                            ðŸ“ muyoyo
+                        <div class="project-location">muyoyo
                         </div>
-                        <div class="project-progress">
-                            âœ“ Completed 2025
+                        <div class="project-progress">Completed 2025
                         </div>
                     </div>
                     <a href="#" class="view-details-btn">View Details</a>
@@ -1699,11 +2736,9 @@ p, li, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; word-wrap: break-word
                 </div>
                 <div class="project-info">
                     <div class="project-meta">
-                        <div class="project-location">
-                            ðŸ“ congo
+                        <div class="project-location">congo
                         </div>
-                        <div class="project-progress">
-                            âœ“ Completed 2026
+                        <div class="project-progress">Completed 2026
                         </div>
                     </div>
                     <a href="#" class="view-details-btn">View Details</a>
@@ -1723,11 +2758,9 @@ p, li, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; word-wrap: break-word
                 </div>
                 <div class="project-info">
                     <div class="project-meta">
-                        <div class="project-location">
-                            ðŸ“ Jinja
+                        <div class="project-location">Jinja
                         </div>
-                        <div class="project-progress">
-                            âœ“ Completed 2022
+                        <div class="project-progress">Completed 2022
                         </div>
                     </div>
                     <a href="#" class="view-details-btn">View Details</a>
@@ -1738,13 +2771,20 @@ p, li, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; word-wrap: break-word
 
     <!-- CTA Section -->
     <section class="cta-section">
-        <div class="cta-content">
-            <h2>Ready to Start Your Project?</h2>
-            <p>Let's discuss how we can bring your vision to life. Our team of experts is ready to transform your space into something extraordinary.</p>
-            <div class="cta-buttons">
-                <a href="contact.html" class="cta-btn cta-btn-primary">Get Started</a>
-                <a href="services.html" class="cta-btn cta-btn-secondary">Our Services</a>
+        <div class="cta-container">
+            <div class="cta-content">
+                <span class="cta-label">Transform Your Space</span>
+                <h2>Ready to start <em style="font-style:italic;color:var(--gold);font-weight:400">your project?</em></h2>
+                <p>Let's discuss how we can bring your vision to life. Our team of experts is ready to transform your space into something extraordinary.</p>
+                <div class="cta-buttons">
+                    <a href="contact.html" class="cta-btn cta-btn-primary">
+                        <span>Get Started Today</span>
+                        <span class="btn-arrow">→</span>
+                    </a>
+                    <a href="services.html" class="cta-btn cta-btn-secondary">Explore Our Services</a>
+                </div>
             </div>
+            <div class="cta-accent"></div>
         </div>
     </section>
 
@@ -1829,62 +2869,61 @@ p, li, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; word-wrap: break-word
 
     <!-- Unified Footer -->
     <footer class="site-footer">
-        <div class="footer-content">
-            <div class="footer-section footer-brand">
-                <img src="images/logo.png" alt="LAPHIC Modern Homes" height="70">
-                <p class="footer-tagline">Designing tomorrow's spaces, today</p>
-            </div>
-            <div class="footer-section">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="laphic-website.html">Home</a></li>
-                    <li><a href="who-we-are.html">Who We Are</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="portfolio.html">Portfolio</a></li>
-                    <li><a href="projects.html">Projects</a></li>
-                    <li><a href="inspirations.html">Inspiration</a></li>
-                    <li><a href="testimonials.html">Testimonials</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Services</h4>
-                <ul>
-                    <li><a href="interior-design.html">Interior Design</a></li>
-                    <li><a href="exterior-design.html">Exterior Design</a></li>
-                    <li><a href="landscape-design.html">Landscape Design</a></li>
-                    <li><a href="services.html">Construction</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Contact</h4>
-                <ul>
-                    <li>📍 Kampala, Uganda</li>
-                    <li><a href="tel:+256780535307">+256 780 535 307</a></li>
-                    <li><a href="mailto:laphicmodernhomes@gmail.com">laphicmodernhomes@gmail.com</a></li>
-                    <li>Mon-Sun: 8AM – 8PM</li>
-                </ul>
-                <div class="footer-socials">
-                    <a href="https://www.instagram.com/laphichomes" target="_blank" rel="noopener" class="footer-social-link" title="Instagram">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                    </a>
-                    <a href="https://x.com/laphichomes" target="_blank" rel="noopener" class="footer-social-link" title="X (Twitter)">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                    </a>
-                    <a href="https://www.tiktok.com/@laphic.modern.hom" target="_blank" rel="noopener" class="footer-social-link" title="TikTok">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V9.05a8.14 8.14 0 0 0 4.78 1.52V7.13a4.85 4.85 0 0 1-1.01-.44z"/></svg>
-                    </a>
-                    <a href="https://wa.me/256705029291" target="_blank" rel="noopener" class="footer-social-link" title="WhatsApp">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
-                    </a>
-                </div>
-            </div>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="logo-row">
+          <img src="images/logo.png" alt="LAPHIC Modern Homes" height="70">
+          <span class="word">LAPHIC MODERN HOMES</span>
         </div>
-        <div class="footer-divider"></div>
-        <div class="footer-bottom">
-            <p>&copy; <span id="footer-year">2026</span> LAPHIC Modern Homes. All rights reserved.</p>
+        <p>Designing tomorrow's spaces, today. A Kampala-based studio uniting construction, architecture, interior, exterior, and landscape since 2012.</p>
+        <div class="socials">
+          <a href="https://www.instagram.com/laphichomes" target="_blank" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2c2.7 0 3 0 4.1.1 1 .1 1.7.2 2.4.5.7.3 1.3.6 1.8 1.2.5.5.9 1.1 1.2 1.8.3.7.5 1.4.5 2.4.1 1.1.1 1.4.1 4.1s0 3-.1 4.1c-.1 1-.2 1.7-.5 2.4-.3.7-.6 1.3-1.2 1.8-.5.5-1.1.9-1.8 1.2-.7.3-1.4.5-2.4.5-1.1.1-1.4.1-4.1.1s-3 0-4.1-.1c-1-.1-1.7-.2-2.4-.5-.7-.3-1.3-.6-1.8-1.2-.5-.5-.9-1.1-1.2-1.8-.3-.7-.5-1.4-.5-2.4C2 15 2 14.7 2 12s0-3 .1-4.1c.1-1 .2-1.7.5-2.4.3-.7.6-1.3 1.2-1.8.5-.5 1.1-.9 1.8-1.2.7-.3 1.4-.5 2.4-.5C9 2 9.3 2 12 2zm0 5a5 5 0 100 10 5 5 0 000-10zm6.5-.8a1.2 1.2 0 11-2.4 0 1.2 1.2 0 012.4 0zM12 9a3 3 0 110 6 3 3 0 010-6z"/></svg></a>
+          <a href="https://x.com/laphichomes" target="_blank" aria-label="X"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.16 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="https://www.tiktok.com/@laphic.modern.hom" target="_blank" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005.8 20.1a6.34 6.34 0 0010.86-4.43V8.94a8.16 8.16 0 004.77 1.52V7a4.85 4.85 0 01-1.84-.31z"/></svg></a>
+          <a href="https://wa.me/256780535307" target="_blank" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.2-.2.3-.8.9-1 1.1-.2.2-.4.2-.7.1-.3-.2-1.2-.4-2.3-1.4-.8-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.4.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 00-8.5 15.3L2 22l4.8-1.3A10 10 0 1012 2zm0 18.2a8.2 8.2 0 01-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3a8.2 8.2 0 1110.6 1.1 8.1 8.1 0 01-3.7 2.6z"/></svg></a>
         </div>
-    </footer>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="laphic-website.html">Home</a></li>
+          <li><a href="who-we-are.html">Who We Are</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="inspirations.html">Inspirations</a></li>
+          <li><a href="testimonials.html">Testimonials</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services.html">Architectural Design</a></li>
+          <li><a href="interior-design.html">Interior Design</a></li>
+          <li><a href="exterior-design.html">Exterior &amp; Facade</a></li>
+          <li><a href="landscape-design.html">Landscape</a></li>
+          <li><a href="3d-experience.html">3D Visualisation</a></li>
+        </ul>
+      </div>
+      <div class="foot-contact">
+        <h4>Get in Touch</h4>
+        <a href="#">Kajjansi, Entebbe Rd, Uganda</a>
+        <a href="tel:+256780535307">+256 780 535 307</a>
+        <a href="mailto:laphicmodernhomes@gmail.com">laphicmodernhomes@gmail.com</a>
+        <a href="https://wa.me/256705029291">WhatsApp</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <div>&copy; <span id="yr"></span> LAPHIC Modern Homes. All rights reserved. <span id="footer-year" style="display:none"></span></div>
+      <div>
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
     <script>(function(){var y=document.getElementById('footer-year');if(y)y.textContent=new Date().getFullYear();})();</script>
 
     <script>
@@ -1918,8 +2957,10 @@ p, li, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; word-wrap: break-word
         // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (!href || href === '#') return;
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
+                const target = document.querySelector(href);
                 if (target) {
                     target.scrollIntoView({
                         behavior: 'smooth',
@@ -2268,16 +3309,359 @@ p, li, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; word-wrap: break-word
             }
         };
 
+        const onlineCategoryImages = {
+            interior: [
+                "https://images.unsplash.com/photo-1616594039964-3d3f0fcb8e53?auto=format&fit=crop&w=1200&q=80",
+                "https://images.unsplash.com/photo-1615529182904-14819c35db37?auto=format&fit=crop&w=1200&q=80"
+            ],
+            exterior: [
+                "https://images.unsplash.com/photo-1600607687644-c7171b42498f?auto=format&fit=crop&w=1200&q=80",
+                "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?auto=format&fit=crop&w=1200&q=80"
+            ],
+            landscape: [
+                "https://images.unsplash.com/photo-1601758260892-ae5f3f5f2b05?auto=format&fit=crop&w=1200&q=80",
+                "https://images.unsplash.com/photo-1470246973918-29a93221c455?auto=format&fit=crop&w=1200&q=80"
+            ]
+        };
+
+        let modalListObserver;
+        let typingTimers = [];
+
+        function getCategoryKey(label = '') {
+            const value = label.toLowerCase();
+            if (value.includes('landscape')) return 'landscape';
+            if (value.includes('exterior')) return 'exterior';
+            return 'interior';
+        }
+
+        function clearTypingTimers() {
+            typingTimers.forEach((timerId) => clearTimeout(timerId));
+            typingTimers = [];
+        }
+
+        function prepareTypingText(element, text) {
+            element.dataset.fullText = text || '';
+            element.textContent = '';
+            element.classList.add('scroll-typing');
+        }
+
+        function typeWordsOnScroll(element) {
+            const fullText = (element.dataset.fullText || '').trim();
+            element.classList.add('show');
+            if (!fullText) return;
+
+            const words = fullText.split(/\s+/);
+            let pointer = 0;
+            element.textContent = '';
+            element.classList.add('typing-active');
+
+            const writeNext = () => {
+                if (pointer >= words.length) {
+                    element.classList.remove('typing-active');
+                    return;
+                }
+
+                element.textContent += `${pointer ? ' ' : ''}${words[pointer]}`;
+                const delay = Math.min(110, Math.max(45, words[pointer].length * 10));
+                pointer += 1;
+                const timerId = window.setTimeout(writeNext, delay);
+                typingTimers.push(timerId);
+            };
+
+            writeNext();
+        }
+
+        function parseTimeline(rawTimeline = '', fallbackStatus = 'In Progress') {
+            if (!rawTimeline) {
+                return fallbackStatus === 'In Progress'
+                    ? [
+                        { date: 'Planning', event: 'Design concept and approvals completed.' },
+                        { date: 'Execution', event: 'Construction and detailing currently in progress.' },
+                        { date: 'Next', event: 'Final finishing and project handover.' }
+                    ]
+                    : [
+                        { date: 'Delivered', event: 'Project was completed and handed over successfully.' }
+                    ];
+            }
+
+            return rawTimeline.split('|').map((entry) => {
+                const [datePart, ...eventParts] = entry.split(':');
+                return {
+                    date: (datePart || 'Update').trim(),
+                    event: (eventParts.join(':') || entry).trim()
+                };
+            });
+        }
+
+        function buildCardData(card, fallbackData = {}) {
+            const title = card.querySelector('h3')?.textContent?.trim() || 'Project';
+            const cardImage = card.querySelector('.project-image img')?.getAttribute('src') || '';
+            const status = card.querySelector('.project-status')?.textContent?.trim() || fallbackData.status || 'In Progress';
+            const category = card.querySelector('.project-category')?.textContent?.trim() || fallbackData.category || 'Interior Design';
+            const description = card.querySelector('.project-overlay p')?.textContent?.trim() || fallbackData.description || 'Project details will be available soon.';
+            const location = (card.querySelector('.project-location')?.textContent || fallbackData.location || 'Kampala').replace(/[^\w\s,.-]/g, '').trim();
+            const progressText = card.querySelector('.project-progress')?.textContent?.trim() || '';
+            const parsedProgress = Number((progressText.match(/\d+/) || [fallbackData.progress || (status.toLowerCase().includes('progress') ? 55 : 100)])[0]);
+            const datasetFeatures = (card.dataset.features || '').split('|').map(item => item.trim()).filter(Boolean);
+            const timeline = parseTimeline(card.dataset.timeline || '', status);
+            const categoryKey = getCategoryKey(category);
+            const fallbackImages = onlineCategoryImages[categoryKey] || onlineCategoryImages.interior;
+            
+            // Check for data-images attribute first
+            let mergedImages = [];
+            if (card.dataset.images) {
+                mergedImages = card.dataset.images.split('|').map(img => img.trim()).filter(Boolean);
+            } else {
+                mergedImages = [cardImage, ...(fallbackData.images || []), ...fallbackImages].filter(Boolean);
+            }
+            const uniqueImages = [...new Set(mergedImages)];
+
+            return {
+                category,
+                status,
+                statusClass: status.toLowerCase().includes('progress') ? 'status-ongoing' : 'status-completed',
+                location,
+                client: card.dataset.client || fallbackData.client || 'Private Client',
+                year: card.dataset.year || fallbackData.year || '2026',
+                duration: card.dataset.duration || fallbackData.duration || (status.toLowerCase().includes('progress') ? 'In Progress' : 'Completed'),
+                progress: parsedProgress,
+                description,
+                features: datasetFeatures.length
+                    ? datasetFeatures
+                    : (fallbackData.features && fallbackData.features.length
+                        ? fallbackData.features
+                        : [
+                            'Contemporary architecture and spatial planning',
+                            'Durable premium-quality materials',
+                            'Comfort-focused layout and lighting',
+                            'Functional indoor-outdoor transitions'
+                        ]),
+                timeline,
+                images: uniqueImages.slice(0, 5)
+            };
+        }
+
+        function enableListedScrollAnimation() {
+            const modalContent = document.querySelector('#projectModal .modal-content');
+            if (!modalContent) return;
+
+            if (modalListObserver) {
+                modalListObserver.disconnect();
+            }
+
+            clearTypingTimers();
+
+            const animatedElements = modalContent.querySelectorAll('.listed-item, .scroll-typing');
+            animatedElements.forEach((item, index) => {
+                item.classList.remove('show');
+                item.classList.remove('typing-active');
+                item.style.transitionDelay = `${Math.min(index * 60, 320)}ms`;
+                if (item.classList.contains('scroll-typing')) {
+                    item.textContent = '';
+                }
+            });
+
+            modalListObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        if (entry.target.classList.contains('scroll-typing')) {
+                            typeWordsOnScroll(entry.target);
+                        } else {
+                            entry.target.classList.add('show');
+                        }
+                        modalListObserver.unobserve(entry.target);
+                    }
+                });
+            }, {
+                root: modalContent,
+                threshold: 0.28
+            });
+
+            animatedElements.forEach((item) => modalListObserver.observe(item));
+        }
+
+        // ===== FULL PAGE TYPING ANIMATIONS =====
+        let pageTypingObserver;
+        let pageTypingTimers = [];
+
+        function enablePageTypingAnimations() {
+            if (pageTypingObserver) {
+                pageTypingObserver.disconnect();
+            }
+
+            // Clear any existing timers
+            pageTypingTimers.forEach(timerId => clearTimeout(timerId));
+            pageTypingTimers = [];
+
+            // Get all elements to animate on page (h2, h3, p, li)
+            const animatedElements = document.querySelectorAll(
+                '.section-header h2, .section-header p, ' +
+                '.hero-content h1, .hero-content p, ' +
+                '.project-card h3, .project-card p, ' +
+                '.stat-item .stat-label, ' +
+                '.cta-content h2, .cta-content p'
+            );
+
+            pageTypingObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting && !entry.target.classList.contains('typing-done')) {
+                        const element = entry.target;
+                        element.classList.add('typing-done');
+                        
+                        // Don't animate hero section on initial load (let it load normally)
+                        if (!element.closest('.hero')) {
+                            const text = element.dataset.originalText || element.textContent;
+                            animateTextTyping(element, text);
+                        }
+                        
+                        pageTypingObserver.unobserve(element);
+                    }
+                });
+            }, {
+                threshold: 0.3,
+                rootMargin: '50px'
+            });
+
+            animatedElements.forEach((el, index) => {
+                // Store original text if not already stored
+                if (!el.dataset.originalText) {
+                    el.dataset.originalText = el.textContent;
+                }
+                
+                const rect = el.getBoundingClientRect();
+                const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+                
+                if (isVisible && !el.closest('.hero')) {
+                    // Element is already visible - animate immediately with slight delay
+                    el.classList.add('typing-done');
+                    const delay = index * 100;
+                    const timerId = setTimeout(() => {
+                        animateTextTyping(el, el.dataset.originalText);
+                    }, delay);
+                    pageTypingTimers.push(timerId);
+                } else {
+                    // Element is below fold - clear text and observe
+                    el.textContent = '';
+                    pageTypingObserver.observe(el);
+                }
+            });
+        }
+
+        function animateTextTyping(element, text) {
+            const words = (text || '').trim().split(/\s+/);
+            let pointer = 0;
+            
+            element.textContent = '';
+            element.classList.add('typing-active');
+
+            const writeNext = () => {
+                if (pointer >= words.length) {
+                    element.classList.remove('typing-active');
+                    return;
+                }
+
+                element.textContent += `${pointer ? ' ' : ''}${words[pointer]}`;
+                const delay = Math.min(100, Math.max(35, words[pointer].length * 8));
+                pointer += 1;
+                const timerId = window.setTimeout(writeNext, delay);
+                pageTypingTimers.push(timerId);
+            };
+
+            writeNext();
+        }
+
+        // Initialize page typing animations when DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            enablePageTypingAnimations();
+            
+            // Fix broken characters and restructure project cards
+            document.querySelectorAll('.project-meta').forEach(meta => {
+                const locationDiv = meta.querySelector('.project-location');
+                const progressDiv = meta.querySelector('.project-progress');
+                
+                if (locationDiv && progressDiv) {
+                    // Extract text and clean all special/broken characters
+                    let locationText = locationDiv.textContent;
+                    let progressText = progressDiv.textContent;
+                    
+                    // Remove all non-ASCII characters and common broken emoji patterns
+                    locationText = locationText.replace(/[^\x20-\x7E,\n]/g, '').trim();
+                    progressText = progressText.replace(/[^\x20-\x7E%\n]/g, '').trim();
+                    
+                    // Restructure location
+                    locationDiv.innerHTML = `
+                        <span class="project-location-label">Location</span>
+                        <span class="project-location-value">${locationText}</span>
+                    `;
+                    
+                    // Restructure progress
+                    progressDiv.innerHTML = `
+                        <span class="project-progress-label">Progress</span>
+                        <span class="project-progress-value">${progressText}</span>
+                    `;
+                }
+            });
+
+            // Fix checkmarks in completed projects section
+            document.querySelectorAll('.project-card').forEach(card => {
+                const progressDiv = card.querySelector('.project-progress');
+                if (progressDiv && (progressDiv.textContent.includes('Completed') || progressDiv.textContent.includes('Complete'))) {
+                    let completedText = progressDiv.textContent;
+                    completedText = completedText.replace(/[^\x20-\x7E\n]/g, '').trim();
+                    progressDiv.innerHTML = `
+                        <span class="project-progress-label">Status</span>
+                        <span class="project-progress-value">${completedText}</span>
+                    `;
+                }
+            });
+
+            // Initialize counter animations for stats
+            initializeStatCounters();
+        });
+
+        // Counter animation function
+        function initializeStatCounters() {
+            const statNumbers = document.querySelectorAll('.stat-number');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !entry.target.dataset.animated) {
+                        entry.target.dataset.animated = 'true';
+                        animateCounter(entry.target);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            statNumbers.forEach(stat => observer.observe(stat));
+        }
+
+        function animateCounter(element) {
+            const target = parseInt(element.dataset.target);
+            const symbol = element.dataset.symbol || '';
+            let current = 0;
+            const increment = Math.ceil(target / 50);
+            const duration = 2000; // 2 seconds
+            const stepDuration = duration / (target / increment);
+
+            const counter = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(counter);
+                }
+                element.textContent = current + symbol;
+            }, stepDuration);
+        }
+
+        // ===== END FULL PAGE TYPING ANIMATIONS =====
+
         // Open modal function
         function openModal(element) {
             const card = element.closest('.project-card');
             const projectTitle = card.querySelector('h3').textContent;
-            const data = projectData[projectTitle];
-            
-            if (!data) {
-                console.error('Project data not found');
-                return;
-            }
+            const fallbackData = projectData[projectTitle] || {};
+            const data = buildCardData(card, fallbackData);
 
             // Populate modal
             document.getElementById('modalImage').src = data.images[0];
@@ -2287,7 +3671,9 @@ p, li, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; word-wrap: break-word
             document.getElementById('modalClient').textContent = data.client;
             document.getElementById('modalYear').textContent = data.year;
             document.getElementById('modalDuration').textContent = data.duration;
-            document.getElementById('modalDescription').textContent = data.description;
+            const descriptionElement = document.getElementById('modalDescription');
+            descriptionElement.classList.add('listed-item');
+            prepareTypingText(descriptionElement, data.description);
 
             // Status
             const statusElement = document.getElementById('modalStatus');
@@ -2307,22 +3693,32 @@ p, li, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; word-wrap: break-word
             // Features
             const featuresList = document.getElementById('modalFeatures');
             featuresList.innerHTML = '';
-            data.features.forEach(feature => {
+            data.features.forEach((feature, index) => {
                 const li = document.createElement('li');
-                li.textContent = feature;
+                li.className = 'listed-item scroll-typing';
+                li.style.transitionDelay = `${Math.min(index * 60, 320)}ms`;
+                prepareTypingText(li, feature);
                 featuresList.appendChild(li);
             });
 
             // Timeline
             const timelineContainer = document.getElementById('modalTimeline');
             timelineContainer.innerHTML = '';
-            data.timeline.forEach(item => {
+            data.timeline.forEach((item, index) => {
                 const timelineItem = document.createElement('div');
-                timelineItem.className = 'timeline-item';
-                timelineItem.innerHTML = `
-                    <div class="timeline-date">${item.date}</div>
-                    <div class="timeline-content">${item.event}</div>
-                `;
+                timelineItem.className = 'timeline-item listed-item';
+                timelineItem.style.transitionDelay = `${Math.min(index * 70, 350)}ms`;
+
+                const timelineDate = document.createElement('div');
+                timelineDate.className = 'timeline-date scroll-typing';
+                prepareTypingText(timelineDate, item.date);
+
+                const timelineContent = document.createElement('div');
+                timelineContent.className = 'timeline-content scroll-typing';
+                prepareTypingText(timelineContent, item.event);
+
+                timelineItem.appendChild(timelineDate);
+                timelineItem.appendChild(timelineContent);
                 timelineContainer.appendChild(timelineItem);
             });
 
@@ -2343,12 +3739,17 @@ p, li, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; word-wrap: break-word
             // Show modal
             document.getElementById('projectModal').classList.add('active');
             document.body.style.overflow = 'hidden';
+            requestAnimationFrame(enableListedScrollAnimation);
         }
 
         // Close modal function
         function closeModal() {
             document.getElementById('projectModal').classList.remove('active');
             document.body.style.overflow = 'auto';
+            clearTypingTimers();
+            if (modalListObserver) {
+                modalListObserver.disconnect();
+            }
         }
 
         // Close modal when clicking outside
@@ -2401,5 +3802,25 @@ p, li, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; word-wrap: break-word
         }
     })();
     </script>
+<script id="unified-nav-footer-js">
+(function(){
+  var nav=document.getElementById('siteNav');
+  if(nav){
+    var onScroll=function(){nav.classList.toggle('scrolled',window.scrollY>20);};
+    window.addEventListener('scroll',onScroll);onScroll();
+  }
+  var t=document.getElementById('navToggleBtn'),m=document.getElementById('navLinksMenu');
+  if(t&&m&&!t.dataset.bound){
+    t.dataset.bound='1';
+    t.addEventListener('click',function(){m.classList.toggle('open');t.classList.toggle('open');});
+    document.querySelectorAll('#navLinksMenu a').forEach(function(a){a.addEventListener('click',function(){m.classList.remove('open');t.classList.remove('open');});});
+  }
+  var y=new Date().getFullYear();
+  var yr=document.getElementById('yr');if(yr)yr.textContent=y;
+  var fy=document.getElementById('footer-year');if(fy)fy.textContent=y;
+})();
+</script>
 </body>
 </html>
+
+

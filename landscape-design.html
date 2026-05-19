@@ -1,1491 +1,740 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Landscape Design Services - LAPHIC Modern Homes</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --midnight: #0f1419;
-            --teal: #9c6c24;
-            --coral: #ff6b6b;
-            --cream: #f8f6f0;
-            --charcoal: #3a3a3a;
-            --gold: #c9a050;
-            --primary: #0a0a0a;
-            --green: #2d7a4f;
-            /* --sand: #f3e6c9; */
-           --forest: #2d4f3a;
-          --moss: #7da87b;
-        }
-
-        body {
-            font-family: 'Crimson Pro', serif;
-            background: var(--cream);
-            color: var(--charcoal);
-            overflow-x: hidden;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            background: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 1.5rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-family: 'Bebas Neue', cursive;
-            font-size: 2rem;
-            color: var(--gold);
-            letter-spacing: 3px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2.5rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--cream);
-            text-decoration: none;
-            font-size: 0.95rem;
-            letter-spacing: 1px;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--gold);
-        }
-
-        /* Hero Section */
-        .hero {
-            position: relative;
-            height: 80vh;
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
-                        url('images/landscape.jfif') center/cover;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            margin-top: 0;
-        }
-
-        .hero-content h1 {
-            font-family: 'Merriweather', serif;
-            font-size: 5rem;
-            margin-bottom: 1rem;
-            color: var(--gold);
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
-
-        .hero-content .service-number {
-            font-family: 'Bebas Neue', cursive;
-            font-size: 8rem;
-            color: rgba(201, 160, 80, 0.2);
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: -1;
-        }
-
-        .hero-content p {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            color: var(--cream);
-        }
-
-        .breadcrumb {
-            position: absolute;
-            top: 120px;
-            left: 5%;
-            font-size: 0.9rem;
-            color: rgba(255,255,255,0.8);
-        }
-
-        .breadcrumb a {
-            color: var(--gold);
-            text-decoration: none;
-            margin-right: 0.5rem;
-        }
-
-        /* Service Overview */
-        .service-overview {
-            padding: 6rem 5%;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .overview-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .overview-content h2 {
-            font-family: 'Merriweather', serif;
-            font-size: 3rem;
-            color: var(--midnight);
-            margin-bottom: 1.5rem;
-        }
-
-        .overview-content p {
-            font-size: 1.15rem;
-            line-height: 1.8;
-            color: var(--charcoal);
-            margin-bottom: 1.5rem;
-        }
-
-        .overview-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .stat-box {
-            text-align: center;
-            padding: 1.5rem;
-            background: white;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .stat-box .number {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: var(--green);
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-box .label {
-            font-size: 0.95rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--charcoal);
-        }
-
-        .overview-image {
-            position: relative;
-            height: 500px;
-            overflow: hidden;
-        }
-
-        .overview-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-        }
-
-        /* Services Grid */
-        .services-section {
-            padding: 8rem 5%;
-            background: linear-gradient(to bottom, var(--sand) 0%, #e8d7b0 100%);
-        }
-
-        .services-header {
-            text-align: center;
-            margin-bottom: 5rem;
-        }
-
-        .services-header h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 4rem;
-            margin-bottom: 1.5rem;
-            color: var(--forest);
-        }
-
-        .services-header p {
-            font-size: 1.2rem;
-            color: #666;
-            max-width: 800px;
-            margin: 0 auto;
-            line-height: 1.8;
-        }
-
-        .services-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 3rem;
-        }
-
-        .service-card {
-            background: white;
-            border-radius: 0;
-            overflow: hidden;
-            box-shadow: 0 10px 40px rgba(45, 80, 22, 0.1);
-            transition: all 0.5s ease;
-            position: relative;
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 0;
-            background: var(--moss);
-            transition: height 0.5s ease;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 60px rgba(45, 80, 22, 0.15);
-        }
-
-        .service-card:hover::before {
-            height: 100%;
-        }
-
-        .service-image {
-            height: auto;
-            overflow: hidden;
-            position: relative;
-            
-        }
-        .service-image img {
-           width: 100%;
-           height: auto;
-          object-fit: contain;
-       }
-
-        
-        .service-info {
-            padding: 2.5rem;
-        }
-
-        .service-info h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            color: var(--forest);
-        }
-
-        .service-info p {
-            font-size: 1rem;
-            line-height: 1.8;
-            color: #666;
-            margin-bottom: 1.5rem;
-        }
-
-        .service-features {
-            list-style: none;
-        }
-
-        .service-features li {
-            padding: 0.5rem 0;
-            padding-left: 1.5rem;
-            position: relative;
-            font-size: 0.95rem;
-            color: #555;
-        }
-
-        .service-features li::before {
-            content: 'ðŸŒ¿';
-            position: absolute;
-            left: 0;
-            font-size: 0.9rem;
-        }
-
-        /* Sub-Services Section */
-        .sub-services {
-            background: var(--midnight);
-            padding: 6rem 5%;
-            color: var(--cream);
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-header h2 {
-            font-family: 'Merriweather', serif;
-            font-size: 3.5rem;
-            color: var(--gold);
-            margin-bottom: 1rem;
-        }
-
-        .section-header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 3rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .service-card {
-            background: rgba(255,255,255,0.05);
-            padding: 3rem;
-            border-left: 4px solid var(--gold);
-            transition: all 0.4s ease;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(201,160,80,0.1), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .service-card:hover::before {
-            left: 100%;
-        }
-
-        .service-card:hover {
-            background: rgba(255,255,255,0.08);
-            transform: translateX(10px);
-            border-left-color: var(--cream);
-        }
-
-        .service-icon {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-            display: block;
-        }
-
-        .service-card h3 {
-            font-family: 'Merriweather', serif;
-            font-size: 1.8rem;
-            color: var(--gold);
-            margin-bottom: 1rem;
-        }
-
-        .service-card p {
-            font-size: 1.05rem;
-            line-height: 1.7;
-            margin-bottom: 1.5rem;
-            opacity: 0.9;
-        }
-
-        .service-features {
-            list-style: none;
-            padding: 0;
-            margin-bottom: 2rem;
-        }
-
-        .service-features li {
-            padding: 0.5rem 0;
-            padding-left: 1.5rem;
-            position: relative;
-            font-size: 1rem;
-            opacity: 0.85;
-        }
-
-        .service-features li::before {
-            content: 'âœ“';
-            position: absolute;
-            left: 0;
-            color: var(--gold);
-            font-weight: bold;
-        }
-
-        .service-link {
-            display: inline-block;
-            padding: 0.75rem 2rem;
-            background: transparent;
-            border: 2px solid var(--gold);
-            color: var(--gold);
-            text-decoration: none;
-            font-weight: 600;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            font-size: 0.85rem;
-        }
-
-        .service-link:hover {
-            background: var(--gold);
-            color: var(--midnight);
-        }
-
-        /* Process Section */
-        .process-section {
-            padding: 6rem 5%;
-            background: var(--cream);
-        }
-
-        .process-timeline {
-            max-width: 1200px;
-            margin: 3rem auto 0;
-            position: relative;
-        }
-
-        .process-timeline::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: 0;
-            bottom: 0;
-            width: 3px;
-            background: var(--gold);
-            transform: translateX(-50%);
-        }
-
-        .process-step {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            margin-bottom: 4rem;
-            position: relative;
-        }
-
-        .process-step:nth-child(even) .step-content {
-            order: 2;
-        }
-
-        .process-step:nth-child(even) .step-number {
-            order: 1;
-        }
-
-        .step-content {
-            background: white;
-            padding: 2.5rem;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            position: relative;
-        }
-
-        .step-content h3 {
-            font-family: 'Merriweather', serif;
-            font-size: 1.8rem;
-            color: var(--midnight);
-            margin-bottom: 1rem;
-        }
-
-        .step-content p {
-            font-size: 1.05rem;
-            line-height: 1.7;
-            color: var(--charcoal);
-        }
-
-        .step-number {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-
-        .step-number .number {
-            width: 100px;
-            height: 100px;
-            background: var(--gold);
-            color: var(--midnight);
-            font-family: 'Bebas Neue', cursive;
-            font-size: 3rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            border: 5px solid var(--cream);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-            position: relative;
-            z-index: 10;
-        }
-
-        /* Gallery Section */
-        .gallery-section {
-            padding: 6rem 5%;
-            background: var(--midnight);
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 1400px;
-            margin: 3rem auto 0;
-        }
-
-        .gallery-item {
-            position: relative;
-            height: 350px;
-            overflow: hidden;
-            cursor: pointer;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.1);
-        }
-
-        .gallery-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
-            padding: 2rem;
-            color: white;
-            transform: translateY(100%);
-            transition: transform 0.4s ease;
-        }
-
-        .gallery-item:hover .gallery-overlay {
-            transform: translateY(0);
-        }
-
-        .gallery-overlay h4 {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-            color: var(--gold);
-        }
-
-        /* Testimonials */
-        .testimonials-section {
-            padding: 6rem 5%;
-            background: var(--cream);
-        }
-
-        .testimonials-slider {
-            max-width: 900px;
-            margin: 3rem auto 0;
-        }
-
-        .testimonial-card {
-            background: white;
-            padding: 3rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-
-        .testimonial-text {
-            font-size: 1.3rem;
-            line-height: 1.8;
-            color: var(--charcoal);
-            font-style: italic;
-            margin-bottom: 2rem;
-        }
-
-        .testimonial-author {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--gold);
-        }
-
-        .testimonial-role {
-            font-size: 0.95rem;
-            color: var(--charcoal);
-            opacity: 0.7;
-        }
-
-        /* CTA Section */
-        .cta-section {
-            padding: 6rem 5%;
-            background: var(--midnight);
-            text-align: center;
-            color: var(--cream);
-        }
-
-        .cta-content h2 {
-            font-family: 'Merriweather', serif;
-            font-size: 3.5rem;
-            color: var(--gold);
-            margin-bottom: 1.5rem;
-        }
-
-        .cta-content p {
-            font-size: 1.3rem;
-            margin-bottom: 3rem;
-            opacity: 0.9;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 2rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .cta-btn {
-            padding: 1.2rem 3rem;
-            font-size: 1rem;
-            font-weight: 600;
-            text-decoration: none;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            border: 2px solid;
-        }
-
-        .cta-btn-primary {
-            background: var(--gold);
-            color: var(--midnight);
-            border-color: var(--gold);
-        }
-
-        .cta-btn-primary:hover {
-            background: transparent;
-            color: var(--gold);
-        }
-
-        .cta-btn-secondary {
-            background: transparent;
-            color: var(--cream);
-            border-color: var(--cream);
-        }
-
-        .cta-btn-secondary:hover {
-            background: var(--cream);
-            color: var(--midnight);
-        }
-
-        /* Footer */
-        footer {
-            background: var(--primary);
-            color: var(--cream);
-            padding: 3rem 5%;
-            text-align: center;
-        }
-
-        footer p {
-            opacity: 0.9;
-        }
-
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .hero-content h1 {
-                font-size: 3.5rem;
-            }
-
-            .overview-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .process-timeline::before {
-                left: 30px;
-            }
-
-            .process-step {
-                grid-template-columns: 1fr;
-                padding-left: 80px;
-            }
-
-            .process-step:nth-child(even) .step-content {
-                order: 1;
-            }
-
-            .step-number {
-                position: absolute;
-                left: 0;
-                top: 50%;
-                transform: translateY(-50%);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero-content h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero-content .service-number {
-                font-size: 5rem;
-            }
-
-            .nav-links {
-                gap: 1.5rem;
-                font-size: 0.85rem;
-            }
-
-            .overview-stats {
-                grid-template-columns: 1fr;
-            }
-
-            .section-header h2 {
-                font-size: 2.5rem;
-            }
-
-            .cta-content h2 {
-                font-size: 2.5rem;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .cta-btn {
-                width: 100%;
-                max-width: 300px;
-            }
-        }
-    
-/* === MOBILE RESPONSIVE PATCH v1 === */
-*, *::before, *::after { box-sizing: border-box; }
-html, body { overflow-x: hidden; max-width: 100%; }
-img, video, iframe { max-width: 100%; height: auto; }
-p, li, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; word-wrap: break-word; }
-
-/* Tablets and below */
-@media (max-width: 1024px) {
-  .nav-links { gap: 1.2rem; }
-  .services-grid, .portfolio-grid, .projects-grid, .testimonials-grid,
-  .inspiration-grid, .values-grid, .stats-grid, .trust-grid, .info-cards {
-    grid-template-columns: repeat(2, 1fr) !important;
-  }
-  .footer-content { grid-template-columns: repeat(2, 1fr) !important; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<title>Landscape Design — LAPHIC Modern Homes</title>
+<meta name="description" content="LAPHIC Modern Homes — landscape architecture, garden design and outdoor living across Uganda. Compounds, gazebos, water features and native gardens.">
+<link rel="icon" href="images/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Bebas+Neue&display=swap" rel="stylesheet">
+
+<style>
+/* ===================== LAPHIC — Landscape Design ===================== */
+:root{
+  --ink:#0a1a2f;
+  --leaf:#0a1a2f;        /* unified navy */
+  --leaf-2:#11233f;
+  --moss:#5a6473;
+  --sand:#f7f5f1;
+  --paper:#f7f5f1;
+  --bone:#efeae1;
+  --line:#e6e2db;
+  --gold:#c9a050;
+  --gold-soft:#e3c789;
+  --rust:#c85a3e;
+  --muted:#5a6473;
+  --muted-2:#8a8f98;
+  --white:#ffffff;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{overflow-x:hidden}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',-apple-system,sans-serif;
+  font-weight:400;font-size:16px;line-height:1.65;
+  color:var(--ink);background:#fff;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+em,i{font-style:italic}
+button{font-family:inherit;cursor:pointer;border:0;background:none}
+.wrap{max-width:1360px;margin:0 auto;padding:0 40px}
+@media(max-width:768px){ .wrap{padding:0 22px} }
+
+/* ===== Nav (unified) ===== */
+.site-nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.1rem 5%;min-height:80px;background:transparent;
+  border-bottom:1px solid transparent;
+  transition:background .4s,padding .35s,min-height .4s,box-shadow .4s,border-color .4s;
+}
+.site-nav.scrolled{
+  background:linear-gradient(180deg,rgba(13,13,18,.92),rgba(20,20,28,.88));
+  backdrop-filter:blur(28px) saturate(1.4);-webkit-backdrop-filter:blur(28px) saturate(1.4);
+  box-shadow:0 0 0 1px rgba(255,255,255,.04);
+  border-bottom-color:rgba(255,255,255,.06);
+  padding:.75rem 5%;min-height:66px;
+}
+.nav-logo img{height:48px;width:auto}
+.nav-links{list-style:none;display:flex;align-items:center;gap:2rem;margin:0}
+.nav-links a{color:#efe9dd;font-size:.85rem;letter-spacing:1.6px;text-transform:uppercase;font-weight:500;position:relative;padding:.4rem 0;transition:color .25s}
+.nav-links a:hover,.nav-links a.active{color:var(--gold)}
+.nav-links a:not(.nav-cta-btn):after{content:'';position:absolute;left:0;bottom:-2px;height:1px;width:0;background:var(--gold);transition:width .3s}
+.nav-links a:not(.nav-cta-btn):hover:after,.nav-links a.active:after{width:100%}
+.nav-cta-btn{border:1px solid var(--gold);color:var(--gold)!important;padding:.6rem 1.3rem!important;border-radius:999px;transition:all .3s}
+.nav-cta-btn:hover{background:var(--gold);color:#0d0f12!important}
+.nav-cta-btn:after{display:none!important}
+.nav-toggle{display:none;width:36px;height:28px;flex-direction:column;justify-content:space-between}
+.nav-toggle span{display:block;height:2px;width:100%;background:#f5f1ea;transition:.3s}
+.nav-toggle.open span:nth-child(1){transform:translateY(13px) rotate(45deg)}
+.nav-toggle.open span:nth-child(2){opacity:0}
+.nav-toggle.open span:nth-child(3){transform:translateY(-13px) rotate(-45deg)}
+@media(max-width:1024px){
+  .nav-links{position:fixed;top:72px;left:0;right:0;background:rgba(10,10,10,.97);flex-direction:column;align-items:stretch;padding:1.2rem 5% 1.6rem;gap:0;border-bottom:1px solid rgba(255,255,255,.08);transform:translateY(-130%);transition:transform .4s}
+  .nav-links.open{transform:translateY(0)}
+  .nav-links a{padding:1rem 0;border-bottom:1px solid rgba(255,255,255,.08)}
+  .nav-links a:after{display:none}
+  .nav-cta-btn{margin-top:.8rem;text-align:center}
+  .nav-toggle{display:flex}
 }
 
-/* Tablets / large phones */
-@media (max-width: 768px) {
-  /* Navigation: hamburger */
-  .nav-toggle { display: flex !important; }
-  .nav-links {
-    position: fixed;
-    top: 70px;
-    right: 0;
-    left: 0;
-    flex-direction: column;
-    background: rgba(15, 15, 15, 0.97);
-    padding: 1.5rem;
-    gap: 1rem;
-    transform: translateX(100%);
-    transition: transform 0.3s ease;
-    z-index: 999;
-    max-height: calc(100vh - 70px);
-    overflow-y: auto;
-  }
-  .nav-links.active, .nav-links.open, .nav-links.show {
-    transform: translateX(0);
-  }
-  .nav-links a { font-size: 0.95rem; }
-  .nav-logo img { height: 42px !important; max-height: 42px; width: auto; }
-  .nav-cta { display: none; }
+/* ===== Shared utilities ===== */
+.kicker{display:inline-flex;align-items:center;gap:12px;font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;color:var(--gold)}
+.kicker:before{content:'';width:32px;height:1px;background:var(--gold)}
+.kicker.dark{color:var(--leaf)}
+.kicker.dark:before{background:var(--leaf)}
+.kicker.light{color:var(--gold-soft)}
+.kicker.light:before{background:var(--gold-soft)}
+.h-section{font-family:'Inter',sans-serif;font-weight:700;font-size:clamp(1.9rem,3.2vw,3.1rem);line-height:1.1;letter-spacing:-.022em;color:var(--leaf)}
+.h-section em{font-family:'Playfair Display',serif;font-weight:500;font-style:italic;color:var(--gold)}
+.h-section.light{color:#fff}
+.h-section.light em{color:var(--gold-soft)}
+.read-more{display:inline-flex;align-items:center;gap:14px;font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:var(--leaf);padding-bottom:6px;border-bottom:2px solid var(--leaf);transition:gap .3s,color .3s,border-color .3s}
+.read-more:hover{gap:22px;color:var(--gold);border-color:var(--gold)}
+.read-more.light{color:#fff;border-color:#fff}
+.read-more.light:hover{color:var(--gold-soft);border-color:var(--gold-soft)}
+.read-more svg{width:14px;height:14px}
+.btn{display:inline-flex;align-items:center;gap:14px;padding:18px 30px;font-size:13px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;border-radius:999px;transition:all .3s}
+.btn.primary{background:var(--gold);color:var(--leaf)}
+.btn.primary:hover{background:#fff;color:var(--leaf);transform:translateY(-2px)}
+.btn.ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.4)}
+.btn.ghost:hover{background:#fff;color:var(--leaf);border-color:#fff}
+.btn .arr{width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.18);display:inline-flex;align-items:center;justify-content:center;transition:transform .3s,background .3s}
+.btn.primary .arr{background:var(--leaf);color:var(--gold-soft)}
+.btn:hover .arr{transform:translateX(4px)}
 
-  /* Hero */
-  .hero, .hero-3d { min-height: auto; padding: 6rem 1rem 3rem !important; }
-  .hero-content, .hero-content-3d { padding: 0 1rem; }
-  .hero h1, .hero-content h1, .hero-content-3d h1 {
-    font-size: clamp(2rem, 6vw, 3.5rem) !important;
-    line-height: 1.15;
-  }
-  .hero p, .hero-content p, .hero-tagline, .hero-desc {
-    font-size: 1rem !important;
-  }
-  .hero-trust, .trust-strip, .scroll-indicator { display: none !important; }
+/* ===== HERO ===== */
+.hero{position:relative;height:100vh;min-height:680px;overflow:hidden;color:#fff;background:var(--leaf)}
+.hero-bg{position:absolute;inset:0}
+.hero-bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.6s ease;transform:scale(1.06)}
+.hero-bg img.active{opacity:1;animation:kenburns 14s ease-in-out forwards}
+@keyframes kenburns{from{transform:scale(1.06)}to{transform:scale(1.14)}}
+.hero:after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,26,18,.35) 0%,rgba(10,26,18,.5) 55%,rgba(10,26,18,.85) 100%);z-index:1}
+.hero .wrap{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:90px}
+.hero .crumb{font-size:11.5px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold-soft);font-weight:600;margin-bottom:30px;display:flex;align-items:center;gap:14px}
+.hero .crumb:before{content:'';width:42px;height:1px;background:var(--gold-soft)}
+.hero h1{font-family:'Inter',sans-serif;font-weight:700;font-size:clamp(2.6rem,6vw,6rem);line-height:1;letter-spacing:-.035em;max-width:1100px;margin-bottom:28px}
+.hero h1 em{font-family:'Playfair Display',serif;font-weight:500;font-style:italic;color:var(--gold-soft)}
+.hero .sub{font-size:18px;line-height:1.65;color:#e6ebe2;max-width:620px;margin-bottom:36px}
+.hero .actions{display:flex;gap:16px;flex-wrap:wrap}
+.hero-dots{position:absolute;left:5%;bottom:42px;z-index:3;display:flex;gap:10px}
+.hero-dots button{width:36px;height:3px;background:rgba(255,255,255,.3);transition:background .3s}
+.hero-dots button.on{background:var(--gold)}
+.hero-scroll{position:absolute;right:5%;bottom:42px;z-index:3;display:flex;align-items:center;gap:14px;color:#fff;font-size:11px;letter-spacing:.28em;text-transform:uppercase;font-weight:600;writing-mode:vertical-rl;transform:rotate(180deg);opacity:.85}
+@media(max-width:768px){.hero-scroll{display:none}}
 
-  /* Generic sections */
-  section { padding-left: 1.5rem !important; padding-right: 1.5rem !important; }
+/* ===== INTRO ===== */
+.intro{padding:130px 0 70px;background:#fff}
+.intro-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:80px;align-items:start}
+.intro h2{margin-bottom:22px}
+.intro p{font-size:21px;line-height:1.6;color:var(--leaf);margin-bottom:22px}
+.intro p em{font-family:'Playfair Display',serif;color:var(--gold)}
+.intro .kicker{margin-bottom:24px}
+@media(max-width:1024px){ .intro-grid{grid-template-columns:1fr;gap:32px} }
 
-  /* Grids â†’ 1 col */
-  .services-grid, .portfolio-grid, .projects-grid, .testimonials-grid,
-  .testimonials-slider, .values-grid, .info-cards, .services-layout,
-  .services-showcase, .services-container, .trust-grid, .trust-points {
-    grid-template-columns: 1fr !important;
-    display: grid !important;
-  }
+/* ===== SERVICES (6-card grid using the 6 preserved service images) ===== */
+.services{padding:60px 0 130px;background:#fff}
+.services .head{display:grid;grid-template-columns:1fr 1.1fr;gap:60px;align-items:end;margin-bottom:60px}
+.services .head p{color:var(--muted);font-size:16.5px;line-height:1.75}
+@media(max-width:900px){.services .head{grid-template-columns:1fr;gap:24px}}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.svc{position:relative;overflow:hidden;background:var(--sand);transition:transform .4s}
+.svc:hover{transform:translateY(-4px)}
+.svc .vis{aspect-ratio:4/5;overflow:hidden;background:var(--bone)}
+.svc .vis img{width:100%;height:100%;object-fit:cover;transition:transform .9s}
+.svc:hover .vis img{transform:scale(1.06)}
+.svc .body{padding:26px 26px 30px;background:#fff;border:1px solid var(--line);border-top:0}
+.svc .n{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:.06em;color:var(--gold);margin-bottom:10px}
+.svc h3{font-size:20px;font-weight:600;color:var(--leaf);letter-spacing:-.012em;margin-bottom:10px}
+.svc p{color:var(--muted);font-size:14.5px;line-height:1.7;margin-bottom:18px}
+.svc .more{display:inline-flex;align-items:center;gap:10px;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:var(--leaf);transition:gap .3s,color .3s}
+.svc .more:hover{color:var(--gold);gap:16px}
+.svc .more svg{width:13px;height:13px}
+@media(max-width:900px){.svc-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.svc-grid{grid-template-columns:1fr}}
 
-  /* Service blocks (image + text) stack */
-  .service-block, .services-layout, .trust { 
-    flex-direction: column !important;
-    grid-template-columns: 1fr !important;
-  }
-  .service-visual, .service-content, .service-image, .service-info,
-  .trust-image, .trust-text { width: 100% !important; max-width: 100%; }
+/* ===== STATS strip (botanical/green) ===== */
+.stats{background:var(--leaf);color:#fff;padding:46px 0}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.stats-grid .cell{padding:18px 24px;border-right:1px solid rgba(255,255,255,.12)}
+.stats-grid .cell:last-child{border-right:0}
+.stats-grid .n{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,3.4vw,3rem);line-height:1;color:#fff;margin-bottom:6px}
+.stats-grid .n em{font-family:'Playfair Display',serif;font-style:italic;font-size:.5em;color:var(--gold-soft);vertical-align:super;margin-left:4px}
+.stats-grid .l{font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:var(--gold-soft)}
+@media(max-width:768px){.stats-grid{grid-template-columns:repeat(2,1fr)}.stats-grid .cell:nth-child(2){border-right:0}}
 
-  /* Cards */
-  .service-card, .portfolio-item, .project-card, .testimonial-card,
-  .inspiration-card, .info-card, .stat-item, .value-card, .team-card {
-    max-width: 100%; width: 100%;
-  }
+/* ===== FEATURE ROW (gazebo) ===== */
+.feature{padding:140px 0;background:var(--paper)}
+.feature-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:80px;align-items:center}
+.feature.reverse .feature-grid{grid-template-columns:1fr 1.1fr;direction:rtl}
+.feature.reverse .feature-grid > *{direction:ltr}
+.feature .vis{position:relative;aspect-ratio:5/4;overflow:hidden;background:var(--bone)}
+.feature .vis img{width:100%;height:100%;object-fit:cover;transition:transform .9s}
+.feature:hover .vis img{transform:scale(1.04)}
+.feature .vis .stamp{position:absolute;left:24px;bottom:24px;background:var(--gold);color:var(--leaf);padding:10px 16px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:700}
+.feature .info .kicker{margin-bottom:22px}
+.feature .info h2{margin-bottom:24px}
+.feature .info p{color:var(--muted);font-size:17px;line-height:1.8;margin-bottom:20px}
+.feature .info p em{color:var(--leaf);font-style:italic;font-family:'Playfair Display',serif}
+.feature .info ul{list-style:none;margin-top:22px;margin-bottom:30px}
+.feature .info li{display:flex;gap:14px;align-items:flex-start;padding:12px 0;border-top:1px solid var(--line);font-size:15px;color:var(--leaf)}
+.feature .info li:last-child{border-bottom:1px solid var(--line)}
+.feature .info li svg{width:18px;height:18px;color:var(--gold);flex:none;margin-top:3px}
+@media(max-width:1024px){.feature-grid,.feature.reverse .feature-grid{grid-template-columns:1fr;gap:40px;direction:ltr}}
 
-  /* CTA stacks */
-  .cta-buttons, .hero-ctas, .cta-content { 
-    flex-direction: column !important;
-    align-items: stretch !important;
-  }
-  .cta-btn, .cta-button, .hero-ctas a, .cta-buttons a { 
-    width: 100%; text-align: center; max-width: 100%;
-  }
-  .cta-section, .cta-3d { padding: 3rem 1.5rem !important; }
-  .cta-content h2, .cta-section h2 { font-size: clamp(1.6rem, 5vw, 2.4rem) !important; }
+/* ===== PROCESS — Blueprint Journey ===== */
+.process{padding:160px 0 180px;background:#fff;position:relative;overflow:hidden}
+.process:before{
+  content:'';position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(10,26,47,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(10,26,47,.035) 1px,transparent 1px);
+  background-size:44px 44px;
+  mask-image:radial-gradient(ellipse at center,#000 50%,transparent 85%);
+  -webkit-mask-image:radial-gradient(ellipse at center,#000 50%,transparent 85%);
+  pointer-events:none;
+}
+.process .wrap{position:relative;z-index:2}
+.process .head{display:grid;grid-template-columns:1fr 1.2fr;gap:80px;align-items:end;margin-bottom:90px}
+.process .head .kicker{margin-bottom:22px}
+.process .head h2{color:var(--ink)}
+.process .head h2 em{color:var(--gold)}
+.process .head p{color:var(--muted);font-size:17px;line-height:1.75}
+@media(max-width:900px){.process .head{grid-template-columns:1fr;gap:30px;margin-bottom:60px}}
 
-  /* Footer */
-  .footer-content { 
-    grid-template-columns: 1fr 1fr !important;
-    gap: 2rem !important;
-    text-align: left;
-  }
+.journey{position:relative;display:grid;grid-template-columns:repeat(5,1fr);gap:30px;padding:40px 0 20px}
+/* connecting line */
+.journey:before{
+  content:'';position:absolute;top:78px;left:8%;right:8%;height:2px;
+  background-image:linear-gradient(to right,var(--gold) 50%,transparent 0);
+  background-size:14px 2px;background-repeat:repeat-x;z-index:0;
+}
+.j-step{position:relative;z-index:1;text-align:center;padding:0 6px}
+.j-step .badge{
+  width:96px;height:96px;margin:0 auto 28px;border-radius:50%;
+  background:#fff;border:2px solid var(--ink);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;transition:transform .5s,background .4s,border-color .4s,box-shadow .4s;
+  box-shadow:0 6px 22px rgba(10,26,47,.06);
+}
+.j-step:hover .badge{transform:translateY(-6px);background:var(--ink);border-color:var(--ink);box-shadow:0 14px 36px rgba(10,26,47,.25)}
+.j-step:hover .badge svg{color:var(--gold-soft)}
+.j-step:hover .badge .num{color:var(--gold-soft)}
+.j-step .badge svg{width:34px;height:34px;color:var(--ink);transition:color .4s;stroke-width:1.4}
+.j-step .badge .num{
+  position:absolute;top:-14px;right:-14px;
+  width:38px;height:38px;border-radius:50%;
+  background:var(--gold);color:var(--ink);
+  font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:.04em;
+  display:flex;align-items:center;justify-content:center;
+  border:3px solid #fff;
+  transition:color .4s;
+}
+.j-step .tag{font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;font-weight:700;color:var(--gold);margin-bottom:10px}
+.j-step h4{font-family:'Playfair Display',serif;font-weight:500;font-size:22px;color:var(--ink);margin-bottom:14px;letter-spacing:-.012em;line-height:1.2}
+.j-step h4 em{font-style:italic;color:var(--gold)}
+.j-step p{font-size:14px;color:var(--muted);line-height:1.7;max-width:240px;margin:0 auto}
+.j-step .dur{display:inline-block;margin-top:14px;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:var(--ink);padding:6px 12px;background:var(--paper);border-radius:999px}
 
-  /* Forms */
-  .form-row { flex-direction: column !important; gap: 1rem; }
-  .form-group, input, textarea, select, button { max-width: 100%; box-sizing: border-box; }
-  input, textarea, select { font-size: 16px !important; /* prevent iOS zoom */ }
-
-  /* Filters */
-  .filter-buttons, .filter-tabs { 
-    flex-wrap: wrap !important;
-    gap: 0.5rem !important;
-    justify-content: center;
-  }
-  .filter-btn { font-size: 0.85rem !important; padding: 0.5rem 0.9rem !important; }
-
-  /* Stats */
-  .stats-grid, .stats-container { grid-template-columns: repeat(2, 1fr) !important; gap: 1rem; }
-
-  /* Section headings */
-  h2 { font-size: clamp(1.6rem, 5vw, 2.4rem) !important; }
-  h3 { font-size: clamp(1.2rem, 4vw, 1.6rem) !important; }
-
-  /* iframes / embeds */
-  iframe { width: 100% !important; height: 60vh; min-height: 320px; }
+@media(max-width:1024px){
+  .journey{grid-template-columns:repeat(2,1fr);gap:50px 30px}
+  .journey:before{display:none}
+}
+@media(max-width:560px){
+  .journey{grid-template-columns:1fr;gap:50px}
 }
 
-/* Small phones */
-@media (max-width: 640px) {
-  section { padding-left: 1rem !important; padding-right: 1rem !important; }
-  .hero, .hero-3d { padding: 5rem 1rem 2.5rem !important; }
-  .hero h1, .hero-content h1, .hero-content-3d h1 {
-    font-size: clamp(1.9rem, 7vw, 2.6rem) !important;
-  }
-  .services-grid, .portfolio-grid, .projects-grid, .testimonials-grid,
-  .inspiration-grid, .values-grid, .info-cards, .trust-grid,
-  .stats-grid, .stats-container {
-    grid-template-columns: 1fr !important;
-  }
-  body, p, li { font-size: 0.95rem; }
-  .footer-content { 
-    grid-template-columns: 1fr !important;
-    text-align: center;
-  }
-  .footer-section { text-align: center; }
-  .footer-section img, .footer-bottom img { margin-left: auto; margin-right: auto; }
-}
+/* ===== GALLERY — masonry of the 10 preserved gallery images ===== */
+.gallery{padding:140px 0;background:#fff}
+.gallery .head{display:grid;grid-template-columns:1fr 1.1fr;gap:60px;align-items:end;margin-bottom:60px}
+.gallery .head p{color:var(--muted);font-size:16.5px;line-height:1.75}
+@media(max-width:900px){.gallery .head{grid-template-columns:1fr;gap:24px}}
+.gal-filter{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:36px}
+.gal-filter button{padding:10px 20px;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:var(--leaf);border:1px solid var(--line);background:#fff;border-radius:999px;transition:all .3s}
+.gal-filter button:hover,.gal-filter button.on{background:var(--leaf);color:#fff;border-color:var(--leaf)}
+.masonry{column-count:3;column-gap:22px}
+.masonry .tile{break-inside:avoid;margin-bottom:22px;overflow:hidden;position:relative;background:var(--bone);cursor:pointer}
+.masonry .tile img{width:100%;height:auto;display:block;transition:transform .9s ease}
+.masonry .tile:hover img{transform:scale(1.06)}
+.masonry .tile .cap{position:absolute;left:0;right:0;bottom:0;padding:22px;background:linear-gradient(180deg,transparent,rgba(15,26,20,.85));color:#fff;opacity:0;transform:translateY(20px);transition:opacity .4s,transform .4s}
+.masonry .tile:hover .cap{opacity:1;transform:none}
+.masonry .tile .cap h5{font-size:16px;font-weight:600;margin-bottom:4px}
+.masonry .tile .cap span{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-soft)}
+@media(max-width:1024px){.masonry{column-count:2}}
+@media(max-width:600px){.masonry{column-count:1}}
 
-/* Very small phones */
-@media (max-width: 480px) {
-  section { padding-left: 1rem !important; padding-right: 1rem !important; }
-  .hero h1, .hero-content h1, .hero-content-3d h1 {
-    font-size: clamp(1.8rem, 8vw, 2.3rem) !important;
-  }
-  .nav-logo img { height: 38px !important; }
-  .hero-trust, .trust-strip, .trust-divider, .scroll-indicator { display: none !important; }
-  h2 { font-size: 1.5rem !important; }
-}
-/* === END MOBILE RESPONSIVE PATCH v1 === */
+/* ===== QUOTE ===== */
+.quote-block{padding:140px 0;background:var(--paper);text-align:center}
+.quote-block .wrap{max-width:920px}
+.quote-block svg.q{width:54px;height:54px;color:var(--gold);margin:0 auto 30px}
+.quote-block blockquote{font-family:'Playfair Display',serif;font-style:italic;font-weight:400;font-size:clamp(1.6rem,3vw,2.6rem);line-height:1.35;color:var(--leaf);margin-bottom:34px}
+.quote-block blockquote em{color:var(--gold)}
+.quote-block .who{font-size:12px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;color:var(--moss)}
 
-/* === UNIFIED NAV + FOOTER === */
-:root { --gold:#d4af37; --gold-dark:#c9a050; --gold-light:#e6c068; --navy:#0d0d12; }
-#siteNav { position:fixed; width:100%; top:0; z-index:1000; padding:0 5%; display:flex; justify-content:space-between; align-items:center; min-height:80px; transition:background .4s,box-shadow .4s,min-height .4s; background:transparent; }
-#siteNav.scrolled { background:linear-gradient(180deg,rgba(13,13,18,.92),rgba(20,20,28,.88)); backdrop-filter:blur(28px) saturate(1.4); -webkit-backdrop-filter:blur(28px) saturate(1.4); box-shadow:0 0 0 1px rgba(255,255,255,.04); min-height:66px; }
-#siteNav::after { content:''; position:absolute; bottom:0; left:0; right:0; height:1px; background:linear-gradient(90deg,transparent,var(--gold),transparent); opacity:0; transition:opacity .4s; pointer-events:none; }
-#siteNav.scrolled::after { animation:navGlow 6s ease-in-out infinite; }
-@keyframes navGlow { 0%,100%{opacity:.3}50%{opacity:1} }
-.nav-logo a { display:flex; align-items:center; text-decoration:none; }
-.nav-logo img { height:58px; width:auto; filter:drop-shadow(0 2px 8px rgba(0,0,0,.5)); transition:height .4s; }
-#siteNav.scrolled .nav-logo img { height:44px; }
-.nav-links { display:flex; align-items:center; gap:1.8rem; list-style:none; }
-.nav-links a { color:rgba(255,255,255,.9); text-decoration:none; font-family:'Inter',sans-serif; font-size:.82rem; letter-spacing:1.5px; text-transform:uppercase; position:relative; padding-bottom:2px; transition:color .25s; }
-.nav-links a::after { content:''; position:absolute; bottom:-2px; left:50%; right:50%; height:1px; background:var(--gold); transition:left .3s,right .3s; }
-.nav-links a:hover,.nav-links a.active { color:var(--gold); }
-.nav-links a:hover::after,.nav-links a.active::after { left:0; right:0; }
-.nav-cta-btn { background:var(--gold) !important; color:#0d0d12 !important; padding:.55rem 1.4rem !important; border-radius:50px; font-weight:700 !important; letter-spacing:2px !important; transition:box-shadow .3s,transform .3s !important; }
-.nav-cta-btn:hover { box-shadow:0 0 20px rgba(212,175,55,.6),0 0 40px rgba(212,175,55,.3) !important; transform:translateY(-2px) !important; }
-.nav-cta-btn::after { display:none !important; }
-.nav-toggle { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:4px; z-index:1001; position:relative; }
-.nav-toggle span { display:block; width:24px; height:2px; background:#fff; transition:all .3s; border-radius:2px; }
-.nav-toggle.open span:nth-child(1) { transform:rotate(45deg) translate(5px,5px); }
-.nav-toggle.open span:nth-child(2) { opacity:0; }
-.nav-toggle.open span:nth-child(3) { transform:rotate(-45deg) translate(5px,-5px); }
-@media(max-width:900px) {
-  .nav-logo img { height:42px !important; }
-  #siteNav.scrolled .nav-logo img { height:36px !important; }
-  .nav-toggle { display:flex !important; }
-  .nav-links { position:fixed; top:0; right:-100%; bottom:0; width:280px; flex-direction:column; align-items:flex-start; background:linear-gradient(180deg,rgba(13,13,18,.97),rgba(20,20,28,.95)); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); padding:80px 2rem 2rem; transition:right .35s cubic-bezier(.4,0,.2,1); gap:0; z-index:999; overflow-y:auto; }
-  .nav-links li { width:100%; border-bottom:1px solid rgba(255,255,255,.06); }
-  .nav-links a { display:block; padding:.9rem 0; font-size:.9rem; }
-  .nav-links.open { right:0; }
-  .nav-cta-item { border-bottom:none !important; margin-top:1rem; }
-  .nav-cta-btn { width:100% !important; text-align:center; display:block !important; padding:.7rem 1rem !important; border-radius:8px !important; }
-}
-.site-footer { background:linear-gradient(180deg,#0d0d12 0%,#0a0a0f 100%); color:rgba(255,255,255,.75); font-family:'Inter',sans-serif; padding-top:5rem; }
-.footer-content { display:grid; grid-template-columns:2fr 1fr 1fr 1.5fr; gap:3rem; padding:0 5% 3rem; max-width:1400px; margin:0 auto; }
-.footer-section h4 { font-family:'Bebas Neue',cursive; font-size:1.1rem; letter-spacing:2px; color:var(--gold); margin-bottom:1.2rem; }
-.footer-section ul { list-style:none; }
-.footer-section ul li { margin-bottom:.6rem; font-size:.9rem; color:rgba(255,255,255,.65); }
-.footer-section ul li a { color:rgba(255,255,255,.65); text-decoration:none; transition:color .25s; }
-.footer-section ul li a:hover { color:var(--gold); }
-.footer-brand img { filter:drop-shadow(0 2px 8px rgba(0,0,0,.5)); }
-.footer-tagline { margin-top:1rem; font-size:.95rem; color:rgba(255,255,255,.5); font-style:italic; font-family:'Playfair Display',serif; }
-.footer-socials { display:flex; gap:.8rem; margin-top:1.2rem; flex-wrap:wrap; }
-.footer-social-link { width:38px; height:38px; border-radius:50%; background:rgba(255,255,255,.06); border:1px solid rgba(212,175,55,.2); display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,.7); text-decoration:none; transition:all .3s; }
-.footer-social-link svg { width:18px; height:18px; }
-.footer-social-link:hover { background:var(--gold); color:#0d0d12; border-color:var(--gold); transform:translateY(-2px); }
-.footer-divider { height:1px; background:linear-gradient(90deg,transparent,rgba(212,175,55,.3),transparent); margin:0 5%; }
-.footer-bottom { text-align:center; padding:1.5rem 5%; font-size:.82rem; color:rgba(255,255,255,.3); }
-.footer-bottom a { color:var(--gold); text-decoration:none; }
-@media(max-width:900px) { .footer-content { grid-template-columns:1fr 1fr !important; gap:2rem !important; } }
-@media(max-width:480px) { .footer-content { grid-template-columns:1fr !important; } }
-/* === END UNIFIED NAV + FOOTER === */
-/* Page-specific: landscape-design */
-@media (max-width: 1024px) and (min-width: 641px) {
-  .services-grid, .gallery-grid { grid-template-columns: repeat(2, 1fr) !important; }
-}
-@media (max-width: 640px) {
-  .services-grid, .gallery-grid { grid-template-columns: 1fr !important; }
-  .service-card { flex-direction: column !important; }
-}
-@media (max-width: 768px) {
-  .service-image, .service-info { width: 100% !important; }
-}
+/* ===== CTA STRIP ===== */
+.cta-strip{background:var(--gold);color:var(--leaf);padding:48px 0}
+.cta-strip .wrap{display:flex;justify-content:space-between;align-items:center;gap:30px;flex-wrap:wrap}
+.cta-strip h3{font-family:'Playfair Display',serif;font-weight:500;font-style:italic;font-size:clamp(1.6rem,2.6vw,2.4rem);line-height:1.15;color:var(--leaf)}
+.cta-strip .btn{background:var(--leaf);color:#fff}
+.cta-strip .btn .arr{background:rgba(255,255,255,.18);color:#fff}
+.cta-strip .btn:hover{background:#fff;color:var(--leaf)}
+.cta-strip .btn:hover .arr{background:var(--gold);color:var(--leaf)}
+
+/* ===== Footer (black) ===== */
+.site-footer{background:#000;color:#cfd6c8;padding:90px 0 30px}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:50px;margin-bottom:60px}
+.foot-grid h4{font-size:12px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:var(--gold-soft);margin-bottom:24px}
+.foot-grid p{color:#9aa39a;font-size:14.5px;line-height:1.7;margin-bottom:20px}
+.foot-grid ul{list-style:none}
+.foot-grid ul li{margin-bottom:12px}
+.foot-grid ul a{color:#cfd6c8;font-size:14.5px;transition:color .3s,padding .3s}
+.foot-grid ul a:hover{color:var(--gold-soft);padding-left:6px}
+.foot-brand .logo-row{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.foot-brand .logo-row img{height:42px}
+.foot-brand .logo-row .word{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:.16em;color:#fff}
+.foot-contact a{display:block;color:#cfd6c8;font-size:14.5px;margin-bottom:10px;transition:color .3s}
+.foot-contact a:hover{color:var(--gold-soft)}
+.socials{display:flex;gap:12px;margin-top:22px}
+.socials a{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;transition:background .3s,border-color .3s,transform .3s}
+.socials a:hover{background:var(--gold);border-color:var(--gold);transform:translateY(-3px)}
+.socials a:hover svg{fill:var(--leaf)}
+.socials svg{width:16px;height:16px;fill:#cfd6c8;transition:fill .3s}
+.foot-bottom{padding-top:28px;border-top:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;font-size:13px;color:#7a8377}
+.foot-bottom a{color:#7a8377;margin-left:18px;transition:color .3s}
+.foot-bottom a:hover{color:var(--gold-soft)}
+@media(max-width:1024px){.foot-grid{grid-template-columns:1fr 1fr;gap:40px}}
+@media(max-width:560px){.foot-grid{grid-template-columns:1fr}}
+
+/* ===== Reveal ===== */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .9s ease,transform .9s ease}
+.reveal.in{opacity:1;transform:none}
 </style>
 </head>
 <body>
-    <!-- Unified Navigation -->
-    <nav id="siteNav">
-        <div class="nav-logo">
-            <a href="laphic-website.html"><img src="images/logo.png" alt="LAPHIC Modern Homes"></a>
+
+<!-- ===== Nav ===== -->
+<nav class="site-nav" id="siteNav">
+  <div class="nav-logo">
+    <a href="laphic-website.html"><img src="images/logo.png" alt="LAPHIC Modern Homes"></a>
+  </div>
+  <ul class="nav-links" id="navLinksMenu">
+    <li><a href="who-we-are.html">Who We Are</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="portfolio.html">Portfolio</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="inspirations.html">Inspiration</a></li>
+    <li><a href="3d-experience.html">3D</a></li>
+    <li><a href="testimonials.html">Testimonials</a></li>
+    <li class="nav-cta-item"><a href="contact.html" class="nav-cta-btn">Contact</a></li>
+  </ul>
+  <button class="nav-toggle" id="navToggleBtn" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-bg">
+    <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777647000/garden_xla2nh.jpg" class="active" alt="LAPHIC Landscape">
+    <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777647026/gazebo_xfwfnb.jpg" alt="Gazebo">
+    <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777646329/compound1_qztyaa.jpg" alt="Compound">
+  </div>
+  <div class="wrap">
+    <div class="crumb">Services · Landscape Architecture</div>
+    <h1>Gardens that <em>grow into their place.</em></h1>
+    <p class="sub">Compounds, gazebos, water features and native gardens — designed for Uganda's climate and built to settle in over the years.</p>
+    <div class="actions">
+      <a href="#services" class="btn primary">Explore Services <span class="arr">→</span></a>
+      <a href="#gallery" class="btn ghost">View Gallery <span class="arr">→</span></a>
+    </div>
+  </div>
+  <div class="hero-dots" id="heroDots">
+    <button class="on" data-i="0" aria-label="Slide 1"></button>
+    <button data-i="1" aria-label="Slide 2"></button>
+    <button data-i="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="hero-scroll">Scroll · Discover</div>
+</section>
+
+<!-- ===== INTRO ===== -->
+<section class="intro">
+  <div class="wrap">
+    <div class="intro-grid">
+      <div class="reveal">
+        <div class="kicker dark">The Practice</div>
+        <h2 class="h-section">Landscape as <em>architecture.</em></h2>
+      </div>
+      <div class="reveal">
+        <p>We treat every garden the way we treat a building — drawn carefully, built with patience, and planted for <em>the way a place will look in ten years,</em> not just on opening day.</p>
+        <p>From the boundary wall to the last flagstone, our landscape work brings the same craft to the open air as our interiors do to the rooms inside.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICES (6 cards using the 6 preserved service images) ===== -->
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="head">
+      <div class="reveal">
+        <div class="kicker dark">What We Do</div>
+        <h2 class="h-section" style="margin-top:22px">Six landscape<br>disciplines, <em>under one roof.</em></h2>
+      </div>
+      <p class="reveal">From compound paving to full garden masterplans — every service is delivered by the same principal-led studio, so the design intent never gets lost in translation.</p>
+    </div>
+
+    <div class="svc-grid">
+      <article class="svc reveal">
+        <div class="vis"><img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777647583/Terrazzo_tiles_jymupk.jpg" alt="Hardscape & Paving"></div>
+        <div class="body">
+          <div class="n">01 · Hardscape</div>
+          <h3>Paving &amp; Terrazzo</h3>
+          <p>Driveways, walkways and patios in terrazzo, natural stone and exposed aggregate — laid clean, drained right, finished to last.</p>
+          <a href="#gallery" class="more">See Examples <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
         </div>
-        <ul class="nav-links" id="navLinksMenu">
-            <li><a href="who-we-are.html">Who We Are</a></li>
-            <li><a href="services.html" class="active">Services</a></li>
-            <li><a href="portfolio.html">Portfolio</a></li>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="inspirations.html">Inspiration</a></li>
-            <li><a href="3d-experience.html">3D</a></li>
-            <li><a href="testimonials.html">Testimonials</a></li>
-            <li class="nav-cta-item"><a href="contact.html" class="nav-cta-btn">CONTACT</a></li>
+      </article>
+
+      <article class="svc reveal">
+        <div class="vis"><img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777646329/compound1_qztyaa.jpg" alt="Compound Design"></div>
+        <div class="body">
+          <div class="n">02 · Compound</div>
+          <h3>Compound Design</h3>
+          <p>Boundary walls, gates, driveways and parking laid out to give a property the right arrival sequence — secure, generous, and easy to live with.</p>
+          <a href="#gallery" class="more">See Examples <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+        </div>
+      </article>
+
+      <article class="svc reveal">
+        <div class="vis"><img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777646875/exterior_hupzca.jpg" alt="Exterior Landscape"></div>
+        <div class="body">
+          <div class="n">03 · Exterior</div>
+          <h3>Outdoor Living</h3>
+          <p>Lounges, fire pits, and shaded courtyards that turn the area outside the front door into the part of the house you actually use most.</p>
+          <a href="#gallery" class="more">See Examples <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+        </div>
+      </article>
+
+      <article class="svc reveal">
+        <div class="vis"><img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777647000/garden_xla2nh.jpg" alt="Garden Design"></div>
+        <div class="body">
+          <div class="n">04 · Gardens</div>
+          <h3>Garden Design &amp; Planting</h3>
+          <p>Native and tropical planting schemes, lawns, hedging and feature trees — chosen for Uganda's climate and the way a garden matures.</p>
+          <a href="#gallery" class="more">See Examples <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+        </div>
+      </article>
+
+      <article class="svc reveal">
+        <div class="vis"><img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777647485/outer_space_woraez.jpg" alt="Outdoor Spaces"></div>
+        <div class="body">
+          <div class="n">05 · Outdoor Rooms</div>
+          <h3>Decks, Pergolas &amp; Pools</h3>
+          <p>Timber decks, pergolas, swimming pools and pool surrounds — designed as outdoor rooms with the same care as a living room indoors.</p>
+          <a href="#gallery" class="more">See Examples <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+        </div>
+      </article>
+
+      <article class="svc reveal">
+        <div class="vis"><img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777646732/compound2_v8zdva.jpg" alt="Site Planning"></div>
+        <div class="body">
+          <div class="n">06 · Site Planning</div>
+          <h3>Masterplanning</h3>
+          <p>For larger sites — orientation, drainage, levels, circulation and landscape masterplans drawn together with the building from day one.</p>
+          <a href="#gallery" class="more">See Examples <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STATS strip ===== -->
+<section class="stats">
+  <div class="wrap">
+    <div class="stats-grid">
+      <div class="cell"><div class="n" data-target="180" data-suf="+"><span class="num">0</span><em>+</em></div><div class="l">Gardens Delivered</div></div>
+      <div class="cell"><div class="n" data-target="12" data-suf="+"><span class="num">0</span><em>+</em></div><div class="l">Years of Practice</div></div>
+      <div class="cell"><div class="n" data-target="96" data-suf="%"><span class="num">0</span><em>%</em></div><div class="l">Client Satisfaction</div></div>
+      <div class="cell"><div class="n" data-target="40" data-suf="+"><span class="num">0</span><em>+</em></div><div class="l">Native Species Used</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FEATURE — Gazebo / Outdoor Living ===== -->
+<section class="feature">
+  <div class="wrap">
+    <div class="feature-grid">
+      <div class="vis reveal">
+        <span class="stamp">Featured · Gazebo</span>
+        <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777647026/gazebo_xfwfnb.jpg" alt="Garden gazebo by LAPHIC">
+      </div>
+      <div class="info reveal">
+        <div class="kicker dark">Outdoor Architecture</div>
+        <h2 class="h-section">Built shade, <em>built to last.</em></h2>
+        <p>Gazebos, pergolas, summer kitchens and boundary pavilions — drawn into the landscape rather than placed on top of it. We work the structure into the levels, the planting, and the way light moves across the garden through the day.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Hardwood and steel structures detailed for the long view</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Roofs designed for Uganda's sun and short, hard rains</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Foundations that respect existing roots and drainage</li>
         </ul>
-        <button class="nav-toggle" id="navToggleBtn" aria-label="Toggle menu">
-            <span></span><span></span><span></span>
-        </button>
-    </nav>
+        <a href="contact.html" class="read-more">Discuss A Pavilion <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <!-- <div class="breadcrumb">
-            <a href="index.html">Home</a> / <a href="services.html">Services</a> / Landscape Design
-        </div> -->
-        <div class="hero-content">
-            <span class="service-number">03</span>
-            <h1>Landscape Design</h1>
-            <p>Crafting Outdoor Sanctuaries & Natural Beauty</p>
+<!-- ===== FEATURE 2 — Native Planting ===== -->
+<section class="feature reverse" style="background:#fff">
+  <div class="wrap">
+    <div class="feature-grid">
+      <div class="vis reveal">
+        <span class="stamp">Featured · Planting</span>
+        <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777892607/download_7_rzqsr5.jpg" alt="Tropical garden planting">
+      </div>
+      <div class="info reveal">
+        <div class="kicker dark">Planting Design</div>
+        <h2 class="h-section">A garden that <em>belongs here.</em></h2>
+        <p>We plant for Uganda — not for a magazine. That means native shade trees, hardy ornamentals, and grasses that come back after a dry month. The garden you walk into on handover day is only the first chapter; <em>year three is the one we design for.</em></p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Indigenous trees and pollinator-friendly planting</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Drought-tolerant beds, low-maintenance lawns</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Soil prep, mulching and aftercare guidance</li>
+        </ul>
+        <a href="contact.html" class="read-more">Plan A Garden <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROCESS — Blueprint Journey ===== -->
+<section class="process">
+  <div class="wrap">
+    <div class="head">
+      <div class="reveal">
+        <div class="kicker dark">How We Work</div>
+        <h2 class="h-section" style="margin-top:22px">Five steps from <em>site visit</em><br>to <em>settled garden.</em></h2>
+      </div>
+      <p class="reveal">Every landscape project moves through the same five stages — small or large, garden or compound, the rhythm doesn't change.</p>
+    </div>
+
+    <div class="journey">
+      <div class="j-step reveal">
+        <div class="badge">
+          <span class="num">01</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 21s-7-7-7-12a7 7 0 1114 0c0 5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
         </div>
-    </section>
+        <div class="tag">Week 01</div>
+        <h4>Site <em>Visit</em></h4>
+        <p>We walk the site at different times of day — sun, drainage, neighbours, mature trees.</p>
+        <div class="dur">1 — 2 days</div>
+      </div>
 
-    <section class="services-section">
-        <div class="services-header">
-            <h2>Our Services</h2>
-            <p>Comprehensive landscape solutions that transform outdoor spaces into beautiful, functional environments.</p>
+      <div class="j-step reveal">
+        <div class="badge">
+          <span class="num">02</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19l4-2 4 2 4-2 4 2V6l-4-2-4 2-4-2-4 2v13z"/><path d="M8 4v15M12 6v15M16 4v15"/></svg>
         </div>
+        <div class="tag">Week 02</div>
+        <h4>Concept <em>Sketch</em></h4>
+        <p>Sketch plans and mood-boards. We agree the spirit of the garden before any detail.</p>
+        <div class="dur">1 week</div>
+      </div>
 
-        <div class="services-container">
-            <div class="service-card">
-                <div class="service-image">
-                    <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777647583/Terrazzo_tiles_jymupk.jpg" alt="Exterior Design">
-                </div>
-                <div class="service-info">
-                    <h3>Tiles & Terrazzo</h3>
-                    <p>Premium outdoor flooring solutions that combine durability with aesthetic excellence.</p>
-                    <ul class="service-features">
-                        <li>Designer tile installation</li>
-                        <li>Custom terrazzo work</li>
-                        <li>Patio & walkway design</li>
-                        <li>Weather-resistant materials</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="service-card">
-                <div class="service-image">
-                    <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777646329/compound1_qztyaa.jpg" alt="Compound Design">
-                </div>
-                <div class="service-info">
-                    <h3>Compound Design</h3>
-                    <p>Complete outdoor environment planning that maximizes space and enhances property aesthetics.</p>
-                    <ul class="service-features">
-                        <li>Site analysis & planning</li>
-                        <li>Garden & lawn design</li>
-                        <li>Outdoor lighting systems</li>
-                        <li>Water feature integration</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="service-card">
-                <div class="service-image">
-                    <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777646875/exterior_hupzca.jpg" alt="Exterior Design">
-                </div>
-                <div class="service-info">
-                    <h3>3D Visualization</h3>
-                    <p>Advanced architectural visualization that brings your outdoor vision to life before construction begins.</p>
-                    <ul class="service-features">
-                        <li>Photo-realistic renders</li>
-                        <li>Virtual walkthroughs</li>
-                        <li>Material & color previews</li>
-                        <li>Design iterations</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="service-card">
-                <div class="service-image">
-                    <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777647000/garden_xla2nh.jpg" alt="Garden Design">
-                </div>
-                <div class="service-info">
-                    <h3>Garden Design</h3>
-                    <p>Custom garden spaces that blend beauty, functionality, and sustainability.</p>
-                    <ul class="service-features">
-                        <li>Plant selection & placement</li>
-                        <li>Irrigation systems</li>
-                        <li>Sustainable landscaping</li>
-                        <li>Seasonal maintenance plans</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="service-card">
-                <div class="service-image">
-                    <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777647485/outer_space_woraez.jpg" alt="Exterior Design">
-                </div>
-                <div class="service-info">
-                    <h3>Outdoor Living Spaces</h3>
-                    <p>Create functional outdoor areas perfect for entertainment and relaxation.</p>
-                    <ul class="service-features">
-                        <li>Patio & deck design</li>
-                        <li>Outdoor kitchens</li>
-                        <li>Seating areas</li>
-                        <li>Fire pit installations</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="service-card">
-                <div class="service-image">
-                    <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777646732/compound2_v8zdva.jpg" alt="Exterior Design">
-                </div>
-                <div class="service-info">
-                    <h3>Maintenance Services</h3>
-                    <p>Professional ongoing care to keep your landscape looking its best year-round.</p>
-                    <ul class="service-features">
-                        <li>Regular lawn care</li>
-                        <li>Pruning & trimming</li>
-                        <li>Seasonal planting</li>
-                        <li>Pest & disease management</li>
-                    </ul>
-                </div>
-            </div>
+      <div class="j-step reveal">
+        <div class="badge">
+          <span class="num">03</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 4h16v16H4z"/><path d="M4 9h16M9 4v16M4 14h5M14 14h6M14 9v11"/></svg>
         </div>
-    </section>
+        <div class="tag">Week 03–04</div>
+        <h4>Detailed <em>Design</em></h4>
+        <p>Drawings, plant schedules, materials and a realistic, itemised cost plan.</p>
+        <div class="dur">2 weeks</div>
+      </div>
 
-    <!-- Sub-Services Section -->
-    <section class="sub-services">
-        <div class="section-header">
-            <h2>Our Landscape Design Services</h2>
-            <p>Complete outdoor solutions for your property</p>
+      <div class="j-step reveal">
+        <div class="badge">
+          <span class="num">04</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2v6M9 5l3-3 3 3M5 22V10l7-4 7 4v12M9 22v-7h6v7"/></svg>
         </div>
+        <div class="tag">Month 02–04</div>
+        <h4>Build &amp; <em>Plant</em></h4>
+        <p>Our own crews lay hardscape and plant the garden — one accountable team.</p>
+        <div class="dur">6 — 12 weeks</div>
+      </div>
 
-        <div class="services-grid">
-            <!-- Garden Design -->
-            <div class="service-card">
-                <span class="service-icon">ðŸŒº</span>
-                <h3>Custom Garden Design</h3>
-                <p>Create your personal paradise with custom-designed gardens featuring native and exotic plants arranged for year-round beauty.</p>
-                <ul class="service-features">
-                    <li>Native plant landscaping</li>
-                    <li>Tropical garden designs</li>
-                    <li>Flower gardens and borders</li>
-                    <li>Herb and vegetable gardens</li>
-                    <li>Zen and meditation gardens</li>
-                    <li>Seasonal planting plans</li>
-                </ul>
-                <a href="contact.html" class="service-link">Request Quote</a>
-            </div>
-
-            <!-- Irrigation Systems -->
-            <div class="service-card">
-                <span class="service-icon">ðŸ’§</span>
-                <h3>Irrigation & Water Features</h3>
-                <p>Efficient irrigation systems and beautiful water features that enhance your landscape while conserving water.</p>
-                <ul class="service-features">
-                    <li>Automated irrigation systems</li>
-                    <li>Drip irrigation installation</li>
-                    <li>Decorative fountains</li>
-                    <li>Koi ponds and water gardens</li>
-                    <li>Waterfalls and streams</li>
-                    <li>Rainwater harvesting systems</li>
-                </ul>
-                <a href="contact.html" class="service-link">Request Quote</a>
-            </div>
-
-            <!-- Hardscaping -->
-            <div class="service-card">
-                <span class="service-icon">ðŸª¨</span>
-                <h3>Hardscaping & Pathways</h3>
-                <p>Durable and beautiful hardscape elements including patios, walkways, retaining walls, and decorative stonework.</p>
-                <ul class="service-features">
-                    <li>Paver patios and walkways</li>
-                    <li>Natural stone installations</li>
-                    <li>Retaining walls</li>
-                    <li>Outdoor stairs and steps</li>
-                    <li>Decorative rock gardens</li>
-                    <li>Driveway design</li>
-                </ul>
-                <a href="contact.html" class="service-link">Request Quote</a>
-            </div>
-
-            <!-- Lawn Care -->
-            <div class="service-card">
-                <span class="service-icon">ðŸŒ±</span>
-                <h3>Professional Lawn Installation</h3>
-                <p>Perfect green lawns using quality grass varieties suited to Uganda's climate, with expert installation and maintenance guidance.</p>
-                <ul class="service-features">
-                    <li>Natural grass installation</li>
-                    <li>Artificial turf solutions</li>
-                    <li>Soil preparation and grading</li>
-                    <li>Lawn edging and borders</li>
-                    <li>Maintenance programs</li>
-                    <li>Organic lawn care options</li>
-                </ul>
-                <a href="contact.html" class="service-link">Request Quote</a>
-            </div>
-
-            <!-- Outdoor Living -->
-            <div class="service-card">
-                <span class="service-icon">ðŸ¡</span>
-                <h3>Outdoor Living Spaces</h3>
-                <p>Extend your home outdoors with designed living areas perfect for entertaining, relaxing, and enjoying nature.</p>
-                <ul class="service-features">
-                    <li>Outdoor kitchens and bars</li>
-                    <li>Fire pits and fireplaces</li>
-                    <li>Seating and lounge areas</li>
-                    <li>Pergolas and shade structures</li>
-                    <li>Outdoor lighting design</li>
-                    <li>Entertainment zones</li>
-                </ul>
-                <a href="contact.html" class="service-link">Request Quote</a>
-            </div>
-
-            <!-- Complete Landscape -->
-            <div class="service-card">
-                <span class="service-icon">âœ¨</span>
-                <h3>Complete Landscape Packages</h3>
-                <p>Comprehensive landscape design and installation from concept to completion, creating cohesive outdoor environments.</p>
-                <ul class="service-features">
-                    <li>Master landscape planning</li>
-                    <li>3D landscape visualization</li>
-                    <li>Full project management</li>
-                    <li>Plant procurement</li>
-                    <li>Installation and planting</li>
-                    <li>Maintenance guidance</li>
-                </ul>
-                <a href="contact.html" class="service-link">Request Quote</a>
-            </div>
+      <div class="j-step reveal">
+        <div class="badge">
+          <span class="num">05</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 22c5-5 8-9 8-13a8 8 0 00-16 0c0 4 3 8 8 13z"/><path d="M9 14c1-3 3-5 6-6M12 9v9"/></svg>
         </div>
-    </section>
+        <div class="tag">Year 01+</div>
+        <h4>After<em>care</em></h4>
+        <p>We come back. First year care matters most — and we stay involved.</p>
+        <div class="dur">Ongoing</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Process Section -->
-    <section class="process-section">
-        <div class="section-header">
-            <h2>Our Design Process</h2>
-            <p>From bare ground to beautiful garden</p>
+<!-- ===== GALLERY — masonry using the 10 preserved gallery images ===== -->
+<section class="gallery" id="gallery">
+  <div class="wrap">
+    <div class="head">
+      <div class="reveal">
+        <div class="kicker dark">Portfolio</div>
+        <h2 class="h-section" style="margin-top:22px">Recent landscape<br><em>work.</em></h2>
+      </div>
+      <p class="reveal">A small selection of gardens, compounds and outdoor structures completed across Kampala and Wakiso — click through to the full portfolio for more.</p>
+    </div>
+
+    <div class="gal-filter reveal">
+      <button class="on" data-f="all">All</button>
+      <button data-f="garden">Gardens</button>
+      <button data-f="hard">Hardscape</button>
+      <button data-f="feature">Features</button>
+    </div>
+
+    <div class="masonry" id="masonry">
+      <div class="tile reveal" data-cat="garden"><img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777892607/download_7_rzqsr5.jpg" alt="Tropical Garden"><div class="cap"><h5>Tropical Garden</h5><span>Planting</span></div></div>
+      <div class="tile reveal" data-cat="garden"><img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777646906/fresh_state_ccubdp.jpg" alt="Zen Garden"><div class="cap"><h5>Zen Garden</h5><span>Planting</span></div></div>
+      <div class="tile reveal" data-cat="feature"><img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777647026/gazebo_xfwfnb.jpg" alt="Gazebo"><div class="cap"><h5>Garden Gazebo</h5><span>Structure</span></div></div>
+      <div class="tile reveal" data-cat="feature"><img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777647485/outer_space_woraez.jpg" alt="Entertainment Area"><div class="cap"><h5>Entertainment Area</h5><span>Outdoor Room</span></div></div>
+      <div class="tile reveal" data-cat="hard"><img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777647801/til_gl7sm1.jpg" alt="Garden Path"><div class="cap"><h5>Garden Path</h5><span>Hardscape</span></div></div>
+      <div class="tile reveal" data-cat="garden"><img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777646455/compound3_pgyeo4.jpg" alt="Native Landscape"><div class="cap"><h5>Native Landscape</h5><span>Compound</span></div></div>
+      <div class="tile reveal" data-cat="hard"><img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777647583/Terrazzo_tiles_jymupk.jpg" alt="Terrazzo Tiles"><div class="cap"><h5>Terrazzo Paving</h5><span>Hardscape</span></div></div>
+      <div class="tile reveal" data-cat="hard"><img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777647922/tiles_sx7tye.jpg" alt="Tiled Walkway"><div class="cap"><h5>Tiled Walkway</h5><span>Hardscape</span></div></div>
+      <div class="tile reveal" data-cat="garden"><img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777647000/garden_xla2nh.jpg" alt="Garden"><div class="cap"><h5>Mature Garden</h5><span>Planting</span></div></div>
+      <div class="tile reveal" data-cat="feature"><img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777646906/fresh_state_ccubdp.jpg" alt="Water Feature"><div class="cap"><h5>Water Feature</h5><span>Garden Element</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA STRIP ===== -->
+<section class="cta-strip">
+  <div class="wrap">
+    <h3>Ready to design your garden? <em>Let's walk the site together.</em></h3>
+    <a href="contact.html" class="btn">Book A Site Visit <span class="arr">→</span></a>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="logo-row">
+          <img src="images/logo.png" alt="LAPHIC Modern Homes" height="70">
+          <span class="word">LAPHIC MODERN HOMES</span>
         </div>
-
-        <div class="process-timeline">
-            <div class="process-step">
-                <div class="step-content">
-                    <h3>Site Analysis</h3>
-                    <p>We assess your property's soil, drainage, sun exposure, and existing features to create a landscape plan that thrives.</p>
-                </div>
-                <div class="step-number">
-                    <div class="number">01</div>
-                </div>
-            </div>
-
-            <div class="process-step">
-                <div class="step-content">
-                    <h3>Design Concept</h3>
-                    <p>Our landscape architects develop concepts with plant selections, hardscape elements, and 3D renderings of your future garden.</p>
-                </div>
-                <div class="step-number">
-                    <div class="number">02</div>
-                </div>
-            </div>
-
-            <div class="process-step">
-                <div class="step-content">
-                    <h3>Material Selection</h3>
-                    <p>Choose plants, stones, and materials with our guidance, ensuring they suit Uganda's climate and your maintenance preferences.</p>
-                </div>
-                <div class="step-number">
-                    <div class="number">03</div>
-                </div>
-            </div>
-
-            <div class="process-step">
-                <div class="step-content">
-                    <h3>Installation</h3>
-                    <p>Our skilled team brings the design to life with expert planting, irrigation setup, and hardscape construction.</p>
-                </div>
-                <div class="step-number">
-                    <div class="number">04</div>
-                </div>
-            </div>
-
-            <div class="process-step">
-                <div class="step-content">
-                    <h3>Care & Maintenance</h3>
-                    <p>We provide detailed care instructions and optional maintenance services to keep your landscape looking its best.</p>
-                </div>
-                <div class="step-number">
-                    <div class="number">05</div>
-                </div>
-            </div>
+        <p>Designing tomorrow's spaces, today. A Kampala-based studio uniting construction, architecture, interior, exterior, and landscape since 2012.</p>
+        <div class="socials">
+          <a href="https://www.instagram.com/laphichomes" target="_blank" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2c2.7 0 3 0 4.1.1 1 .1 1.7.2 2.4.5.7.3 1.3.6 1.8 1.2.5.5.9 1.1 1.2 1.8.3.7.5 1.4.5 2.4.1 1.1.1 1.4.1 4.1s0 3-.1 4.1c-.1 1-.2 1.7-.5 2.4-.3.7-.6 1.3-1.2 1.8-.5.5-1.1.9-1.8 1.2-.7.3-1.4.5-2.4.5-1.1.1-1.4.1-4.1.1s-3 0-4.1-.1c-1-.1-1.7-.2-2.4-.5-.7-.3-1.3-.6-1.8-1.2-.5-.5-.9-1.1-1.2-1.8-.3-.7-.5-1.4-.5-2.4C2 15 2 14.7 2 12s0-3 .1-4.1c.1-1 .2-1.7.5-2.4.3-.7.6-1.3 1.2-1.8.5-.5 1.1-.9 1.8-1.2.7-.3 1.4-.5 2.4-.5C9 2 9.3 2 12 2zm0 5a5 5 0 100 10 5 5 0 000-10zm6.5-.8a1.2 1.2 0 11-2.4 0 1.2 1.2 0 012.4 0zM12 9a3 3 0 110 6 3 3 0 010-6z"/></svg></a>
+          <a href="#" aria-label="X"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.16 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005.8 20.1a6.34 6.34 0 0010.86-4.43V8.94a8.16 8.16 0 004.77 1.52V7a4.85 4.85 0 01-1.84-.31z"/></svg></a>
+          <a href="https://wa.me/256780535307" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.2-.2.3-.8.9-1 1.1-.2.2-.4.2-.7.1-.3-.2-1.2-.4-2.3-1.4-.8-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.4.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 00-8.5 15.3L2 22l4.8-1.3A10 10 0 1012 2zm0 18.2a8.2 8.2 0 01-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3a8.2 8.2 0 1110.6 1.1 8.1 8.1 0 01-3.7 2.6z"/></svg></a>
         </div>
-    </section>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="laphic-website.html">Home</a></li>
+          <li><a href="who-we-are.html">Who We Are</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="inspirations.html">Inspirations</a></li>
+          <li><a href="testimonials.html">Testimonials</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services.html">Architectural Design</a></li>
+          <li><a href="interior-design.html">Interior Design</a></li>
+          <li><a href="exterior-design.html">Exterior &amp; Facade</a></li>
+          <li><a href="landscape-design.html">Landscape</a></li>
+          <li><a href="3d-experience.html">3D Visualisation</a></li>
+        </ul>
+      </div>
+      <div class="foot-contact">
+        <h4>Get in Touch</h4>
+        <a href="#">Kampala, Uganda</a>
+        <a href="tel:+256780535307">+256 780 535 307</a>
+        <a href="mailto:laphicmodernhomes@gmail.com">laphicmodernhomes@gmail.com</a>
+        <a href="https://wa.me/256780535307">WhatsApp</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <div>© <span id="yr"></span> LAPHIC Modern Homes. All rights reserved.</div>
+      <div>
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
 
-    <!-- Gallery Section -->
-    <section class="gallery-section">
-        <div class="section-header">
-            <h2>Our Landscape Design Portfolio</h2>
-            <p>Explore our recent landscape projects</p>
-        </div>
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
 
-        <div class="gallery-grid">
-            <div class="gallery-item">
-                <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777892607/download_7_rzqsr5.jpg" alt="Tropical Garden">
-                <div class="gallery-overlay">
-                    <h4>Tropical Paradise</h4>
-                    <p>Lush exotic plantings</p>
-                </div>
-            </div>
-            <div class="gallery-item">
-                <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777646906/fresh_state_ccubdp.jpg" alt="Zen Garden">
-                <div class="gallery-overlay">
-                    <h4>Zen Sanctuary</h4>
-                    <p>Peaceful meditation space</p>
-                </div>
-            </div>
-            <div class="gallery-item">
-                <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777647026/gazebo_xfwfnb.jpg" alt="Water Feature">
-                <div class="gallery-overlay">
-                    <h4>Water Garden</h4>
-                    <p>Tranquil koi pond</p>
-                </div>
-            </div>
-            <div class="gallery-item">
-                <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777647485/outer_space_woraez.jpg" alt="Entertainment Area">
-                <div class="gallery-overlay">
-                    <h4>Outdoor Living</h4>
-                    <p>Perfect for entertaining</p>
-                </div>
-            </div>
-            <div class="gallery-item">
-                <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777647801/til_gl7sm1.jpg" alt="Garden Path">
-                <div class="gallery-overlay">
-                    <h4>moble tiles</h4>
-                    <p>Beautiful mosaic tiles </p>
-                </div>
-            </div>
-            <div class="gallery-item">
-                <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777646455/compound3_pgyeo4.jpg" alt="Native Landscape">
-                <div class="gallery-overlay">
-                    <h4>Native Garden</h4>
-                    <p>Sustainable indigenous plants with white stones </p>
-                </div>
-            </div>
-            <div class="gallery-item">
-                <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777647583/Terrazzo_tiles_jymupk.jpg" alt="Tropical Garden">
-                <div class="gallery-overlay">
-                    <h4>tiles</h4>
-                    <p>terrazo designs</p>
-                </div>
-            </div>
-            <div class="gallery-item">
-                <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777647922/tiles_sx7tye.jpg" alt="Zen Garden">
-                <div class="gallery-overlay">
-                    <h4> smooth tiles</h4>
-                    <p>smooth and elegant</p>
-                </div>
-            </div>
-            <div class="gallery-item">
-                <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777647485/outer_space_woraez.jpg" alt="Water Feature">
-                <div class="gallery-overlay">
-                    <h4>outdooor chilling space </h4>
-                    <p>perfect for relaxing </p>
-                </div>
-            </div>
-            <div class="gallery-item">
-                <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777647026/gazebo_xfwfnb.jpg" alt="Tropical Garden">
-                <div class="gallery-overlay">
-                    <h4>modern gazabo</h4>
-                    <p>modern out door space with a water feature </p>
-                </div>
-            </div>
-            <div class="gallery-item">
-                <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777647000/garden_xla2nh.jpg" alt="Zen Garden">
-                <div class="gallery-overlay">
-                    <h4>flower garden</h4>
-                    <p>colorful and vibrant</p>
-                </div>
-            </div>
-            <div class="gallery-item">
-                <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777646906/fresh_state_ccubdp.jpg" alt="Water Feature">
-                <div class="gallery-overlay">
-                    <h4> modern space </h4>
-                    <p>simple space with modern furniture</p>
-                </div>
-            </div>
-        </div>
-    </section>
+// Nav scroll
+const nav = document.getElementById('siteNav');
+window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 20); });
 
-    <!-- Testimonials -->
-    <section class="testimonials-section">
-        <div class="section-header">
-            <h2>What Our Clients Say</h2>
-            <p>Real experiences from satisfied property owners</p>
-        </div>
+// Mobile toggle
+const toggle = document.getElementById('navToggleBtn');
+const links = document.getElementById('navLinksMenu');
+toggle?.addEventListener('click', () => { links.classList.toggle('open'); toggle.classList.toggle('open'); });
+document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => { links.classList.remove('open'); toggle?.classList.remove('open'); }));
 
-        <div class="testimonials-slider">
-            <div class="testimonial-card">
-                <p class="testimonial-text">"LAPHIC Modern Homes transformed our backyard into a tropical paradise. The water feature and native plants create a peaceful retreat. Their knowledge of plants that thrive in Uganda is exceptional!"</p>
-                <p class="testimonial-author">Grace Nakato</p>
-                <p class="testimonial-role">Homeowner, Lubowa</p>
-            </div>
-        </div>
-    </section>
+// Hero slider
+const slides = document.querySelectorAll('.hero-bg img');
+const dots = document.querySelectorAll('#heroDots button');
+let cur = 0;
+function go(i){
+  slides[cur].classList.remove('active');
+  dots[cur]?.classList.remove('on');
+  cur = (i + slides.length) % slides.length;
+  slides[cur].classList.add('active');
+  dots[cur]?.classList.add('on');
+}
+dots.forEach(d => d.addEventListener('click', () => go(+d.dataset.i)));
+setInterval(() => go(cur + 1), 6500);
 
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="cta-content">
-            <h2>Ready to Create Your Dream Garden?</h2>
-            <p>Let's design an outdoor space you'll love</p>
-            <div class="cta-buttons">
-                <a href="contact.html" class="cta-btn cta-btn-primary">Get Free Consultation</a>
-                <a href="projects.html" class="cta-btn cta-btn-secondary">View Our Portfolio</a>
-            </div>
-        </div>
-    </section>
+// Counter animation
+function animateCount(el){
+  const t = parseInt(el.dataset.target, 10);
+  const n = el.querySelector('.num');
+  const dur = 1600, start = performance.now();
+  function tick(now){
+    const p = Math.min((now - start) / dur, 1);
+    const e = 1 - Math.pow(1 - p, 3);
+    n.textContent = Math.round(t * e);
+    if (p < 1) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
+const cIO = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting){ animateCount(e.target); cIO.unobserve(e.target); }}), {threshold:.5});
+document.querySelectorAll('.stats-grid .n[data-target]').forEach(el => cIO.observe(el));
 
-    <!-- Unified Footer -->
-    <footer class="site-footer">
-        <div class="footer-content">
-            <div class="footer-section footer-brand">
-                <img src="images/logo.png" alt="LAPHIC Modern Homes" height="70">
-                <p class="footer-tagline">Designing tomorrow's spaces, today</p>
-            </div>
-            <div class="footer-section">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="laphic-website.html">Home</a></li>
-                    <li><a href="who-we-are.html">Who We Are</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="portfolio.html">Portfolio</a></li>
-                    <li><a href="projects.html">Projects</a></li>
-                    <li><a href="inspirations.html">Inspiration</a></li>
-                    <li><a href="testimonials.html">Testimonials</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Services</h4>
-                <ul>
-                    <li><a href="interior-design.html">Interior Design</a></li>
-                    <li><a href="exterior-design.html">Exterior Design</a></li>
-                    <li><a href="landscape-design.html">Landscape Design</a></li>
-                    <li><a href="services.html">Construction</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Contact</h4>
-                <ul>
-                    <li>📍 Kampala, Uganda</li>
-                    <li><a href="tel:+256780535307">+256 780 535 307</a></li>
-                    <li><a href="mailto:laphicmodernhomes@gmail.com">laphicmodernhomes@gmail.com</a></li>
-                    <li>Mon-Sun: 8AM – 8PM</li>
-                </ul>
-                <div class="footer-socials">
-                    <a href="https://www.instagram.com/laphichomes" target="_blank" rel="noopener" class="footer-social-link" title="Instagram">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                    </a>
-                    <a href="https://x.com/laphichomes" target="_blank" rel="noopener" class="footer-social-link" title="X (Twitter)">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                    </a>
-                    <a href="https://www.tiktok.com/@laphic.modern.hom" target="_blank" rel="noopener" class="footer-social-link" title="TikTok">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V9.05a8.14 8.14 0 0 0 4.78 1.52V7.13a4.85 4.85 0 0 1-1.01-.44z"/></svg>
-                    </a>
-                    <a href="https://wa.me/256705029291" target="_blank" rel="noopener" class="footer-social-link" title="WhatsApp">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-divider"></div>
-        <div class="footer-bottom">
-            <p>&copy; <span id="footer-year">2026</span> LAPHIC Modern Homes. All rights reserved.</p>
-        </div>
-    </footer>
-    <script>
-    /* Unified Nav JS */
-    (function(){
-        var siteNav = document.getElementById('siteNav');
-        var navToggleBtn = document.getElementById('navToggleBtn');
-        var navLinksMenu = document.getElementById('navLinksMenu');
-        var footerYearEl = document.getElementById('footer-year');
-        if(footerYearEl) footerYearEl.textContent = new Date().getFullYear();
-        if(siteNav) {
-            window.addEventListener('scroll', function(){
-                siteNav.classList.toggle('scrolled', window.scrollY > 50);
-            }, {passive:true});
-            if(window.scrollY > 50) siteNav.classList.add('scrolled');
-        }
-        if(navToggleBtn && navLinksMenu) {
-            navToggleBtn.addEventListener('click', function(){
-                navToggleBtn.classList.toggle('open');
-                navLinksMenu.classList.toggle('open');
-            });
-            navLinksMenu.querySelectorAll('a').forEach(function(a){
-                a.addEventListener('click', function(){
-                    navToggleBtn.classList.remove('open');
-                    navLinksMenu.classList.remove('open');
-                });
-            });
-        }
-    })();
-    </script>
+// Gallery filter
+const filterBtns = document.querySelectorAll('.gal-filter button');
+const tiles = document.querySelectorAll('#masonry .tile');
+filterBtns.forEach(b => b.addEventListener('click', () => {
+  filterBtns.forEach(x => x.classList.remove('on'));
+  b.classList.add('on');
+  const f = b.dataset.f;
+  tiles.forEach(t => { t.style.display = (f === 'all' || t.dataset.cat === f) ? '' : 'none'; });
+}));
+
+// Reveal
+const io = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }}), {threshold:.12, rootMargin:'0px 0px -60px 0px'});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
 </body>
 </html>

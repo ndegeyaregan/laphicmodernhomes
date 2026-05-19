@@ -1,0 +1,1434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - LAPHIC Modern Homes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --midnight: #0f1419;
+            --teal: #9c6c24;
+            --coral: #ff6b6b;
+            --cream: #f8f6f0;
+            --charcoal: #3a3a3a;
+            --gold: #c9a050;
+            --primary: #0a0a0a;
+        }
+
+        body {
+            font-family: 'Crimson Pro', serif;
+            background: var(--cream);
+            color: var(--charcoal);
+        }
+
+        /* Navigation */
+      nav {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 2rem;
+            color: var(--gold);
+            letter-spacing: 3px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--cream);
+            text-decoration: none;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        /* ============================================
+           CONTACT PAGE — EDITORIAL REDESIGN
+           Palette preserved: midnight / gold / cream
+           ============================================ */
+
+        /* === HERO — editorial split === */
+        .hero {
+            position: relative;
+            min-height: 88vh;
+            background: var(--cream);
+            display: grid;
+            grid-template-columns: 1.05fr 1fr;
+            align-items: center;
+            overflow: hidden;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            padding: 9rem 5rem 5rem 7%;
+            max-width: 760px;
+        }
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: .9rem;
+            font-family: 'Inter', sans-serif;
+            font-size: .78rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+        .hero-eyebrow::before {
+            content: '';
+            width: 56px; height: 1px;
+            background: var(--gold);
+        }
+        .hero h1 {
+            font-family: 'Merriweather', serif;
+            font-size: clamp(2.6rem, 5.6vw, 5rem);
+            color: var(--midnight);
+            line-height: 1.04;
+            letter-spacing: -1.5px;
+            margin-bottom: 1.6rem;
+            font-weight: 700;
+        }
+        .hero h1 .accent {
+            font-style: italic;
+            color: var(--gold);
+            font-weight: 400;
+        }
+        .hero p {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.08rem;
+            line-height: 1.75;
+            color: var(--charcoal);
+            opacity: .82;
+            max-width: 540px;
+            margin-bottom: 2.6rem;
+        }
+        .hero-quick {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .9rem;
+        }
+        .hero-quick a {
+            display: inline-flex;
+            align-items: center;
+            gap: .55rem;
+            padding: 1rem 1.6rem;
+            font-family: 'Inter', sans-serif;
+            font-size: .82rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: var(--midnight);
+            background: transparent;
+            border: 1px solid rgba(15,20,25,.18);
+            border-radius: 0;
+            transition: all .3s ease;
+        }
+        .hero-quick a svg { width: 16px; height: 16px; }
+        .hero-quick a:hover {
+            background: var(--midnight);
+            color: var(--cream);
+            border-color: var(--midnight);
+            transform: translateY(-2px);
+        }
+        .hero-quick a.is-primary {
+            background: var(--midnight);
+            color: var(--cream);
+            border-color: var(--midnight);
+        }
+        .hero-quick a.is-primary:hover {
+            background: var(--gold);
+            color: var(--midnight);
+            border-color: var(--gold);
+        }
+
+        /* Hero image side */
+        .hero-visual {
+            position: relative;
+            height: 88vh;
+            overflow: hidden;
+        }
+        .hero-visual::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(15,20,25,.15), transparent 50%);
+            z-index: 2;
+        }
+        .hero-slider {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+        }
+        .hero-slider span {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            animation: heroSlide 18s infinite;
+        }
+        .hero-slider span:nth-child(1) {
+            background-image: url("https://res.cloudinary.com/dgqukjhb2/image/upload/f_auto,q_auto,w_1400/v1777648314/a_copy_h91peq.jpg");
+            animation-delay: 0s;
+        }
+        .hero-slider span:nth-child(2) {
+            background-image: url("https://res.cloudinary.com/dgqukjhb2/image/upload/f_auto,q_auto,w_1400/v1777648871/IMG-20260407-WA0003_rxfpjn.jpg");
+            animation-delay: 6s;
+        }
+        .hero-slider span:nth-child(3) {
+            background-image: url("https://res.cloudinary.com/dgqukjhb2/image/upload/f_auto,q_auto,w_1400/v1777647026/gazebo_xfwfnb.jpg");
+            animation-delay: 12s;
+        }
+        @keyframes heroSlide {
+            0%, 5% { opacity: 0; }
+            10%, 30% { opacity: 1; }
+            38%, 100% { opacity: 0; }
+        }
+        /* Decorative gold corner accent over image */
+        .hero-visual::after {
+            content: '';
+            position: absolute;
+            top: 2.5rem; right: 2.5rem;
+            width: 80px; height: 80px;
+            border-top: 2px solid var(--gold);
+            border-right: 2px solid var(--gold);
+            z-index: 3;
+        }
+
+        /* === CONTACT — clean editorial layout (no cards) === */
+        .contact-section {
+            padding: 8rem 7% 7rem;
+            background: var(--cream);
+            position: relative;
+        }
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 50%;
+            transform: translateX(-50%);
+            width: 60px; height: 1px;
+            background: var(--gold);
+        }
+        .contact-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.25fr;
+            gap: 6rem;
+            align-items: start;
+        }
+
+        /* Left column — info */
+        .contact-info {
+            background: transparent;
+            color: var(--midnight);
+            padding: 0;
+            position: sticky;
+            top: 6rem;
+        }
+        .ci-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: .8rem;
+            font-family: 'Inter', sans-serif;
+            font-size: .72rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-weight: 600;
+            margin-bottom: 1.4rem;
+        }
+        .ci-eyebrow::before {
+            content: '';
+            width: 32px; height: 1px;
+            background: var(--gold);
+        }
+        .contact-info h2 {
+            font-family: 'Merriweather', serif;
+            font-size: clamp(2.2rem, 4vw, 3.4rem);
+            color: var(--midnight);
+            line-height: 1.1;
+            letter-spacing: -1px;
+            margin-bottom: 1.4rem;
+            font-weight: 700;
+        }
+        .contact-info h2 .accent {
+            font-style: italic;
+            color: var(--gold);
+            font-weight: 400;
+        }
+        .contact-info > p {
+            font-size: 1rem;
+            line-height: 1.75;
+            color: var(--charcoal);
+            opacity: .82;
+            margin-bottom: 2.8rem;
+            max-width: 440px;
+        }
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.2rem;
+            padding: 1.4rem 0;
+            border-top: 1px solid rgba(15,20,25,.08);
+            transition: padding-left .3s ease;
+        }
+        .info-item:last-of-type { border-bottom: 1px solid rgba(15,20,25,.08); }
+        .info-item:hover { padding-left: .5rem; }
+        .info-icon {
+            flex-shrink: 0;
+            width: 34px; height: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            background: transparent;
+        }
+        .info-icon svg { width: 22px; height: 22px; }
+        .info-content h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: .7rem;
+            font-weight: 600;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: .4rem;
+        }
+        .info-content p {
+            font-family: 'Merriweather', serif;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: var(--midnight);
+            margin: 0;
+        }
+        .info-content p a {
+            color: var(--midnight);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color .25s ease;
+        }
+        .info-content p a:hover { border-color: var(--gold); }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2.5rem;
+        }
+        .social-link {
+            width: 42px; height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(15,20,25,.18);
+            color: var(--midnight);
+            text-decoration: none;
+            transition: all .3s ease;
+        }
+        .social-link svg { width: 18px; height: 18px; }
+        .social-link:hover {
+            background: var(--midnight);
+            color: var(--gold);
+            border-color: var(--midnight);
+            transform: translateY(-3px);
+        }
+
+        /* Right column — form (underline inputs, no card) */
+        .contact-form {
+            background: transparent;
+            padding: 0;
+            border-radius: 0;
+            box-shadow: none;
+        }
+        .cf-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: .8rem;
+            font-family: 'Inter', sans-serif;
+            font-size: .72rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+        }
+        .cf-eyebrow::before {
+            content: '';
+            width: 32px; height: 1px;
+            background: var(--gold);
+        }
+        .contact-form h3 {
+            font-family: 'Merriweather', serif;
+            font-size: clamp(1.7rem, 3vw, 2.4rem);
+            color: var(--midnight);
+            margin-bottom: .8rem;
+            font-weight: 700;
+            letter-spacing: -.4px;
+        }
+        .form-intro {
+            font-size: .98rem;
+            color: var(--charcoal);
+            opacity: .78;
+            line-height: 1.65;
+            margin-bottom: 3rem;
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        .form-group {
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        .form-group label {
+            display: block;
+            font-family: 'Inter', sans-serif;
+            font-size: .7rem;
+            font-weight: 600;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--midnight);
+            opacity: .65;
+            margin-bottom: .6rem;
+        }
+        .form-group label .req { color: var(--gold); margin-left: 2px; }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: .7rem 0;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            color: var(--midnight);
+            background: transparent;
+            border: 0;
+            border-bottom: 1px solid rgba(15,20,25,.22);
+            border-radius: 0;
+            outline: none;
+            transition: border-color .3s ease;
+        }
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(15,20,25,.32);
+            font-weight: 400;
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-bottom-color: var(--gold);
+            border-bottom-width: 2px;
+            padding-bottom: calc(.7rem - 1px);
+        }
+        .form-group select {
+            appearance: none;
+            -webkit-appearance: none;
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c9a050' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");
+            background-repeat: no-repeat;
+            background-position: right .2rem center;
+            background-size: 16px;
+            padding-right: 2rem;
+            cursor: pointer;
+        }
+        .form-group textarea {
+            min-height: 130px;
+            resize: vertical;
+            border: 1px solid rgba(15,20,25,.22);
+            padding: 1rem;
+        }
+        .form-group textarea:focus {
+            border-color: var(--gold);
+            padding: 1rem;
+            border-width: 1px;
+        }
+        .submit-btn {
+            width: 100%;
+            margin-top: 1.5rem;
+            padding: 1.2rem 2rem;
+            background: var(--midnight);
+            color: var(--cream);
+            border: 1px solid var(--midnight);
+            border-radius: 0;
+            font-family: 'Inter', sans-serif;
+            font-size: .82rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all .35s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: .8rem;
+        }
+        .submit-btn svg { width: 16px; height: 16px; transition: transform .3s ease; }
+        .submit-btn:hover {
+            background: var(--gold);
+            color: var(--midnight);
+            border-color: var(--gold);
+        }
+        .submit-btn:hover svg { transform: translateX(6px); }
+        .submit-btn:disabled { opacity: .7; cursor: wait; }
+
+        /* Form status banner */
+        .form-status {
+            margin-top: 1.5rem;
+            display: none;
+            align-items: flex-start;
+            gap: .7rem;
+            padding: 1rem 1.2rem;
+            font-size: .92rem;
+            line-height: 1.5;
+            font-weight: 500;
+            border-left: 3px solid transparent;
+            animation: fsFade .35s ease;
+        }
+        .form-status.success, .form-status.error { display: flex; }
+        .form-status.success {
+            background: rgba(46,204,113,.08);
+            color: #1e8449;
+            border-left-color: #2ecc71;
+        }
+        .form-status.error {
+            background: rgba(231,76,60,.08);
+            color: #c0392b;
+            border-left-color: #e74c3c;
+        }
+        .form-status svg { flex-shrink: 0; width: 22px; height: 22px; margin-top: 1px; }
+        @keyframes fsFade { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+        .submit-btn .spinner {
+            width: 14px; height: 14px;
+            border: 2px solid rgba(248,246,240,.3);
+            border-top-color: var(--cream);
+            border-radius: 50%;
+            display: inline-block;
+            animation: spin .7s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* === "WHAT YOU CAN EXPECT" — horizontal editorial === */
+        .info-cards {
+            padding: 8rem 7%;
+            background: var(--midnight);
+            color: var(--cream);
+            position: relative;
+        }
+        .ic-header {
+            max-width: 1400px;
+            margin: 0 auto 4rem;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 4rem;
+            align-items: end;
+        }
+        .ic-header .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: .8rem;
+            font-family: 'Inter', sans-serif;
+            font-size: .72rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+        }
+        .ic-header .eyebrow::before {
+            content: '';
+            width: 32px; height: 1px;
+            background: var(--gold);
+        }
+        .ic-header h2 {
+            font-family: 'Merriweather', serif;
+            font-size: clamp(2rem, 4.4vw, 3.6rem);
+            color: var(--cream);
+            line-height: 1.08;
+            letter-spacing: -.8px;
+            font-weight: 700;
+            margin: 0;
+        }
+        .ic-header p {
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            color: rgba(248,246,240,.7);
+            line-height: 1.75;
+            margin: 0;
+        }
+        .cards-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            counter-reset: ic-counter;
+            border-top: 1px solid rgba(248,246,240,.12);
+        }
+        .info-card {
+            text-align: left;
+            padding: 3rem 2.5rem 3rem 0;
+            background: transparent;
+            border: 0;
+            border-right: 1px solid rgba(248,246,240,.12);
+            border-radius: 0;
+            position: relative;
+            transition: transform .4s ease;
+            counter-increment: ic-counter;
+        }
+        .info-card:last-child { border-right: 0; }
+        .info-card:not(:first-child) { padding-left: 2.5rem; }
+        .info-card::before {
+            content: counter(ic-counter, decimal-leading-zero);
+            display: block;
+            font-family: 'Merriweather', serif;
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--gold);
+            letter-spacing: 2px;
+            margin-bottom: 1.8rem;
+            padding-bottom: 1.8rem;
+            border-bottom: 1px solid rgba(201,160,80,.3);
+            width: 50px;
+        }
+        .info-card::after { content: none; }
+        .info-card:hover { transform: translateY(-6px); }
+        .info-card h4 {
+            font-family: 'Merriweather', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 0 1rem;
+            color: var(--cream);
+            padding: 0;
+            letter-spacing: -.3px;
+        }
+        .info-card p {
+            font-family: 'Inter', sans-serif;
+            font-size: .96rem;
+            line-height: 1.75;
+            color: rgba(248,246,240,.7);
+            opacity: 1;
+        }
+
+        /* === MAP === */
+        .map-section {
+            position: relative;
+            height: 580px;
+            background: var(--cream);
+        }
+        #locationMap {
+            width: 100%;
+            height: 100%;
+        }
+        .map-overlay {
+            position: absolute;
+            left: 5%;
+            bottom: 3rem;
+            background: var(--cream);
+            padding: 2rem 2.4rem;
+            max-width: 380px;
+            z-index: 500;
+            border-left: 3px solid var(--gold);
+            box-shadow: 0 20px 60px rgba(15,20,25,.18);
+        }
+        .map-overlay .mo-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: .7rem;
+            font-family: 'Inter', sans-serif;
+            font-size: .7rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-weight: 600;
+            margin-bottom: .8rem;
+        }
+        .map-overlay .mo-eyebrow::before {
+            content: '';
+            width: 24px; height: 1px;
+            background: var(--gold);
+        }
+        .map-overlay h3 {
+            font-family: 'Merriweather', serif;
+            font-size: 1.5rem;
+            color: var(--midnight);
+            margin-bottom: .6rem;
+            letter-spacing: -.3px;
+            font-weight: 700;
+        }
+        .map-overlay p {
+            font-family: 'Inter', sans-serif;
+            font-size: .92rem;
+            line-height: 1.65;
+            color: var(--charcoal);
+            opacity: .82;
+            margin-bottom: 1.4rem;
+        }
+        .map-overlay .mo-directions {
+            display: inline-flex;
+            align-items: center;
+            gap: .55rem;
+            padding: .8rem 1.4rem;
+            background: var(--midnight);
+            color: var(--cream);
+            text-decoration: none;
+            font-family: 'Inter', sans-serif;
+            font-size: .76rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 0;
+            transition: all .3s ease;
+        }
+        .map-overlay .mo-directions svg { width: 14px; height: 14px; transition: transform .3s ease; }
+        .map-overlay .mo-directions:hover {
+            background: var(--gold);
+            color: var(--midnight);
+        }
+        .map-overlay .mo-directions:hover svg { transform: translateX(4px); }
+        .leaflet-container { font-family: 'Inter', sans-serif; }
+        .leaflet-popup-content-wrapper, .leaflet-popup-tip { background: var(--midnight); color: var(--cream); }
+
+        /* === RESPONSIVE === */
+        @media (max-width: 1100px) {
+            .hero { grid-template-columns: 1fr; min-height: auto; }
+            .hero-content { padding: 7rem 5% 4rem; max-width: none; }
+            .hero-visual { height: 50vh; min-height: 360px; }
+            .hero-visual::after { top: 1.5rem; right: 1.5rem; width: 60px; height: 60px; }
+            .contact-grid { grid-template-columns: 1fr; gap: 4rem; }
+            .contact-info { position: static; }
+            .ic-header { grid-template-columns: 1fr; gap: 1.5rem; }
+            .cards-grid { grid-template-columns: 1fr; }
+            .info-card { border-right: 0; border-bottom: 1px solid rgba(248,246,240,.12); padding: 2.5rem 0; }
+            .info-card:not(:first-child) { padding-left: 0; }
+            .info-card:last-child { border-bottom: 0; }
+        }
+        @media (max-width: 768px) {
+            .hero-content { padding: 6rem 5% 3.5rem; }
+            .hero h1 { font-size: clamp(2.2rem, 9vw, 3.4rem); }
+            .hero-quick a { padding: .85rem 1.3rem; font-size: .76rem; letter-spacing: 1.2px; }
+            .contact-section { padding: 5rem 5% 4rem; }
+            .info-cards { padding: 5rem 5%; }
+            .form-row { grid-template-columns: 1fr; gap: 0; }
+            .map-overlay { left: 1rem; right: 1rem; bottom: 1rem; max-width: none; padding: 1.5rem 1.6rem; }
+            .map-overlay h3 { font-size: 1.25rem; }
+            .map-section { height: 480px; }
+        }
+        @media (max-width: 480px) {
+            .hero-quick { flex-direction: column; align-items: stretch; }
+            .hero-quick a { justify-content: center; }
+            .info-item { padding: 1.2rem 0; gap: 1rem; }
+            .social-link { width: 38px; height: 38px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .hero-slider span { animation: none; opacity: 1; }
+            .hero-slider span:not(:first-child) { opacity: 0; }
+        }
+/* === MOBILE RESPONSIVE PATCH v1 === */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { overflow-x: hidden; max-width: 100%; }
+img, video, iframe { max-width: 100%; height: auto; }
+p, li, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; word-wrap: break-word; }
+
+/* Tablets and below */
+@media (max-width: 1024px) {
+  .nav-links { gap: 1.2rem; }
+  .services-grid, .portfolio-grid, .projects-grid, .testimonials-grid,
+  .inspiration-grid, .values-grid, .stats-grid, .trust-grid, .info-cards {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .footer-content { grid-template-columns: repeat(2, 1fr) !important; }
+}
+
+/* Tablets / large phones */
+@media (max-width: 768px) {
+  /* Navigation: hamburger */
+  .nav-toggle { display: flex !important; }
+  .nav-links {
+    position: fixed;
+    top: 70px;
+    right: 0;
+    left: 0;
+    flex-direction: column;
+    background: rgba(15, 15, 15, 0.97);
+    padding: 1.5rem;
+    gap: 1rem;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    z-index: 999;
+    max-height: calc(100vh - 70px);
+    overflow-y: auto;
+  }
+  .nav-links.active, .nav-links.open, .nav-links.show {
+    transform: translateX(0);
+  }
+  .nav-links a { font-size: 0.95rem; }
+  .nav-logo img { height: 42px !important; max-height: 42px; width: auto; }
+  .nav-cta { display: none; }
+
+  /* Hero */
+  .hero, .hero-3d { min-height: auto; padding: 6rem 1rem 3rem !important; }
+  .hero-content, .hero-content-3d { padding: 0 1rem; }
+  .hero h1, .hero-content h1, .hero-content-3d h1 {
+    font-size: clamp(2rem, 6vw, 3.5rem) !important;
+    line-height: 1.15;
+  }
+  .hero p, .hero-content p, .hero-tagline, .hero-desc {
+    font-size: 1rem !important;
+  }
+  .hero-trust, .trust-strip, .scroll-indicator { display: none !important; }
+
+  /* Generic sections */
+  section { padding-left: 1.5rem !important; padding-right: 1.5rem !important; }
+
+  /* Grids â†’ 1 col */
+  .services-grid, .portfolio-grid, .projects-grid, .testimonials-grid,
+  .testimonials-slider, .values-grid, .info-cards, .services-layout,
+  .services-showcase, .services-container, .trust-grid, .trust-points {
+    grid-template-columns: 1fr !important;
+    display: grid !important;
+  }
+
+  /* Service blocks (image + text) stack */
+  .service-block, .services-layout, .trust { 
+    flex-direction: column !important;
+    grid-template-columns: 1fr !important;
+  }
+  .service-visual, .service-content, .service-image, .service-info,
+  .trust-image, .trust-text { width: 100% !important; max-width: 100%; }
+
+  /* Cards */
+  .service-card, .portfolio-item, .project-card, .testimonial-card,
+  .inspiration-card, .info-card, .stat-item, .value-card, .team-card {
+    max-width: 100%; width: 100%;
+  }
+
+  /* CTA stacks */
+  .cta-buttons, .hero-ctas, .cta-content { 
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+  .cta-btn, .cta-button, .hero-ctas a, .cta-buttons a { 
+    width: 100%; text-align: center; max-width: 100%;
+  }
+  .cta-section, .cta-3d { padding: 3rem 1.5rem !important; }
+  .cta-content h2, .cta-section h2 { font-size: clamp(1.6rem, 5vw, 2.4rem) !important; }
+
+  /* Footer */
+  .footer-content { 
+    grid-template-columns: 1fr 1fr !important;
+    gap: 2rem !important;
+    text-align: left;
+  }
+
+  /* Forms */
+  .form-row { flex-direction: column !important; gap: 1rem; }
+  .form-group, input, textarea, select, button { max-width: 100%; box-sizing: border-box; }
+  input, textarea, select { font-size: 16px !important; /* prevent iOS zoom */ }
+
+  /* Filters */
+  .filter-buttons, .filter-tabs { 
+    flex-wrap: wrap !important;
+    gap: 0.5rem !important;
+    justify-content: center;
+  }
+  .filter-btn { font-size: 0.85rem !important; padding: 0.5rem 0.9rem !important; }
+
+  /* Stats */
+  .stats-grid, .stats-container { grid-template-columns: repeat(2, 1fr) !important; gap: 1rem; }
+
+  /* Section headings */
+  h2 { font-size: clamp(1.6rem, 5vw, 2.4rem) !important; }
+  h3 { font-size: clamp(1.2rem, 4vw, 1.6rem) !important; }
+
+  /* iframes / embeds */
+  iframe { width: 100% !important; height: 60vh; min-height: 320px; }
+}
+
+/* Small phones */
+@media (max-width: 640px) {
+  section { padding-left: 1rem !important; padding-right: 1rem !important; }
+  .hero, .hero-3d { padding: 5rem 1rem 2.5rem !important; }
+  .hero h1, .hero-content h1, .hero-content-3d h1 {
+    font-size: clamp(1.9rem, 7vw, 2.6rem) !important;
+  }
+  .services-grid, .portfolio-grid, .projects-grid, .testimonials-grid,
+  .inspiration-grid, .values-grid, .info-cards, .trust-grid,
+  .stats-grid, .stats-container {
+    grid-template-columns: 1fr !important;
+  }
+  body, p, li { font-size: 0.95rem; }
+  .footer-content { 
+    grid-template-columns: 1fr !important;
+    text-align: center;
+  }
+  .footer-section { text-align: center; }
+  .footer-section img, .footer-bottom img { margin-left: auto; margin-right: auto; }
+}
+
+/* Very small phones */
+@media (max-width: 480px) {
+  section { padding-left: 1rem !important; padding-right: 1rem !important; }
+  .hero h1, .hero-content h1, .hero-content-3d h1 {
+    font-size: clamp(1.8rem, 8vw, 2.3rem) !important;
+  }
+  .nav-logo img { height: 38px !important; }
+  .hero-trust, .trust-strip, .trust-divider, .scroll-indicator { display: none !important; }
+  h2 { font-size: 1.5rem !important; }
+}
+/* === END MOBILE RESPONSIVE PATCH v1 === */
+
+/* === UNIFIED NAV + FOOTER === */
+:root { --gold:#d4af37; --gold-dark:#c9a050; --gold-light:#e6c068; --navy:#0d0d12; }
+#siteNav { position:fixed; width:100%; top:0; z-index:1000; padding:0 5%; display:flex; justify-content:space-between; align-items:center; min-height:80px; transition:background .4s,box-shadow .4s,min-height .4s; background:transparent; }
+#siteNav.scrolled { background:linear-gradient(180deg,rgba(13,13,18,.92),rgba(20,20,28,.88)); backdrop-filter:blur(28px) saturate(1.4); -webkit-backdrop-filter:blur(28px) saturate(1.4); box-shadow:0 0 0 1px rgba(255,255,255,.04); min-height:66px; }
+#siteNav::after { content:''; position:absolute; bottom:0; left:0; right:0; height:1px; background:linear-gradient(90deg,transparent,var(--gold),transparent); opacity:0; transition:opacity .4s; pointer-events:none; }
+#siteNav.scrolled::after { animation:navGlow 6s ease-in-out infinite; }
+@keyframes navGlow { 0%,100%{opacity:.3}50%{opacity:1} }
+.nav-logo a { display:flex; align-items:center; text-decoration:none; }
+.nav-logo img { height:58px; width:auto; filter:drop-shadow(0 2px 8px rgba(0,0,0,.5)); transition:height .4s; }
+#siteNav.scrolled .nav-logo img { height:44px; }
+.nav-links { display:flex; align-items:center; gap:1.8rem; list-style:none; }
+.nav-links a { color:rgba(255,255,255,.9); text-decoration:none; font-family:'Inter',sans-serif; font-size:.82rem; letter-spacing:1.5px; text-transform:uppercase; position:relative; padding-bottom:2px; transition:color .25s; }
+.nav-links a::after { content:''; position:absolute; bottom:-2px; left:50%; right:50%; height:1px; background:var(--gold); transition:left .3s,right .3s; }
+.nav-links a:hover,.nav-links a.active { color:var(--gold); }
+.nav-links a:hover::after,.nav-links a.active::after { left:0; right:0; }
+.nav-cta-btn { background:var(--gold) !important; color:#0d0d12 !important; padding:.55rem 1.4rem !important; border-radius:50px; font-weight:700 !important; letter-spacing:2px !important; transition:box-shadow .3s,transform .3s !important; }
+.nav-cta-btn:hover { box-shadow:0 0 20px rgba(212,175,55,.6),0 0 40px rgba(212,175,55,.3) !important; transform:translateY(-2px) !important; }
+.nav-cta-btn::after { display:none !important; }
+.nav-toggle { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:4px; z-index:1001; position:relative; }
+.nav-toggle span { display:block; width:24px; height:2px; background:#fff; transition:all .3s; border-radius:2px; }
+.nav-toggle.open span:nth-child(1) { transform:rotate(45deg) translate(5px,5px); }
+.nav-toggle.open span:nth-child(2) { opacity:0; }
+.nav-toggle.open span:nth-child(3) { transform:rotate(-45deg) translate(5px,-5px); }
+@media(max-width:900px) {
+  .nav-logo img { height:42px !important; }
+  #siteNav.scrolled .nav-logo img { height:36px !important; }
+  .nav-toggle { display:flex !important; }
+  .nav-links { position:fixed; top:0; right:-100%; bottom:0; width:280px; flex-direction:column; align-items:flex-start; background:linear-gradient(180deg,rgba(13,13,18,.97),rgba(20,20,28,.95)); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); padding:80px 2rem 2rem; transition:right .35s cubic-bezier(.4,0,.2,1); gap:0; z-index:999; overflow-y:auto; }
+  .nav-links li { width:100%; border-bottom:1px solid rgba(255,255,255,.06); }
+  .nav-links a { display:block; padding:.9rem 0; font-size:.9rem; }
+  .nav-links.open { right:0; }
+  .nav-cta-item { border-bottom:none !important; margin-top:1rem; }
+  .nav-cta-btn { width:100% !important; text-align:center; display:block !important; padding:.7rem 1rem !important; border-radius:8px !important; }
+}
+.site-footer { background:linear-gradient(180deg,#0d0d12 0%,#0a0a0f 100%); color:rgba(255,255,255,.75); font-family:'Inter',sans-serif; padding-top:5rem; }
+.footer-content { display:grid; grid-template-columns:2fr 1fr 1fr 1.5fr; gap:3rem; padding:0 5% 3rem; max-width:1400px; margin:0 auto; }
+.footer-section h4 { font-family:'Bebas Neue',cursive; font-size:1.1rem; letter-spacing:2px; color:var(--gold); margin-bottom:1.2rem; }
+.footer-section ul { list-style:none; }
+.footer-section ul li { margin-bottom:.6rem; font-size:.9rem; color:rgba(255,255,255,.65); }
+.footer-section ul li a { color:rgba(255,255,255,.65); text-decoration:none; transition:color .25s; }
+.footer-section ul li a:hover { color:var(--gold); }
+.footer-brand img { filter:drop-shadow(0 2px 8px rgba(0,0,0,.5)); }
+.footer-tagline { margin-top:1rem; font-size:.95rem; color:rgba(255,255,255,.5); font-style:italic; font-family:'Playfair Display',serif; }
+.footer-socials { display:flex; gap:.8rem; margin-top:1.2rem; flex-wrap:wrap; }
+.footer-social-link { width:38px; height:38px; border-radius:50%; background:rgba(255,255,255,.06); border:1px solid rgba(212,175,55,.2); display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,.7); text-decoration:none; transition:all .3s; }
+.footer-social-link svg { width:18px; height:18px; }
+.footer-social-link:hover { background:var(--gold); color:#0d0d12; border-color:var(--gold); transform:translateY(-2px); }
+.footer-divider { height:1px; background:linear-gradient(90deg,transparent,rgba(212,175,55,.3),transparent); margin:0 5%; }
+.footer-bottom { text-align:center; padding:1.5rem 5%; font-size:.82rem; color:rgba(255,255,255,.3); }
+.footer-bottom a { color:var(--gold); text-decoration:none; }
+@media(max-width:900px) { .footer-content { grid-template-columns:1fr 1fr !important; gap:2rem !important; } }
+@media(max-width:480px) { .footer-content { grid-template-columns:1fr !important; } }
+/* === END UNIFIED NAV + FOOTER === */
+/* Page-specific: contact */
+@media (max-width: 768px) {
+  .info-cards { grid-template-columns: 1fr !important; }
+}
+@media (max-width: 640px) {
+  .form-row { flex-direction: column !important; }
+  #map, .map-section iframe, .leaflet-container { 
+    height: 280px !important; min-height: 280px !important;
+  }
+}
+</style>
+</head>
+<body>
+    <!-- Unified Navigation -->
+    <nav id="siteNav">
+        <div class="nav-logo">
+            <a href="laphic-website.html"><img src="images/logo.png" alt="LAPHIC Modern Homes"></a>
+        </div>
+        <ul class="nav-links" id="navLinksMenu">
+            <li><a href="who-we-are.html">Who We Are</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="inspirations.html">Inspiration</a></li>
+            <li><a href="3d-experience.html">3D</a></li>
+            <li><a href="testimonials.html">Testimonials</a></li>
+            <li class="nav-cta-item"><a href="contact.html" class="nav-cta-btn active">CONTACT</a></li>
+        </ul>
+        <button class="nav-toggle" id="navToggleBtn" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+           <span class="hero-eyebrow">Get In Touch</span>
+           <h1>Let's build something <span class="accent">beautiful.</span></h1>
+           <p>From your first idea to the final reveal, our team is ready to bring your vision to life with craftsmanship you can trust.</p>
+           <div class="hero-quick">
+                <a href="tel:+256780535307" class="is-primary">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    Call Us Now
+                </a>
+                <a href="https://wa.me/256705029291" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487 2.981 1.286 2.981.858 3.518.806.537-.051 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413A11.815 11.815 0 0 0 12.05 0"/></svg>
+                    WhatsApp
+                </a>
+                <a href="#contact-form">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    Send a Message
+                </a>
+           </div>
+        </div>
+        <div class="hero-visual">
+            <div class="hero-slider">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="contact-grid">
+            <!-- Contact Info -->
+            <div class="contact-info">
+                <span class="ci-eyebrow">Reach Out</span>
+                <h2>Let's <span class="accent">Talk.</span></h2>
+                <p>We're here to answer your questions and discuss how we can help transform your space into something extraordinary.</p>
+
+                <div class="info-item">
+                    <div class="info-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    </div>
+                    <div class="info-content">
+                        <h4>Our Location</h4>
+                        <p>Kajjansi, Entebbe Road<br>Kampala, Uganda</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    </div>
+                    <div class="info-content">
+                        <h4>Phone Number</h4>
+                        <p><a href="tel:+256780535307">+256 780 535 307</a> &middot; <a href="tel:+256702620878">+256 702 620 878</a><br>Mon &ndash; Sat: 8AM &ndash; 6PM</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    </div>
+                    <div class="info-content">
+                        <h4>Email Address</h4>
+                        <p><a href="mailto:laphicmodernhomes@gmail.com">laphicmodernhomes@gmail.com</a></p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487 2.981 1.286 2.981.858 3.518.806.537-.051 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413A11.815 11.815 0 0 0 12.05 0"/></svg>
+                    </div>
+                    <div class="info-content">
+                        <h4>WhatsApp</h4>
+                        <p><a href="https://wa.me/256705029291" target="_blank" rel="noopener">+256 705 029 291</a><br>Quick responses guaranteed</p>
+                    </div>
+                </div>
+
+                <div class="social-links">
+                    <a href="#" class="social-link" title="Facebook" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/></svg>
+                    </a>
+                    <a href="#" class="social-link" title="Instagram" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                    </a>
+                    <a href="#" class="social-link" title="LinkedIn" aria-label="LinkedIn">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+                    </a>
+                    <a href="https://wa.me/256705029291" target="_blank" rel="noopener" class="social-link" title="WhatsApp" aria-label="WhatsApp">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487 2.981 1.286 2.981.858 3.518.806.537-.051 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413A11.815 11.815 0 0 0 12.05 0"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="contact-form" id="contact-form">
+                <span class="cf-eyebrow">Project Inquiry</span>
+                <h3>Send Us A Message</h3>
+                <p class="form-intro">Tell us about your project and we'll get back to you within 24 hours.</p>
+                <form action="https://formsubmit.co/laphicmodernhomes@gmail.com" method="POST" id="contactForm">
+                    <input type="hidden" name="_subject" value="New message from LAPHIC website">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_next" value="https://laphicmodernhomes.com/contact.html">
+                    <input type="text" name="_honey" style="display:none">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>First Name <span class="req">*</span></label>
+                            <input type="text" name="name" required placeholder="Your first name">
+                        </div>
+                        <div class="form-group">
+                            <label>Last Name <span class="req">*</span></label>
+                            <input type="text" name="last_name" required placeholder="Your last name">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Email Address <span class="req">*</span></label>
+                            <input type="email" name="email" required placeholder="you@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="tel" name="phone" placeholder="+256 XXX XXX XXX">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Service Interested In <span class="req">*</span></label>
+                        <select name="subject" required>
+                            <option value="">Select a service</option>
+                            <option value="interior">Interior Design</option>
+                            <option value="exterior">Exterior Design</option>
+                            <option value="landscape">Landscape Design</option>
+                            <option value="construction">Full Construction</option>
+                            <option value="renovation">Renovation</option>
+                            <option value="consultation">Consultation</option>
+                            <option value="furniture">Furniture</option>
+                            <option value="curtains">Curtains</option>
+                            <option value="gypsum">Gypsum Work</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Project Details <span class="req">*</span></label>
+                        <textarea name="message" required placeholder="Tell us about your project, timeline, and any specific requirements..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Budget Range</label>
+                        <select name="budget">
+                            <option value="">Select budget range</option>
+                            <option value="small">Under 10M UGX</option>
+                            <option value="medium">10M &ndash; 50M UGX</option>
+                            <option value="large">50M &ndash; 100M UGX</option>
+                            <option value="premium">100M+ UGX</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="submit-btn">
+                        Send Message
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </button>
+                    <div id="formStatus" class="form-status" aria-live="polite"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Info Cards -->
+    <section class="info-cards">
+        <div class="ic-header">
+            <span class="eyebrow">Why Reach Out</span>
+            <h2>What You Can Expect</h2>
+            <p>From the moment you say hello, we're focused on making the process smooth, transparent, and tailored to you.</p>
+        </div>
+        <div class="cards-grid">
+            <div class="info-card">
+                <h4>Quick Response</h4>
+                <p>We reply to every inquiry within 24 hours — usually much sooner. Your time matters, and we treat it that way.</p>
+            </div>
+
+            <div class="info-card">
+                <h4>Free Consultation</h4>
+                <p>Book a complimentary sit-down with our team to talk through your vision, your space, and the possibilities ahead.</p>
+            </div>
+
+            <div class="info-card">
+                <h4>Detailed Quotes</h4>
+                <p>Receive a transparent, itemised proposal with clear pricing, realistic timelines, and no hidden surprises.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div id="locationMap"></div>
+        <div class="map-overlay">
+            <span class="mo-eyebrow">Find Us</span>
+            <h3>Visit Our Office</h3>
+            <p>Near St Anthony Nursery &amp; Primary School<br>
+            Kajjansi, 1km from Kajjansi Centre<br>
+            Entebbe Road, Uganda</p>
+            <a href="https://www.google.com/maps/search/?api=1&query=Kajjansi,Entebbe+Road,Uganda" target="_blank" rel="noopener" class="mo-directions">
+                Get Directions
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- Unified Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-section footer-brand">
+                <img src="images/logo.png" alt="LAPHIC Modern Homes" height="70">
+                <p class="footer-tagline">Designing tomorrow's spaces, today</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="laphic-website.html">Home</a></li>
+                    <li><a href="who-we-are.html">Who We Are</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="inspirations.html">Inspiration</a></li>
+                    <li><a href="testimonials.html">Testimonials</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="interior-design.html">Interior Design</a></li>
+                    <li><a href="exterior-design.html">Exterior Design</a></li>
+                    <li><a href="landscape-design.html">Landscape Design</a></li>
+                    <li><a href="services.html">Construction</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <ul>
+                    <li>📍 Kampala, Uganda</li>
+                    <li><a href="tel:+256780535307">+256 780 535 307</a></li>
+                    <li><a href="mailto:laphicmodernhomes@gmail.com">laphicmodernhomes@gmail.com</a></li>
+                    <li>Mon-Sun: 8AM – 8PM</li>
+                </ul>
+                <div class="footer-socials">
+                    <a href="https://www.instagram.com/laphichomes" target="_blank" rel="noopener" class="footer-social-link" title="Instagram">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    </a>
+                    <a href="https://x.com/laphichomes" target="_blank" rel="noopener" class="footer-social-link" title="X (Twitter)">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    </a>
+                    <a href="https://www.tiktok.com/@laphic.modern.hom" target="_blank" rel="noopener" class="footer-social-link" title="TikTok">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V9.05a8.14 8.14 0 0 0 4.78 1.52V7.13a4.85 4.85 0 0 1-1.01-.44z"/></svg>
+                    </a>
+                    <a href="https://wa.me/256705029291" target="_blank" rel="noopener" class="footer-social-link" title="WhatsApp">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-divider"></div>
+        <div class="footer-bottom">
+            <p>&copy; <span id="footer-year">2026</span> LAPHIC Modern Homes. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>(function(){var y=document.getElementById('footer-year');if(y)y.textContent=new Date().getFullYear();})();</script>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <script>
+        // Wait for page and Leaflet to fully load
+        window.addEventListener('load', function() {
+            // Initialize the map
+            var map = L.map('locationMap', {
+                center: [0.2096, 32.5226], // LAPHIC Modern Homes coordinates
+                zoom: 15,
+                scrollWheelZoom: true
+            });
+
+            // Define base layers
+            var osmLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: ''
+            });
+
+            var terrainLayer = L.tileLayer('https://{s}.google.com/vt/lyrs=p&x={x}&y={y}&z={z}', {
+                maxZoom: 20,
+                subdomains: ['mt1', 'mt2', 'mt3'],
+                attribution: ''
+            });
+
+            var satelliteLayer = L.tileLayer('https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
+                maxZoom: 20,
+                subdomains: ['mt1', 'mt2', 'mt3'],
+                attribution: ''
+            });
+
+            var hybridLayer = L.tileLayer('https://{s}.google.com/vt/lyrs=h&x={x}&y={y}&z={z}', {
+                maxZoom: 20,
+                subdomains: ['mt1', 'mt2', 'mt3'],
+                attribution: ''
+            });
+
+            // Layer control to switch between views
+            var baseLayers = {
+                "OpenStreetMap": osmLayer,
+                "Terrain View": terrainLayer,
+                "Satellite View": satelliteLayer,
+                "Hybrid View": hybridLayer
+            };
+
+            // Add default terrain layer to map
+            terrainLayer.addTo(map);
+
+            // Add layer control to map
+            L.control.layers(baseLayers).addTo(map);
+
+            // Add a custom marker with popup
+            var customIcon = L.divIcon({
+                className: 'custom-marker',
+                html: '<div style="background-color: #c9a050; width: 30px; height: 30px; border-radius: 50%; border: 3px solid #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.3);"></div>',
+                iconSize: [30, 30],
+                iconAnchor: [15, 15]
+            });
+
+            L.marker([0.2096, 32.5226], {icon: customIcon}).addTo(map)
+                .bindPopup('<strong style="color: #c9a050;">LAPHIC Modern Homes</strong><br>Kajjansi, Entebbe Road<br>Uganda')
+                .openPopup();
+
+            // Remove Leaflet attribution
+            map.attributionControl.setPrefix(false);
+        });
+    </script>
+    
+    <script>
+    /* FormSubmit AJAX wiring */
+    (function(){
+      var form = document.getElementById('contactForm');
+      if (!form) return;
+      var status = document.getElementById('formStatus');
+      var submitBtn = form.querySelector('button[type="submit"]');
+      var originalBtnHTML = submitBtn ? submitBtn.innerHTML : '';
+
+      /* FormSubmit returns JSON only at the /ajax/ endpoint */
+      var AJAX_ENDPOINT = 'https://formsubmit.co/ajax/laphicmodernhomes@gmail.com';
+
+      function setStatus(type, msg){
+        if (!status) return;
+        status.className = 'form-status ' + type;
+        status.innerHTML = (type === 'success'
+          ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>'
+          : type === 'error'
+          ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>'
+          : '') + '<span>' + msg + '</span>';
+      }
+
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        setStatus('', '');
+        if (status) status.className = 'form-status';
+
+        /* Honeypot - silently succeed for bots */
+        var honey = form.querySelector('input[name="_honey"]');
+        if (honey && honey.value) { return; }
+
+        if (submitBtn) {
+          submitBtn.innerHTML = '<span class="spinner"></span> Sending...';
+          submitBtn.disabled = true;
+        }
+
+        var data = new FormData(form);
+        /* Strip FormSubmit redirect fields - not needed for AJAX */
+        data.delete('_next');
+        data.delete('_captcha');
+
+        fetch(AJAX_ENDPOINT, {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        }).then(function(res){ return res.json().then(function(d){ return {ok: res.ok, body: d}; }); })
+        .then(function(r){
+          if (r.ok && (r.body.success === 'true' || r.body.success === true)) {
+            setStatus('success', "Thanks! Your message is on its way — we'll be in touch within 24 hours.");
+            form.reset();
+            if (status) status.scrollIntoView({behavior: 'smooth', block: 'center'});
+          } else {
+            var msg = r.body.message || 'Submission failed. Please try again.';
+            if (msg.toLowerCase().indexOf('activate') !== -1) {
+              msg = "Our form is being activated. Please email laphicmodernhomes@gmail.com or WhatsApp +256 705 029 291 in the meantime.";
+            }
+            setStatus('error', msg);
+          }
+        }).catch(function(){
+          setStatus('error', "Couldn't send right now. Please check your connection, or WhatsApp us at +256 705 029 291.");
+        }).finally(function(){
+          if (submitBtn) {
+            submitBtn.innerHTML = originalBtnHTML;
+            submitBtn.disabled = false;
+          }
+        });
+      });
+    })();
+    </script>
+    <script>
+    /* Unified Nav JS */
+    (function(){
+        var siteNav = document.getElementById('siteNav');
+        var navToggleBtn = document.getElementById('navToggleBtn');
+        var navLinksMenu = document.getElementById('navLinksMenu');
+        var footerYearEl = document.getElementById('footer-year');
+        if(footerYearEl) footerYearEl.textContent = new Date().getFullYear();
+        if(siteNav) {
+            window.addEventListener('scroll', function(){
+                siteNav.classList.toggle('scrolled', window.scrollY > 50);
+            }, {passive:true});
+            if(window.scrollY > 50) siteNav.classList.add('scrolled');
+        }
+        if(navToggleBtn && navLinksMenu) {
+            navToggleBtn.addEventListener('click', function(){
+                navToggleBtn.classList.toggle('open');
+                navLinksMenu.classList.toggle('open');
+            });
+            navLinksMenu.querySelectorAll('a').forEach(function(a){
+                a.addEventListener('click', function(){
+                    navToggleBtn.classList.remove('open');
+                    navLinksMenu.classList.remove('open');
+                });
+            });
+        }
+    })();
+    </script>
+</body>
+</html>

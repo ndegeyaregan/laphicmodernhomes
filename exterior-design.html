@@ -1,1521 +1,1079 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exterior Design Services - LAPHIC Modern Homes</title>
+    <title>Exterior Design — LAPHIC Modern Homes</title>
+    <meta name="description" content="Premium exterior architecture, facades, painting, roofing, aluminum works and outdoor structures by LAPHIC Modern Homes, Kampala.">
+    <link rel="icon" href="images/logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         :root {
-            --midnight: #0f1419;
-            --teal: #9c6c24;
-            --coral: #ff6b6b;
-            --cream: #f8f6f0;
-            --charcoal: #3a3a3a;
-            --gold: #c9a050;
-            --primary: #0a0a0a;
-            --white: #ffffff;
-            --off-white: #f5f5f5;
-            --slate: #2c2c2c;
-            --copper: #c9a050;
-            --steel: #555555;
-           --concrete: #eaeaea;
+            --ink:        #0d0f12;
+            --ink-2:      #15181d;
+            --bone:       #f5f1ea;
+            --paper:      #faf7f1;
+            --gold:       #c9a050;
+            --gold-soft:  #e3c789;
+            --rust:       #9c6c24;
+            --line:       rgba(13,15,18,0.08);
+            --line-dark:  rgba(255,255,255,0.10);
+            --muted:      #6b6f76;
+            --shadow-lg:  0 30px 80px -30px rgba(0,0,0,0.35);
+            --shadow-md:  0 14px 40px -18px rgba(0,0,0,0.28);
+            --serif:      'Playfair Display', Georgia, serif;
+            --sans:       'Inter', system-ui, -apple-system, sans-serif;
+            --display:    'Bebas Neue', Impact, sans-serif;
         }
 
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body {
-            font-family: 'Crimson Pro', serif;
-            background: var(--cream);
-            color: var(--charcoal);
+            font-family: var(--sans);
+            background: var(--paper);
+            color: var(--ink);
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
         }
+        img { max-width: 100%; display: block; }
+        a { color: inherit; text-decoration: none; }
 
-        /* Navigation */
-        nav {
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            background: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 1.5rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        /* ============ NAV (unified site nav) ============ */
+        nav#siteNav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 1.1rem 5%;
+            background: rgba(10,10,10,0.78);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            transition: background .35s ease, padding .35s ease;
         }
-
-        .logo {
-            font-family: 'Bebas Neue', cursive;
-            font-size: 2rem;
-            color: var(--gold);
-            letter-spacing: 3px;
-        }
-
+        nav#siteNav.scrolled { background: rgba(10,10,10,0.95); padding: 0.75rem 5%; }
+        .nav-logo img { height: 48px; width: auto; }
         .nav-links {
-            display: flex;
-            gap: 2.5rem;
-            list-style: none;
+            list-style: none; display: flex; align-items: center; gap: 2rem;
         }
-
         .nav-links a {
-            color: var(--cream);
-            text-decoration: none;
-            font-size: 0.95rem;
-            letter-spacing: 1px;
-            transition: color 0.3s ease;
+            color: #efe9dd; font-size: 0.85rem; letter-spacing: 1.6px;
+            text-transform: uppercase; font-weight: 500;
+            position: relative; padding: 0.4rem 0;
+            transition: color .25s ease;
         }
-
-        .nav-links a:hover {
-            color: var(--gold);
+        .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+        .nav-links a:not(.nav-cta-btn)::after {
+            content: ''; position: absolute; left: 0; bottom: -2px; height: 1px;
+            width: 0; background: var(--gold); transition: width .3s ease;
         }
+        .nav-links a:not(.nav-cta-btn):hover::after,
+        .nav-links a.active::after { width: 100%; }
+        .nav-cta-btn {
+            border: 1px solid var(--gold); color: var(--gold) !important;
+            padding: 0.6rem 1.3rem !important; border-radius: 999px;
+            transition: all .3s ease;
+        }
+        .nav-cta-btn:hover { background: var(--gold); color: var(--ink) !important; }
+        .nav-toggle {
+            display: none; background: none; border: 0; cursor: pointer;
+            width: 36px; height: 28px; flex-direction: column; justify-content: space-between;
+        }
+        .nav-toggle span {
+            display: block; height: 2px; width: 100%; background: var(--bone); transition: .3s ease;
+        }
+        .nav-toggle.open span:nth-child(1) { transform: translateY(13px) rotate(45deg); }
+        .nav-toggle.open span:nth-child(2) { opacity: 0; }
+        .nav-toggle.open span:nth-child(3) { transform: translateY(-13px) rotate(-45deg); }
 
-        /* Hero Section */
+        /* ============ HERO ============ */
         .hero {
-            position: relative;
-            height: 80vh;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-                        url('images/exterior.jfif') center/cover;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            margin-top: 0;
+            position: relative; min-height: 100vh;
+            display: flex; align-items: flex-end;
+            overflow: hidden; color: #fff;
+            padding: 0 5% 8vh;
+        }
+        .hero video, .hero .hero-bg {
+            position: absolute; inset: 0;
+            width: 100%; height: 100%;
+            object-fit: cover; z-index: 0;
+        }
+        .hero::before {
+            content: ''; position: absolute; inset: 0; z-index: 1;
+            background:
+              linear-gradient(180deg, rgba(13,15,18,0.55) 0%, rgba(13,15,18,0.30) 35%, rgba(13,15,18,0.85) 100%);
+        }
+        .hero::after {
+            content: ''; position: absolute; left: 5%; right: 5%; bottom: 4vh; height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            z-index: 2;
+        }
+        .hero-inner { position: relative; z-index: 3; max-width: 1300px; width: 100%; margin: 0 auto; }
+        .hero-eyebrow {
+            display: inline-flex; align-items: center; gap: 0.85rem;
+            font-family: var(--sans); font-size: 0.78rem; letter-spacing: 4px;
+            text-transform: uppercase; color: var(--gold-soft); margin-bottom: 1.5rem;
+        }
+        .hero-eyebrow::before { content: ''; width: 36px; height: 1px; background: var(--gold); }
+        .hero h1 {
+            font-family: var(--serif);
+            font-weight: 400;
+            font-size: clamp(3rem, 8vw, 7.5rem);
+            line-height: 0.98;
+            letter-spacing: -2px;
+            max-width: 14ch;
+            margin-bottom: 1.5rem;
+        }
+        .hero h1 em {
+            font-style: italic; color: var(--gold-soft); font-weight: 400;
+        }
+        .hero-lede {
+            font-size: clamp(1rem, 1.3vw, 1.15rem);
+            color: rgba(255,255,255,0.82);
+            max-width: 52ch; line-height: 1.7;
+            margin-bottom: 2.2rem;
+        }
+        .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+        .btn {
+            display: inline-flex; align-items: center; gap: 0.65rem;
+            padding: 1rem 1.9rem; font-size: 0.85rem;
+            letter-spacing: 2.5px; text-transform: uppercase; font-weight: 600;
+            border-radius: 999px; transition: all .3s ease; cursor: pointer; border: 0;
+        }
+        .btn-primary { background: var(--gold); color: var(--ink); }
+        .btn-primary:hover { background: var(--gold-soft); transform: translateY(-2px); box-shadow: 0 14px 30px -12px rgba(201,160,80,0.5); }
+        .btn-ghost { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.4); }
+        .btn-ghost:hover { background: #fff; color: var(--ink); border-color: #fff; }
+        .btn svg { width: 16px; height: 16px; }
+
+        .hero-meta {
+            position: absolute; right: 5%; bottom: 8vh; z-index: 3;
+            display: flex; flex-direction: column; gap: 0.5rem;
+            text-align: right; color: rgba(255,255,255,0.7);
+            font-size: 0.78rem; letter-spacing: 3px; text-transform: uppercase;
+        }
+        .hero-meta strong { color: var(--gold); font-family: var(--display); font-size: 2.2rem; letter-spacing: 1px; font-weight: 400; }
+
+        /* ============ MARQUEE STATS ============ */
+        .stats-strip {
+            background: var(--ink);
+            color: var(--bone);
+            padding: 2.5rem 5%;
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+        .stat-cell { text-align: center; padding: 0 1rem; position: relative; }
+        .stat-cell:not(:last-child)::after {
+            content: ''; position: absolute; right: 0; top: 15%; bottom: 15%; width: 1px;
+            background: rgba(255,255,255,0.08);
+        }
+        .stat-cell .num {
+            font-family: var(--display); font-size: clamp(2.5rem, 4vw, 3.6rem);
+            color: var(--gold); letter-spacing: 2px; line-height: 1;
+        }
+        .stat-cell .lbl {
+            font-size: 0.72rem; letter-spacing: 3px; text-transform: uppercase;
+            color: rgba(255,255,255,0.55); margin-top: 0.6rem;
         }
 
-        .hero-content h1 {
-            font-family: 'Merriweather', serif;
-            font-size: 5rem;
-            margin-bottom: 1rem;
-            color: var(--gold);
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        /* ============ SECTION SHELL ============ */
+        section { padding: 7rem 5%; }
+        .container { max-width: 1300px; margin: 0 auto; }
+        .section-head { max-width: 720px; margin: 0 auto 4.5rem; text-align: center; }
+        .section-head.left { text-align: left; margin-left: 0; }
+        .eyebrow {
+            display: inline-flex; align-items: center; gap: 0.7rem;
+            font-size: 0.72rem; letter-spacing: 4px; text-transform: uppercase;
+            color: var(--rust); font-weight: 600; margin-bottom: 1rem;
         }
-
-        .hero-content .service-number {
-            font-family: 'Bebas Neue', cursive;
-            font-size: 8rem;
-            color: rgba(201, 160, 80, 0.2);
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: -1;
+        .eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--rust); }
+        .section-head h2 {
+            font-family: var(--serif); font-weight: 400;
+            font-size: clamp(2.2rem, 4vw, 3.3rem);
+            line-height: 1.1; letter-spacing: -1px;
+            color: var(--ink); margin-bottom: 1.1rem;
         }
+        .section-head h2 em { font-style: italic; color: var(--rust); }
+        .section-head p { color: var(--muted); font-size: 1.05rem; }
 
-        .hero-content p {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            color: var(--cream);
+        /* ============ INTRO / OVERVIEW ============ */
+        .intro { background: var(--bone); }
+        .intro-grid {
+            display: grid; grid-template-columns: 1.05fr 1fr; gap: 5rem; align-items: center;
         }
-
-        .breadcrumb {
-            position: absolute;
-            top: 120px;
-            left: 5%;
-            font-size: 0.9rem;
-            color: rgba(255,255,255,0.8);
+        .intro-visual {
+            position: relative; aspect-ratio: 4/5; border-radius: 6px; overflow: hidden;
+            box-shadow: var(--shadow-lg);
         }
-
-        .breadcrumb a {
-            color: var(--gold);
-            text-decoration: none;
-            margin-right: 0.5rem;
+        .intro-visual img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s ease; }
+        .intro-visual:hover img { transform: scale(1.04); }
+        .intro-visual .badge {
+            position: absolute; left: 1.5rem; bottom: 1.5rem;
+            background: rgba(13,15,18,0.85); color: var(--gold-soft);
+            backdrop-filter: blur(8px);
+            padding: 0.8rem 1.2rem; border-radius: 4px;
+            font-size: 0.72rem; letter-spacing: 3px; text-transform: uppercase;
         }
-
-        /* Service Overview */
-        .service-overview {
-            padding: 6rem 5%;
-            max-width: 1400px;
-            margin: 0 auto;
+        .intro-copy h2 {
+            font-family: var(--serif); font-weight: 400;
+            font-size: clamp(2rem, 3.5vw, 3rem); line-height: 1.1;
+            letter-spacing: -1px; margin-bottom: 1.5rem;
         }
+        .intro-copy h2 em { font-style: italic; color: var(--rust); }
+        .intro-copy p {
+            color: var(--muted); font-size: 1.02rem; margin-bottom: 1.2rem;
+        }
+        .intro-pillars {
+            display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.2rem; margin-top: 2.2rem;
+        }
+        .pillar {
+            background: #fff; padding: 1.3rem; border-radius: 6px;
+            border: 1px solid var(--line); display: flex; gap: 0.9rem; align-items: flex-start;
+        }
+        .pillar-icon {
+            flex-shrink: 0; width: 38px; height: 38px; border-radius: 50%;
+            background: var(--ink); color: var(--gold);
+            display: grid; place-items: center;
+        }
+        .pillar-icon svg { width: 18px; height: 18px; }
+        .pillar h4 { font-size: 0.95rem; margin-bottom: 0.2rem; }
+        .pillar span { font-size: 0.82rem; color: var(--muted); }
 
-        .overview-grid {
+        /* ============ EXPERTISE (alternating) ============ */
+        .expertise { background: var(--paper); }
+        .feature-row {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+            align-items: center; margin-bottom: 6rem;
+        }
+        .feature-row:last-child { margin-bottom: 0; }
+        .feature-row.reverse .feature-visual { order: 2; }
+        .feature-visual {
+            position: relative; aspect-ratio: 4/3; overflow: hidden; border-radius: 8px;
+            box-shadow: var(--shadow-md);
+        }
+        .feature-visual img { width: 100%; height: 100%; object-fit: cover; transition: transform 1s ease; }
+        .feature-visual:hover img { transform: scale(1.06); }
+        .feature-visual::after {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(180deg, transparent 60%, rgba(13,15,18,0.25));
+        }
+        .feature-tag {
+            position: absolute; top: 1rem; left: 1rem; z-index: 2;
+            background: rgba(255,255,255,0.92); backdrop-filter: blur(6px);
+            padding: 0.45rem 0.9rem; border-radius: 999px;
+            font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase;
+            color: var(--ink); font-weight: 600;
+        }
+        .feature-content .step-no {
+            font-family: var(--display); font-size: 1.3rem; letter-spacing: 3px;
+            color: var(--rust); margin-bottom: 0.6rem; display: block;
+        }
+        .feature-content h3 {
+            font-family: var(--serif); font-weight: 400;
+            font-size: clamp(1.8rem, 2.6vw, 2.4rem); line-height: 1.15;
+            letter-spacing: -0.5px; margin-bottom: 1rem;
+        }
+        .feature-content > p {
+            color: var(--muted); margin-bottom: 1.5rem; font-size: 1rem;
+        }
+        .feature-list { list-style: none; display: grid; gap: 0.7rem; }
+        .feature-list li {
+            display: flex; gap: 0.7rem; align-items: flex-start;
+            font-size: 0.95rem; color: var(--ink);
+        }
+        .feature-list li svg { flex-shrink: 0; width: 18px; height: 18px; color: var(--rust); margin-top: 3px; }
+
+        /* ============ SERVICES GRID (cards) ============ */
+        .services { background: var(--ink); color: var(--bone); }
+        .services .section-head h2 { color: var(--bone); }
+        .services .section-head p { color: rgba(255,255,255,0.6); }
+        .services .eyebrow { color: var(--gold-soft); }
+        .services .eyebrow::before { background: var(--gold-soft); }
+
+        .service-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+        }
+        .svc-card {
+            background: var(--ink-2);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 10px;
+            padding: 2.2rem 1.8rem;
+            display: flex; flex-direction: column;
+            transition: all .4s ease; position: relative; overflow: hidden;
+        }
+        .svc-card::before {
+            content: ''; position: absolute; left: 0; top: 0; width: 100%; height: 2px;
+            background: linear-gradient(90deg, var(--gold), transparent);
+            transform: scaleX(0); transform-origin: left; transition: transform .5s ease;
+        }
+        .svc-card:hover { transform: translateY(-6px); border-color: rgba(201,160,80,0.35); background: #1b1f25; }
+        .svc-card:hover::before { transform: scaleX(1); }
+        .svc-icon {
+            width: 54px; height: 54px; border-radius: 12px;
+            background: linear-gradient(135deg, rgba(201,160,80,0.18), rgba(156,108,36,0.1));
+            color: var(--gold); display: grid; place-items: center; margin-bottom: 1.4rem;
+        }
+        .svc-icon svg { width: 26px; height: 26px; }
+        .svc-card h3 {
+            font-family: var(--serif); font-weight: 400; font-size: 1.45rem;
+            color: var(--bone); margin-bottom: 0.7rem; letter-spacing: -0.3px;
+        }
+        .svc-card > p { color: rgba(255,255,255,0.6); font-size: 0.93rem; margin-bottom: 1.2rem; }
+        .svc-card ul {
+            list-style: none; display: grid; gap: 0.5rem; margin-bottom: 1.6rem;
+            font-size: 0.88rem; color: rgba(255,255,255,0.75);
+        }
+        .svc-card ul li { display: flex; gap: 0.5rem; }
+        .svc-card ul li::before { content: '—'; color: var(--gold); }
+        .svc-link {
+            margin-top: auto;
+            display: inline-flex; align-items: center; gap: 0.6rem;
+            font-size: 0.78rem; letter-spacing: 2.5px; text-transform: uppercase;
+            color: var(--gold-soft); font-weight: 600;
+            transition: gap .25s ease, color .25s ease;
+        }
+        .svc-link:hover { color: var(--gold); gap: 1rem; }
+        .svc-link svg { width: 14px; height: 14px; }
+
+        /* ============ PROCESS TIMELINE ============ */
+        .process { background: var(--paper); }
+        .timeline {
+            position: relative; max-width: 920px; margin: 0 auto;
+            padding-left: 4rem;
+        }
+        .timeline::before {
+            content: ''; position: absolute; left: 1.45rem; top: 0; bottom: 0;
+            width: 2px; background: linear-gradient(180deg, var(--gold), rgba(201,160,80,0.05));
+        }
+        .tl-step { position: relative; padding-bottom: 3rem; }
+        .tl-step:last-child { padding-bottom: 0; }
+        .tl-step::before {
+            content: ''; position: absolute; left: -2.7rem; top: 0.6rem;
+            width: 14px; height: 14px; border-radius: 50%;
+            background: var(--paper); border: 3px solid var(--gold);
+            box-shadow: 0 0 0 5px var(--paper);
+        }
+        .tl-num {
+            font-family: var(--display); font-size: 1rem; letter-spacing: 3px;
+            color: var(--rust); margin-bottom: 0.4rem;
+        }
+        .tl-step h3 {
+            font-family: var(--serif); font-weight: 400; font-size: 1.55rem;
+            margin-bottom: 0.6rem; letter-spacing: -0.3px;
+        }
+        .tl-step p { color: var(--muted); font-size: 0.98rem; max-width: 60ch; }
+
+        /* ============ PORTFOLIO MASONRY ============ */
+        .portfolio { background: var(--bone); }
+        .pf-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: 180px;
+            gap: 1rem;
         }
-
-        .overview-content h2 {
-            font-family: 'Merriweather', serif;
-            font-size: 3rem;
-            color: var(--midnight);
-            margin-bottom: 1.5rem;
+        .pf-item {
+            position: relative; overflow: hidden; border-radius: 6px; cursor: pointer;
         }
-
-        .overview-content p {
-            font-size: 1.15rem;
-            line-height: 1.8;
-            color: var(--charcoal);
-            margin-bottom: 1.5rem;
+        .pf-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 1s ease; }
+        .pf-item:hover img { transform: scale(1.08); }
+        .pf-item::after {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(180deg, transparent 45%, rgba(13,15,18,0.85));
+            opacity: 0.85; transition: opacity .4s ease;
         }
-
-        .overview-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
+        .pf-overlay {
+            position: absolute; left: 1.2rem; right: 1.2rem; bottom: 1.1rem;
+            z-index: 2; color: #fff;
+            transform: translateY(8px); opacity: 0; transition: all .4s ease;
         }
-
-        .stat-box {
-            text-align: center;
-            padding: 1.5rem;
-            background: white;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        .pf-item:hover .pf-overlay { transform: translateY(0); opacity: 1; }
+        .pf-overlay h4 {
+            font-family: var(--serif); font-size: 1.2rem; font-weight: 400;
+            margin-bottom: 0.25rem;
         }
-
-        .stat-box .number {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: var(--gold);
-            margin-bottom: 0.5rem;
+        .pf-overlay span {
+            font-size: 0.72rem; letter-spacing: 2.5px; text-transform: uppercase;
+            color: var(--gold-soft);
         }
+        /* Mosaic sizing */
+        .pf-item.tall  { grid-row: span 2; }
+        .pf-item.wide  { grid-column: span 2; }
+        .pf-item.big   { grid-row: span 2; grid-column: span 2; }
 
-        .stat-box .label {
-            font-size: 0.95rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--charcoal);
+        /* ============ CTA ============ */
+        .cta {
+            position: relative; padding: 8rem 5%;
+            background: linear-gradient(135deg, rgba(13,15,18,0.85), rgba(13,15,18,0.7)),
+                        url('https://res.cloudinary.com/dgqukjhb2/image/upload/v1777646941/exterior2_svgchj.jpg') center/cover fixed;
+            color: #fff; text-align: center;
         }
-
-        .overview-image {
-            position: relative;
-            height: 500px;
-            overflow: hidden;
-        }
-
-        .overview-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-        }
-
-        /* Services Section */
-        .services-section {
-            padding: 8rem 5%;
-            background: var(--white);
-        }
-
-        .section-header {
-            max-width: 800px;
-            margin: 0 auto 6rem;
-            text-align: center;
-        }
-
-        .section-header h2 {
-            font-family: 'Oswald', sans-serif;
-            font-size: 4.5rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            color: var(--slate);
+        .cta h2 {
+            font-family: var(--serif); font-weight: 400;
+            font-size: clamp(2rem, 4.5vw, 3.6rem);
+            line-height: 1.1; max-width: 20ch; margin: 0 auto 1.2rem;
             letter-spacing: -1px;
         }
-
-        .section-header p {
-            font-size: 1.2rem;
-            line-height: 1.9;
-            color: #7f8c8d;
-        }
-
-        .services-layout {
-            max-width: 1600px;
-            margin: 0 auto;
-            display: grid;
-            gap: 0;
-        }
-
-        .service-feature {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            min-height: 500px;
-            background: var(--off-white);
-        }
-
-        .service-feature:nth-child(even) {
-            background: var(--white);
-        }
-
-        .service-feature:nth-child(even) .feature-content {
-            order: 2;
-        }
-
-        .service-feature:nth-child(even) .feature-visual {
-            order: 1;
-        }
-        .feature-content {
-            padding: 5rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .feature-icon {
-            width: 70px;
-            height: 70px;
-            background: var(--copper);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            margin-bottom: 2rem;
-            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-        }
-
-        .feature-content h3 {
-            font-family: 'Oswald', sans-serif;
-            font-size: 2.8rem;
-            margin-bottom: 1.5rem;
-            color: var(--slate);
-            font-weight: 600;
-        }
-
-        .feature-content p {
-            font-size: 1.1rem;
-            line-height: 1.9;
-            color: #7f8c8d;
-            margin-bottom: 2rem;
-        }
-
-        .feature-list {
-            list-style: none;
-        }
-
-        .feature-list li {
-            padding: 0.8rem 0;
-            padding-left: 2rem;
-            position: relative;
-            font-size: 1rem;
-            color: var(--steel);
-        }
-
-        .feature-list li::before {
-            content: 'â–¸';
-            position: absolute;
-            left: 0;
-            color: var(--copper);
-            font-size: 1.2rem;
-        }
-
-        .feature-visual {
-            background: var(--concrete);
-            position: relative;
-            overflow: hidden;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        .feature-visual svg {
-            width: 100%;
-            height: 100%;
-        }
-
-
-        /* Sub-Services Section */
-        .sub-services {
-            background: var(--midnight);
-            padding: 6rem 5%;
-            color: var(--cream);
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-header h2 {
-            font-family: 'Merriweather', serif;
-            font-size: 3.5rem;
-            color: var(--gold);
-            margin-bottom: 1rem;
-        }
-
-        .section-header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 3rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .service-card {
-            background: rgba(255,255,255,0.05);
-            padding: 3rem;
-            border-left: 4px solid var(--gold);
-            transition: all 0.4s ease;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(201,160,80,0.1), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .service-card:hover::before {
-            left: 100%;
-        }
-
-        .service-card:hover {
-            background: rgba(255,255,255,0.08);
-            transform: translateX(10px);
-            border-left-color: var(--cream);
-        }
-
-        .service-icon {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-            display: block;
-        }
-
-        .service-card h3 {
-            font-family: 'Merriweather', serif;
-            font-size: 1.8rem;
-            color: var(--gold);
-            margin-bottom: 1rem;
-        }
-
-        .service-card p {
-            font-size: 1.05rem;
-            line-height: 1.7;
-            margin-bottom: 1.5rem;
-            opacity: 0.9;
-        }
-
-        .service-features {
-            list-style: none;
-            padding: 0;
-            margin-bottom: 2rem;
-        }
-
-        .service-features li {
-            padding: 0.5rem 0;
-            padding-left: 1.5rem;
-            position: relative;
-            font-size: 1rem;
-            opacity: 0.85;
-        }
-
-        .service-features li::before {
-            content: 'âœ“';
-            position: absolute;
-            left: 0;
-            color: var(--gold);
-            font-weight: bold;
-        }
-
-        .service-link {
-            display: inline-block;
-            padding: 0.75rem 2rem;
-            background: transparent;
-            border: 2px solid var(--gold);
-            color: var(--gold);
-            text-decoration: none;
-            font-weight: 600;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            font-size: 0.85rem;
-        }
-
-        .service-link:hover {
-            background: var(--gold);
-            color: var(--midnight);
-        }
-
-        /* Process Section */
-        .process-section {
-            padding: 6rem 5%;
-            background: var(--cream);
-        }
-
-        .process-timeline {
-            max-width: 1200px;
-            margin: 3rem auto 0;
-            position: relative;
-        }
-
-        .process-timeline::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: 0;
-            bottom: 0;
-            width: 3px;
-            background: var(--gold);
-            transform: translateX(-50%);
-        }
-
-        .process-step {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            margin-bottom: 4rem;
-            position: relative;
-        }
-
-        .process-step:nth-child(even) .step-content {
-            order: 2;
-        }
-
-        .process-step:nth-child(even) .step-number {
-            order: 1;
-        }
-
-        .step-content {
-            background: white;
-            padding: 2.5rem;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            position: relative;
-        }
-
-        .step-content h3 {
-            font-family: 'Merriweather', serif;
-            font-size: 1.8rem;
-            color: var(--midnight);
-            margin-bottom: 1rem;
-        }
-
-        .step-content p {
-            font-size: 1.05rem;
-            line-height: 1.7;
-            color: var(--charcoal);
-        }
-
-        .step-number {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-
-        .step-number .number {
-            width: 100px;
-            height: 100px;
-            background: var(--gold);
-            color: var(--midnight);
-            font-family: 'Bebas Neue', cursive;
-            font-size: 3rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            border: 5px solid var(--cream);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-            position: relative;
-            z-index: 10;
-        }
-
-        /* Gallery Section */
-        .gallery-section {
-            padding: 6rem 5%;
-            background: var(--midnight);
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 1400px;
-            margin: 3rem auto 0;
-        }
-
-        .gallery-item {
-            position: relative;
-            height: 350px;
-            overflow: hidden;
-            cursor: pointer;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.1);
-        }
-
-        .gallery-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
-            padding: 2rem;
-            color: white;
-            transform: translateY(100%);
-            transition: transform 0.4s ease;
-        }
-
-        .gallery-item:hover .gallery-overlay {
-            transform: translateY(0);
-        }
-
-        .gallery-overlay h4 {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-            color: var(--gold);
-        }
-
-        /* Testimonials */
-        .testimonials-section {
-            padding: 6rem 5%;
-            background: var(--cream);
-        }
-
-        .testimonials-slider {
-            max-width: 900px;
-            margin: 3rem auto 0;
-        }
-
-        .testimonial-card {
-            background: white;
-            padding: 3rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-
-        .testimonial-text {
-            font-size: 1.3rem;
-            line-height: 1.8;
-            color: var(--charcoal);
-            font-style: italic;
-            margin-bottom: 2rem;
-        }
-
-        .testimonial-author {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--gold);
-        }
-
-        .testimonial-role {
-            font-size: 0.95rem;
-            color: var(--charcoal);
-            opacity: 0.7;
-        }
-
-        /* CTA Section */
-        .cta-section {
-            padding: 6rem 5%;
-            background: var(--midnight);
-            text-align: center;
-            color: var(--cream);
-        }
-
-        .cta-content h2 {
-            font-family: 'Merriweather', serif;
-            font-size: 3.5rem;
-            color: var(--gold);
-            margin-bottom: 1.5rem;
-        }
-
-        .cta-content p {
-            font-size: 1.3rem;
-            margin-bottom: 3rem;
-            opacity: 0.9;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 2rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .cta-btn {
-            padding: 1.2rem 3rem;
-            font-size: 1rem;
-            font-weight: 600;
-            text-decoration: none;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            border: 2px solid;
-        }
-
-        .cta-btn-primary {
-            background: var(--gold);
-            color: var(--midnight);
-            border-color: var(--gold);
-        }
-
-        .cta-btn-primary:hover {
-            background: transparent;
-            color: var(--gold);
-        }
-
-        .cta-btn-secondary {
-            background: transparent;
-            color: var(--cream);
-            border-color: var(--cream);
-        }
-
-        .cta-btn-secondary:hover {
-            background: var(--cream);
-            color: var(--midnight);
-        }
-
-        /* Footer */
-        footer {
-            background: var(--primary);
-            color: var(--cream);
-            padding: 3rem 5%;
-            text-align: center;
-        }
-
-        footer p {
-            opacity: 0.9;
-        }
-
-        /* Responsive */
+        .cta h2 em { font-style: italic; color: var(--gold-soft); }
+        .cta p { color: rgba(255,255,255,0.78); max-width: 56ch; margin: 0 auto 2.2rem; }
+        .cta .hero-actions { justify-content: center; }
+
+        /* ============ FOOTER ============ */
+        .site-footer {
+            background: #08090b; color: rgba(255,255,255,0.75); padding: 5rem 5% 2rem;
+        }
+        .footer-content {
+            max-width: 1300px; margin: 0 auto;
+            display: grid; grid-template-columns: 1.4fr 1fr 1fr 1.3fr; gap: 3rem;
+        }
+        .footer-brand img { margin-bottom: 1rem; }
+        .footer-tagline { font-style: italic; color: rgba(255,255,255,0.55); max-width: 28ch; }
+        .footer-section h4 {
+            font-family: var(--display); font-size: 1rem; letter-spacing: 3px;
+            color: var(--gold); margin-bottom: 1.3rem;
+        }
+        .footer-section ul { list-style: none; display: grid; gap: 0.6rem; }
+        .footer-section a, .footer-section li { color: rgba(255,255,255,0.6); font-size: 0.9rem; transition: color .25s ease; }
+        .footer-section a:hover { color: var(--gold); }
+        .footer-socials { display: flex; gap: 0.7rem; margin-top: 1.2rem; }
+        .footer-social-link {
+            width: 38px; height: 38px; border-radius: 50%;
+            background: rgba(255,255,255,0.06); display: grid; place-items: center;
+            transition: all .3s ease;
+        }
+        .footer-social-link svg { width: 16px; height: 16px; color: rgba(255,255,255,0.8); }
+        .footer-social-link:hover { background: var(--gold); }
+        .footer-social-link:hover svg { color: var(--ink); }
+        .footer-bottom {
+            max-width: 1300px; margin: 3rem auto 0; padding-top: 1.6rem;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+            font-size: 0.8rem; color: rgba(255,255,255,0.45);
+        }
+
+        /* ============ REVEAL ANIMATIONS ============ */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all .9s cubic-bezier(.2,.7,.2,1); }
+        .reveal.in { opacity: 1; transform: none; }
+
+        /* ============ RESPONSIVE ============ */
         @media (max-width: 1024px) {
-            .hero-content h1 {
-                font-size: 3.5rem;
+            .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0;
+                flex-direction: column; padding: 1.5rem 5%; background: rgba(10,10,10,0.97);
+                gap: 1rem; border-top: 1px solid rgba(255,255,255,0.06);
             }
-
-            .overview-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .process-timeline::before {
-                left: 30px;
-            }
-
-            .process-step {
-                grid-template-columns: 1fr;
-                padding-left: 80px;
-            }
-
-            .process-step:nth-child(even) .step-content {
-                order: 1;
-            }
-
-            .step-number {
-                position: absolute;
-                left: 0;
-                top: 50%;
-                transform: translateY(-50%);
-            }
+            .nav-links.open { display: flex; }
+            .nav-toggle { display: flex; }
+            .intro-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .intro-visual { aspect-ratio: 4/3; max-height: 500px; }
+            .feature-row, .feature-row.reverse { grid-template-columns: 1fr; gap: 2rem; }
+            .feature-row.reverse .feature-visual { order: 0; }
+            .service-grid { grid-template-columns: repeat(2, 1fr); }
+            .stats-strip { grid-template-columns: repeat(2, 1fr); gap: 2rem 1rem; }
+            .stat-cell:nth-child(2)::after { display: none; }
+            .footer-content { grid-template-columns: repeat(2, 1fr); }
+            .pf-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 200px; }
+            .pf-item.big, .pf-item.wide { grid-column: span 2; }
+            .pf-item.tall { grid-row: span 1; }
         }
-
-        @media (max-width: 768px) {
-            .hero-content h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero-content .service-number {
-                font-size: 5rem;
-            }
-
-            .nav-links {
-                gap: 1.5rem;
-                font-size: 0.85rem;
-            }
-
-            .overview-stats {
-                grid-template-columns: 1fr;
-            }
-
-             .service-feature {
-                grid-template-columns: 1fr;
-            }
-
-            .service-feature:nth-child(even) .feature-content,
-            .service-feature:nth-child(even) .feature-visual {
-                order: initial;
-            }
-
-            .section-header h2 {
-                font-size: 2.5rem;
-            }
-
-            .cta-content h2 {
-                font-size: 2.5rem;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .cta-btn {
-                width: 100%;
-                max-width: 300px;
-            }
+        @media (max-width: 640px) {
+            section { padding: 5rem 5%; }
+            .hero { min-height: 90vh; padding-bottom: 6vh; }
+            .hero-meta { display: none; }
+            .hero h1 { letter-spacing: -1px; }
+            .service-grid { grid-template-columns: 1fr; }
+            .stats-strip { grid-template-columns: 1fr 1fr; }
+            .stat-cell::after { display: none !important; }
+            .timeline { padding-left: 2.5rem; }
+            .timeline::before { left: 0.7rem; }
+            .tl-step::before { left: -2.4rem; }
+            .footer-content { grid-template-columns: 1fr; gap: 2rem; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+            .intro-pillars { grid-template-columns: 1fr; }
         }
-    
-/* === MOBILE RESPONSIVE PATCH v1 === */
-*, *::before, *::after { box-sizing: border-box; }
-html, body { overflow-x: hidden; max-width: 100%; }
-img, video, iframe { max-width: 100%; height: auto; }
-p, li, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; word-wrap: break-word; }
-
-/* Tablets and below */
-@media (max-width: 1024px) {
-  .nav-links { gap: 1.2rem; }
-  .services-grid, .portfolio-grid, .projects-grid, .testimonials-grid,
-  .inspiration-grid, .values-grid, .stats-grid, .trust-grid, .info-cards {
-    grid-template-columns: repeat(2, 1fr) !important;
-  }
-  .footer-content { grid-template-columns: repeat(2, 1fr) !important; }
+    </style>
+<style id="unified-nav-footer">
+:root{
+  --u-ink:#0a1a2f;--u-navy:#0a1a2f;--u-navy-2:#11233f;
+  --u-gold:#c9a050;--u-gold-soft:#e3c789;
+  --u-paper:#f7f5f1;--u-bone:#efeae1;--u-line:#e6e2db;
+  --u-muted:#5a6473;--u-muted-2:#8a8f98;
+}
+/* --- Unified Nav --- */
+nav.site-nav#siteNav{
+  position:fixed!important;top:0;left:0;right:0;z-index:1000;
+  display:flex!important;align-items:center;justify-content:space-between;
+  padding:1.1rem 5%;min-height:80px;background:transparent;
+  border-bottom:1px solid transparent;
+  transition:background .4s,padding .35s,min-height .4s,box-shadow .4s,border-color .4s;
+  font-family:'Inter',sans-serif;
+}
+nav.site-nav#siteNav.scrolled{
+  background:linear-gradient(180deg,rgba(13,13,18,.92),rgba(20,20,28,.88))!important;
+  backdrop-filter:blur(28px) saturate(1.4);-webkit-backdrop-filter:blur(28px) saturate(1.4);
+  box-shadow:0 0 0 1px rgba(255,255,255,.04);
+  border-bottom-color:rgba(255,255,255,.06);
+  padding:.75rem 5%;min-height:66px;
+}
+nav.site-nav#siteNav .nav-logo img{height:48px!important;width:auto!important;display:block}
+nav.site-nav#siteNav .nav-links{list-style:none!important;display:flex!important;align-items:center;gap:2rem;margin:0!important;padding:0!important}
+nav.site-nav#siteNav .nav-links a{color:#efe9dd!important;font-size:.85rem;letter-spacing:1.6px;text-transform:uppercase;font-weight:500;position:relative;padding:.4rem 0;transition:color .25s;text-decoration:none}
+nav.site-nav#siteNav .nav-links a:hover,
+nav.site-nav#siteNav .nav-links a.active{color:var(--u-gold)!important}
+nav.site-nav#siteNav .nav-links a:not(.nav-cta-btn):after{content:'';position:absolute;left:0;bottom:-2px;height:1px;width:0;background:var(--u-gold);transition:width .3s}
+nav.site-nav#siteNav .nav-links a:not(.nav-cta-btn):hover:after,
+nav.site-nav#siteNav .nav-links a.active:after{width:100%}
+nav.site-nav#siteNav .nav-cta-btn{border:1px solid var(--u-gold)!important;color:var(--u-gold)!important;padding:.6rem 1.3rem!important;border-radius:999px!important;background:transparent!important;transition:all .3s}
+nav.site-nav#siteNav .nav-cta-btn:hover{background:var(--u-gold)!important;color:#0d0f12!important}
+nav.site-nav#siteNav .nav-cta-btn:after{display:none!important}
+nav.site-nav#siteNav .nav-toggle{display:none;width:36px;height:28px;flex-direction:column;justify-content:space-between;background:none;border:0;cursor:pointer;padding:0}
+nav.site-nav#siteNav .nav-toggle span{display:block;height:2px;width:100%;background:#f5f1ea;transition:.3s}
+nav.site-nav#siteNav .nav-toggle.open span:nth-child(1){transform:translateY(13px) rotate(45deg)}
+nav.site-nav#siteNav .nav-toggle.open span:nth-child(2){opacity:0}
+nav.site-nav#siteNav .nav-toggle.open span:nth-child(3){transform:translateY(-13px) rotate(-45deg)}
+@media(max-width:1024px){
+  nav.site-nav#siteNav .nav-links{position:fixed;top:72px;left:0;right:0;background:rgba(10,10,10,.97);flex-direction:column!important;align-items:stretch;padding:1.2rem 5% 1.6rem;gap:0;border-bottom:1px solid rgba(255,255,255,.08);transform:translateY(-130%);transition:transform .4s}
+  nav.site-nav#siteNav .nav-links.open{transform:translateY(0)}
+  nav.site-nav#siteNav .nav-links a{padding:1rem 0;border-bottom:1px solid rgba(255,255,255,.08)}
+  nav.site-nav#siteNav .nav-links a:after{display:none}
+  nav.site-nav#siteNav .nav-cta-btn{margin-top:.8rem;text-align:center}
+  nav.site-nav#siteNav .nav-toggle{display:flex}
 }
 
-/* Tablets / large phones */
-@media (max-width: 768px) {
-  /* Navigation: hamburger */
-  .nav-toggle { display: flex !important; }
-  .nav-links {
-    position: fixed;
-    top: 70px;
-    right: 0;
-    left: 0;
-    flex-direction: column;
-    background: rgba(15, 15, 15, 0.97);
-    padding: 1.5rem;
-    gap: 1rem;
-    transform: translateX(100%);
-    transition: transform 0.3s ease;
-    z-index: 999;
-    max-height: calc(100vh - 70px);
-    overflow-y: auto;
-  }
-  .nav-links.active, .nav-links.open, .nav-links.show {
-    transform: translateX(0);
-  }
-  .nav-links a { font-size: 0.95rem; }
-  .nav-logo img { height: 42px !important; max-height: 42px; width: auto; }
-  .nav-cta { display: none; }
-
-  /* Hero */
-  .hero, .hero-3d { min-height: auto; padding: 6rem 1rem 3rem !important; }
-  .hero-content, .hero-content-3d { padding: 0 1rem; }
-  .hero h1, .hero-content h1, .hero-content-3d h1 {
-    font-size: clamp(2rem, 6vw, 3.5rem) !important;
-    line-height: 1.15;
-  }
-  .hero p, .hero-content p, .hero-tagline, .hero-desc {
-    font-size: 1rem !important;
-  }
-  .hero-trust, .trust-strip, .scroll-indicator { display: none !important; }
-
-  /* Generic sections */
-  section { padding-left: 1.5rem !important; padding-right: 1.5rem !important; }
-
-  /* Grids â†’ 1 col */
-  .services-grid, .portfolio-grid, .projects-grid, .testimonials-grid,
-  .testimonials-slider, .values-grid, .info-cards, .services-layout,
-  .services-showcase, .services-container, .trust-grid, .trust-points {
-    grid-template-columns: 1fr !important;
-    display: grid !important;
-  }
-
-  /* Service blocks (image + text) stack */
-  .service-block, .services-layout, .trust { 
-    flex-direction: column !important;
-    grid-template-columns: 1fr !important;
-  }
-  .service-visual, .service-content, .service-image, .service-info,
-  .trust-image, .trust-text { width: 100% !important; max-width: 100%; }
-
-  /* Cards */
-  .service-card, .portfolio-item, .project-card, .testimonial-card,
-  .inspiration-card, .info-card, .stat-item, .value-card, .team-card {
-    max-width: 100%; width: 100%;
-  }
-
-  /* CTA stacks */
-  .cta-buttons, .hero-ctas, .cta-content { 
-    flex-direction: column !important;
-    align-items: stretch !important;
-  }
-  .cta-btn, .cta-button, .hero-ctas a, .cta-buttons a { 
-    width: 100%; text-align: center; max-width: 100%;
-  }
-  .cta-section, .cta-3d { padding: 3rem 1.5rem !important; }
-  .cta-content h2, .cta-section h2 { font-size: clamp(1.6rem, 5vw, 2.4rem) !important; }
-
-  /* Footer */
-  .footer-content { 
-    grid-template-columns: 1fr 1fr !important;
-    gap: 2rem !important;
-    text-align: left;
-  }
-
-  /* Forms */
-  .form-row { flex-direction: column !important; gap: 1rem; }
-  .form-group, input, textarea, select, button { max-width: 100%; box-sizing: border-box; }
-  input, textarea, select { font-size: 16px !important; /* prevent iOS zoom */ }
-
-  /* Filters */
-  .filter-buttons, .filter-tabs { 
-    flex-wrap: wrap !important;
-    gap: 0.5rem !important;
-    justify-content: center;
-  }
-  .filter-btn { font-size: 0.85rem !important; padding: 0.5rem 0.9rem !important; }
-
-  /* Stats */
-  .stats-grid, .stats-container { grid-template-columns: repeat(2, 1fr) !important; gap: 1rem; }
-
-  /* Section headings */
-  h2 { font-size: clamp(1.6rem, 5vw, 2.4rem) !important; }
-  h3 { font-size: clamp(1.2rem, 4vw, 1.6rem) !important; }
-
-  /* iframes / embeds */
-  iframe { width: 100% !important; height: 60vh; min-height: 320px; }
-}
-
-/* Small phones */
-@media (max-width: 640px) {
-  section { padding-left: 1rem !important; padding-right: 1rem !important; }
-  .hero, .hero-3d { padding: 5rem 1rem 2.5rem !important; }
-  .hero h1, .hero-content h1, .hero-content-3d h1 {
-    font-size: clamp(1.9rem, 7vw, 2.6rem) !important;
-  }
-  .services-grid, .portfolio-grid, .projects-grid, .testimonials-grid,
-  .inspiration-grid, .values-grid, .info-cards, .trust-grid,
-  .stats-grid, .stats-container {
-    grid-template-columns: 1fr !important;
-  }
-  body, p, li { font-size: 0.95rem; }
-  .footer-content { 
-    grid-template-columns: 1fr !important;
-    text-align: center;
-  }
-  .footer-section { text-align: center; }
-  .footer-section img, .footer-bottom img { margin-left: auto; margin-right: auto; }
-}
-
-/* Very small phones */
-@media (max-width: 480px) {
-  section { padding-left: 1rem !important; padding-right: 1rem !important; }
-  .hero h1, .hero-content h1, .hero-content-3d h1 {
-    font-size: clamp(1.8rem, 8vw, 2.3rem) !important;
-  }
-  .nav-logo img { height: 38px !important; }
-  .hero-trust, .trust-strip, .trust-divider, .scroll-indicator { display: none !important; }
-  h2 { font-size: 1.5rem !important; }
-}
-/* === END MOBILE RESPONSIVE PATCH v1 === */
-
-/* === UNIFIED NAV + FOOTER === */
-:root { --gold:#d4af37; --gold-dark:#c9a050; --gold-light:#e6c068; --navy:#0d0d12; }
-#siteNav { position:fixed; width:100%; top:0; z-index:1000; padding:0 5%; display:flex; justify-content:space-between; align-items:center; min-height:80px; transition:background .4s,box-shadow .4s,min-height .4s; background:transparent; }
-#siteNav.scrolled { background:linear-gradient(180deg,rgba(13,13,18,.92),rgba(20,20,28,.88)); backdrop-filter:blur(28px) saturate(1.4); -webkit-backdrop-filter:blur(28px) saturate(1.4); box-shadow:0 0 0 1px rgba(255,255,255,.04); min-height:66px; }
-#siteNav::after { content:''; position:absolute; bottom:0; left:0; right:0; height:1px; background:linear-gradient(90deg,transparent,var(--gold),transparent); opacity:0; transition:opacity .4s; pointer-events:none; }
-#siteNav.scrolled::after { animation:navGlow 6s ease-in-out infinite; }
-@keyframes navGlow { 0%,100%{opacity:.3}50%{opacity:1} }
-.nav-logo a { display:flex; align-items:center; text-decoration:none; }
-.nav-logo img { height:58px; width:auto; filter:drop-shadow(0 2px 8px rgba(0,0,0,.5)); transition:height .4s; }
-#siteNav.scrolled .nav-logo img { height:44px; }
-.nav-links { display:flex; align-items:center; gap:1.8rem; list-style:none; }
-.nav-links a { color:rgba(255,255,255,.9); text-decoration:none; font-family:'Inter',sans-serif; font-size:.82rem; letter-spacing:1.5px; text-transform:uppercase; position:relative; padding-bottom:2px; transition:color .25s; }
-.nav-links a::after { content:''; position:absolute; bottom:-2px; left:50%; right:50%; height:1px; background:var(--gold); transition:left .3s,right .3s; }
-.nav-links a:hover,.nav-links a.active { color:var(--gold); }
-.nav-links a:hover::after,.nav-links a.active::after { left:0; right:0; }
-.nav-cta-btn { background:var(--gold) !important; color:#0d0d12 !important; padding:.55rem 1.4rem !important; border-radius:50px; font-weight:700 !important; letter-spacing:2px !important; transition:box-shadow .3s,transform .3s !important; }
-.nav-cta-btn:hover { box-shadow:0 0 20px rgba(212,175,55,.6),0 0 40px rgba(212,175,55,.3) !important; transform:translateY(-2px) !important; }
-.nav-cta-btn::after { display:none !important; }
-.nav-toggle { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:4px; z-index:1001; position:relative; }
-.nav-toggle span { display:block; width:24px; height:2px; background:#fff; transition:all .3s; border-radius:2px; }
-.nav-toggle.open span:nth-child(1) { transform:rotate(45deg) translate(5px,5px); }
-.nav-toggle.open span:nth-child(2) { opacity:0; }
-.nav-toggle.open span:nth-child(3) { transform:rotate(-45deg) translate(5px,-5px); }
-@media(max-width:900px) {
-  .nav-logo img { height:42px !important; }
-  #siteNav.scrolled .nav-logo img { height:36px !important; }
-  .nav-toggle { display:flex !important; }
-  .nav-links { position:fixed; top:0; right:-100%; bottom:0; width:280px; flex-direction:column; align-items:flex-start; background:linear-gradient(180deg,rgba(13,13,18,.97),rgba(20,20,28,.95)); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); padding:80px 2rem 2rem; transition:right .35s cubic-bezier(.4,0,.2,1); gap:0; z-index:999; overflow-y:auto; }
-  .nav-links li { width:100%; border-bottom:1px solid rgba(255,255,255,.06); }
-  .nav-links a { display:block; padding:.9rem 0; font-size:.9rem; }
-  .nav-links.open { right:0; }
-  .nav-cta-item { border-bottom:none !important; margin-top:1rem; }
-  .nav-cta-btn { width:100% !important; text-align:center; display:block !important; padding:.7rem 1rem !important; border-radius:8px !important; }
-}
-.site-footer { background:linear-gradient(180deg,#0d0d12 0%,#0a0a0f 100%); color:rgba(255,255,255,.75); font-family:'Inter',sans-serif; padding-top:5rem; }
-.footer-content { display:grid; grid-template-columns:2fr 1fr 1fr 1.5fr; gap:3rem; padding:0 5% 3rem; max-width:1400px; margin:0 auto; }
-.footer-section h4 { font-family:'Bebas Neue',cursive; font-size:1.1rem; letter-spacing:2px; color:var(--gold); margin-bottom:1.2rem; }
-.footer-section ul { list-style:none; }
-.footer-section ul li { margin-bottom:.6rem; font-size:.9rem; color:rgba(255,255,255,.65); }
-.footer-section ul li a { color:rgba(255,255,255,.65); text-decoration:none; transition:color .25s; }
-.footer-section ul li a:hover { color:var(--gold); }
-.footer-brand img { filter:drop-shadow(0 2px 8px rgba(0,0,0,.5)); }
-.footer-tagline { margin-top:1rem; font-size:.95rem; color:rgba(255,255,255,.5); font-style:italic; font-family:'Playfair Display',serif; }
-.footer-socials { display:flex; gap:.8rem; margin-top:1.2rem; flex-wrap:wrap; }
-.footer-social-link { width:38px; height:38px; border-radius:50%; background:rgba(255,255,255,.06); border:1px solid rgba(212,175,55,.2); display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,.7); text-decoration:none; transition:all .3s; }
-.footer-social-link svg { width:18px; height:18px; }
-.footer-social-link:hover { background:var(--gold); color:#0d0d12; border-color:var(--gold); transform:translateY(-2px); }
-.footer-divider { height:1px; background:linear-gradient(90deg,transparent,rgba(212,175,55,.3),transparent); margin:0 5%; }
-.footer-bottom { text-align:center; padding:1.5rem 5%; font-size:.82rem; color:rgba(255,255,255,.3); }
-.footer-bottom a { color:var(--gold); text-decoration:none; }
-@media(max-width:900px) { .footer-content { grid-template-columns:1fr 1fr !important; gap:2rem !important; } }
-@media(max-width:480px) { .footer-content { grid-template-columns:1fr !important; } }
-/* === END UNIFIED NAV + FOOTER === */
-/* Page-specific: exterior-design */
-@media (max-width: 1024px) and (min-width: 641px) {
-  .services-grid, .gallery-grid { grid-template-columns: repeat(2, 1fr) !important; }
-}
-@media (max-width: 640px) {
-  .services-grid, .gallery-grid { grid-template-columns: 1fr !important; }
-}
-@media (max-width: 768px) {
-  .services-layout { flex-direction: column !important; display: flex !important; }
-  .service-features { padding-left: 1rem !important; }
-}
+/* --- Unified Footer --- */
+footer.site-footer{background:#000!important;color:#cfd6e2!important;padding:90px 0 30px!important;font-family:'Inter',sans-serif;margin:0!important}
+footer.site-footer .wrap{max-width:1360px;margin:0 auto;padding:0 40px}
+footer.site-footer .foot-grid{display:grid!important;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:50px;margin-bottom:60px}
+footer.site-footer .foot-grid h4{font-size:12px!important;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:var(--u-gold-soft)!important;margin-bottom:24px!important;font-family:'Inter',sans-serif}
+footer.site-footer .foot-grid p{color:#9aa3b2!important;font-size:14.5px;line-height:1.7;margin-bottom:20px;font-family:'Inter',sans-serif}
+footer.site-footer .foot-grid ul{list-style:none!important;padding:0!important;margin:0!important}
+footer.site-footer .foot-grid ul li{margin-bottom:12px!important;padding:0!important;background:none!important}
+footer.site-footer .foot-grid ul a{color:#cfd6e2!important;font-size:14.5px;transition:color .3s,padding .3s;text-decoration:none}
+footer.site-footer .foot-grid ul a:hover{color:var(--u-gold-soft)!important;padding-left:6px}
+footer.site-footer .foot-brand .logo-row{display:flex!important;align-items:center;gap:12px;margin-bottom:20px}
+footer.site-footer .foot-brand .logo-row img{height:42px!important;width:auto!important;margin:0!important}
+footer.site-footer .foot-brand .logo-row .word{font-family:'Bebas Neue',sans-serif!important;font-size:18px!important;letter-spacing:.16em;color:#fff!important}
+footer.site-footer .foot-contact a{display:block!important;color:#cfd6e2!important;font-size:14.5px;margin-bottom:10px;transition:color .3s;text-decoration:none}
+footer.site-footer .foot-contact a:hover{color:var(--u-gold-soft)!important}
+footer.site-footer .socials{display:flex!important;gap:12px;margin-top:22px;list-style:none;padding:0}
+footer.site-footer .socials a{width:40px!important;height:40px!important;border-radius:50%!important;background:rgba(255,255,255,.06)!important;border:1px solid rgba(255,255,255,.1)!important;display:flex!important;align-items:center;justify-content:center;transition:all .3s;padding:0!important}
+footer.site-footer .socials a:hover{background:var(--u-gold)!important;border-color:var(--u-gold)!important;transform:translateY(-3px)}
+footer.site-footer .socials a:hover svg{fill:var(--u-navy)!important}
+footer.site-footer .socials svg{width:16px!important;height:16px!important;fill:#cfd6e2!important;transition:fill .3s}
+footer.site-footer .foot-bottom{padding-top:28px!important;border-top:1px solid rgba(255,255,255,.08)!important;display:flex!important;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;font-size:13px;color:#7a8395!important}
+footer.site-footer .foot-bottom a{color:#7a8395!important;margin-left:18px;transition:color .3s;text-decoration:none}
+footer.site-footer .foot-bottom a:hover{color:var(--u-gold-soft)!important}
+@media(max-width:1024px){footer.site-footer .foot-grid{grid-template-columns:1fr 1fr;gap:40px}}
+@media(max-width:560px){footer.site-footer .foot-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-    <!-- Unified Navigation -->
-    <nav id="siteNav">
-        <div class="nav-logo">
-            <a href="laphic-website.html"><img src="images/logo.png" alt="LAPHIC Modern Homes"></a>
+
+<!-- ============ NAV ============ -->
+<nav class="site-nav" id="siteNav">
+  <div class="nav-logo">
+    <a href="laphic-website.html"><img src="images/logo.png" alt="LAPHIC Modern Homes"></a>
+  </div>
+  <ul class="nav-links" id="navLinksMenu">
+    <li><a href="who-we-are.html">Who We Are</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="portfolio.html">Portfolio</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="inspirations.html">Inspiration</a></li>
+    <li><a href="3d-experience.html">3D</a></li>
+    <li><a href="testimonials.html">Testimonials</a></li>
+    <li class="nav-cta-item"><a href="contact.html" class="nav-cta-btn">Contact</a></li>
+  </ul>
+  <button class="nav-toggle" id="navToggleBtn" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+    <video autoplay muted loop playsinline poster="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777646941/exterior2_svgchj.jpg">
+        <source src="exterior.mp4" type="video/mp4">
+    </video>
+    <div class="hero-inner">
+        <span class="hero-eyebrow">Service 02 — Exterior Architecture</span>
+        <h1>Facades that <em>command</em><br>the first look.</h1>
+        <p class="hero-lede">From cinematic facades to weather-tough finishes, we craft exteriors that age beautifully and perform under every Ugandan season — built by craftsmen, finished by perfectionists.</p>
+        <div class="hero-actions">
+            <a href="contact.html" class="btn btn-primary">
+                Start a Project
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#portfolio" class="btn btn-ghost">View Portfolio</a>
         </div>
-        <ul class="nav-links" id="navLinksMenu">
-            <li><a href="who-we-are.html">Who We Are</a></li>
-            <li><a href="services.html" class="active">Services</a></li>
-            <li><a href="portfolio.html">Portfolio</a></li>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="inspirations.html">Inspiration</a></li>
-            <li><a href="3d-experience.html">3D</a></li>
-            <li><a href="testimonials.html">Testimonials</a></li>
-            <li class="nav-cta-item"><a href="contact.html" class="nav-cta-btn">CONTACT</a></li>
-        </ul>
-        <button class="nav-toggle" id="navToggleBtn" aria-label="Toggle menu">
-            <span></span><span></span><span></span>
-        </button>
-    </nav>
+    </div>
+    <div class="hero-meta">
+        <span>Established</span>
+        <strong>2019</strong>
+        <span>Kampala · Uganda</span>
+    </div>
+</section>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <!-- <div class="breadcrumb">
-            <a href="index.html">Home</a> / <a href="services.html">Services</a> / Exterior Design
-        </div> -->
-        <div class="hero-content">
-            <span class="service-number">02</span>
-            <h1>Exterior Design</h1>
-            <p>Elevating First Impressions & Curb Appeal</p>
+<!-- ============ STATS ============ -->
+<div class="stats-strip">
+    <div class="stat-cell"><div class="num">300+</div><div class="lbl">Exteriors Delivered</div></div>
+    <div class="stat-cell"><div class="num">100%</div><div class="lbl">Premium Materials</div></div>
+    <div class="stat-cell"><div class="num">15+</div><div class="lbl">Years In-House Craft</div></div>
+    <div class="stat-cell"><div class="num">7</div><div class="lbl">Year Finish Warranty</div></div>
+</div>
 
+<!-- ============ INTRO ============ -->
+<section class="intro">
+    <div class="container intro-grid">
+        <div class="intro-visual reveal">
+            <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777646941/exterior2_svgchj.jpg" alt="Modern exterior architecture">
+            <div class="badge">Curb Appeal · Engineered</div>
         </div>
-    </section>
+        <div class="intro-copy reveal">
+            <span class="eyebrow">The Overview</span>
+            <h2>Exceptional exterior <em>architecture</em>, end-to-end.</h2>
+            <p>Your home's exterior tells your story before a single door opens. We design facades and outdoor environments that make a lasting first impression — engineered to resist weather, time and trend cycles.</p>
+            <p>From contemporary minimalism to classical detailing, our in-house architects, masons and finishers deliver an exterior package that reads beautifully from the street and lives well up close.</p>
 
-    <!-- Service Overview -->
-    <section class="service-overview">
-        <div class="overview-grid">
-            <div class="overview-content">
-                <h2>Exceptional Exterior Architecture</h2>
-                <p>Your home's exterior is the first thing people see. We create stunning facades and outdoor spaces that make lasting impressions while ensuring durability and weather resistance.</p>
-                <p>From modern minimalist designs to classic architectural styles, our team brings expertise in creating exteriors that are both beautiful and functional.</p>
-                
-                <div class="overview-stats">
-                    <div class="stat-box">
-                        <div class="number">300+</div>
-                        <div class="label">Exteriors Designed</div>
+            <div class="intro-pillars">
+                <div class="pillar">
+                    <div class="pillar-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V9l7-5 7 5v12M9 21V12h6v9"/></svg>
                     </div>
-                    <div class="stat-box">
-                        <div class="number">100%</div>
-                        <div class="label">Quality Materials</div>
+                    <div><h4>Architect-Led</h4><span>Concept to construction by our own team.</span></div>
+                </div>
+                <div class="pillar">
+                    <div class="pillar-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
                     </div>
-                    
+                    <div><h4>Weather-Tough</h4><span>Built for sun, storm and humidity.</span></div>
                 </div>
-            </div>
-
-            <div class="overview-image">
-                <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777646941/exterior2_svgchj.jpg" alt="Exterior Design">
-            </div>
-        </div>
-    </section>
-
-
-    <!-- Services Section -->
-    <section class="services-section">
-        <div class="section-header">
-            <h2>OUR EXPERTISE</h2>
-            <p>From foundation to finish, we deliver comprehensive exterior design and construction services that transform architectural visions into reality.</p>
-        </div>
-
-        <div class="services-layout">
-            <div class="service-feature">
-                <div class="feature-content">
-                    <div class="feature-icon">ðŸ—ï¸</div>
-                    <h3>Construction Services</h3>
-                    <p>Full-scale construction management from concept to completion. Our experienced team ensures every project is built to the highest standards of quality and safety.</p>
-                    <ul class="feature-list">
-                        <li>Residential & Commercial Construction</li>
-                        <li>Structural Engineering</li>
-                        <li>Foundation & Framework</li>
-                        <li>Project Management</li>
-                        <li>Quality Control & Inspection</li>
-                    </ul>
+                <div class="pillar">
+                    <div class="pillar-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>
+                    </div>
+                    <div><h4>Premium Finishes</h4><span>Hand-picked materials, every project.</span></div>
                 </div>
-                <div class="feature-visual">
-                    <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777887057/construction2_kieyyg.jpg" alt="Exterior Design">
-                </div>
-            </div>
-
-            <div class="service-feature">
-                <div class="feature-content">
-                    <div class="feature-icon">ðŸŽ¨</div>
-                    <h3>Exterior Painting</h3>
-                    <p>Professional exterior painting services using premium weather-resistant materials that protect and beautify your property for years to come.</p>
-                    <ul class="feature-list">
-                        <li>Surface Preparation & Treatment</li>
-                        <li>Premium Paint Application</li>
-                        <li>Weather-Resistant Coatings</li>
-                        <li>Color Consultation</li>
-                        <li>Protective Sealants</li>
-                    </ul>
-                </div>
-                <div class="feature-visual">
-                   <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777647366/outer_paint1_b7tpta.jpgimages/outer paint1.jfif" alt="Exterior Design">
-                </div>
-            </div>
-
-            <div class="service-feature">
-                <div class="feature-content">
-                    <div class="feature-icon">ðŸ’§</div>
-                    <h3>Outdoor Aquariums</h3>
-                    <p>Stunning outdoor water features that add tranquility and visual interest to your exterior spaces, designed for both beauty and functionality.</p>
-                    <ul class="feature-list">
-                        <li>Custom Aquarium Design</li>
-                        <li>Professional Installation</li>
-                        <li>Filtration Systems</li>
-                        <li>Landscape Integration</li>
-                        <li>Maintenance Support</li>
-                    </ul>
-                </div>
-                <div class="feature-visual">
-                    <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777646041/aq0_lhfxge.jpgimages/aq0.jfif" alt="Exterior Design">
-                </div>
-            </div>
-
-            
-
-
-            <div class="service-feature">
-                <div class="feature-content">
-                    <div class="feature-icon">âš™ï¸</div>
-                    <h3>Aluminum Works</h3>
-                    <p>Modern aluminum installations including windows, doors, railings, and architectural features that combine durability with contemporary aesthetics.</p>
-                    <ul class="feature-list">
-                        <li>Aluminum Windows & Doors</li>
-                        <li>Railings & Balustrades</li>
-                        <li>Cladding & Facades</li>
-                        <li>Custom Fabrication</li>
-                        <li>Powder Coating Options</li>
-                    </ul>
-                </div>
-                <div class="feature-visual">
-                    
-                  <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777887282/al_m3mwwq.jpg" alt="Aluminum Works">
+                <div class="pillar">
+                    <div class="pillar-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+                    </div>
+                    <div><h4>On-Time Delivery</h4><span>Milestone-tracked, no surprises.</span></div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Sub-Services Section -->
-    <section class="sub-services">
-        <div class="section-header">
-            <h2>Our Exterior Design Services</h2>
-            <p>Complete exterior solutions for your property</p>
+<!-- ============ EXPERTISE (alternating) ============ -->
+<section class="expertise">
+    <div class="container">
+        <div class="section-head reveal">
+            <span class="eyebrow">Our Expertise</span>
+            <h2>From foundation to <em>finish</em>.</h2>
+            <p>Four core disciplines, executed by specialist teams that work shoulder-to-shoulder on every project.</p>
         </div>
 
-        <div class="services-grid">
-            <!-- Facade Design -->
-            <div class="service-card">
-                <span class="service-icon">ðŸ›ï¸</span>
+        <div class="feature-row reveal">
+            <div class="feature-visual">
+                <span class="feature-tag">01 · Construction</span>
+                <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777887057/construction2_kieyyg.jpg" alt="Construction services">
+            </div>
+            <div class="feature-content">
+                <span class="step-no">— Built right</span>
+                <h3>Full-scale construction services.</h3>
+                <p>End-to-end construction management for residential and commercial projects — from groundbreaking to handover, with rigorous quality control at every stage.</p>
+                <ul class="feature-list">
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Residential &amp; commercial builds</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Structural engineering &amp; foundations</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Project management &amp; scheduling</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Quality control &amp; site inspection</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="feature-row reverse reveal">
+            <div class="feature-visual">
+                <span class="feature-tag">02 · Painting</span>
+                <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777647366/outer_paint1_b7tpta.jpg" alt="Exterior painting">
+            </div>
+            <div class="feature-content">
+                <span class="step-no">— Built to weather</span>
+                <h3>Exterior painting &amp; protective finishes.</h3>
+                <p>Premium weather-resistant systems applied with disciplined surface prep — finishes that hold their depth and colour for years, not seasons.</p>
+                <ul class="feature-list">
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Surface preparation &amp; treatment</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Premium paint &amp; texture coatings</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Weather-resistant sealants</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Colour &amp; palette consultation</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="feature-row reveal">
+            <div class="feature-visual">
+                <span class="feature-tag">03 · Water Features</span>
+                <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777646041/aq0_lhfxge.jpg" alt="Outdoor aquariums">
+            </div>
+            <div class="feature-content">
+                <span class="step-no">— Built to calm</span>
+                <h3>Outdoor aquariums &amp; water features.</h3>
+                <p>Bespoke outdoor water installations that turn a courtyard or entrance into a quiet, sensory landmark — beautifully integrated into your landscape design.</p>
+                <ul class="feature-list">
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Custom aquarium &amp; pond design</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Filtration &amp; circulation systems</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Landscape integration</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Long-term maintenance support</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="feature-row reverse reveal">
+            <div class="feature-visual">
+                <span class="feature-tag">04 · Aluminum</span>
+                <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777887282/al_m3mwwq.jpg" alt="Aluminum works">
+            </div>
+            <div class="feature-content">
+                <span class="step-no">— Built to detail</span>
+                <h3>Aluminum works &amp; architectural metal.</h3>
+                <p>Precision-engineered aluminum windows, doors, railings and cladding that combine modern durability with the clean lines of contemporary architecture.</p>
+                <ul class="feature-list">
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Aluminum windows &amp; doors</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Railings, balustrades &amp; gates</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Cladding &amp; facade systems</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Powder-coat &amp; custom fabrication</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ SERVICES GRID ============ -->
+<section class="services">
+    <div class="container">
+        <div class="section-head reveal">
+            <span class="eyebrow">Service Catalogue</span>
+            <h2>Complete <em>exterior</em> solutions.</h2>
+            <p>Six packaged services covering every surface of your property — booked individually or bundled into a single, coordinated build.</p>
+        </div>
+
+        <div class="service-grid">
+            <article class="svc-card reveal">
+                <div class="svc-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21h18M4 21V10l8-6 8 6v11M9 21v-6h6v6"/></svg>
+                </div>
                 <h3>Modern Facade Design</h3>
-                <p>Create a stunning first impression with our contemporary facade designs. We blend aesthetics with functionality to give your home a unique character.</p>
-                <ul class="service-features">
-                    <li>Contemporary facade concepts</li>
-                    <li>Material selection and sourcing</li>
-                    <li>3D visualization</li>
-                    <li>Weather-resistant materials</li>
-                    <li>Architectural detailing</li>
-                    <li>Color and texture consultation</li>
+                <p>Contemporary facade concepts that blend material, mass and light into a single, unmistakable identity.</p>
+                <ul>
+                    <li>Contemporary &amp; classical concepts</li>
+                    <li>Material selection &amp; sourcing</li>
+                    <li>3D photoreal visualisation</li>
+                    <li>Weather-resistant detailing</li>
                 </ul>
-                <a href="contact.html" class="service-link">Request Quote</a>
-            </div>
+                <a href="contact.html" class="svc-link">Request Quote
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                </a>
+            </article>
 
-            <!-- Exterior Painting -->
-            <div class="service-card">
-                <span class="service-icon">ðŸŽ¨</span>
-                <h3>Exterior Painting & Finishing</h3>
-                <p>Protect and beautify your home with our professional exterior painting services using premium weather-resistant paints.</p>
-                <ul class="service-features">
+            <article class="svc-card reveal">
+                <div class="svc-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 3v10a3 3 0 0 0 6 0V8h3a2 2 0 0 1 2 2v4M12 16v5"/></svg>
+                </div>
+                <h3>Painting &amp; Finishing</h3>
+                <p>Long-life exterior paint systems with premium prep, sealants and finish coats designed for tropical climates.</p>
+                <ul>
                     <li>Premium exterior paints</li>
-                    <li>Surface preparation</li>
-                    <li>Waterproofing treatments</li>
-                    <li>Texture coatings</li>
-                    <li>Color consultation</li>
-                    <li>Multi-year warranty</li>
+                    <li>Surface prep &amp; priming</li>
+                    <li>Waterproofing &amp; texture coats</li>
+                    <li>Multi-year finish warranty</li>
                 </ul>
-                <a href="contact.html" class="service-link">Request Quote</a>
-            </div>
+                <a href="contact.html" class="svc-link">Request Quote
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                </a>
+            </article>
 
-            <!-- Roofing -->
-            <div class="service-card">
-                <span class="service-icon">ðŸ </span>
+            <article class="svc-card reveal">
+                <div class="svc-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12L12 3l9 9M5 10v10h14V10"/></svg>
+                </div>
                 <h3>Roofing Solutions</h3>
-                <p>Quality roofing systems that protect your home while adding to its aesthetic appeal. We work with various roofing materials and styles.</p>
-                <ul class="service-features">
-                    <li>Metal roofing systems</li>
-                    <li>Tile roofing installation</li>
-                    <li>Asphalt shingles</li>
-                    <li>Roof repairs and maintenance</li>
-                    <li>Gutter installation</li>
-                    <li>Waterproofing solutions</li>
+                <p>Engineered roof systems that protect, perform and complete the architectural silhouette of your home.</p>
+                <ul>
+                    <li>Metal, tile &amp; shingle systems</li>
+                    <li>Gutter &amp; drainage installation</li>
+                    <li>Insulation &amp; waterproofing</li>
+                    <li>Repairs &amp; ongoing maintenance</li>
                 </ul>
-                <a href="contact.html" class="service-link">Request Quote</a>
-            </div>
+                <a href="contact.html" class="svc-link">Request Quote
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                </a>
+            </article>
 
-            <!-- Outdoor Lighting -->
-            <div class="service-card">
-                <span class="service-icon">ðŸ’¡</span>
-                <h3>Outdoor Lighting Design</h3>
-                <p>Illuminate your home's exterior with strategic lighting that enhances beauty, security, and functionality.</p>
-                <ul class="service-features">
-                    <li>Architectural lighting</li>
-                    <li>Pathway and garden lights</li>
-                    <li>Security lighting</li>
-                    <li>Solar lighting solutions</li>
-                    <li>LED energy-efficient systems</li>
+            <article class="svc-card reveal">
+                <div class="svc-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v6M12 22v-2M4.93 4.93l4.24 4.24M14.83 14.83l4.24 4.24M2 12h6M16 12h6M4.93 19.07l4.24-4.24M14.83 9.17l4.24-4.24"/></svg>
+                </div>
+                <h3>Outdoor Lighting</h3>
+                <p>Strategic, layered exterior lighting design — architectural, security and ambient in a single composition.</p>
+                <ul>
+                    <li>Architectural &amp; facade lighting</li>
+                    <li>Pathway, garden &amp; security lights</li>
+                    <li>Solar &amp; LED energy-efficient kit</li>
                     <li>Smart lighting control</li>
                 </ul>
-                <a href="contact.html" class="service-link">Request Quote</a>
-            </div>
+                <a href="contact.html" class="svc-link">Request Quote
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                </a>
+            </article>
 
-            <!-- Outdoor Structures -->
-            <div class="service-card">
-                <span class="service-icon">ðŸ—ï¸</span>
+            <article class="svc-card reveal">
+                <div class="svc-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21V8l9-5 9 5v13M3 21h18M8 12h8M8 17h8"/></svg>
+                </div>
                 <h3>Outdoor Structures</h3>
-                <p>Extend your living space outdoors with custom-built structures including pergolas, gazebos, and outdoor kitchens.</p>
-                <ul class="service-features">
-                    <li>Custom pergolas</li>
-                    <li>Gazebos and pavilions</li>
-                    <li>Outdoor kitchens</li>
-                    <li>Pool houses</li>
-                    <li>Carports and garages</li>
-                    <li>Entertainment areas</li>
+                <p>Pergolas, gazebos, carports and outdoor kitchens that extend usable living space beyond the front door.</p>
+                <ul>
+                    <li>Custom pergolas &amp; gazebos</li>
+                    <li>Outdoor kitchens &amp; entertainment</li>
+                    <li>Pool houses &amp; pavilions</li>
+                    <li>Carports &amp; covered parking</li>
                 </ul>
-                <a href="contact.html" class="service-link">Request Quote</a>
-            </div>
+                <a href="contact.html" class="svc-link">Request Quote
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                </a>
+            </article>
 
-            <!-- Complete Exterior -->
-            <div class="service-card">
-                <span class="service-icon">âœ¨</span>
-                <h3>Complete Exterior Packages</h3>
-                <p>Comprehensive exterior design and construction services from foundation to roofing, all coordinated seamlessly.</p>
-                <ul class="service-features">
+            <article class="svc-card reveal">
+                <div class="svc-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l2.5 6.5L21 9l-5 4.5L17.5 21 12 17l-5.5 4L8 13.5 3 9l6.5-.5z"/></svg>
+                </div>
+                <h3>Complete Exterior Package</h3>
+                <p>Single-contract, fully coordinated exterior build — design, materials, construction and finishing under one roof.</p>
+                <ul>
                     <li>Full architectural design</li>
                     <li>Structural engineering</li>
-                    <li>Material procurement</li>
-                    <li>Construction management</li>
-                    <li>Quality assurance</li>
-                    <li>Post-project support</li>
+                    <li>Procurement &amp; build management</li>
+                    <li>Post-project care &amp; warranty</li>
                 </ul>
-                <a href="contact.html" class="service-link">Request Quote</a>
-            </div>
+                <a href="contact.html" class="svc-link">Request Quote
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                </a>
+            </article>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Process Section -->
-    <section class="process-section">
-        <div class="section-header">
-            <h2>Our Design Process</h2>
-            <p>From concept to completion</p>
-        </div>
-
-        <div class="process-timeline">
-            <div class="process-step">
-                <div class="step-content">
-                    <h3>Site Assessment</h3>
-                    <p>We conduct a thorough site evaluation, considering orientation, climate, surroundings, and local building codes to inform our design.</p>
-                </div>
-                <div class="step-number">
-                    <div class="number">01</div>
-                </div>
-            </div>
-
-            <div class="process-step">
-                <div class="step-content">
-                    <h3>Design Development</h3>
-                    <p>Our architects create detailed designs with 3D renderings, allowing you to visualize the final result before construction begins.</p>
-                </div>
-                <div class="step-number">
-                    <div class="number">02</div>
-                </div>
-            </div>
-
-            <div class="process-step">
-                <div class="step-content">
-                    <h3>Material Selection</h3>
-                    <p>We guide you through selecting premium, weather-resistant materials that match your aesthetic preferences and budget.</p>
-                </div>
-                <div class="step-number">
-                    <div class="number">03</div>
-                </div>
-            </div>
-
-            <div class="process-step">
-                <div class="step-content">
-                    <h3>Construction</h3>
-                    <p>Our experienced team executes the design with precision, maintaining high quality standards and adhering to timelines.</p>
-                </div>
-                <div class="step-number">
-                    <div class="number">04</div>
-                </div>
-            </div>
-
-            <div class="process-step">
-                <div class="step-content">
-                    <h3>Finishing Touches</h3>
-                    <p>Final details including painting, lighting, and landscaping integration complete your home's transformation.</p>
-                </div>
-                <div class="step-number">
-                    <div class="number">05</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Gallery Section -->
-    <section class="gallery-section">
-        <div class="section-header">
-            <h2>Our Exterior Design Portfolio</h2>
-            <p>Explore our recent exterior projects</p>
+<!-- ============ PROCESS ============ -->
+<section class="process">
+    <div class="container">
+        <div class="section-head reveal">
+            <span class="eyebrow">The Process</span>
+            <h2>A five-step path from <em>concept</em> to completion.</h2>
+            <p>Transparent milestones, weekly progress reports, and a single point of contact from day one to handover.</p>
         </div>
 
-        <div class="gallery-grid">
-            <div class="gallery-item">
-                <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777647397/outer_paint2_lrgnkc.jpg" alt="Modern Villa">
-                <div class="gallery-overlay">
-                    <h4>Contemporary Villa</h4>
-                    <p>Sleek modern painting</p>
-                </div>
+        <div class="timeline">
+            <div class="tl-step reveal">
+                <div class="tl-num">STEP 01</div>
+                <h3>Site Assessment</h3>
+                <p>A full evaluation of orientation, climate, soil, access and local building code — the unglamorous detail that quietly decides the success of everything else.</p>
             </div>
-            <div class="gallery-item">
-                <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777647366/outer_paint1_b7tpta.jpg" alt="Classic Home">
-                <div class="gallery-overlay">
-                    <h4>Classic Residence</h4>
-                    <p>Timeless elegance</p>
-                </div>
+            <div class="tl-step reveal">
+                <div class="tl-num">STEP 02</div>
+                <h3>Design Development</h3>
+                <p>Our architects translate brief into form — concept sketches, technical drawings and 3D photoreal renders so you see the final result before a single brick is laid.</p>
             </div>
-            <div class="gallery-item">
-                <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777649353/Ge1_ehrkpp.jpg" alt="Luxury Estate">
-                <div class="gallery-overlay">
-                    <h4>Luxury Estate</h4>
-                    <p>outer painting  design</p>
-                </div>
+            <div class="tl-step reveal">
+                <div class="tl-num">STEP 03</div>
+                <h3>Material Selection</h3>
+                <p>Guided sourcing of premium, weather-resistant materials in samples you can touch — paired with transparent costings, never markup surprises.</p>
             </div>
-            <div class="gallery-item">
-                <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777887282/al_m3mwwq.jpg" alt="Beach House">
-                <div class="gallery-overlay">
-                    <h4>Aluminum Work</h4>
-                    <p>Harmonious with metal for the best interior</p>
-                </div>
+            <div class="tl-step reveal">
+                <div class="tl-num">STEP 04</div>
+                <h3>Construction</h3>
+                <p>Specialist crews — masonry, paint, roofing, aluminum — sequenced by a dedicated site manager who keeps milestones, quality and timeline aligned.</p>
             </div>
-            <div class="gallery-item">
-                <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777645932/al2_fqpg6w.jpg" alt="Urban Home">
-                <div class="gallery-overlay">
-                    <h4>Aluminum work </h4>
-                    <p>Sophisticated metal work for windows</p>
-                </div>
-            </div>
-            <div class="gallery-item">
-                <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777645957/al3_tjkbvj.jpg" alt="Country Home">
-                <div class="gallery-overlay">
-                    <h4>Aluminum gates </h4>
-                    <p>Rustic charm meets modern</p>
-                </div>
-            </div>
-            <div class="gallery-item">
-                <img src="images/aq1.jfifhttps://res.cloudinary.com/dgqukjhb2/image/upload/v1777646071/aq1_jqxp7p.jpg" alt="Beach House">
-                <div class="gallery-overlay">
-                    <h4>Aquarium</h4>
-                    <p>Harmonious with nature</p>
-                </div>
-            </div>
-            <div class="gallery-item">
-                <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777646092/aq2_ybsovd.jpgimages/aq2.jfif" alt="Urban Home">
-                <div class="gallery-overlay">
-                    <h4>Urban aquarium</h4>
-                    <p>Sophisticated aquatic design</p>
-                </div>
-            </div>
-            <div class="gallery-item">
-                <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777646134/aq3_u7tgmc.jpg" alt="Country Home">
-                <div class="gallery-overlay">
-                    <h4>outer Aquarium</h4>
-                    <p>make your home cool</p>
-                </div>
-            </div>
-            <div class="gallery-item">
-                <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777646609/construction1_wwvlva.jpg" alt="Beach House">
-                <div class="gallery-overlay">
-                    <h4>Lakeside Retreat</h4>
-                    <p>Harmonious with nature</p>
-                </div>
-            </div>
-            <div class="gallery-item">
-                <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777646557/construction0_fxqqfv.jpg" alt="Urban Home">
-                <div class="gallery-overlay">
-                    <h4>Urban Residence</h4>
-                    <p>Sophisticated city living</p>
-                </div>
-            </div>
-            <div class="gallery-item">
-                <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777646709/construction3_gg2ubu.jpg" alt="Country Home">
-                <div class="gallery-overlay">
-                    <h4>Country Estate</h4>
-                    <p>Rustic charm meets modern</p>
-                </div>
+            <div class="tl-step reveal">
+                <div class="tl-num">STEP 05</div>
+                <h3>Finishing &amp; Handover</h3>
+                <p>Detailed snag inspection, final paint touches, lighting commissioning and a walk-through with you. Then a long-term care plan in writing.</p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Testimonials -->
-    <section class="testimonials-section">
-        <div class="section-header">
-            <h2>What Our Clients Say</h2>
-            <p>Real experiences from satisfied homeowners</p>
+<!-- ============ PORTFOLIO ============ -->
+<section class="portfolio" id="portfolio">
+    <div class="container">
+        <div class="section-head reveal">
+            <span class="eyebrow">Selected Work</span>
+            <h2>Exterior <em>portfolio</em>.</h2>
+            <p>A small selection from over 300 completed projects across Kampala and beyond.</p>
         </div>
 
-        <div class="testimonials-slider">
-            <div class="testimonial-card">
-                <p class="testimonial-text">"The exterior transformation of our home by LAPHIC Modern Homes exceeded all expectations. The modern facade design and quality finishing have made our house the talk of the neighborhood!"</p>
-                <p class="testimonial-author">David Mukasa</p>
-                <p class="testimonial-role">Homeowner, Bugolobi</p>
+        <div class="pf-grid">
+            <div class="pf-item big reveal">
+                <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777647397/outer_paint2_lrgnkc.jpg" alt="Contemporary villa">
+                <div class="pf-overlay"><h4>Contemporary Villa</h4><span>Modern Facade &amp; Paint</span></div>
+            </div>
+            <div class="pf-item tall reveal">
+                <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777647366/outer_paint1_b7tpta.jpg" alt="Classic residence">
+                <div class="pf-overlay"><h4>Classic Residence</h4><span>Exterior Painting</span></div>
+            </div>
+            <div class="pf-item reveal">
+                <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777649353/Ge1_ehrkpp.jpg" alt="Luxury estate">
+                <div class="pf-overlay"><h4>Luxury Estate</h4><span>Facade Restoration</span></div>
+            </div>
+            <div class="pf-item reveal">
+                <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777887282/al_m3mwwq.jpg" alt="Aluminum works">
+                <div class="pf-overlay"><h4>Aluminum Detailing</h4><span>Windows &amp; Doors</span></div>
+            </div>
+            <div class="pf-item wide reveal">
+                <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777645932/al2_fqpg6w.jpg" alt="Aluminum work">
+                <div class="pf-overlay"><h4>Architectural Aluminum</h4><span>Custom Fabrication</span></div>
+            </div>
+            <div class="pf-item reveal">
+                <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777645957/al3_tjkbvj.jpg" alt="Aluminum gates">
+                <div class="pf-overlay"><h4>Entry Gates</h4><span>Powder-Coat Finish</span></div>
+            </div>
+            <div class="pf-item reveal">
+                <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777646071/aq1_jqxp7p.jpg" alt="Outdoor aquarium">
+                <div class="pf-overlay"><h4>Outdoor Water Feature</h4><span>Aquariums &amp; Ponds</span></div>
+            </div>
+            <div class="pf-item reveal">
+                <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777887057/construction2_kieyyg.jpg" alt="Construction project">
+                <div class="pf-overlay"><h4>New Build</h4><span>Construction Services</span></div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="cta-content">
-            <h2>Ready to Transform Your Exterior?</h2>
-            <p>Let's create an exterior that makes a statement</p>
-            <div class="cta-buttons">
-                <a href="contact.html" class="cta-btn cta-btn-primary">Get Free Consultation</a>
-                <a href="projects.html" class="cta-btn cta-btn-secondary">View Our Portfolio</a>
-            </div>
+<!-- ============ CTA ============ -->
+<section class="cta">
+    <div class="container">
+        <span class="eyebrow" style="color: var(--gold-soft); justify-content: center;">Let's Build</span>
+        <h2>Ready to redesign the <em>first impression</em> of your home?</h2>
+        <p>Send us your plot, your brief or even just a Pinterest board. We'll come back with a site visit, a concept direction and an honest quote — at no cost.</p>
+        <div class="hero-actions">
+            <a href="contact.html" class="btn btn-primary">
+                Book a Free Consultation
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+            <a href="tel:+256780535307" class="btn btn-ghost">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                +256 780 535 307
+            </a>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Unified Footer -->
-    <footer class="site-footer">
-        <div class="footer-content">
-            <div class="footer-section footer-brand">
-                <img src="images/logo.png" alt="LAPHIC Modern Homes" height="70">
-                <p class="footer-tagline">Designing tomorrow's spaces, today</p>
-            </div>
-            <div class="footer-section">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="laphic-website.html">Home</a></li>
-                    <li><a href="who-we-are.html">Who We Are</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="portfolio.html">Portfolio</a></li>
-                    <li><a href="projects.html">Projects</a></li>
-                    <li><a href="inspirations.html">Inspiration</a></li>
-                    <li><a href="testimonials.html">Testimonials</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Services</h4>
-                <ul>
-                    <li><a href="interior-design.html">Interior Design</a></li>
-                    <li><a href="exterior-design.html">Exterior Design</a></li>
-                    <li><a href="landscape-design.html">Landscape Design</a></li>
-                    <li><a href="services.html">Construction</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Contact</h4>
-                <ul>
-                    <li>📍 Kampala, Uganda</li>
-                    <li><a href="tel:+256780535307">+256 780 535 307</a></li>
-                    <li><a href="mailto:laphicmodernhomes@gmail.com">laphicmodernhomes@gmail.com</a></li>
-                    <li>Mon-Sun: 8AM – 8PM</li>
-                </ul>
-                <div class="footer-socials">
-                    <a href="https://www.instagram.com/laphichomes" target="_blank" rel="noopener" class="footer-social-link" title="Instagram">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                    </a>
-                    <a href="https://x.com/laphichomes" target="_blank" rel="noopener" class="footer-social-link" title="X (Twitter)">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                    </a>
-                    <a href="https://www.tiktok.com/@laphic.modern.hom" target="_blank" rel="noopener" class="footer-social-link" title="TikTok">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V9.05a8.14 8.14 0 0 0 4.78 1.52V7.13a4.85 4.85 0 0 1-1.01-.44z"/></svg>
-                    </a>
-                    <a href="https://wa.me/256705029291" target="_blank" rel="noopener" class="footer-social-link" title="WhatsApp">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
-                    </a>
-                </div>
-            </div>
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="logo-row">
+          <img src="images/logo.png" alt="LAPHIC Modern Homes" height="70">
+          <span class="word">LAPHIC MODERN HOMES</span>
         </div>
-        <div class="footer-divider"></div>
-        <div class="footer-bottom">
-            <p>&copy; <span id="footer-year">2026</span> LAPHIC Modern Homes. All rights reserved.</p>
+        <p>Designing tomorrow's spaces, today. A Kampala-based studio uniting construction, architecture, interior, exterior, and landscape since 2012.</p>
+        <div class="socials">
+          <a href="https://www.instagram.com/laphichomes" target="_blank" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2c2.7 0 3 0 4.1.1 1 .1 1.7.2 2.4.5.7.3 1.3.6 1.8 1.2.5.5.9 1.1 1.2 1.8.3.7.5 1.4.5 2.4.1 1.1.1 1.4.1 4.1s0 3-.1 4.1c-.1 1-.2 1.7-.5 2.4-.3.7-.6 1.3-1.2 1.8-.5.5-1.1.9-1.8 1.2-.7.3-1.4.5-2.4.5-1.1.1-1.4.1-4.1.1s-3 0-4.1-.1c-1-.1-1.7-.2-2.4-.5-.7-.3-1.3-.6-1.8-1.2-.5-.5-.9-1.1-1.2-1.8-.3-.7-.5-1.4-.5-2.4C2 15 2 14.7 2 12s0-3 .1-4.1c.1-1 .2-1.7.5-2.4.3-.7.6-1.3 1.2-1.8.5-.5 1.1-.9 1.8-1.2.7-.3 1.4-.5 2.4-.5C9 2 9.3 2 12 2zm0 5a5 5 0 100 10 5 5 0 000-10zm6.5-.8a1.2 1.2 0 11-2.4 0 1.2 1.2 0 012.4 0zM12 9a3 3 0 110 6 3 3 0 010-6z"/></svg></a>
+          <a href="https://x.com/laphichomes" target="_blank" aria-label="X"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.16 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="https://www.tiktok.com/@laphic.modern.hom" target="_blank" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005.8 20.1a6.34 6.34 0 0010.86-4.43V8.94a8.16 8.16 0 004.77 1.52V7a4.85 4.85 0 01-1.84-.31z"/></svg></a>
+          <a href="https://wa.me/256780535307" target="_blank" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.2-.2.3-.8.9-1 1.1-.2.2-.4.2-.7.1-.3-.2-1.2-.4-2.3-1.4-.8-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.4.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 00-8.5 15.3L2 22l4.8-1.3A10 10 0 1012 2zm0 18.2a8.2 8.2 0 01-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3a8.2 8.2 0 1110.6 1.1 8.1 8.1 0 01-3.7 2.6z"/></svg></a>
         </div>
-    </footer>
-    <script>
-    /* Unified Nav JS */
-    (function(){
-        var siteNav = document.getElementById('siteNav');
-        var navToggleBtn = document.getElementById('navToggleBtn');
-        var navLinksMenu = document.getElementById('navLinksMenu');
-        var footerYearEl = document.getElementById('footer-year');
-        if(footerYearEl) footerYearEl.textContent = new Date().getFullYear();
-        if(siteNav) {
-            window.addEventListener('scroll', function(){
-                siteNav.classList.toggle('scrolled', window.scrollY > 50);
-            }, {passive:true});
-            if(window.scrollY > 50) siteNav.classList.add('scrolled');
-        }
-        if(navToggleBtn && navLinksMenu) {
-            navToggleBtn.addEventListener('click', function(){
-                navToggleBtn.classList.toggle('open');
-                navLinksMenu.classList.toggle('open');
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="laphic-website.html">Home</a></li>
+          <li><a href="who-we-are.html">Who We Are</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="inspirations.html">Inspirations</a></li>
+          <li><a href="testimonials.html">Testimonials</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services.html">Architectural Design</a></li>
+          <li><a href="interior-design.html">Interior Design</a></li>
+          <li><a href="exterior-design.html">Exterior &amp; Facade</a></li>
+          <li><a href="landscape-design.html">Landscape</a></li>
+          <li><a href="3d-experience.html">3D Visualisation</a></li>
+        </ul>
+      </div>
+      <div class="foot-contact">
+        <h4>Get in Touch</h4>
+        <a href="#">Kajjansi, Entebbe Rd, Uganda</a>
+        <a href="tel:+256780535307">+256 780 535 307</a>
+        <a href="mailto:laphicmodernhomes@gmail.com">laphicmodernhomes@gmail.com</a>
+        <a href="https://wa.me/256705029291">WhatsApp</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <div>&copy; <span id="yr"></span> LAPHIC Modern Homes. All rights reserved. <span id="footer-year" style="display:none"></span></div>
+      <div>
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+    // year
+    document.getElementById('yr').textContent = new Date().getFullYear();
+
+    // nav scroll state
+    var nav = document.getElementById('siteNav');
+    window.addEventListener('scroll', function(){
+        if (window.scrollY > 30) nav.classList.add('scrolled'); else nav.classList.remove('scrolled');
+    });
+
+    // mobile menu
+    var toggle = document.getElementById('navToggleBtn');
+    var menu = document.getElementById('navLinksMenu');
+    if (toggle && menu) {
+        toggle.addEventListener('click', function(){
+            toggle.classList.toggle('open');
+            menu.classList.toggle('open');
+        });
+        menu.querySelectorAll('a').forEach(function(a){
+            a.addEventListener('click', function(){
+                toggle.classList.remove('open');
+                menu.classList.remove('open');
             });
-            navLinksMenu.querySelectorAll('a').forEach(function(a){
-                a.addEventListener('click', function(){
-                    navToggleBtn.classList.remove('open');
-                    navLinksMenu.classList.remove('open');
-                });
-            });
-        }
-    })();
-    </script>
+        });
+    }
+
+    // reveal on scroll
+    var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+            if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+        });
+    }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
+    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+</script>
+<script id="unified-nav-footer-js">
+(function(){
+  var nav=document.getElementById('siteNav');
+  if(nav){
+    var onScroll=function(){nav.classList.toggle('scrolled',window.scrollY>20);};
+    window.addEventListener('scroll',onScroll);onScroll();
+  }
+  var t=document.getElementById('navToggleBtn'),m=document.getElementById('navLinksMenu');
+  if(t&&m&&!t.dataset.bound){
+    t.dataset.bound='1';
+    t.addEventListener('click',function(){m.classList.toggle('open');t.classList.toggle('open');});
+    document.querySelectorAll('#navLinksMenu a').forEach(function(a){a.addEventListener('click',function(){m.classList.remove('open');t.classList.remove('open');});});
+  }
+  var y=new Date().getFullYear();
+  var yr=document.getElementById('yr');if(yr)yr.textContent=y;
+  var fy=document.getElementById('footer-year');if(fy)fy.textContent=y;
+})();
+</script>
 </body>
 </html>

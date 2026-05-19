@@ -1,1187 +1,663 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - LAPHIC Modern Homes</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<title>Contact — LAPHIC Modern Homes</title>
+<meta name="description" content="Start a project with LAPHIC Modern Homes — Uganda's design and construction studio. Call, email, WhatsApp or visit our Kajjansi office.">
+<link rel="icon" href="images/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-    <!-- Leaflet CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --midnight: #0f1419;
-            --teal: #9c6c24;
-            --coral: #ff6b6b;
-            --cream: #f8f6f0;
-            --charcoal: #3a3a3a;
-            --gold: #c9a050;
-            --primary: #0a0a0a;
-        }
-
-        body {
-            font-family: 'Crimson Pro', serif;
-            background: var(--cream);
-            color: var(--charcoal);
-        }
-
-        /* Navigation */
-      nav {
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            background: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 1.5rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-family: 'Bebas Neue', cursive;
-            font-size: 2rem;
-            color: var(--gold);
-            letter-spacing: 3px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2.5rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--cream);
-            text-decoration: none;
-            font-size: 0.95rem;
-            letter-spacing: 1px;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--gold);
-        }
-
-        /* Hero */
-        .hero {
-         position: relative;
-         height: 70vh;
-         overflow: hidden;
-         display: flex;
-         align-items: center;
-         justify-content: center;
-       }
-
-      /* SLIDER CONTAINER */
-       .hero-slider {
-         position: absolute;
-         inset: 0;
-         z-index: 1;
-       }
-
-       /* SLIDES */
-       .hero-slider span {
-          position: absolute;
-          inset: 0;
-          background-size: cover;
-          background-position: center;
-          opacity: 0;
-          animation: slideShow 15s infinite;
-       }
-
-      /* IMAGES */
-      .hero-slider span:nth-child(1) {
-            background-image: url("https://res.cloudinary.com/dgqukjhb2/image/upload/v1777648314/a_copy_h91peq.jpg");
-            animation-delay: 0s;
-       }
-
-       .hero-slider span:nth-child(2) {
-            background-image: url("https://res.cloudinary.com/dgqukjhb2/image/upload/v1777648871/IMG-20260407-WA0003_rxfpjn.jpg");
-            animation-delay: 5s;
-        }
-
-        .hero-slider span:nth-child(3) {
-           background-image: url("https://res.cloudinary.com/dgqukjhb2/image/upload/v1777647026/gazebo_xfwfnb.jpg");
-           animation-delay: 10s;
-        }
-
-        /* DARK OVERLAY */
-        .hero::after {
-          content: "";
-          position: absolute;
-          inset: 0;
-          background: rgba(0, 0, 0, 0.55);
-          z-index: 2;
-        }
-
-       /* TEXT CONTENT */
-       .hero-content {
-           position: relative;
-           z-index: 3;
-           text-align: center;
-           color: #fff;
-        }
-
-       .hero-content h1 {
-          font-size: 3.5rem;
-          letter-spacing: 2px;
-        }
-
-       .hero-content p {
-           font-size: 1.2rem;
-           margin-top: 10px;
-        }
-
-        /* SLIDE ANIMATION */
-       @keyframes slideShow {
-          0% { opacity: 0;
-        transform: scale(1); }
-
-          10% { opacity: 1;
-        transform: scale(1.05);}
-
-          30% { opacity: 1; }
-          40% { opacity: 0; }
-          100% { opacity: 0; }
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 20% 50%, rgba(255, 107, 107, 0.2) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(255, 215, 0, 0.2) 0%, transparent 50%);
-        }
-
-        /* .hero-content {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            color: var(--cream);
-        } */
-
-        .hero h1 {
-            font-family: 'Merriweather', serif;
-            font-size: 6rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-            animation: fadeIn 1s ease-out;
-        }
-
-        .hero p {
-            font-size: 1.4rem;
-            font-weight: 300;
-            animation: fadeIn 1s ease-out 0.3s both;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Contact Section */
-        .contact-section {
-            padding: 8rem 5%;
-            max-width: 1600px;
-            margin: 0 auto;
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 5rem;
-        }
-
-        .contact-info {
-            background: var(--midnight);
-            color: var(--cream);
-            padding: 5rem 4rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .contact-info::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(9, 45, 99, 0.2), transparent);
-            border-radius: 50%;
-        }
-
-        .contact-info h2 {
-            font-family: 'Merriweather', serif;
-            font-size: 3rem;
-            margin-bottom: 2rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .contact-info p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 3rem;
-            opacity: 0.9;
-            position: relative;
-            z-index: 1;
-        }
-
-        .info-item {
-            display: flex;
-            gap: 2rem;
-            margin-bottom: 2.5rem;
-            align-items: flex-start;
-            position: relative;
-            z-index: 1;
-        }
-
-        .info-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--teal);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            flex-shrink: 0;
-            border-radius: 50%;
-        }
-
-        .info-content h4 {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .info-content p {
-            font-size: 1rem;
-            opacity: 0.8;
-            margin: 0;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1.5rem;
-            margin-top: 3rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .social-link {
-            width: 50px;
-            height: 50px;
-            border: 2px solid var(--teal);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--teal);
-            text-decoration: none;
-            font-size: 1.3rem;
-            transition: all 0.4s ease;
-        }
-
-        .social-link:hover {
-            background: var(--teal);
-            color: var(--midnight);
-            transform: translateY(-5px);
-        }
-
-        /* Contact Form */
-        .contact-form {
-            background: white;
-            padding: 5rem 4rem;
-            box-shadow: 0 10px 60px rgba(0,0,0,0.1);
-        }
-
-        .contact-form h3 {
-            font-family: 'Merriweather', serif;
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            color: var(--midnight);
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .form-group {
-            margin-bottom: 2rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.8rem;
-            font-weight: 600;
-            color: var(--charcoal);
-            font-size: 0.95rem;
-        }
-
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 1.2rem;
-            border: 2px solid #e0e0e0;
-            font-family: 'Poppins', sans-serif;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            background: var(--cream);
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            outline: none;
-            border-color: var(--teal);
-            background: white;
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 150px;
-        }
-
-        .submit-btn {
-            width: 100%;
-            padding: 1.5rem;
-            background: linear-gradient(135deg, var(--teal) 0%, var(--midnight) 100%);
-            color: white;
-            border: none;
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: all 0.4s ease;
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(12, 32, 106, 0.3);
-        }
-
-        /* Map Section */
-        .map-section {
-            padding: 0;
-            height: 500px;
-            background: var(--charcoal);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .map-placeholder {
-            width: 100%;
-            height: 100%;
-        }
-
-        .map-overlay {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(15, 20, 25, 0.9);
-            padding: 3rem 4rem;
-            text-align: center;
-            color: white;
-        }
-
-        .map-overlay h3 {
-            font-family: 'Merriweather', serif;
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .map-overlay p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
-
-        /* Info Cards */
-        .info-cards {
-            padding: 6rem 5%;
-            background: white;
-        }
-
-        .cards-grid {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 3rem;
-        }
-
-        .info-card {
-            text-align: center;
-            padding: 3rem 2rem;
-            background: var(--cream);
-            transition: all 0.4s ease;
-            border: 2px solid transparent;
-        }
-
-        .info-card:hover {
-            border-color: var(--teal);
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(29, 161, 165, 0.2);
-        }
-
-        .card-icon {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 2rem;
-            background: linear-gradient(135deg, var(--teal), var(--coral));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-        }
-
-        .info-card h4 {
-            font-family: 'Merriweather', serif;
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            color: var(--midnight);
-        }
-
-        .info-card p {
-            font-size: 1rem;
-            line-height: 1.8;
-            color: var(--charcoal);
-        }
-
-        /* Footer */
-        footer {
-            background: var(--midnight);
-            color: var(--cream);
-            padding: 3rem 5%;
-            text-align: center;
-        }
-
-        footer p {
-            opacity: 0.9;
-        }
-
-        /* Map Section */
-        .map-section {
-            position: relative;
-            height: 500px;
-            width: 100%;
-        }
-
-        #locationMap {
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-
-        .map-overlay {
-            position: absolute;
-            top: 2rem;
-            left: 2rem;
-            background: rgba(15, 20, 25, 0.95);
-            color: var(--cream);
-            padding: 2rem 2.5rem;
-            border-radius: 8px;
-            z-index: 1000;
-            max-width: 350px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .map-overlay h3 {
-            font-family: 'Merriweather', serif;
-            font-size: 1.8rem;
-            margin-bottom: 0.5rem;
-            color: var(--gold);
-        }
-
-        .map-overlay p {
-            font-size: 1rem;
-            opacity: 0.9;
-            line-height: 1.6;
-        }
-
-        /* Leaflet popup customization */
-        .leaflet-popup-content-wrapper {
-            background: var(--midnight);
-            color: var(--cream);
-            border-radius: 8px;
-            padding: 10px;
-        }
-
-        .leaflet-popup-content {
-            margin: 15px;
-            font-size: 14px;
-        }
-
-        .leaflet-popup-tip {
-            background: var(--midnight);
-        }
-
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .hero h1 {
-                font-size: 4.5rem;
-            }
-
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .cards-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 3rem;
-            }
-
-            .contact-info,
-            .contact-form {
-                padding: 3rem 2rem;
-            }
-
-            .nav-links {
-                gap: 1.5rem;
-                font-size: 0.85rem;
-            }
-        }
-    
-/* === MOBILE RESPONSIVE PATCH v1 === */
-*, *::before, *::after { box-sizing: border-box; }
-html, body { overflow-x: hidden; max-width: 100%; }
-img, video, iframe { max-width: 100%; height: auto; }
-p, li, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; word-wrap: break-word; }
-
-/* Tablets and below */
-@media (max-width: 1024px) {
-  .nav-links { gap: 1.2rem; }
-  .services-grid, .portfolio-grid, .projects-grid, .testimonials-grid,
-  .inspiration-grid, .values-grid, .stats-grid, .trust-grid, .info-cards {
-    grid-template-columns: repeat(2, 1fr) !important;
-  }
-  .footer-content { grid-template-columns: repeat(2, 1fr) !important; }
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Bebas+Neue&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+
+<style>
+/* ===================== LAPHIC — Contact ===================== */
+:root{
+  --ink:#0a1a2f;
+  --navy:#0a1a2f;
+  --navy-2:#11233f;
+  --white:#ffffff;
+  --paper:#f7f5f1;
+  --bone:#efeae1;
+  --line:#e6e2db;
+  --gold:#c9a050;
+  --gold-soft:#e3c789;
+  --muted:#5a6473;
+  --muted-2:#8a8f98;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{overflow-x:hidden}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',-apple-system,sans-serif;
+  font-weight:400;font-size:16px;line-height:1.65;
+  color:var(--ink);background:#fff;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+em,i{font-style:italic}
+button{font-family:inherit;cursor:pointer;border:0;background:none}
+.wrap{max-width:1360px;margin:0 auto;padding:0 40px}
+@media(max-width:768px){ .wrap{padding:0 22px} }
+
+/* ===== Nav (unified) ===== */
+.site-nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.1rem 5%;min-height:80px;background:transparent;
+  border-bottom:1px solid transparent;
+  transition:background .4s,padding .35s,min-height .4s,box-shadow .4s,border-color .4s;
+}
+.site-nav.scrolled{
+  background:linear-gradient(180deg,rgba(13,13,18,.92),rgba(20,20,28,.88));
+  backdrop-filter:blur(28px) saturate(1.4);-webkit-backdrop-filter:blur(28px) saturate(1.4);
+  box-shadow:0 0 0 1px rgba(255,255,255,.04);
+  border-bottom-color:rgba(255,255,255,.06);
+  padding:.75rem 5%;min-height:66px;
+}
+.nav-logo img{height:48px;width:auto}
+.nav-links{list-style:none;display:flex;align-items:center;gap:2rem;margin:0}
+.nav-links a{color:#efe9dd;font-size:.85rem;letter-spacing:1.6px;text-transform:uppercase;font-weight:500;position:relative;padding:.4rem 0;transition:color .25s}
+.nav-links a:hover,.nav-links a.active{color:var(--gold)}
+.nav-links a:not(.nav-cta-btn):after{content:'';position:absolute;left:0;bottom:-2px;height:1px;width:0;background:var(--gold);transition:width .3s}
+.nav-links a:not(.nav-cta-btn):hover:after,.nav-links a.active:after{width:100%}
+.nav-cta-btn{border:1px solid var(--gold);color:var(--gold)!important;padding:.6rem 1.3rem!important;border-radius:999px;transition:all .3s}
+.nav-cta-btn:hover{background:var(--gold);color:#0d0f12!important}
+.nav-cta-btn:after{display:none!important}
+.nav-toggle{display:none;width:36px;height:28px;flex-direction:column;justify-content:space-between}
+.nav-toggle span{display:block;height:2px;width:100%;background:#f5f1ea;transition:.3s}
+.nav-toggle.open span:nth-child(1){transform:translateY(13px) rotate(45deg)}
+.nav-toggle.open span:nth-child(2){opacity:0}
+.nav-toggle.open span:nth-child(3){transform:translateY(-13px) rotate(-45deg)}
+@media(max-width:1024px){
+  .nav-links{position:fixed;top:72px;left:0;right:0;background:rgba(10,10,10,.97);flex-direction:column;align-items:stretch;padding:1.2rem 5% 1.6rem;gap:0;border-bottom:1px solid rgba(255,255,255,.08);transform:translateY(-130%);transition:transform .4s}
+  .nav-links.open{transform:translateY(0)}
+  .nav-links a{padding:1rem 0;border-bottom:1px solid rgba(255,255,255,.08)}
+  .nav-links a:after{display:none}
+  .nav-cta-btn{margin-top:.8rem;text-align:center}
+  .nav-toggle{display:flex}
 }
 
-/* Tablets / large phones */
-@media (max-width: 768px) {
-  /* Navigation: hamburger */
-  .nav-toggle { display: flex !important; }
-  .nav-links {
-    position: fixed;
-    top: 70px;
-    right: 0;
-    left: 0;
-    flex-direction: column;
-    background: rgba(15, 15, 15, 0.97);
-    padding: 1.5rem;
-    gap: 1rem;
-    transform: translateX(100%);
-    transition: transform 0.3s ease;
-    z-index: 999;
-    max-height: calc(100vh - 70px);
-    overflow-y: auto;
-  }
-  .nav-links.active, .nav-links.open, .nav-links.show {
-    transform: translateX(0);
-  }
-  .nav-links a { font-size: 0.95rem; }
-  .nav-logo img { height: 42px !important; max-height: 42px; width: auto; }
-  .nav-cta { display: none; }
+/* ===== Shared utilities ===== */
+.kicker{display:inline-flex;align-items:center;gap:12px;font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;color:var(--gold)}
+.kicker:before{content:'';width:32px;height:1px;background:var(--gold)}
+.kicker.dark{color:var(--navy)}
+.kicker.dark:before{background:var(--navy)}
+.kicker.light{color:var(--gold-soft)}
+.kicker.light:before{background:var(--gold-soft)}
+.h-section{font-family:'Inter',sans-serif;font-weight:700;font-size:clamp(1.9rem,3.2vw,3.1rem);line-height:1.1;letter-spacing:-.022em;color:var(--navy)}
+.h-section em{font-family:'Playfair Display',serif;font-weight:500;font-style:italic;color:var(--gold)}
+.h-section.light{color:#fff}
+.h-section.light em{color:var(--gold-soft)}
+.btn{display:inline-flex;align-items:center;gap:14px;padding:18px 30px;font-size:13px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;border-radius:999px;transition:all .3s;cursor:pointer}
+.btn.primary{background:var(--gold);color:var(--navy)}
+.btn.primary:hover{background:#fff;color:var(--navy);transform:translateY(-2px)}
+.btn.ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.4)}
+.btn.ghost:hover{background:#fff;color:var(--navy);border-color:#fff}
+.btn .arr{width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.18);display:inline-flex;align-items:center;justify-content:center;transition:transform .3s,background .3s}
+.btn.primary .arr{background:var(--navy);color:var(--gold-soft)}
+.btn:hover .arr{transform:translateX(4px)}
 
-  /* Hero */
-  .hero, .hero-3d { min-height: auto; padding: 6rem 1rem 3rem !important; }
-  .hero-content, .hero-content-3d { padding: 0 1rem; }
-  .hero h1, .hero-content h1, .hero-content-3d h1 {
-    font-size: clamp(2rem, 6vw, 3.5rem) !important;
-    line-height: 1.15;
-  }
-  .hero p, .hero-content p, .hero-tagline, .hero-desc {
-    font-size: 1rem !important;
-  }
-  .hero-trust, .trust-strip, .scroll-indicator { display: none !important; }
+/* ===== HERO ===== */
+.hero{position:relative;min-height:78vh;overflow:hidden;color:#fff;background:var(--navy);display:flex;align-items:flex-end}
+.hero-bg{position:absolute;inset:0}
+.hero-bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.6s;transform:scale(1.06)}
+.hero-bg img.active{opacity:1;animation:kenburns 14s ease-in-out forwards}
+@keyframes kenburns{from{transform:scale(1.06)}to{transform:scale(1.14)}}
+.hero:after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,26,47,.4) 0%,rgba(10,26,47,.55) 55%,rgba(10,26,47,.88) 100%);z-index:1}
+.hero .wrap{position:relative;z-index:2;width:100%;padding-top:160px;padding-bottom:90px}
+.hero .crumb{font-size:11.5px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold-soft);font-weight:600;margin-bottom:30px;display:flex;align-items:center;gap:14px}
+.hero .crumb:before{content:'';width:42px;height:1px;background:var(--gold-soft)}
+.hero h1{font-family:'Inter',sans-serif;font-weight:700;font-size:clamp(2.4rem,5.5vw,5.4rem);line-height:1;letter-spacing:-.035em;max-width:1050px;margin-bottom:26px}
+.hero h1 em{font-family:'Playfair Display',serif;font-weight:500;font-style:italic;color:var(--gold-soft)}
+.hero .sub{font-size:18px;line-height:1.65;color:#dfe4ec;max-width:620px;margin-bottom:38px}
+.hero .quick{display:flex;gap:14px;flex-wrap:wrap}
+.hero .quick a{display:inline-flex;align-items:center;gap:12px;padding:14px 22px;font-size:13px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:#fff;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.06);backdrop-filter:blur(10px);border-radius:999px;transition:all .3s}
+.hero .quick a:hover{background:var(--gold);border-color:var(--gold);color:var(--navy);transform:translateY(-2px)}
+.hero .quick a svg{width:16px;height:16px}
+.hero-dots{position:absolute;left:5%;bottom:42px;z-index:3;display:flex;gap:10px}
+.hero-dots button{width:36px;height:3px;background:rgba(255,255,255,.3);transition:background .3s}
+.hero-dots button.on{background:var(--gold)}
 
-  /* Generic sections */
-  section { padding-left: 1.5rem !important; padding-right: 1.5rem !important; }
+/* ===== CONTACT METHODS — 4 floating cards ===== */
+.methods{margin-top:-70px;position:relative;z-index:5;padding:0 0 0}
+.methods .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);box-shadow:0 30px 80px rgba(10,26,47,.12)}
+.method{background:#fff;padding:38px 28px;display:flex;flex-direction:column;gap:14px;transition:background .4s,transform .4s}
+.method:hover{background:var(--navy);transform:translateY(-4px)}
+.method:hover .ic,.method:hover h4,.method:hover p,.method:hover .m-link{color:#fff}
+.method:hover .ic{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.2)}
+.method:hover .ic svg{color:var(--gold-soft)}
+.method:hover .m-link{color:var(--gold-soft)}
+.method .ic{width:54px;height:54px;border-radius:50%;background:var(--paper);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;transition:background .4s,border-color .4s}
+.method .ic svg{width:22px;height:22px;color:var(--navy);transition:color .4s}
+.method .lbl{font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:var(--gold)}
+.method h4{font-size:18px;font-weight:600;color:var(--navy);letter-spacing:-.012em;transition:color .4s}
+.method p{font-size:14.5px;color:var(--muted);line-height:1.6;transition:color .4s}
+.method .m-link{display:inline-flex;align-items:center;gap:10px;margin-top:6px;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:var(--navy);transition:color .4s,gap .3s}
+.method:hover .m-link{gap:16px}
+.method .m-link svg{width:13px;height:13px}
+@media(max-width:1024px){.methods .wrap{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.methods .wrap{grid-template-columns:1fr}}
 
-  /* Grids â†’ 1 col */
-  .services-grid, .portfolio-grid, .projects-grid, .testimonials-grid,
-  .testimonials-slider, .values-grid, .info-cards, .services-layout,
-  .services-showcase, .services-container, .trust-grid, .trust-points {
-    grid-template-columns: 1fr !important;
-    display: grid !important;
-  }
+/* ===== FORM + INFO PANEL ===== */
+.contact-main{padding:140px 0 130px;background:#fff}
+.contact-main .grid{display:grid;grid-template-columns:1fr 1.3fr;gap:80px;align-items:start}
+@media(max-width:1024px){.contact-main .grid{grid-template-columns:1fr;gap:50px}}
 
-  /* Service blocks (image + text) stack */
-  .service-block, .services-layout, .trust { 
-    flex-direction: column !important;
-    grid-template-columns: 1fr !important;
-  }
-  .service-visual, .service-content, .service-image, .service-info,
-  .trust-image, .trust-text { width: 100% !important; max-width: 100%; }
+/* Left: info panel (navy) */
+.info-panel{background:var(--navy);color:#fff;padding:60px 44px;position:relative;overflow:hidden}
+.info-panel:before{content:'';position:absolute;top:-80px;right:-80px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(201,160,80,.18),transparent 70%)}
+.info-panel:after{content:'';position:absolute;bottom:-100px;left:-60px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(201,160,80,.1),transparent 70%)}
+.info-panel > *{position:relative;z-index:1}
+.info-panel .kicker{color:var(--gold-soft);margin-bottom:22px}
+.info-panel .kicker:before{background:var(--gold-soft)}
+.info-panel h2{color:#fff;margin-bottom:18px}
+.info-panel h2 em{color:var(--gold-soft)}
+.info-panel .lead{color:#cfd6e2;font-size:16px;line-height:1.7;margin-bottom:38px}
+.info-row{display:flex;gap:18px;padding:22px 0;border-top:1px solid rgba(255,255,255,.1)}
+.info-row:last-of-type{border-bottom:1px solid rgba(255,255,255,.1)}
+.info-row .ic{width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;flex:none}
+.info-row .ic svg{width:18px;height:18px;color:var(--gold-soft)}
+.info-row h5{font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:var(--gold-soft);margin-bottom:8px}
+.info-row p,.info-row a{color:#e3e8f0;font-size:15px;line-height:1.65}
+.info-row a{display:block;transition:color .3s}
+.info-row a:hover{color:var(--gold-soft)}
+.info-socials{display:flex;gap:12px;margin-top:32px}
+.info-socials a{width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;transition:all .3s}
+.info-socials a:hover{background:var(--gold);border-color:var(--gold);transform:translateY(-3px)}
+.info-socials a:hover svg{fill:var(--navy)}
+.info-socials svg{width:16px;height:16px;fill:#cfd6e2;transition:fill .3s}
 
-  /* Cards */
-  .service-card, .portfolio-item, .project-card, .testimonial-card,
-  .inspiration-card, .info-card, .stat-item, .value-card, .team-card {
-    max-width: 100%; width: 100%;
-  }
-
-  /* CTA stacks */
-  .cta-buttons, .hero-ctas, .cta-content { 
-    flex-direction: column !important;
-    align-items: stretch !important;
-  }
-  .cta-btn, .cta-button, .hero-ctas a, .cta-buttons a { 
-    width: 100%; text-align: center; max-width: 100%;
-  }
-  .cta-section, .cta-3d { padding: 3rem 1.5rem !important; }
-  .cta-content h2, .cta-section h2 { font-size: clamp(1.6rem, 5vw, 2.4rem) !important; }
-
-  /* Footer */
-  .footer-content { 
-    grid-template-columns: 1fr 1fr !important;
-    gap: 2rem !important;
-    text-align: left;
-  }
-
-  /* Forms */
-  .form-row { flex-direction: column !important; gap: 1rem; }
-  .form-group, input, textarea, select, button { max-width: 100%; box-sizing: border-box; }
-  input, textarea, select { font-size: 16px !important; /* prevent iOS zoom */ }
-
-  /* Filters */
-  .filter-buttons, .filter-tabs { 
-    flex-wrap: wrap !important;
-    gap: 0.5rem !important;
-    justify-content: center;
-  }
-  .filter-btn { font-size: 0.85rem !important; padding: 0.5rem 0.9rem !important; }
-
-  /* Stats */
-  .stats-grid, .stats-container { grid-template-columns: repeat(2, 1fr) !important; gap: 1rem; }
-
-  /* Section headings */
-  h2 { font-size: clamp(1.6rem, 5vw, 2.4rem) !important; }
-  h3 { font-size: clamp(1.2rem, 4vw, 1.6rem) !important; }
-
-  /* iframes / embeds */
-  iframe { width: 100% !important; height: 60vh; min-height: 320px; }
+/* Right: form */
+.form-wrap{position:relative}
+.form-wrap .kicker{margin-bottom:22px}
+.form-wrap h2{margin-bottom:14px}
+.form-wrap .lead{color:var(--muted);font-size:16px;line-height:1.7;margin-bottom:40px}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.form .full{grid-column:1/-1}
+.fg{position:relative;display:flex;flex-direction:column;gap:8px}
+.fg label{font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:var(--navy)}
+.fg label .req{color:var(--gold)}
+.fg input,.fg select,.fg textarea{
+  width:100%;padding:16px 18px;font-family:inherit;font-size:15px;color:var(--navy);
+  background:#fff;border:1px solid var(--line);border-radius:6px;outline:none;
+  transition:border-color .3s,box-shadow .3s,background .3s;
 }
+.fg input::placeholder,.fg textarea::placeholder{color:var(--muted-2)}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--gold);box-shadow:0 0 0 4px rgba(201,160,80,.12);background:#fff}
+.fg textarea{resize:vertical;min-height:140px}
+.fg select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230a1a2f' stroke-width='2'><polyline points='6 9 12 15 18 9'/></svg>");background-repeat:no-repeat;background-position:right 16px center;background-size:14px;padding-right:42px}
+.submit{margin-top:14px;display:inline-flex;align-items:center;gap:14px;padding:20px 32px;font-size:13px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:#fff;background:var(--navy);border-radius:999px;transition:all .3s;border:none}
+.submit:hover{background:var(--gold);color:var(--navy);transform:translateY(-2px)}
+.submit svg{width:18px;height:18px}
+.form-status{grid-column:1/-1;margin-top:14px;font-size:14px;color:var(--gold)}
+@media(max-width:600px){.form{grid-template-columns:1fr}}
 
-/* Small phones */
-@media (max-width: 640px) {
-  section { padding-left: 1rem !important; padding-right: 1rem !important; }
-  .hero, .hero-3d { padding: 5rem 1rem 2.5rem !important; }
-  .hero h1, .hero-content h1, .hero-content-3d h1 {
-    font-size: clamp(1.9rem, 7vw, 2.6rem) !important;
-  }
-  .services-grid, .portfolio-grid, .projects-grid, .testimonials-grid,
-  .inspiration-grid, .values-grid, .info-cards, .trust-grid,
-  .stats-grid, .stats-container {
-    grid-template-columns: 1fr !important;
-  }
-  body, p, li { font-size: 0.95rem; }
-  .footer-content { 
-    grid-template-columns: 1fr !important;
-    text-align: center;
-  }
-  .footer-section { text-align: center; }
-  .footer-section img, .footer-bottom img { margin-left: auto; margin-right: auto; }
-}
+/* ===== EXPECT — Why reach out ===== */
+.expect{padding:140px 0;background:var(--paper)}
+.expect .head{text-align:center;max-width:780px;margin:0 auto 70px}
+.expect .head .kicker{justify-content:center;margin-bottom:22px;display:inline-flex}
+.expect .head p{color:var(--muted);font-size:16.5px;line-height:1.75;margin-top:22px}
+.exp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+.exp-card{background:#fff;padding:46px 36px;border:1px solid var(--line);position:relative;transition:transform .4s,box-shadow .4s,border-color .4s}
+.exp-card:hover{transform:translateY(-6px);box-shadow:0 30px 60px rgba(10,26,47,.1);border-color:var(--gold)}
+.exp-card .n{font-family:'Bebas Neue',sans-serif;font-size:46px;color:var(--gold);letter-spacing:.04em;line-height:1;margin-bottom:18px}
+.exp-card h4{font-size:20px;font-weight:600;color:var(--navy);margin-bottom:12px;letter-spacing:-.012em}
+.exp-card p{color:var(--muted);font-size:14.5px;line-height:1.7}
+.exp-card .corner{position:absolute;top:0;right:0;width:36px;height:36px;background:var(--paper);clip-path:polygon(100% 0,0 0,100% 100%);transition:background .4s}
+.exp-card:hover .corner{background:var(--gold)}
+@media(max-width:1024px){.exp-grid{grid-template-columns:1fr;gap:22px}}
 
-/* Very small phones */
-@media (max-width: 480px) {
-  section { padding-left: 1rem !important; padding-right: 1rem !important; }
-  .hero h1, .hero-content h1, .hero-content-3d h1 {
-    font-size: clamp(1.8rem, 8vw, 2.3rem) !important;
-  }
-  .nav-logo img { height: 38px !important; }
-  .hero-trust, .trust-strip, .trust-divider, .scroll-indicator { display: none !important; }
-  h2 { font-size: 1.5rem !important; }
-}
-/* === END MOBILE RESPONSIVE PATCH v1 === */
+/* ===== FAQ ===== */
+.faq{padding:140px 0;background:#fff}
+.faq .head{display:grid;grid-template-columns:1fr 1.4fr;gap:80px;margin-bottom:60px;align-items:end}
+.faq .head p{color:var(--muted);font-size:16.5px;line-height:1.75}
+@media(max-width:900px){.faq .head{grid-template-columns:1fr;gap:24px}}
+.faq-list{max-width:980px;margin:0 auto}
+.faq-item{border-top:1px solid var(--line)}
+.faq-item:last-child{border-bottom:1px solid var(--line)}
+.faq-item summary{list-style:none;cursor:pointer;padding:26px 0;display:flex;justify-content:space-between;align-items:center;gap:24px;font-size:18px;font-weight:600;color:var(--navy);letter-spacing:-.01em}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary .plus{flex:none;width:36px;height:36px;border-radius:50%;border:1.5px solid var(--navy);display:flex;align-items:center;justify-content:center;transition:all .3s;position:relative}
+.faq-item summary .plus:before,.faq-item summary .plus:after{content:'';position:absolute;background:var(--navy);transition:transform .3s,background .3s}
+.faq-item summary .plus:before{width:14px;height:1.5px}
+.faq-item summary .plus:after{width:1.5px;height:14px}
+.faq-item[open] summary .plus{background:var(--gold);border-color:var(--gold)}
+.faq-item[open] summary .plus:before,.faq-item[open] summary .plus:after{background:var(--navy)}
+.faq-item[open] summary .plus:after{transform:scaleY(0)}
+.faq-item .body{padding:0 0 26px;color:var(--muted);font-size:15.5px;line-height:1.8;max-width:820px}
 
-/* === UNIFIED NAV + FOOTER === */
-:root { --gold:#d4af37; --gold-dark:#c9a050; --gold-light:#e6c068; --navy:#0d0d12; }
-#siteNav { position:fixed; width:100%; top:0; z-index:1000; padding:0 5%; display:flex; justify-content:space-between; align-items:center; min-height:80px; transition:background .4s,box-shadow .4s,min-height .4s; background:transparent; }
-#siteNav.scrolled { background:linear-gradient(180deg,rgba(13,13,18,.92),rgba(20,20,28,.88)); backdrop-filter:blur(28px) saturate(1.4); -webkit-backdrop-filter:blur(28px) saturate(1.4); box-shadow:0 0 0 1px rgba(255,255,255,.04); min-height:66px; }
-#siteNav::after { content:''; position:absolute; bottom:0; left:0; right:0; height:1px; background:linear-gradient(90deg,transparent,var(--gold),transparent); opacity:0; transition:opacity .4s; pointer-events:none; }
-#siteNav.scrolled::after { animation:navGlow 6s ease-in-out infinite; }
-@keyframes navGlow { 0%,100%{opacity:.3}50%{opacity:1} }
-.nav-logo a { display:flex; align-items:center; text-decoration:none; }
-.nav-logo img { height:58px; width:auto; filter:drop-shadow(0 2px 8px rgba(0,0,0,.5)); transition:height .4s; }
-#siteNav.scrolled .nav-logo img { height:44px; }
-.nav-links { display:flex; align-items:center; gap:1.8rem; list-style:none; }
-.nav-links a { color:rgba(255,255,255,.9); text-decoration:none; font-family:'Inter',sans-serif; font-size:.82rem; letter-spacing:1.5px; text-transform:uppercase; position:relative; padding-bottom:2px; transition:color .25s; }
-.nav-links a::after { content:''; position:absolute; bottom:-2px; left:50%; right:50%; height:1px; background:var(--gold); transition:left .3s,right .3s; }
-.nav-links a:hover,.nav-links a.active { color:var(--gold); }
-.nav-links a:hover::after,.nav-links a.active::after { left:0; right:0; }
-.nav-cta-btn { background:var(--gold) !important; color:#0d0d12 !important; padding:.55rem 1.4rem !important; border-radius:50px; font-weight:700 !important; letter-spacing:2px !important; transition:box-shadow .3s,transform .3s !important; }
-.nav-cta-btn:hover { box-shadow:0 0 20px rgba(212,175,55,.6),0 0 40px rgba(212,175,55,.3) !important; transform:translateY(-2px) !important; }
-.nav-cta-btn::after { display:none !important; }
-.nav-toggle { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:4px; z-index:1001; position:relative; }
-.nav-toggle span { display:block; width:24px; height:2px; background:#fff; transition:all .3s; border-radius:2px; }
-.nav-toggle.open span:nth-child(1) { transform:rotate(45deg) translate(5px,5px); }
-.nav-toggle.open span:nth-child(2) { opacity:0; }
-.nav-toggle.open span:nth-child(3) { transform:rotate(-45deg) translate(5px,-5px); }
-@media(max-width:900px) {
-  .nav-logo img { height:42px !important; }
-  #siteNav.scrolled .nav-logo img { height:36px !important; }
-  .nav-toggle { display:flex !important; }
-  .nav-links { position:fixed; top:0; right:-100%; bottom:0; width:280px; flex-direction:column; align-items:flex-start; background:linear-gradient(180deg,rgba(13,13,18,.97),rgba(20,20,28,.95)); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); padding:80px 2rem 2rem; transition:right .35s cubic-bezier(.4,0,.2,1); gap:0; z-index:999; overflow-y:auto; }
-  .nav-links li { width:100%; border-bottom:1px solid rgba(255,255,255,.06); }
-  .nav-links a { display:block; padding:.9rem 0; font-size:.9rem; }
-  .nav-links.open { right:0; }
-  .nav-cta-item { border-bottom:none !important; margin-top:1rem; }
-  .nav-cta-btn { width:100% !important; text-align:center; display:block !important; padding:.7rem 1rem !important; border-radius:8px !important; }
+/* ===== MAP ===== */
+.map-section{position:relative;height:560px;background:var(--navy)}
+#locationMap{position:absolute;inset:0;height:100%;width:100%;filter:grayscale(.2)}
+.map-overlay{
+  position:absolute;top:50%;left:5%;transform:translateY(-50%);
+  z-index:500;background:#fff;padding:42px 38px;max-width:380px;
+  box-shadow:0 30px 80px rgba(10,26,47,.18);
 }
-.site-footer { background:linear-gradient(180deg,#0d0d12 0%,#0a0a0f 100%); color:rgba(255,255,255,.75); font-family:'Inter',sans-serif; padding-top:5rem; }
-.footer-content { display:grid; grid-template-columns:2fr 1fr 1fr 1.5fr; gap:3rem; padding:0 5% 3rem; max-width:1400px; margin:0 auto; }
-.footer-section h4 { font-family:'Bebas Neue',cursive; font-size:1.1rem; letter-spacing:2px; color:var(--gold); margin-bottom:1.2rem; }
-.footer-section ul { list-style:none; }
-.footer-section ul li { margin-bottom:.6rem; font-size:.9rem; color:rgba(255,255,255,.65); }
-.footer-section ul li a { color:rgba(255,255,255,.65); text-decoration:none; transition:color .25s; }
-.footer-section ul li a:hover { color:var(--gold); }
-.footer-brand img { filter:drop-shadow(0 2px 8px rgba(0,0,0,.5)); }
-.footer-tagline { margin-top:1rem; font-size:.95rem; color:rgba(255,255,255,.5); font-style:italic; font-family:'Playfair Display',serif; }
-.footer-socials { display:flex; gap:.8rem; margin-top:1.2rem; flex-wrap:wrap; }
-.footer-social-link { width:38px; height:38px; border-radius:50%; background:rgba(255,255,255,.06); border:1px solid rgba(212,175,55,.2); display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,.7); text-decoration:none; transition:all .3s; }
-.footer-social-link svg { width:18px; height:18px; }
-.footer-social-link:hover { background:var(--gold); color:#0d0d12; border-color:var(--gold); transform:translateY(-2px); }
-.footer-divider { height:1px; background:linear-gradient(90deg,transparent,rgba(212,175,55,.3),transparent); margin:0 5%; }
-.footer-bottom { text-align:center; padding:1.5rem 5%; font-size:.82rem; color:rgba(255,255,255,.3); }
-.footer-bottom a { color:var(--gold); text-decoration:none; }
-@media(max-width:900px) { .footer-content { grid-template-columns:1fr 1fr !important; gap:2rem !important; } }
-@media(max-width:480px) { .footer-content { grid-template-columns:1fr !important; } }
-/* === END UNIFIED NAV + FOOTER === */
-/* Page-specific: contact */
-@media (max-width: 768px) {
-  .info-cards { grid-template-columns: 1fr !important; }
-}
-@media (max-width: 640px) {
-  .form-row { flex-direction: column !important; }
-  #map, .map-section iframe, .leaflet-container { 
-    height: 280px !important; min-height: 280px !important;
-  }
-}
+.map-overlay .kicker{margin-bottom:18px}
+.map-overlay h3{font-family:'Inter',sans-serif;font-weight:700;font-size:28px;color:var(--navy);margin-bottom:14px;letter-spacing:-.018em}
+.map-overlay h3 em{font-family:'Playfair Display',serif;font-weight:500;font-style:italic;color:var(--gold)}
+.map-overlay p{color:var(--muted);font-size:14.5px;line-height:1.7;margin-bottom:24px}
+.map-overlay a.dir{display:inline-flex;align-items:center;gap:12px;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:var(--navy);padding-bottom:6px;border-bottom:2px solid var(--navy);transition:gap .3s,color .3s,border-color .3s}
+.map-overlay a.dir:hover{gap:18px;color:var(--gold);border-color:var(--gold)}
+.map-overlay a.dir svg{width:14px;height:14px}
+@media(max-width:768px){.map-overlay{position:relative;top:auto;left:auto;transform:none;max-width:100%;margin:0}.map-section{height:auto}.map-section #locationMap{position:relative;height:380px}}
+
+/* ===== CTA STRIP ===== */
+.cta-strip{background:var(--gold);color:var(--navy);padding:48px 0}
+.cta-strip .wrap{display:flex;justify-content:space-between;align-items:center;gap:30px;flex-wrap:wrap}
+.cta-strip h3{font-family:'Playfair Display',serif;font-weight:500;font-style:italic;font-size:clamp(1.6rem,2.6vw,2.4rem);line-height:1.15;color:var(--navy)}
+.cta-strip .btn{background:var(--navy);color:#fff}
+.cta-strip .btn .arr{background:rgba(255,255,255,.18);color:#fff}
+.cta-strip .btn:hover{background:#fff;color:var(--navy)}
+.cta-strip .btn:hover .arr{background:var(--gold);color:var(--navy)}
+
+/* ===== Footer ===== */
+.site-footer{background:#000;color:#cfd6e2;padding:90px 0 30px}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:50px;margin-bottom:60px}
+.foot-grid h4{font-size:12px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:var(--gold-soft);margin-bottom:24px}
+.foot-grid p{color:#9aa3b2;font-size:14.5px;line-height:1.7;margin-bottom:20px}
+.foot-grid ul{list-style:none}
+.foot-grid ul li{margin-bottom:12px}
+.foot-grid ul a{color:#cfd6e2;font-size:14.5px;transition:color .3s,padding .3s}
+.foot-grid ul a:hover{color:var(--gold-soft);padding-left:6px}
+.foot-brand .logo-row{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.foot-brand .logo-row img{height:42px}
+.foot-brand .logo-row .word{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:.16em;color:#fff}
+.foot-contact a{display:block;color:#cfd6e2;font-size:14.5px;margin-bottom:10px;transition:color .3s}
+.foot-contact a:hover{color:var(--gold-soft)}
+.socials{display:flex;gap:12px;margin-top:22px}
+.socials a{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;transition:all .3s}
+.socials a:hover{background:var(--gold);border-color:var(--gold);transform:translateY(-3px)}
+.socials a:hover svg{fill:var(--navy)}
+.socials svg{width:16px;height:16px;fill:#cfd6e2;transition:fill .3s}
+.foot-bottom{padding-top:28px;border-top:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;font-size:13px;color:#7a8395}
+.foot-bottom a{color:#7a8395;margin-left:18px;transition:color .3s}
+.foot-bottom a:hover{color:var(--gold-soft)}
+@media(max-width:1024px){.foot-grid{grid-template-columns:1fr 1fr;gap:40px}}
+@media(max-width:560px){.foot-grid{grid-template-columns:1fr}}
+
+/* ===== Reveal ===== */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .9s,transform .9s}
+.reveal.in{opacity:1;transform:none}
 </style>
 </head>
 <body>
-    <!-- Unified Navigation -->
-    <nav id="siteNav">
-        <div class="nav-logo">
-            <a href="laphic-website.html"><img src="images/logo.png" alt="LAPHIC Modern Homes"></a>
+
+<!-- ===== Nav ===== -->
+<nav class="site-nav" id="siteNav">
+  <div class="nav-logo">
+    <a href="laphic-website.html"><img src="images/logo.png" alt="LAPHIC Modern Homes"></a>
+  </div>
+  <ul class="nav-links" id="navLinksMenu">
+    <li><a href="who-we-are.html">Who We Are</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="portfolio.html">Portfolio</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="inspirations.html">Inspiration</a></li>
+    <li><a href="3d-experience.html">3D</a></li>
+    <li><a href="testimonials.html">Testimonials</a></li>
+    <li class="nav-cta-item"><a href="contact.html" class="nav-cta-btn active">Contact</a></li>
+  </ul>
+  <button class="nav-toggle" id="navToggleBtn" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-bg">
+    <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/f_auto,q_auto,w_1600/v1777648314/a_copy_h91peq.jpg" class="active" alt="LAPHIC Studio">
+    <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/f_auto,q_auto,w_1600/v1777648871/IMG-20260407-WA0003_rxfpjn.jpg" alt="LAPHIC Project">
+    <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/f_auto,q_auto,w_1600/v1777647026/gazebo_xfwfnb.jpg" alt="LAPHIC Garden">
+  </div>
+  <div class="wrap">
+    <div class="crumb">Get in Touch · Kajjansi, Uganda</div>
+    <h1>Let's build something <em>beautiful.</em></h1>
+    <p class="sub">A short message, a phone call, or a coffee at the studio — every project starts with a conversation. Tell us what you're imagining and we'll take it from there.</p>
+    <div class="quick">
+      <a href="tel:+256780535307"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg>Call +256 780 535 307</a>
+      <a href="https://wa.me/256705029291" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.2-.2.3-.8.9-1 1.1-.2.2-.4.2-.7.1-.3-.2-1.2-.4-2.3-1.4-.8-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.4.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 00-8.5 15.3L2 22l4.8-1.3A10 10 0 1012 2z"/></svg>WhatsApp Us</a>
+    </div>
+  </div>
+  <div class="hero-dots" id="heroDots">
+    <button class="on" data-i="0" aria-label="Slide 1"></button>
+    <button data-i="1" aria-label="Slide 2"></button>
+    <button data-i="2" aria-label="Slide 3"></button>
+  </div>
+</section>
+
+<!-- ===== CONTACT METHODS — 4 floating cards ===== -->
+<section class="methods">
+  <div class="wrap">
+    <a href="tel:+256780535307" class="method">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+      <div class="lbl">Phone</div>
+      <h4>+256 780 535 307</h4>
+      <p>Mon — Sat · 8AM – 6PM</p>
+      <span class="m-link">Call Now <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+    </a>
+    <a href="mailto:laphicmodernhomes@gmail.com" class="method">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+      <div class="lbl">Email</div>
+      <h4>laphicmodernhomes<br>@gmail.com</h4>
+      <p>Reply within 24 hours</p>
+      <span class="m-link">Send Email <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+    </a>
+    <a href="https://wa.me/256705029291" target="_blank" rel="noopener" class="method">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.2-.2.3-.8.9-1 1.1-.2.2-.4.2-.7.1-.3-.2-1.2-.4-2.3-1.4-.8-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.4.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 00-8.5 15.3L2 22l4.8-1.3A10 10 0 1012 2z"/></svg></div>
+      <div class="lbl">WhatsApp</div>
+      <h4>+256 705 029 291</h4>
+      <p>Fastest response time</p>
+      <span class="m-link">Chat Now <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+    </a>
+    <a href="https://www.google.com/maps/search/?api=1&query=Kajjansi,Entebbe+Road,Uganda" target="_blank" rel="noopener" class="method">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-7-7-12a7 7 0 1114 0c0 5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg></div>
+      <div class="lbl">Office</div>
+      <h4>Kajjansi, Entebbe Rd</h4>
+      <p>Near St Anthony Nursery School</p>
+      <span class="m-link">Get Directions <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+    </a>
+  </div>
+</section>
+
+<!-- ===== CONTACT MAIN — split form + info ===== -->
+<section class="contact-main">
+  <div class="wrap">
+    <div class="grid">
+      <!-- Info panel -->
+      <aside class="info-panel reveal">
+        <div class="kicker light">Reach Out</div>
+        <h2 class="h-section light">Let's <em>talk.</em></h2>
+        <p class="lead">Whether it's a kitchen refresh, a full villa, or a master plan — we'd love to hear what you're working on.</p>
+
+        <div class="info-row">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+          <div>
+            <h5>Call Us</h5>
+            <a href="tel:+256780535307">+256 780 535 307</a>
+            <a href="tel:+256702620878">+256 702 620 878</a>
+          </div>
         </div>
-        <ul class="nav-links" id="navLinksMenu">
-            <li><a href="who-we-are.html">Who We Are</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="portfolio.html">Portfolio</a></li>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="inspirations.html">Inspiration</a></li>
-            <li><a href="3d-experience.html">3D</a></li>
-            <li><a href="testimonials.html">Testimonials</a></li>
-            <li class="nav-cta-item"><a href="contact.html" class="nav-cta-btn active">CONTACT</a></li>
+
+        <div class="info-row">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div>
+            <h5>Email Us</h5>
+            <a href="mailto:laphicmodernhomes@gmail.com">laphicmodernhomes@gmail.com</a>
+          </div>
+        </div>
+
+        <div class="info-row">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-7-7-12a7 7 0 1114 0c0 5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg></div>
+          <div>
+            <h5>Visit Us</h5>
+            <p>Near St Anthony Nursery &amp; Primary School<br>Kajjansi, 1km from Kajjansi Centre<br>Entebbe Road, Uganda</p>
+          </div>
+        </div>
+
+        <div class="info-row">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <div>
+            <h5>Office Hours</h5>
+            <p>Mon — Sat · 8:00 AM — 6:00 PM<br>Sunday by appointment</p>
+          </div>
+        </div>
+
+        <div class="info-socials">
+          <a href="https://www.instagram.com/laphichomes" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2c2.7 0 3 0 4.1.1 1 .1 1.7.2 2.4.5.7.3 1.3.6 1.8 1.2.5.5.9 1.1 1.2 1.8.3.7.5 1.4.5 2.4.1 1.1.1 1.4.1 4.1s0 3-.1 4.1c-.1 1-.2 1.7-.5 2.4-.3.7-.6 1.3-1.2 1.8-.5.5-1.1.9-1.8 1.2-.7.3-1.4.5-2.4.5-1.1.1-1.4.1-4.1.1s-3 0-4.1-.1c-1-.1-1.7-.2-2.4-.5-.7-.3-1.3-.6-1.8-1.2-.5-.5-.9-1.1-1.2-1.8-.3-.7-.5-1.4-.5-2.4C2 15 2 14.7 2 12s0-3 .1-4.1c.1-1 .2-1.7.5-2.4.3-.7.6-1.3 1.2-1.8.5-.5 1.1-.9 1.8-1.2.7-.3 1.4-.5 2.4-.5C9 2 9.3 2 12 2zm0 5a5 5 0 100 10 5 5 0 000-10zm6.5-.8a1.2 1.2 0 11-2.4 0 1.2 1.2 0 012.4 0zM12 9a3 3 0 110 6 3 3 0 010-6z"/></svg></a>
+          <a href="https://wa.me/256705029291" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.2-.2.3-.8.9-1 1.1-.2.2-.4.2-.7.1-.3-.2-1.2-.4-2.3-1.4-.8-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.4.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 00-8.5 15.3L2 22l4.8-1.3A10 10 0 1012 2z"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/></svg></a>
+          <a href="#" aria-label="X"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.16 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+        </div>
+      </aside>
+
+      <!-- Form -->
+      <div class="form-wrap reveal" id="contact-form">
+        <div class="kicker dark">Project Inquiry</div>
+        <h2 class="h-section">Send us a <em>message.</em></h2>
+        <p class="lead">Tell us about your project — timeline, budget, dreams. We'll get back to you within 24 hours.</p>
+
+        <form class="form" action="https://formsubmit.co/laphicmodernhomes@gmail.com" method="POST" id="contactForm">
+          <input type="hidden" name="_subject" value="New message from LAPHIC website">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" value="https://laphicmodernhomes.com/contact.html">
+          <input type="text" name="_honey" style="display:none">
+
+          <div class="fg">
+            <label>First Name <span class="req">*</span></label>
+            <input type="text" name="name" required placeholder="Your first name">
+          </div>
+          <div class="fg">
+            <label>Last Name <span class="req">*</span></label>
+            <input type="text" name="last_name" required placeholder="Your last name">
+          </div>
+          <div class="fg">
+            <label>Email <span class="req">*</span></label>
+            <input type="email" name="email" required placeholder="you@example.com">
+          </div>
+          <div class="fg">
+            <label>Phone</label>
+            <input type="tel" name="phone" placeholder="+256 XXX XXX XXX">
+          </div>
+          <div class="fg full">
+            <label>Service Interested In <span class="req">*</span></label>
+            <select name="subject" required>
+              <option value="">Select a service</option>
+              <option value="interior">Interior Design</option>
+              <option value="exterior">Exterior Design</option>
+              <option value="landscape">Landscape Design</option>
+              <option value="construction">Full Construction</option>
+              <option value="renovation">Renovation</option>
+              <option value="consultation">Consultation</option>
+              <option value="furniture">Furniture</option>
+              <option value="curtains">Curtains</option>
+              <option value="gypsum">Gypsum Work</option>
+              <option value="aluminium">Aluminium Works</option>
+              <option value="3d">3D Visualisation</option>
+            </select>
+          </div>
+          <div class="fg full">
+            <label>Budget Range</label>
+            <select name="budget">
+              <option value="">Select budget range</option>
+              <option value="small">Under 10M UGX</option>
+              <option value="medium">10M – 50M UGX</option>
+              <option value="large">50M – 100M UGX</option>
+              <option value="premium">100M+ UGX</option>
+            </select>
+          </div>
+          <div class="fg full">
+            <label>Project Details <span class="req">*</span></label>
+            <textarea name="message" required placeholder="Tell us about your project, timeline, and any specific requirements..."></textarea>
+          </div>
+          <button type="submit" class="submit full">
+            Send Message
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+          <div id="formStatus" class="form-status" aria-live="polite"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== EXPECT ===== -->
+<section class="expect">
+  <div class="wrap">
+    <div class="head reveal">
+      <div class="kicker dark">Why Reach Out</div>
+      <h2 class="h-section" style="margin-top:22px">What you can <em>expect.</em></h2>
+      <p>From the moment you say hello, we're focused on making the process smooth, transparent, and tailored to you.</p>
+    </div>
+    <div class="exp-grid">
+      <div class="exp-card reveal"><span class="corner"></span><div class="n">01</div><h4>Quick Response</h4><p>We reply to every inquiry within 24 hours — usually much sooner. Your time matters, and we treat it that way.</p></div>
+      <div class="exp-card reveal"><span class="corner"></span><div class="n">02</div><h4>Free Consultation</h4><p>A complimentary sit-down with our team to talk through your vision, your space, and the possibilities ahead.</p></div>
+      <div class="exp-card reveal"><span class="corner"></span><div class="n">03</div><h4>Detailed Quotes</h4><p>A transparent, itemised proposal with clear pricing, realistic timelines, and no hidden surprises.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="faq">
+  <div class="wrap">
+    <div class="head">
+      <div class="reveal">
+        <div class="kicker dark">FAQ</div>
+        <h2 class="h-section" style="margin-top:22px">Questions, <em>answered.</em></h2>
+      </div>
+      <p class="reveal">A few of the questions we hear most often. If yours isn't here, write to us — we read every message.</p>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item"><summary>How long does a typical project take? <span class="plus"></span></summary><div class="body">A kitchen refresh can take 3–6 weeks; a full villa build is typically 6–12 months from groundbreaking. We'll give you a realistic timeline at the design stage and stick to it.</div></details>
+      <details class="faq-item"><summary>Do you handle both design and construction? <span class="plus"></span></summary><div class="body">Yes. We're a design-build studio — one contract, one accountable team, from first sketch to final handover. The same hands that design it also sign off every joint.</div></details>
+      <details class="faq-item"><summary>What's the cost of an initial consultation? <span class="plus"></span></summary><div class="body">The first consultation is always free. We use it to understand your brief, walk through your site (or look at drawings), and work out whether we're a good fit.</div></details>
+      <details class="faq-item"><summary>Do you work outside Kampala? <span class="plus"></span></summary><div class="body">Yes — we've delivered projects across Uganda and East Africa. Travel and accommodation for site visits get itemised separately so it's transparent.</div></details>
+      <details class="faq-item"><summary>Can you work with my budget? <span class="plus"></span></summary><div class="body">We take projects from modest renovations to premium builds. After the first meeting we'll tell you honestly what's possible within your range — and if it isn't, we'll say so.</div></details>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MAP ===== -->
+<section class="map-section">
+  <div id="locationMap"></div>
+  <div class="map-overlay">
+    <div class="kicker dark">Find Us</div>
+    <h3>Visit Our <em>Office.</em></h3>
+    <p>Near St Anthony Nursery &amp; Primary School<br>Kajjansi, 1km from Kajjansi Centre<br>Entebbe Road, Uganda</p>
+    <a href="https://www.google.com/maps/search/?api=1&query=Kajjansi,Entebbe+Road,Uganda" target="_blank" rel="noopener" class="dir">
+      Get Directions
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ===== CTA STRIP ===== -->
+<section class="cta-strip">
+  <div class="wrap">
+    <h3>Prefer to talk? <em>Coffee's on us at the studio.</em></h3>
+    <a href="tel:+256780535307" class="btn">Call +256 780 535 307 <span class="arr">→</span></a>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="logo-row">
+          <img src="images/logo.png" alt="LAPHIC Modern Homes" height="70">
+          <span class="word">LAPHIC MODERN HOMES</span>
+        </div>
+        <p>Designing tomorrow's spaces, today. A Kampala-based studio uniting construction, architecture, interior, exterior, and landscape since 2012.</p>
+        <div class="socials">
+          <a href="https://www.instagram.com/laphichomes" target="_blank" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2c2.7 0 3 0 4.1.1 1 .1 1.7.2 2.4.5.7.3 1.3.6 1.8 1.2.5.5.9 1.1 1.2 1.8.3.7.5 1.4.5 2.4.1 1.1.1 1.4.1 4.1s0 3-.1 4.1c-.1 1-.2 1.7-.5 2.4-.3.7-.6 1.3-1.2 1.8-.5.5-1.1.9-1.8 1.2-.7.3-1.4.5-2.4.5-1.1.1-1.4.1-4.1.1s-3 0-4.1-.1c-1-.1-1.7-.2-2.4-.5-.7-.3-1.3-.6-1.8-1.2-.5-.5-.9-1.1-1.2-1.8-.3-.7-.5-1.4-.5-2.4C2 15 2 14.7 2 12s0-3 .1-4.1c.1-1 .2-1.7.5-2.4.3-.7.6-1.3 1.2-1.8.5-.5 1.1-.9 1.8-1.2.7-.3 1.4-.5 2.4-.5C9 2 9.3 2 12 2zm0 5a5 5 0 100 10 5 5 0 000-10zm6.5-.8a1.2 1.2 0 11-2.4 0 1.2 1.2 0 012.4 0zM12 9a3 3 0 110 6 3 3 0 010-6z"/></svg></a>
+          <a href="#" aria-label="X"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.16 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005.8 20.1a6.34 6.34 0 0010.86-4.43V8.94a8.16 8.16 0 004.77 1.52V7a4.85 4.85 0 01-1.84-.31z"/></svg></a>
+          <a href="https://wa.me/256780535307" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.2-.2.3-.8.9-1 1.1-.2.2-.4.2-.7.1-.3-.2-1.2-.4-2.3-1.4-.8-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.4.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.1-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 00-8.5 15.3L2 22l4.8-1.3A10 10 0 1012 2zm0 18.2a8.2 8.2 0 01-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3a8.2 8.2 0 1110.6 1.1 8.1 8.1 0 01-3.7 2.6z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="laphic-website.html">Home</a></li>
+          <li><a href="who-we-are.html">Who We Are</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="inspirations.html">Inspirations</a></li>
+          <li><a href="testimonials.html">Testimonials</a></li>
         </ul>
-        <button class="nav-toggle" id="navToggleBtn" aria-label="Toggle menu">
-            <span></span><span></span><span></span>
-        </button>
-    </nav>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services.html">Architectural Design</a></li>
+          <li><a href="interior-design.html">Interior Design</a></li>
+          <li><a href="exterior-design.html">Exterior &amp; Facade</a></li>
+          <li><a href="landscape-design.html">Landscape</a></li>
+          <li><a href="3d-experience.html">3D Visualisation</a></li>
+        </ul>
+      </div>
+      <div class="foot-contact">
+        <h4>Get in Touch</h4>
+        <a href="#">Kajjansi, Entebbe Rd, Uganda</a>
+        <a href="tel:+256780535307">+256 780 535 307</a>
+        <a href="mailto:laphicmodernhomes@gmail.com">laphicmodernhomes@gmail.com</a>
+        <a href="https://wa.me/256705029291">WhatsApp</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <div>© <span id="yr"></span> LAPHIC Modern Homes. All rights reserved.</div>
+      <div>
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
 
-    <!-- Hero -->
-    <section class="hero">
-        <div class="hero-slider">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <div class="hero-content">
-           <h1>Get In Touch</h1>
-           <p>Let's bring your vision to life</p>
-        </div>
-    </section>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
 
+// Nav scroll
+const nav = document.getElementById('siteNav');
+window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 20); });
 
-    <!-- Contact Section -->
-    <section class="contact-section">
-        <div class="contact-grid">
-            <!-- Contact Info -->
-            <div class="contact-info">
-                <h2>Let's Talk</h2>
-                <p>We're here to answer your questions and discuss how we can help transform your space into something extraordinary.</p>
+// Mobile toggle
+const toggle = document.getElementById('navToggleBtn');
+const links = document.getElementById('navLinksMenu');
+toggle?.addEventListener('click', () => { links.classList.toggle('open'); toggle.classList.toggle('open'); });
+document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => { links.classList.remove('open'); toggle?.classList.remove('open'); }));
 
-                <div class="info-item">
-                    <div class="info-icon">ðŸ“</div>
-                    <div class="info-content">
-                        <h4>Our Location</h4>
-                        <p>Kampala, Central Region<br>Uganda</p>
-                    </div>
-                </div>
+// Hero slider
+const slides = document.querySelectorAll('.hero-bg img');
+const dots = document.querySelectorAll('#heroDots button');
+let cur = 0;
+function go(i){
+  slides[cur].classList.remove('active');
+  dots[cur]?.classList.remove('on');
+  cur = (i + slides.length) % slides.length;
+  slides[cur].classList.add('active');
+  dots[cur]?.classList.add('on');
+}
+dots.forEach(d => d.addEventListener('click', () => go(+d.dataset.i)));
+setInterval(() => go(cur + 1), 6500);
 
-                <div class="info-item">
-                    <div class="info-icon">ðŸ“ž</div>
-                    <div class="info-content">
-                        <h4>Phone Number</h4>
-                        <p>+256 780 535 307 ,+256 702 620 878<br>Mon - Sat: 8AM - 6PM</p>
-                    </div>
-                </div>
+// Reveal
+const io = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }}), {threshold:.12, rootMargin:'0px 0px -60px 0px'});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-                <div class="info-item">
-                    <div class="info-icon">âœ‰ï¸</div>
-                    <div class="info-content">
-                        <h4>Email Address</h4><br>
-                        <p>laphicmodernhomes@gmail.com</p>
-                    </div>
-                </div>
+// Map — Kajjansi, Entebbe Road
+window.addEventListener('load', () => {
+  if (typeof L === 'undefined') return;
+  const map = L.map('locationMap', { scrollWheelZoom:false, zoomControl:true }).setView([0.18583, 32.54972], 15);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap', maxZoom: 19
+  }).addTo(map);
+  const goldIcon = L.divIcon({
+    className: 'laphic-pin',
+    html: '<div style="width:44px;height:44px;border-radius:50% 50% 50% 0;background:#c9a050;border:3px solid #fff;transform:rotate(-45deg);box-shadow:0 6px 18px rgba(10,26,47,.35);display:flex;align-items:center;justify-content:center;"><div style="width:14px;height:14px;border-radius:50%;background:#0a1a2f;transform:rotate(45deg);"></div></div>',
+    iconSize: [44,44], iconAnchor: [22,40]
+  });
+  L.marker([0.18583, 32.54972], { icon: goldIcon })
+    .addTo(map)
+    .bindPopup('<b>LAPHIC Modern Homes</b><br>Kajjansi, Entebbe Road')
+    .openPopup();
+});
 
-                <div class="info-item">
-                    <div class="info-icon">ðŸ’¬</div>
-                    <div class="info-content">
-                        <h4>WhatsApp</h4>
-                        <p> +256 705 029 291<br>Chat with us instantly<br>Quick responses guaranteed</p>
-                    </div>
-                </div>
-              <!-- social media links to be added -->
-                <div class="social-links">
-                    <a href="#" class="social-link">f</a>
-                    <a href="#" class="social-link">ðŸ“·</a>
-                    <a href="#" class="social-link">in</a>
-                    <a href="#" class="social-link">ðŸ“±</a>
-                </div>
-            </div>
+// Form status
+document.getElementById('contactForm')?.addEventListener('submit', () => {
+  const s = document.getElementById('formStatus');
+  if (s) s.textContent = 'Sending your message…';
+});
+</script>
 
-            <!-- Contact Form -->
-            <div class="contact-form">
-                <h3>Send Us A Message</h3>
-                <form action="https://formsubmit.co/laphicmodernhomes@gmail.com" method="POST" id="contactForm">
-                    <input type="hidden" name="_subject" value="New message from LAPHIC website">
-                    <input type="hidden" name="_template" value="table">
-                    <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="_next" value="https://laphicmodernhomes.com/contact.html">
-                    <input type="text" name="_honey" style="display:none">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>First Name *</label>
-                            <input type="text" name="name" required placeholder="mannie">
-                        </div>
-                        <div class="form-group">
-                            <label>Last Name *</label>
-                            <input type="text" name="last_name" required placeholder="baine">
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>Email Address *</label>
-                            <input type="email" name="email" required placeholder="mannie@gmail.com">
-                        </div>
-                        <div class="form-group">
-                            <label>Phone Number</label>
-                            <input type="tel" name="phone" placeholder="+256 XXX XXX XXX">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Service Interested In *</label>
-                        <select name="subject" required>
-                            <option value="">Select a service</option>
-                            <option value="interior">Interior Design</option>
-                            <option value="exterior">Exterior Design</option>
-                            <option value="landscape">Landscape Design</option>
-                            <option value="construction">Full Construction</option>
-                            <option value="renovation">Renovation</option>
-                            <option value="consultation">Consultation</option>
-                            <option value="furniture">Furniture</option>
-                            <option value="curtains">Curtains</option>
-                            <option value="gypsum">Gypsum work</option>
-
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Project Details *</label>
-                        <textarea name="message" required placeholder="Tell us about your project, timeline, and any specific requirements..."></textarea>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Budget Range</label>
-                        <select name="budget">
-                            <option value="">Select budget range</option>
-                            <option value="small">Under 10M UGX</option>
-                            <option value="medium">10M - 50M UGX</option>
-                            <option value="large">50M - 100M UGX</option>
-                            <option value="premium">100M+ UGX</option>
-                        </select>
-                    </div>
-
-                    <button type="submit" class="submit-btn">SEND MESSAGE</button>
-                    <div id="formStatus" style="margin-top:1rem;font-weight:500"></div>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Info Cards -->
-    <section class="info-cards">
-        <div class="cards-grid">
-            <div class="info-card">
-                <div class="card-icon">âš¡</div>
-                <h4>Quick Response</h4>
-                <p>We respond to all inquiries within 24 hours. Your time is valuable, and we respect that.</p>
-            </div>
-
-            <div class="info-card">
-                <div class="card-icon">ðŸŽ¯</div>
-                <h4>Free Consultation</h4>
-                <p>Schedule a complimentary consultation to discuss your project and explore possibilities.</p>
-            </div>
-
-            <div class="info-card">
-                <div class="card-icon">ðŸ“‹</div>
-                <h4>Detailed Quotes</h4>
-                <p>Receive comprehensive project quotes with transparent pricing and clear timelines.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Map Section -->
-    <section class="map-section">
-        <div id="locationMap"></div>
-        <div class="map-overlay">
-            <h3>Visit Our Office</h3>
-            <p>Near St Anthony Nursery & Primary School<br>
-            Kajjansi, 1km from Kajjansi Centre<br>
-            Entebbe Road, Uganda</p>
-        </div>
-    </section>
-
-    <!-- Unified Footer -->
-    <footer class="site-footer">
-        <div class="footer-content">
-            <div class="footer-section footer-brand">
-                <img src="images/logo.png" alt="LAPHIC Modern Homes" height="70">
-                <p class="footer-tagline">Designing tomorrow's spaces, today</p>
-            </div>
-            <div class="footer-section">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="laphic-website.html">Home</a></li>
-                    <li><a href="who-we-are.html">Who We Are</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="portfolio.html">Portfolio</a></li>
-                    <li><a href="projects.html">Projects</a></li>
-                    <li><a href="inspirations.html">Inspiration</a></li>
-                    <li><a href="testimonials.html">Testimonials</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Services</h4>
-                <ul>
-                    <li><a href="interior-design.html">Interior Design</a></li>
-                    <li><a href="exterior-design.html">Exterior Design</a></li>
-                    <li><a href="landscape-design.html">Landscape Design</a></li>
-                    <li><a href="services.html">Construction</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Contact</h4>
-                <ul>
-                    <li>📍 Kampala, Uganda</li>
-                    <li><a href="tel:+256780535307">+256 780 535 307</a></li>
-                    <li><a href="mailto:laphicmodernhomes@gmail.com">laphicmodernhomes@gmail.com</a></li>
-                    <li>Mon-Sun: 8AM – 8PM</li>
-                </ul>
-                <div class="footer-socials">
-                    <a href="https://www.instagram.com/laphichomes" target="_blank" rel="noopener" class="footer-social-link" title="Instagram">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                    </a>
-                    <a href="https://x.com/laphichomes" target="_blank" rel="noopener" class="footer-social-link" title="X (Twitter)">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                    </a>
-                    <a href="https://www.tiktok.com/@laphic.modern.hom" target="_blank" rel="noopener" class="footer-social-link" title="TikTok">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V9.05a8.14 8.14 0 0 0 4.78 1.52V7.13a4.85 4.85 0 0 1-1.01-.44z"/></svg>
-                    </a>
-                    <a href="https://wa.me/256705029291" target="_blank" rel="noopener" class="footer-social-link" title="WhatsApp">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-divider"></div>
-        <div class="footer-bottom">
-            <p>&copy; <span id="footer-year">2026</span> LAPHIC Modern Homes. All rights reserved.</p>
-        </div>
-    </footer>
-    <script>(function(){var y=document.getElementById('footer-year');if(y)y.textContent=new Date().getFullYear();})();</script>
-
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-    
-    <!-- Leaflet JS -->
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    
-    <script>
-        // Wait for page and Leaflet to fully load
-        window.addEventListener('load', function() {
-            // Initialize the map
-            var map = L.map('locationMap', {
-                center: [0.2096, 32.5226], // LAPHIC Modern Homes coordinates
-                zoom: 15,
-                scrollWheelZoom: true
-            });
-
-            // Define base layers
-            var osmLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: ''
-            });
-
-            var terrainLayer = L.tileLayer('https://{s}.google.com/vt/lyrs=p&x={x}&y={y}&z={z}', {
-                maxZoom: 20,
-                subdomains: ['mt1', 'mt2', 'mt3'],
-                attribution: ''
-            });
-
-            var satelliteLayer = L.tileLayer('https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
-                maxZoom: 20,
-                subdomains: ['mt1', 'mt2', 'mt3'],
-                attribution: ''
-            });
-
-            var hybridLayer = L.tileLayer('https://{s}.google.com/vt/lyrs=h&x={x}&y={y}&z={z}', {
-                maxZoom: 20,
-                subdomains: ['mt1', 'mt2', 'mt3'],
-                attribution: ''
-            });
-
-            // Layer control to switch between views
-            var baseLayers = {
-                "OpenStreetMap": osmLayer,
-                "Terrain View": terrainLayer,
-                "Satellite View": satelliteLayer,
-                "Hybrid View": hybridLayer
-            };
-
-            // Add default terrain layer to map
-            terrainLayer.addTo(map);
-
-            // Add layer control to map
-            L.control.layers(baseLayers).addTo(map);
-
-            // Add a custom marker with popup
-            var customIcon = L.divIcon({
-                className: 'custom-marker',
-                html: '<div style="background-color: #c9a050; width: 30px; height: 30px; border-radius: 50%; border: 3px solid #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.3);"></div>',
-                iconSize: [30, 30],
-                iconAnchor: [15, 15]
-            });
-
-            L.marker([0.2096, 32.5226], {icon: customIcon}).addTo(map)
-                .bindPopup('<strong style="color: #c9a050;">LAPHIC Modern Homes</strong><br>Kajjansi, Entebbe Road<br>Uganda')
-                .openPopup();
-
-            // Remove Leaflet attribution
-            map.attributionControl.setPrefix(false);
-        });
-    </script>
-    
-    <script>
-    /* FormSubmit wiring */
-    (function(){
-      var form = document.getElementById('contactForm');
-      if (!form) return;
-      var status = document.getElementById('formStatus');
-      var submitBtn = form.querySelector('button[type="submit"], input[type="submit"]');
-      var originalBtnText = submitBtn ? (submitBtn.textContent || submitBtn.value) : '';
-
-      form.addEventListener('submit', function(e){
-        e.preventDefault();
-        if (status) { status.textContent = ''; status.style.color = ''; }
-        if (submitBtn) {
-          if (submitBtn.tagName === 'BUTTON') submitBtn.textContent = 'SENDING...';
-          else submitBtn.value = 'SENDING...';
-          submitBtn.disabled = true;
-        }
-        var data = new FormData(form);
-        fetch(form.action, {
-          method: 'POST',
-          body: data,
-          headers: { 'Accept': 'application/json' }
-        }).then(function(res){
-          if (res.ok) {
-            if (status) {
-              status.textContent = '✓ Message sent! We\'ll be in touch soon.';
-              status.style.color = '#2ecc71';
-            }
-            form.reset();
-          } else {
-            return res.json().then(function(d){ throw new Error(d.error || 'Submission failed'); });
-          }
-        }).catch(function(err){
-          if (status) {
-            status.textContent = '✗ ' + (err.message || 'Could not send. Please try again or email laphicmodernhomes@gmail.com directly.');
-            status.style.color = '#e74c3c';
-          }
-        }).finally(function(){
-          if (submitBtn) {
-            if (submitBtn.tagName === 'BUTTON') submitBtn.textContent = originalBtnText;
-            else submitBtn.value = originalBtnText;
-            submitBtn.disabled = false;
-          }
-        });
-      });
-    })();
-    </script>
-    <script>
-    /* Unified Nav JS */
-    (function(){
-        var siteNav = document.getElementById('siteNav');
-        var navToggleBtn = document.getElementById('navToggleBtn');
-        var navLinksMenu = document.getElementById('navLinksMenu');
-        var footerYearEl = document.getElementById('footer-year');
-        if(footerYearEl) footerYearEl.textContent = new Date().getFullYear();
-        if(siteNav) {
-            window.addEventListener('scroll', function(){
-                siteNav.classList.toggle('scrolled', window.scrollY > 50);
-            }, {passive:true});
-            if(window.scrollY > 50) siteNav.classList.add('scrolled');
-        }
-        if(navToggleBtn && navLinksMenu) {
-            navToggleBtn.addEventListener('click', function(){
-                navToggleBtn.classList.toggle('open');
-                navLinksMenu.classList.toggle('open');
-            });
-            navLinksMenu.querySelectorAll('a').forEach(function(a){
-                a.addEventListener('click', function(){
-                    navToggleBtn.classList.remove('open');
-                    navLinksMenu.classList.remove('open');
-                });
-            });
-        }
-    })();
-    </script>
 </body>
 </html>

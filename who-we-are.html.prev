@@ -1,0 +1,1013 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LAPHIC Modern Homes | Think it, we create it</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+<style>
+     * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0a0a0a;
+            --gold: #c9a050;
+            --cream: #f8f6f0;
+            --charcoal: #2c2c2c;
+            --rust: #c85a3e;
+            --accent: #c9a050;
+            --grey: #666;
+            --light: #ffffff;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Crimson Pro', serif;
+            background: var(--cream);
+            color: var(--primary);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 2rem;
+            color: var(--gold);
+            letter-spacing: 3px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--cream);
+            text-decoration: none;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        /* ================= SECTIONS ================= */
+        section {
+            padding: 80px 20px;
+        }
+
+        .hero {
+            
+            padding-top: 0;
+            
+           position: relative;
+            height: 100vh;
+            overflow: hidden;
+           display: flex;
+           align-items: center;
+           justify-content: center;
+           text-align: center;
+        }
+
+    
+        .hero-slider {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+        }
+
+        .hero-slider .slide {
+           position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          opacity: 0;
+           transition: opacity 1s ease-in-out;
+        }
+
+        .hero-slider .slide.active {
+            
+            opacity: 1;
+           transform: scale(1);
+           transition: opacity 1s ease-in-out, transform 6s ease;
+        }
+
+        /* Dark overlay */
+       .hero-overlay {
+           position: absolute;
+           width: 100%;
+           top: 0%;
+           left: 0;
+           height: 100%;
+           background: rgba(0,0,0,0.6);
+           z-index: 1;
+        }
+
+       /* Text stays above */
+       .hero-content {
+         position: relative;
+         z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 40px;
+            color: #c9a050;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 18px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            color: #c9a050;
+            font-size: 32px;
+        }
+
+        /* About Section */
+        .aboutUS-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            align-items: center;
+        }
+
+        .aboutUS-text h3 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .aboutUS-text p {
+            font-size: 1.1rem;
+            line-height: 2;
+            color: var(--grey);
+            margin-bottom: 1.5rem;
+        }
+
+        .aboutUS-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+            background: var(--light);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: var(--grey);
+            font-weight: 500;
+        }
+
+        .aboutUS-image {
+            position: relative;
+            height: 600px;
+        }
+
+        .aboutUS-image::before {
+            content: '';
+            position: absolute;
+            top: -30px;
+            right: -30px;
+            width: 100%;
+            height: 100%;
+            border: 3px solid var(--accent);
+            z-index: -1;
+        }
+
+        .aboutUS-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* ABOUT */
+        .about-box {
+            background: #fff;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 6px;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .why-us li {
+            margin-bottom: 10px;
+            list-style: none;
+        }
+
+        .values {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .value {
+            background: #f9f9f9;
+            padding: 20px;
+            border-left: 4px solid #c9a050;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #1a1a1a;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+        footer {
+            background: var(--primary);
+            color: var(--white);
+            padding: 4rem 5% 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto 3rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .social-link:hover {
+            background: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            animation: slideInLeft 0.8s ease-out forwards;
+        }
+
+        @keyframes slideInLeft {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            animation: slideInRight 0.8s ease-out forwards;
+        }
+
+        @keyframes slideInRight {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 4rem;
+            }
+
+            .hero h1 span {
+                font-size: 2.5rem;
+            }
+
+            .services-grid,
+            .portfolio-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* ===== IMAGE + TEXT SPLIT SECTIONS ===== */
+ 
+        .split-section {
+         display: grid;
+         grid-template-columns: 1fr 1fr;
+         gap: 3rem;
+         align-items: center;
+         margin-bottom: 4rem;
+       }
+
+        .split-section.reverse {
+         grid-template-columns: 1fr 1fr;
+         direction: rtl;
+        }
+
+       .split-section.reverse > * {
+          direction: ltr;
+        }
+
+       .split-text h3 {
+          font-size: 2rem;
+         margin-bottom: 1rem;
+         color: var(--primary);
+        }
+
+      .split-text p,
+      .split-text li {
+         font-size: 1.05rem;
+         line-height: 1.9;
+         color: #444;
+        }
+
+       .split-text ul {
+         padding-left: 0;
+         list-style: none;
+        }
+
+       .split-text li {
+         margin-bottom: 0.6rem;
+       }
+
+        .split-image {
+           position: relative;
+       }
+
+       .split-image img {
+         width: 100%;
+         height: 380px;
+         object-fit: cover;
+         border-radius: 6px;
+       } 
+
+      .split-image::after {
+         content: "";
+         position: absolute;
+         top: -15px;
+         left: -15px;
+         width: 100%;
+         height: 100%;
+          border: 3px solid var(--gold);
+         z-index: -1;
+      }
+
+      /* Responsive */
+       @media (max-width: 900px) {
+        .split-section,
+        .split-section.reverse {
+             grid-template-columns: 1fr;
+             direction: ltr;
+             }
+
+       .split-image img {
+           height: 300px;
+             
+              }
+      }
+
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 5%;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+                font-size: 0.85rem;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero h1 span {
+                font-size: 1.8rem;
+            }
+
+            .services-grid,
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 5rem 5%;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+    
+/* === MOBILE RESPONSIVE PATCH v1 === */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { overflow-x: hidden; max-width: 100%; }
+img, video, iframe { max-width: 100%; height: auto; }
+p, li, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; word-wrap: break-word; }
+
+/* Tablets and below */
+@media (max-width: 1024px) {
+  .nav-links { gap: 1.2rem; }
+  .services-grid, .portfolio-grid, .projects-grid, .testimonials-grid,
+  .inspiration-grid, .values-grid, .stats-grid, .trust-grid, .info-cards {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .footer-content { grid-template-columns: repeat(2, 1fr) !important; }
+}
+
+/* Tablets / large phones */
+@media (max-width: 768px) {
+  /* Navigation: hamburger */
+  .nav-toggle { display: flex !important; }
+  .nav-links {
+    position: fixed;
+    top: 70px;
+    right: 0;
+    left: 0;
+    flex-direction: column;
+    background: rgba(15, 15, 15, 0.97);
+    padding: 1.5rem;
+    gap: 1rem;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    z-index: 999;
+    max-height: calc(100vh - 70px);
+    overflow-y: auto;
+  }
+  .nav-links.active, .nav-links.open, .nav-links.show {
+    transform: translateX(0);
+  }
+  .nav-links a { font-size: 0.95rem; }
+  .nav-logo img { height: 42px !important; max-height: 42px; width: auto; }
+  .nav-cta { display: none; }
+
+  /* Hero */
+  .hero, .hero-3d { min-height: auto; padding: 6rem 1rem 3rem !important; }
+  .hero-content, .hero-content-3d { padding: 0 1rem; }
+  .hero h1, .hero-content h1, .hero-content-3d h1 {
+    font-size: clamp(2rem, 6vw, 3.5rem) !important;
+    line-height: 1.15;
+  }
+  .hero p, .hero-content p, .hero-tagline, .hero-desc {
+    font-size: 1rem !important;
+  }
+  .hero-trust, .trust-strip, .scroll-indicator { display: none !important; }
+
+  /* Generic sections */
+  section { padding-left: 1.5rem !important; padding-right: 1.5rem !important; }
+
+  /* Grids â†’ 1 col */
+  .services-grid, .portfolio-grid, .projects-grid, .testimonials-grid,
+  .testimonials-slider, .values-grid, .info-cards, .services-layout,
+  .services-showcase, .services-container, .trust-grid, .trust-points {
+    grid-template-columns: 1fr !important;
+    display: grid !important;
+  }
+
+  /* Service blocks (image + text) stack */
+  .service-block, .services-layout, .trust { 
+    flex-direction: column !important;
+    grid-template-columns: 1fr !important;
+  }
+  .service-visual, .service-content, .service-image, .service-info,
+  .trust-image, .trust-text { width: 100% !important; max-width: 100%; }
+
+  /* Cards */
+  .service-card, .portfolio-item, .project-card, .testimonial-card,
+  .inspiration-card, .info-card, .stat-item, .value-card, .team-card {
+    max-width: 100%; width: 100%;
+  }
+
+  /* CTA stacks */
+  .cta-buttons, .hero-ctas, .cta-content { 
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+  .cta-btn, .cta-button, .hero-ctas a, .cta-buttons a { 
+    width: 100%; text-align: center; max-width: 100%;
+  }
+  .cta-section, .cta-3d { padding: 3rem 1.5rem !important; }
+  .cta-content h2, .cta-section h2 { font-size: clamp(1.6rem, 5vw, 2.4rem) !important; }
+
+  /* Footer */
+  .footer-content { 
+    grid-template-columns: 1fr 1fr !important;
+    gap: 2rem !important;
+    text-align: left;
+  }
+
+  /* Forms */
+  .form-row { flex-direction: column !important; gap: 1rem; }
+  .form-group, input, textarea, select, button { max-width: 100%; box-sizing: border-box; }
+  input, textarea, select { font-size: 16px !important; /* prevent iOS zoom */ }
+
+  /* Filters */
+  .filter-buttons, .filter-tabs { 
+    flex-wrap: wrap !important;
+    gap: 0.5rem !important;
+    justify-content: center;
+  }
+  .filter-btn { font-size: 0.85rem !important; padding: 0.5rem 0.9rem !important; }
+
+  /* Stats */
+  .stats-grid, .stats-container { grid-template-columns: repeat(2, 1fr) !important; gap: 1rem; }
+
+  /* Section headings */
+  h2 { font-size: clamp(1.6rem, 5vw, 2.4rem) !important; }
+  h3 { font-size: clamp(1.2rem, 4vw, 1.6rem) !important; }
+
+  /* iframes / embeds */
+  iframe { width: 100% !important; height: 60vh; min-height: 320px; }
+}
+
+/* Small phones */
+@media (max-width: 640px) {
+  section { padding-left: 1rem !important; padding-right: 1rem !important; }
+  .hero, .hero-3d { padding: 5rem 1rem 2.5rem !important; }
+  .hero h1, .hero-content h1, .hero-content-3d h1 {
+    font-size: clamp(1.9rem, 7vw, 2.6rem) !important;
+  }
+  .services-grid, .portfolio-grid, .projects-grid, .testimonials-grid,
+  .inspiration-grid, .values-grid, .info-cards, .trust-grid,
+  .stats-grid, .stats-container {
+    grid-template-columns: 1fr !important;
+  }
+  body, p, li { font-size: 0.95rem; }
+  .footer-content { 
+    grid-template-columns: 1fr !important;
+    text-align: center;
+  }
+  .footer-section { text-align: center; }
+  .footer-section img, .footer-bottom img { margin-left: auto; margin-right: auto; }
+}
+
+/* Very small phones */
+@media (max-width: 480px) {
+  section { padding-left: 1rem !important; padding-right: 1rem !important; }
+  .hero h1, .hero-content h1, .hero-content-3d h1 {
+    font-size: clamp(1.8rem, 8vw, 2.3rem) !important;
+  }
+  .nav-logo img { height: 38px !important; }
+  .hero-trust, .trust-strip, .trust-divider, .scroll-indicator { display: none !important; }
+  h2 { font-size: 1.5rem !important; }
+}
+/* === END MOBILE RESPONSIVE PATCH v1 === */
+
+/* === UNIFIED NAV + FOOTER === */
+:root { --gold:#d4af37; --gold-dark:#c9a050; --gold-light:#e6c068; --navy:#0d0d12; }
+#siteNav { position:fixed; width:100%; top:0; z-index:1000; padding:0 5%; display:flex; justify-content:space-between; align-items:center; min-height:80px; transition:background .4s,box-shadow .4s,min-height .4s; background:transparent; }
+#siteNav.scrolled { background:linear-gradient(180deg,rgba(13,13,18,.92),rgba(20,20,28,.88)); backdrop-filter:blur(28px) saturate(1.4); -webkit-backdrop-filter:blur(28px) saturate(1.4); box-shadow:0 0 0 1px rgba(255,255,255,.04); min-height:66px; }
+#siteNav::after { content:''; position:absolute; bottom:0; left:0; right:0; height:1px; background:linear-gradient(90deg,transparent,var(--gold),transparent); opacity:0; transition:opacity .4s; pointer-events:none; }
+#siteNav.scrolled::after { animation:navGlow 6s ease-in-out infinite; }
+@keyframes navGlow { 0%,100%{opacity:.3}50%{opacity:1} }
+.nav-logo a { display:flex; align-items:center; text-decoration:none; }
+.nav-logo img { height:58px; width:auto; filter:drop-shadow(0 2px 8px rgba(0,0,0,.5)); transition:height .4s; }
+#siteNav.scrolled .nav-logo img { height:44px; }
+.nav-links { display:flex; align-items:center; gap:1.8rem; list-style:none; }
+.nav-links a { color:rgba(255,255,255,.9); text-decoration:none; font-family:'Inter',sans-serif; font-size:.82rem; letter-spacing:1.5px; text-transform:uppercase; position:relative; padding-bottom:2px; transition:color .25s; }
+.nav-links a::after { content:''; position:absolute; bottom:-2px; left:50%; right:50%; height:1px; background:var(--gold); transition:left .3s,right .3s; }
+.nav-links a:hover,.nav-links a.active { color:var(--gold); }
+.nav-links a:hover::after,.nav-links a.active::after { left:0; right:0; }
+.nav-cta-btn { background:var(--gold) !important; color:#0d0d12 !important; padding:.55rem 1.4rem !important; border-radius:50px; font-weight:700 !important; letter-spacing:2px !important; transition:box-shadow .3s,transform .3s !important; }
+.nav-cta-btn:hover { box-shadow:0 0 20px rgba(212,175,55,.6),0 0 40px rgba(212,175,55,.3) !important; transform:translateY(-2px) !important; }
+.nav-cta-btn::after { display:none !important; }
+.nav-toggle { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:4px; z-index:1001; position:relative; }
+.nav-toggle span { display:block; width:24px; height:2px; background:#fff; transition:all .3s; border-radius:2px; }
+.nav-toggle.open span:nth-child(1) { transform:rotate(45deg) translate(5px,5px); }
+.nav-toggle.open span:nth-child(2) { opacity:0; }
+.nav-toggle.open span:nth-child(3) { transform:rotate(-45deg) translate(5px,-5px); }
+@media(max-width:900px) {
+  .nav-logo img { height:42px !important; }
+  #siteNav.scrolled .nav-logo img { height:36px !important; }
+  .nav-toggle { display:flex !important; }
+  .nav-links { position:fixed; top:0; right:-100%; bottom:0; width:280px; flex-direction:column; align-items:flex-start; background:linear-gradient(180deg,rgba(13,13,18,.97),rgba(20,20,28,.95)); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); padding:80px 2rem 2rem; transition:right .35s cubic-bezier(.4,0,.2,1); gap:0; z-index:999; overflow-y:auto; }
+  .nav-links li { width:100%; border-bottom:1px solid rgba(255,255,255,.06); }
+  .nav-links a { display:block; padding:.9rem 0; font-size:.9rem; }
+  .nav-links.open { right:0; }
+  .nav-cta-item { border-bottom:none !important; margin-top:1rem; }
+  .nav-cta-btn { width:100% !important; text-align:center; display:block !important; padding:.7rem 1rem !important; border-radius:8px !important; }
+}
+.site-footer { background:linear-gradient(180deg,#0d0d12 0%,#0a0a0f 100%); color:rgba(255,255,255,.75); font-family:'Inter',sans-serif; padding-top:5rem; }
+.footer-content { display:grid; grid-template-columns:2fr 1fr 1fr 1.5fr; gap:3rem; padding:0 5% 3rem; max-width:1400px; margin:0 auto; }
+.footer-section h4 { font-family:'Bebas Neue',cursive; font-size:1.1rem; letter-spacing:2px; color:var(--gold); margin-bottom:1.2rem; }
+.footer-section ul { list-style:none; }
+.footer-section ul li { margin-bottom:.6rem; font-size:.9rem; color:rgba(255,255,255,.65); }
+.footer-section ul li a { color:rgba(255,255,255,.65); text-decoration:none; transition:color .25s; }
+.footer-section ul li a:hover { color:var(--gold); }
+.footer-brand img { filter:drop-shadow(0 2px 8px rgba(0,0,0,.5)); }
+.footer-tagline { margin-top:1rem; font-size:.95rem; color:rgba(255,255,255,.5); font-style:italic; font-family:'Playfair Display',serif; }
+.footer-socials { display:flex; gap:.8rem; margin-top:1.2rem; flex-wrap:wrap; }
+.footer-social-link { width:38px; height:38px; border-radius:50%; background:rgba(255,255,255,.06); border:1px solid rgba(212,175,55,.2); display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,.7); text-decoration:none; transition:all .3s; }
+.footer-social-link svg { width:18px; height:18px; }
+.footer-social-link:hover { background:var(--gold); color:#0d0d12; border-color:var(--gold); transform:translateY(-2px); }
+.footer-divider { height:1px; background:linear-gradient(90deg,transparent,rgba(212,175,55,.3),transparent); margin:0 5%; }
+.footer-bottom { text-align:center; padding:1.5rem 5%; font-size:.82rem; color:rgba(255,255,255,.3); }
+.footer-bottom a { color:var(--gold); text-decoration:none; }
+@media(max-width:900px) { .footer-content { grid-template-columns:1fr 1fr !important; gap:2rem !important; } }
+@media(max-width:480px) { .footer-content { grid-template-columns:1fr !important; } }
+/* === END UNIFIED NAV + FOOTER === */
+/* Page-specific: who-we-are */
+@media (max-width: 1024px) and (min-width: 641px) {
+  .team-grid, .values-grid { grid-template-columns: repeat(2, 1fr) !important; }
+}
+@media (max-width: 640px) {
+  .team-grid, .values-grid, .stats-grid { grid-template-columns: 1fr !important; }
+  .timeline, .timeline-event { width: 100% !important; padding-left: 0 !important; }
+}
+@media (max-width: 768px) {
+  .trust { flex-direction: column !important; display: flex !important; }
+}
+</style>
+</head>
+<body>
+
+    <!-- Unified Navigation -->
+    <nav id="siteNav">
+        <div class="nav-logo">
+            <a href="laphic-website.html"><img src="images/logo.png" alt="LAPHIC Modern Homes"></a>
+        </div>
+        <ul class="nav-links" id="navLinksMenu">
+            <li><a href="who-we-are.html" class="active">Who We Are</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="inspirations.html">Inspiration</a></li>
+            <li><a href="3d-experience.html">3D</a></li>
+            <li><a href="testimonials.html">Testimonials</a></li>
+            <li class="nav-cta-item"><a href="contact.html" class="nav-cta-btn">CONTACT</a></li>
+        </ul>
+        <button class="nav-toggle" id="navToggleBtn" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+<!-- ================= HOME ================= -->
+<section class="hero" id="home">
+
+    <!-- SLIDES -->
+    <div class="hero-slider">
+        <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777647538/pxl8_jlpjrl.jpg" class="slide active">
+        <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777645866/9_g5utrt.jpg" class="slide">
+        <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777646532/congo_trnpae.jpg" class="slide">
+    </div>
+
+    <!-- DARK OVERLAY -->
+    <div class="hero-overlay"></div>
+
+    <!-- TEXT -->
+    <div class="hero-content">
+        <h1>Think it, we create it</h1>
+        <p>Modern Interior, Exterior & Landscape Design</p>
+    </div>
+
+</section>
+
+<!-- ===== IMPROVED ABOUT SECTIONS ===== -->
+<section id="about">
+    <div class="container">
+        <div class="section-title">
+            <h2>Who We Are</h2>
+        </div>
+
+        <!-- Mission -->
+        <div class="split-section">
+            <div class="split-text">
+                <h3>Our Mission</h3>
+                <p>
+                    To maintain a high level of ethics,
+                    teamwork and professionalism while desmonstrating 
+                    a caring attitude toward employee and customer.
+                </p>
+            </div>
+            <div class="split-image">
+                <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777648010/us_ldhgil.jpg" alt="Interior Design Mission">
+            </div>
+        </div>
+
+        <!-- Vision -->
+        <div class="split-section reverse">
+            <div class="split-text">
+                <h3>Our Vision</h3>
+                <p>
+                    To be a leading brand in the construction and interior designing industry
+                    and those we serve and aswell to be committed to stability,sustainability and effective 
+                    strategic growth.
+                </p>
+            </div>
+            <div class="split-image">
+                <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777645831/7_qqcvxz.jpg" alt="Modern Home Vision">
+            </div>
+        </div>
+
+        <!-- Why Choose Us -->
+        <div class="split-section">
+            <div class="split-text">
+                <h3>Why Choose Us</h3>
+                <ul>
+                    <li>âœ” Experienced and skilled professionals</li>
+                    <li>âœ” We provide creative designs </li>
+                    <li>âœ” Client-focused design approach</li>
+                    <li>âœ” Affordable and transparent pricing</li>
+                    <li>âœ” Timely project delivery</li>
+                </ul>
+            </div>
+            <div class="split-image">
+                <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777647067/gypsum_ycjkmg.jpg" alt="Why Choose LAPHIC">
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- About Section -->
+    <section id="aboutUS" class="aboutUS">
+        <div class="aboutUS-content">
+            <div class="aboutUS-text slide-in-left">
+                <h2 class="section-title" style="text-align: left; transform: none; left: 0;">WHO WE ARE</h2>
+                <h3>Building Trust Through Excellence</h3>
+                <p>LAPHIC Modern Homes is Uganda's premier design and construction company, dedicated to transforming your dreams into reality. With years of experience and a passion for innovation, we bring together expert craftsmanship and cutting-edge design.</p>
+                <p>Our mission is simple: to create living spaces that not only meet but exceed your expectations. We believe in the power of thoughtful design, quality materials, and meticulous attention to detail.</p>
+                
+                <div class="aboutUS-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">500+</div>
+                        <div class="stat-label">Projects Completed</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">98%</div>
+                        <div class="stat-label">Client Satisfaction</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Expert Team</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="aboutUS-image slide-in-right">
+                 <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/v1777579748/abtus_vw8uzx.jpg" alt="about us">
+                <!-- <img src="data:image/svg+xml,%3Csvg width='600' height='600' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='600' height='600' fill='%23c9a050'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='24' fill='white'%3EModern Home Design%3C/text%3E%3C/svg%3E" alt="About LAPHIC Modern Homes"> -->
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Unified Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-section footer-brand">
+                <img src="images/logo.png" alt="LAPHIC Modern Homes" height="70">
+                <p class="footer-tagline">Designing tomorrow's spaces, today</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="laphic-website.html">Home</a></li>
+                    <li><a href="who-we-are.html">Who We Are</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="inspirations.html">Inspiration</a></li>
+                    <li><a href="testimonials.html">Testimonials</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="interior-design.html">Interior Design</a></li>
+                    <li><a href="exterior-design.html">Exterior Design</a></li>
+                    <li><a href="landscape-design.html">Landscape Design</a></li>
+                    <li><a href="services.html">Construction</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <ul>
+                    <li>📍 Kampala, Uganda</li>
+                    <li><a href="tel:+256780535307">+256 780 535 307</a></li>
+                    <li><a href="mailto:laphicmodernhomes@gmail.com">laphicmodernhomes@gmail.com</a></li>
+                    <li>Mon-Sun: 8AM – 8PM</li>
+                </ul>
+                <div class="footer-socials">
+                    <a href="https://www.instagram.com/laphichomes" target="_blank" rel="noopener" class="footer-social-link" title="Instagram">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    </a>
+                    <a href="https://x.com/laphichomes" target="_blank" rel="noopener" class="footer-social-link" title="X (Twitter)">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    </a>
+                    <a href="https://www.tiktok.com/@laphic.modern.hom" target="_blank" rel="noopener" class="footer-social-link" title="TikTok">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V9.05a8.14 8.14 0 0 0 4.78 1.52V7.13a4.85 4.85 0 0 1-1.01-.44z"/></svg>
+                    </a>
+                    <a href="https://wa.me/256705029291" target="_blank" rel="noopener" class="footer-social-link" title="WhatsApp">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-divider"></div>
+        <div class="footer-bottom">
+            <p>&copy; <span id="footer-year">2026</span> LAPHIC Modern Homes. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>(function(){var y=document.getElementById('footer-year');if(y)y.textContent=new Date().getFullYear();})();</script>
+
+<!-- ================= JS ================= -->
+<script>
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+    const sections = document.querySelectorAll("section");
+    const navItems = document.querySelectorAll(".nav-link");
+
+    menuToggle.addEventListener("click", () => {
+        navLinks.classList.toggle("show");
+    });
+
+    window.addEventListener("scroll", () => {
+        let current = "";
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 120;
+            if (pageYOffset >= sectionTop) {
+                current = section.getAttribute("id");
+            }
+        });
+
+        navItems.forEach(link => {
+            link.classList.remove("active");
+            if (link.getAttribute("href").includes(current)) {
+                link.classList.add("active");
+            }
+        });
+    });
+
+    const slides = document.querySelectorAll(".slide");
+    let index = 0;
+
+    function showSlide() {
+        slides.forEach(slide => slide.classList.remove("active"));
+        slides[index].classList.add("active");
+
+       index = (index + 1) % slides.length;
+    }
+    showSlide(); // ensures first slide is shown properly
+    setInterval(showSlide, 4000); // change every 4 seconds
+    
+</script>
+
+    <script>
+    /* Unified Nav JS */
+    (function(){
+        var siteNav = document.getElementById('siteNav');
+        var navToggleBtn = document.getElementById('navToggleBtn');
+        var navLinksMenu = document.getElementById('navLinksMenu');
+        var footerYearEl = document.getElementById('footer-year');
+        if(footerYearEl) footerYearEl.textContent = new Date().getFullYear();
+        if(siteNav) {
+            window.addEventListener('scroll', function(){
+                siteNav.classList.toggle('scrolled', window.scrollY > 50);
+            }, {passive:true});
+            if(window.scrollY > 50) siteNav.classList.add('scrolled');
+        }
+        if(navToggleBtn && navLinksMenu) {
+            navToggleBtn.addEventListener('click', function(){
+                navToggleBtn.classList.toggle('open');
+                navLinksMenu.classList.toggle('open');
+            });
+            navLinksMenu.querySelectorAll('a').forEach(function(a){
+                a.addEventListener('click', function(){
+                    navToggleBtn.classList.remove('open');
+                    navLinksMenu.classList.remove('open');
+                });
+            });
+        }
+    })();
+    </script>
+</body>
+</html>
