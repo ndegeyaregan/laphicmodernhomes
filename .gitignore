@@ -8,3 +8,6 @@ Web.mp4
 *.mov
 *.avi
 
+# Local timestamped backups
+*.backup-*.html
+*.html.backup

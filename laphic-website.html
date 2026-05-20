@@ -752,8 +752,8 @@ button{font-family:inherit;cursor:pointer;border:0;background:none}
 
 <!-- ===== HERO ===== -->
 <section class="hero">
-  <video autoplay muted loop playsinline preload="auto" poster="images/projects/muyoyo.jpeg">
-    <source src="Web.mp4" type="video/mp4">
+  <video autoplay muted loop playsinline preload="auto" poster="images/projects/hero-poster.jpg">
+    <source src="https://qazcjygqhv3of22o.public.blob.vercel-storage.com/Web-optimized.mp4" type="video/mp4">
   </video>
   <div class="wrap">
     <div class="eyebrow">Building What Matters · Since 2012</div>
@@ -900,28 +900,28 @@ button{font-family:inherit;cursor:pointer;border:0;background:none}
     </div>
 
     <div class="commit-tabs" role="tablist">
-      <button class="commit-tab on" data-panel="p1"><span class="n">01</span><span class="t">Architectural Design</span></button>
+      <button class="commit-tab on" data-panel="p1"><span class="n">01</span><span class="t">Construction &amp; Build</span></button>
       <button class="commit-tab" data-panel="p2"><span class="n">02</span><span class="t">Interior Design</span></button>
       <button class="commit-tab" data-panel="p3"><span class="n">03</span><span class="t">Exterior &amp; Facade</span></button>
       <button class="commit-tab" data-panel="p4"><span class="n">04</span><span class="t">Landscape Architecture</span></button>
-      <button class="commit-tab" data-panel="p5"><span class="n">05</span><span class="t">Construction &amp; Build</span></button>
+      <button class="commit-tab" data-panel="p5"><span class="n">05</span><span class="t">Architectural Design</span></button>
       <button class="commit-tab" data-panel="p6"><span class="n">06</span><span class="t">3D Visualisation</span></button>
       <button class="commit-tab" data-panel="p7"><span class="n">07</span><span class="t">Aluminium Works</span></button>
     </div>
 
     <div class="commit-panel on" id="p1">
-      <div class="vis"><img src="https://res.cloudinary.com/dgqukjhb2/image/upload/f_auto,q_auto,w_1600/v1777648871/IMG-20260407-WA0003_rxfpjn.jpg" alt="LAPHIC Project"></div>
+      <div class="vis"><img src="images/projects/ongoing/WhatsApp%20Image%202026-05-09%20at%2022.15.48.jpeg" alt="Construction site — LAPHIC build in progress" onerror="this.src='images/projects/ongoing/construction3.jpg'"></div>
       <div class="info">
-        <div class="n">01 — Architectural Design</div>
-        <h3>Drawing places that <em>belong</em> to their site.</h3>
-        <p>Every project starts on paper, with a slow conversation about light, climate, family life, and the long view from the road. We work site-first — sketching, modelling, and refining until the building feels inevitable.</p>
+        <div class="n">01 — Construction &amp; Build</div>
+        <h3>One <em>accountable</em> hand from foundation to handover.</h3>
+        <p>Our build arm carries the drawings into the field — the same team that designed your home will sign off every pour, every joint, every snag. One contract, one accountability.</p>
         <ul>
-          <li>Site analysis and feasibility studies</li>
-          <li>Concept, schematic and detailed design</li>
-          <li>Authority submissions and approvals</li>
-          <li>Construction documentation</li>
+          <li>Main contracting and project management</li>
+          <li>Quality and safety on every site</li>
+          <li>Trusted, vetted subcontractor network</li>
+          <li>Transparent cost reporting</li>
         </ul>
-        <a href="services.html" class="read-more">Architectural Services
+        <a href="services.html" class="read-more">Construction Services
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </a>
       </div>
@@ -982,18 +982,18 @@ button{font-family:inherit;cursor:pointer;border:0;background:none}
     </div>
 
     <div class="commit-panel" id="p5">
-      <div class="vis"><img src="images/projects/ongoing/WhatsApp%20Image%202026-05-09%20at%2022.15.48.jpeg" alt="Construction site — LAPHIC build in progress" onerror="this.src='images/projects/ongoing/construction3.jpg'"></div>
+      <div class="vis"><img src="https://res.cloudinary.com/dgqukjhb2/image/upload/f_auto,q_auto,w_1600/v1777648871/IMG-20260407-WA0003_rxfpjn.jpg" alt="LAPHIC Project"></div>
       <div class="info">
-        <div class="n">05 — Construction &amp; Build</div>
-        <h3>One <em>accountable</em> hand from foundation to handover.</h3>
-        <p>Our build arm carries the drawings into the field — the same team that designed your home will sign off every pour, every joint, every snag. One contract, one accountability.</p>
+        <div class="n">05 — Architectural Design</div>
+        <h3>Drawing places that <em>belong</em> to their site.</h3>
+        <p>Every project starts on paper, with a slow conversation about light, climate, family life, and the long view from the road. We work site-first — sketching, modelling, and refining until the building feels inevitable.</p>
         <ul>
-          <li>Main contracting and project management</li>
-          <li>Quality and safety on every site</li>
-          <li>Trusted, vetted subcontractor network</li>
-          <li>Transparent cost reporting</li>
+          <li>Site analysis and feasibility studies</li>
+          <li>Concept, schematic and detailed design</li>
+          <li>Authority submissions and approvals</li>
+          <li>Construction documentation</li>
         </ul>
-        <a href="services.html" class="read-more">Construction Services
+        <a href="services.html" class="read-more">Architectural Services
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </a>
       </div>
@@ -1378,6 +1378,114 @@ const io = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+<!-- ===== Write-in on scroll (words reveal as if being written) ===== -->
+<style>
+  .wi-word{
+    display:inline-block;
+    opacity:0;
+    transform:translateY(0.35em);
+    filter:blur(4px);
+    transition:opacity .55s ease, transform .55s ease, filter .55s ease;
+    will-change:opacity,transform,filter;
+  }
+  .wi-on .wi-word{
+    opacity:1;
+    transform:translateY(0);
+    filter:blur(0);
+  }
+  @media (prefers-reduced-motion: reduce){
+    .wi-word{opacity:1;transform:none;filter:none;transition:none}
+  }
+</style>
+<script>
+(function(){
+  if (window.__writeInInit) return; window.__writeInInit = true;
+
+  // Selectors to animate. Excluded: nav, footer link lists, buttons, counters, form fields.
+  var SELECTOR = 'section h1, section h2, section h3, section h4, section p, section blockquote, section li';
+  var EXCLUDE_ANCESTOR_SELECTOR = 'nav, .nav, header nav, footer, .footer, button, .btn, a.btn, .counter, .stat, form, label, input, textarea, select';
+
+  function shouldSkip(el){
+    if (!el || !el.textContent || !el.textContent.trim()) return true;
+    if (el.closest && el.closest(EXCLUDE_ANCESTOR_SELECTOR)) return true;
+    if (el.hasAttribute('data-no-writein')) return true;
+    if (el.dataset.wiDone === '1') return true;
+    return false;
+  }
+
+  // Replace text nodes inside `root` with per-word spans. Leaves non-text children intact.
+  function splitWords(root){
+    var delayCounter = { v: 0 };
+    function walk(node){
+      var kids = Array.prototype.slice.call(node.childNodes);
+      for (var i=0; i<kids.length; i++){
+        var n = kids[i];
+        if (n.nodeType === 3){ // text
+          var text = n.nodeValue;
+          if (!text.trim()) continue;
+          var frag = document.createDocumentFragment();
+          var parts = text.split(/(\s+)/); // keep whitespace
+          for (var j=0; j<parts.length; j++){
+            var p = parts[j];
+            if (p === '') continue;
+            if (/^\s+$/.test(p)){
+              frag.appendChild(document.createTextNode(p));
+            } else {
+              var span = document.createElement('span');
+              span.className = 'wi-word';
+              span.style.transitionDelay = (delayCounter.v * 30) + 'ms';
+              span.textContent = p;
+              frag.appendChild(span);
+              delayCounter.v++;
+              if (delayCounter.v > 60) delayCounter.v = 60; // cap stagger to ~1.8s per section
+            }
+          }
+          n.parentNode.replaceChild(frag, n);
+        } else if (n.nodeType === 1){ // element
+          // don't recurse into excluded inline elements
+          if (n.closest && n.closest(EXCLUDE_ANCESTOR_SELECTOR) && n.closest(EXCLUDE_ANCESTOR_SELECTOR) !== root) continue;
+          walk(n);
+        }
+      }
+    }
+    walk(root);
+    root.dataset.wiDone = '1';
+  }
+
+  function init(){
+    var nodes = document.querySelectorAll(SELECTOR);
+    var targets = [];
+    nodes.forEach(function(el){
+      if (shouldSkip(el)) return;
+      splitWords(el);
+      targets.push(el);
+    });
+
+    if (!('IntersectionObserver' in window)){
+      targets.forEach(function(el){ el.classList.add('wi-on'); });
+      return;
+    }
+
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){
+          e.target.classList.add('wi-on');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+
+    targets.forEach(function(el){ io.observe(el); });
+  }
+
+  if (document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
 </script>
 
 </body>
