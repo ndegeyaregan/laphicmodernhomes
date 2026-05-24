@@ -287,27 +287,47 @@
         }
 
         .video-container {
-            position: relative;
             max-width: 1400px;
             margin: 0 auto;
+        }
+
+        .preview-frame {
+            position: relative;
+            aspect-ratio: 16 / 9;
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: 
+            background: #0b0b0b;
+            box-shadow:
                 0 20px 60px rgba(212, 175, 55, 0.2),
                 0 0 100px rgba(212, 175, 55, 0.1);
-            transform-style: preserve-3d;
-            transition: transform 0.5s ease;
         }
 
-        .video-container:hover {
-            transform: scale(1.02) translateZ(20px);
-        }
-
-        .video-container video {
+        .preview-frame img {
+            position: absolute;
+            inset: 0;
             width: 100%;
-            height: auto;
+            height: 100%;
+            object-fit: cover;
             display: block;
-            border: 3px solid var(--gold);
+        }
+
+        .preview-frame::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(10, 10, 10, 0.05), rgba(10, 10, 10, 0.22));
+        }
+
+        .preview-label {
+            position: absolute;
+            left: 1.5rem;
+            bottom: 1.5rem;
+            z-index: 1;
+            color: #fff;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: .85rem;
+            text-shadow: 0 4px 18px rgba(0,0,0,.75);
         }
 
         /* 3D Gallery Section */
@@ -902,7 +922,7 @@ p, li, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; word-wrap: break-word
 /* === END 3D EXPERIENCE RESPONSIVE REFINEMENT === */
 
 
-/* Click-to-play video poster */
+/* Static 3D preview */
 .video-poster {
   position: relative;
   cursor: pointer;
@@ -1099,26 +1119,17 @@ footer.site-footer .foot-bottom a:hover{color:var(--u-gold-soft)!important}
         <div class="scroll-indicator">SCROLL TO EXPLORE â†“</div>
     </section>
 
-    <!-- Video Showcase (click-to-play to save 267MB on initial load) -->
+    <!-- 3D Preview Showcase -->
     <section class="video-showcase">
         <div class="section-title">
             <h2>Immersive 3D Walkthrough</h2>
             <p>Experience your dream space before it's built</p>
         </div>
         <div class="video-container">
-            <div class="video-poster" id="videoPoster" role="button" tabindex="0" aria-label="Play 3D walkthrough video">
-                <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/f_auto,q_auto,w_1600/v1777648464/dd-1-1copy_wxknv4.jpg" alt="3D Walkthrough Preview" loading="lazy" decoding="async">
-                <div class="play-button" aria-hidden="true">
-                    <svg viewBox="0 0 80 80" width="80" height="80"><circle cx="40" cy="40" r="38" fill="rgba(0,0,0,.55)" stroke="#d4af37" stroke-width="2"/><polygon points="32,24 60,40 32,56" fill="#d4af37"/></svg>
-                </div>
-                <div class="video-meta">Click to play · 4K Walkthrough</div>
+            <div class="preview-frame">
+                <img src="https://res.cloudinary.com/dgqukjhb2/image/upload/f_auto,q_auto,w_1920/v1777648511/IMG-20250729-WA0042_probgs.jpg" alt="3D Walkthrough Preview" loading="eager" decoding="async">
+                <div class="preview-label">3D Experience Preview</div>
             </div>
-            <template id="videoTemplate">
-                <video controls preload="metadata" poster="https://res.cloudinary.com/dgqukjhb2/image/upload/f_auto,q_auto,w_1600/v1777648464/dd-1-1copy_wxknv4.jpg">
-                    <source src="images/3Dimages/Kitovu 3d.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            </template>
         </div>
     </section>
 
@@ -1376,25 +1387,6 @@ footer.site-footer .foot-bottom a:hover{color:var(--u-gold-soft)!important}
     </section>
 
     <script>
-        // Click-to-play video (saves loading 267MB until user wants it)
-        (function() {
-            var poster = document.getElementById('videoPoster');
-            var tpl = document.getElementById('videoTemplate');
-            if (poster && tpl) {
-                var play = function() {
-                    var clone = tpl.content.cloneNode(true);
-                    var parent = poster.parentNode;
-                    parent.replaceChild(clone, poster);
-                    var v = parent.querySelector('video');
-                    if (v && v.play) { v.play().catch(function(){}); }
-                };
-                poster.addEventListener('click', play);
-                poster.addEventListener('keydown', function(e) {
-                    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); play(); }
-                });
-            }
-        })();
-
         // Gallery category filter
         (function() {
             var btns = document.querySelectorAll('.gfilter-btn');
